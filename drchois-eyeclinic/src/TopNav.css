@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.nav__container {
+  height: 58px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  border-radius: 5px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  margin: auto;
+  z-index: 10;
+}
+.hamburger-react {
+  right: 20px;
+}
+.navbar__logo {
+  flex: 1;
+  height: 100%;
+  left: 50px;
+  display: flex;
+  vertical-align: center;
+  align-items: flex-start;
+}
+.navbar__logo .logo__svg {
+  max-width: 180px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 20px;
+}
+.navbar__pagelink {
+  flex: 3;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  list-style: none;
+  text-decoration: none;
+  color: #707070;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.navbar__pagelink li {
+  cursor: pointer;
+  margin-left: 30px;
+}
+.nav__container li a {
+  text-decoration: none;
+  color: #707070;
+}
+.hamburger__icon {
+  flex: 1;
+  justify-content: flex-end;
+  display: flex;
+}
+
+@media screen and (max-width: 800px) {
+  .navbar__pagelink {
+    visibility: collapse;
+  }
+  .hamburger-react {
+    right: 20px;
+    position: absolute;
+  }
+  .navbar__logo {
+    margin: 0;
+    position: relative;
+    left: 20px;
+  }
+}
+/* @media screen and (max-width: 500px) {
+  .hamburger-react {
+    flex: 2;
+  }
+  .navbar__logo {
+    flex: 1;
+  }
+} */
+@media screen and (max-width: 500px) {
+  .nav__container {
+    overflow: hidden;
+  }
+  .navbar__logo {
+    margin: 0;
+    position: relative;
+    left: 0px;
+  }
+  .hamburger-react {
+    left: -10px;
+    position: fixed;
+  }
+}
+@media screen and (max-width: 400px) {
+  .nav__container {
+    justify-content: baseline;
+  }
+  .navbar__logo {
+    margin: 0;
+    position: relative;
+    left: 20px;
+  }
+  .hamburger-react {
+    position: absolute;
+    left: -30px;
+  }
+}

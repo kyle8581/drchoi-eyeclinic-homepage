@@ -1,0 +1,26 @@
+.blinking__video {
+  height: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  object-fit: cover;
+  min-width: 100%;
+  min-height: 100%;
+}
+.center__letter {
+  font-size: 70px;
+  color: #fff;
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  font-weight: 300;
+  letter-spacing: 7px;
+}
+@media all and (max-width: 500px) {
+  .blinking__video {
+    min-width: 20%;
+    min-height: 20%;
+  }
+}
