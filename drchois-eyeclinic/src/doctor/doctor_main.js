@@ -16,6 +16,8 @@ import "swiper/components/scrollbar/scrollbar.scss";
 
 import AwardSlide from "./AwardSlide";
 import imageAsset from "./doctor_image_asset.json";
+import backGroundAsset from "./doctor_background_asset.json";
+import DoctorBackgroundStructure from "./DoctorBackgroundStructure";
 import './doctor_main.css'
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 
@@ -66,6 +68,26 @@ function DoctorSayHi() {
               &#60;
             </div>
           </Swiper>
+        </div>
+        <div className="doctor-background">
+        <div className="education">
+          <h3 className="box1">학력</h3>
+          <div className="box2">
+          <DoctorBackgroundStructure boundary={[0,3]}/>
+          </div>
+        </div>
+        <div className="hospitals">
+          <h3 className="box1">압구정최안과의 역사</h3>
+          <div className="box2">
+          <DoctorBackgroundStructure boundary={[4,9]}/>
+          </div>
+        </div>
+        <div className="career">
+          <h3 className="box1">경력</h3>
+          <div className="box2">
+          <DoctorBackgroundStructure boundary={[10,backGroundAsset.length-1]}/>
+          </div>
+        </div>
         </div>
       </div>
     </section>

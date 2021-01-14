@@ -18,9 +18,22 @@
   font-weight: 300;
   letter-spacing: 7px;
 }
+.center__letter {
+  animation-name: riseup;
+  animation-duration: 4s;
+}
 @media all and (max-width: 500px) {
   .blinking__video {
     min-width: 20%;
     min-height: 20%;
+  }
+}
+
+@keyframes riseup {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

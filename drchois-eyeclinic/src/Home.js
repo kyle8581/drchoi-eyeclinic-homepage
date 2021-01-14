@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useState}from 'react'
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Mousewheel} from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -22,18 +22,27 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 
 
 function Home() {
-
+  let currentActiveSlide = null;
+  let swiperObject = null;
+  const [curSlide, setCurslide] = useState(1);
+  const [slide1Active, setSlide1Active] = useState(false);
+  const [slide2Active, setSlide2Active] = useState(false);
+  const [slide3Active, setSlide3Active] = useState(false);
+  const [slide4Active, setSlide4Active] = useState(false);
+  const [slide5Active, setSlide5Active] = useState(false);
+  const [slide6Active, setSlide6Active] = useState(false);
   return (
    
     <div>
     <TopNav/>
     <Swiper
+    onInit={(swiper)=>{swiperObject = swiper;}}
     spaceBetween={50}
     slidesPerView={1}
 
     pagination={{ clickable: true }}
     onSwiper={(swiper) => console.log(swiper)}
-    onSlideChange={(swiper) => {console.log(swiper.realIndex)}}
+    onSlideChange={(swiper) => {currentActiveSlide=swiper.realIndex;console.log(currentActiveSlide);setCurslide(swiper.realIndex);}}
     mousewheel={{invert:false,}}
     touchEventsTarget="wrapper"
     direction="vertical"
@@ -49,7 +58,7 @@ function Home() {
     <SwiperSlide><div>slide 2</div></SwiperSlide>
     {/* slide 3 : 병원 소개 */}
     <SwiperSlide>
-      <Interior/>  
+      <Interior curSlide={curSlide}/>  
     </SwiperSlide>
       
     <SwiperSlide><Department/></SwiperSlide>

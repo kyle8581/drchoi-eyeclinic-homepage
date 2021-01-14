@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, {useRef, useState} from 'react'
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Mousewheel} from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,9 +14,20 @@ import imageAsset from "./interior_image_asset.json"
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 
-function Interior(){
+function Interior({curSlide}){
     const prevRef = useRef(null);
-    const nextRef = useRef(null); 
+    const nextRef = useRef(null);
+    let isActive = false;
+    console.log(curSlide);
+    if(curSlide===2){
+      isActive = true;
+    }
+    else{
+        isActive = false;
+    }
+    console.log(isActive);
+   
+    
     return(
         <div className="slide__3">
         <div className="background__1">
@@ -27,8 +38,8 @@ function Interior(){
         <div className="content__wrapper">
           <div className="text__container">
             <div className="point__top"></div>
-            <div className="large__text">압구정 최안과 둘러보기</div>
-            <div className="small__text">환자만을 위한 공간, 원장님의 섬세함으로 완성된 인테리어</div>
+            <div className={"large__text "+isActive}><div>압구정 최안과 둘러보기</div></div>
+            <div className={"small__text "+isActive}><div>환자만을 위한 공간, 원장님의 섬세함으로 완성된 인테리어</div></div>
 
           </div>
           <div className="swiper__container">
