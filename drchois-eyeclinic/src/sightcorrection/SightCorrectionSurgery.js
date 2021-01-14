@@ -2,6 +2,8 @@ import React from "react";
 import StructureStyle1 from "./StructureStyle1";
 import StructureStyle2 from "./StructureStyle2";
 import surgery from "./contents";
+import TopNav from "../TopNav";
+
 function SightCorrectionSurgery() {
   const lensImplantation = surgery.filter(
     (lens) => lens.Name === "Lens Implantation"
@@ -11,6 +13,7 @@ function SightCorrectionSurgery() {
   );
   return (
     <section className="container">
+      <TopNav/>
       <h1>Sight Correction Surgery</h1>
       {mainSurgery.map((surgeries) => (
         <div className={surgeries.Name}>
