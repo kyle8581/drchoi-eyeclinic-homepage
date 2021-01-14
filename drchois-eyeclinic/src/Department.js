@@ -3,6 +3,7 @@ import './Department.css'
 function Department(){
     return(
         <div>
+            진료과목
 
         </div>
     )

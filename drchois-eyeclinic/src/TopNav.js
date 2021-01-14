@@ -20,7 +20,7 @@ function TopNav(){
        
                 <ul className="navbar__pagelink">
                     <li>
-                        최승일 대표원장
+                        <Link to="/dr-choi">최승일 대표원장</Link>
                     </li>
                     <li>
                         <Link to="/sight-correction">시력교정술</Link>

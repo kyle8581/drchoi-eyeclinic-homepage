@@ -8,7 +8,7 @@ import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
-
+import './Interior.css'
 import InteriorSlide from './InteriorSlide'
 import imageAsset from "./interior_image_asset.json"
 

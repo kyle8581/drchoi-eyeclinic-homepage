@@ -51,8 +51,8 @@ function Home() {
     <SwiperSlide>
       <Interior/>  
     </SwiperSlide>
-      <Department/>
-    <SwiperSlide><div>slide 4</div></SwiperSlide>
+      
+    <SwiperSlide><Department/></SwiperSlide>
     {/* slide 5 : 유튜브 */}
     <SwiperSlide><div>slide 5</div></SwiperSlide>
     {/* slide 6 : 지도, footer */}
