@@ -1,6 +1,5 @@
-import React, {useState, Component} from 'react';
+import React, {useState} from 'react';
 import {Squash as Hamburger } from 'hamburger-react';
-import NavbarLogo from "./images/logo__navbar.png"
 import {Link} from 'react-router-dom'
 import {ReactComponent as NavLogo} from './images/nav__logo.svg'
 import './TopNav.css';

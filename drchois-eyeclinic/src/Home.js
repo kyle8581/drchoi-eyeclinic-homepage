@@ -23,20 +23,20 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 
 function Home() {
   let currentActiveSlide = null;
-  let swiperObject = null;
+  // let swiperObject = null;
   const [curSlide, setCurslide] = useState(1);
-  const [slide1Active, setSlide1Active] = useState(false);
-  const [slide2Active, setSlide2Active] = useState(false);
-  const [slide3Active, setSlide3Active] = useState(false);
-  const [slide4Active, setSlide4Active] = useState(false);
-  const [slide5Active, setSlide5Active] = useState(false);
-  const [slide6Active, setSlide6Active] = useState(false);
+  // const [slide1Active, setSlide1Active] = useState(false);
+  // const [slide2Active, setSlide2Active] = useState(false);
+  // const [slide3Active, setSlide3Active] = useState(false);
+  // const [slide4Active, setSlide4Active] = useState(false);
+  // const [slide5Active, setSlide5Active] = useState(false);
+  // const [slide6Active, setSlide6Active] = useState(false);
   return (
    
     <div>
     <TopNav/>
     <Swiper
-    onInit={(swiper)=>{swiperObject = swiper;}}
+    // onInit={(swiper)=>{swiperObject = swiper;}}
     spaceBetween={50}
     slidesPerView={1}
 
