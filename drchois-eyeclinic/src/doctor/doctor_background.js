@@ -56,7 +56,7 @@ function DoctorSayHi() {
             draggable="true"
             centeredSlides="true"
           >
-            {imageAsset.map((asset) => (
+            {imageAsset.filter((asset,index)=>index<11).map((asset) => (
               <SwiperSlide key={asset.key}>
                 <AwardSlide id={asset.id} src={asset.src} />
               </SwiperSlide>
