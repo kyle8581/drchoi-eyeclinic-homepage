@@ -23,7 +23,6 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
 
 function Home() {
   let currentActiveSlide = null;
-  // let swiperObject = null;
   const [curSlide, setCurslide] = useState(1);
   // const [slide1Active, setSlide1Active] = useState(false);
   // const [slide2Active, setSlide2Active] = useState(false);
