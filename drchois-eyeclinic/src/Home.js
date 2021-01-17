@@ -68,11 +68,6 @@ function Home() {
   </Swiper>
  
   </div>
-      // {/* {top nav bar} */}
-      // {/* {greeting section} */}
-      // {/* {sliding sections} */}
-      // {/* {map} */}
-      // {/* {footer} */}
  
   );
 }
