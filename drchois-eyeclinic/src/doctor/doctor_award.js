@@ -5,6 +5,7 @@ import SwiperCore, {
   Scrollbar,
   A11y,
   Mousewheel,
+  Autoplay
 } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
@@ -15,14 +16,15 @@ import "swiper/components/scrollbar/scrollbar.scss";
 
 import "./doctor_award.css"
 import AwardSlide from "./AwardSlide";
-import imageAsset from "./doctoraward_image_asset.json";
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
+import AwardAsset from "./doctoraward_image_asset.json";
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel, Autoplay]);
 
 function DoctorAward() {
   return (
-    <section className="awardPageContainer">
-          <img src="/doctor/spotlight.png" alt="Dr.Choi"/>
+    <div className="awardPageContainer">
+      <img className="spotlight" src="/doctor/spotlight.png" alt="Dr.Choi"/>
       <div className="content_wrapper">
+      
         <div className="text-container">
           <div className="BigBox1">Trust in 압구정최안과</div>
           <div className="BigBox2">
@@ -36,26 +38,34 @@ function DoctorAward() {
         </div>
         <div className="trophy__slide__container">
           <Swiper
-            spaceBetween={3}// 캐러셀 사이의 간격
+            spaceBetween={1}// 캐러셀 사이의 간격
             slidesPerView={5} // 한 swiper container 안에 보여지는 slide 개수
-            scrollbar={{hide:"true", draggable:"true",snapOnRelease:"false"}}
+            // scrollbar={{hide:"true", draggable:"true",snapOnRelease:"false"}}
             touchEventsTarget="wrapper"
             direction="horizontal"
             grabCursor="true"
             loop="true"
             draggable="true"
             centeredSlides="true"
+            autoplay={{delay: 2000}}
           >
-            {imageAsset.filter((asset,index)=>index<11).map((asset) => (
-              <SwiperSlide key={asset.key}>
-                <AwardSlide id={asset.id} src={asset.src} />
-              </SwiperSlide>
-            ))}
+           {AwardAsset.map((asset)=>(
+                      <SwiperSlide
+                        key={asset.key}>
+                        <AwardSlide
+                        
+                        id={asset.id}
+                        src={asset.src}
+                        />
+                      </SwiperSlide>
+                    )
+                    )
+                  }
           </Swiper>
         </div>
         
       </div>
-    </section>
+    </div>
   );
 }
 

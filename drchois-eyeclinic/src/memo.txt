@@ -1,0 +1,35 @@
+nav: 
+진료과목명-nanumsquare_acB
+dr.choi eye clinic-nanumbarungothic
+
+
+doctor background:
+따옴표 - nanumbarungothic
+원장 - nanumsquare_acR
+최승일 - nanumsquare_acB
+경력 - nanumbarungothic
+trust in - nanumbarungothicB
+
+doctor QNA:
+의사가 바라보는(60), QNA(294.09) - nanumbarungothicB
+원장님들(18), 코멘트(24) - nanumbarungothic
+
+
+진료과목 소개:
++(36), 센터명들(36): nanumsquare_acB
+진료과목(45),진료과목 아래 문장(24): nanumsquare_acR
+medical departments(72): nanumbarungothicB
+
+유튜브:
+유튜브채널 바로가기+(24), 압구정최안과 유튜브(45): nanumsquare_acR
+media youtube(71): nanumbarungothicB
+위아래 화살표(80):nanumbarungothicLight
+
+원장얼굴:
+안전을 최우선으로 하는...(?), 의사가 추천하는...(?), 따옴표(100):nanumbarungothic
+trust in(326):nanumbarungothicB
+
+인테리어:
+둘러보기 옆 문장(24): nanumsquare_acR
+
+파랑: #60afb2

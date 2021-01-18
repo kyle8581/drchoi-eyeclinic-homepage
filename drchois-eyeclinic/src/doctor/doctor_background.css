@@ -24,115 +24,141 @@
   }
 } */
 
-.doctor_container {
+/* .doctorBackgroundContainer {
   display: flex;
   position: absolute;
   height: 100%;
   width: 100%;
   background: #fff;
   flex-direction: column;
-}
-.content_wrapper {
+} */
+.doctorBackgroundContainer .content_wrapper {
   position: absolute;
   top: 100px;
-  width: 90vw;
-  margin: auto;
+  width: 100%;
   align-self: center;
-  /* display: block; */
 }
-.text-container {
+.doctorBackgroundContainer .text-container {
   width: 100%;
   height: 20%;
-  display: block;
-  flex-direction: row;
+  position: relative;
   justify-content: start;
-  align-items: bottom;
-  margin: 0 auto;
-  background-color: yellow;
+  /* margin */
+  /* background-color: yellow; */
 }
-.doctorName .large__text {
+.doctorBackgroundContainer .doctorName {
+  position: absolute;
+  /* top: -3vh; */
+  left: 8vw;
+  width: 500px;
+  height: 6vh;
+  top: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  font-family: NanumBarunGothic;
+}
+.doctorBackgroundContainer .small__text {
+  font-size: 30pt;
+  color: #707070;
+}
+.doctorBackgroundContainer .large__text {
+  font-size: 50pt;
+  color: #60afb2;
+  letter-spacing: 0.15em;
+  transform: translateY(10%);
+  margin-left: 10px;
+}
+/* .doctorName .large__text {
+  margin-left: 1px;
   font-size: 4vw;
   position: relative;
-  left: 2%;
-  color: #707070;
   display: inline-flex;
   vertical-align: text-bottom;
-  transform: translateY(20%);
-}
-.doctorName .small__text {
+  transform: translateY(10%);
+  color: #60afb2;
+  letter-spacing: 0.15em;
+   line-height: 1.5;
+} */
+/* .doctorName .small__text {
   color: #707070;
   font-size: 2vw;
   position: relative;
   top: 0vw;
   display: inline-flex;
   vertical-align: text-bottom;
+} */
+.trustIn {
+  position: absolute;
+  right: 50px;
+  width: 45vw;
+  display: flex;
+  flex-direction: column;
+  color: #eeeeee;
+  z-index: -10;
+  font-family: NanumBarunGothicBold;
+  font-size: 160pt;
+  text-align: right;
+  line-height: 0.9;
 }
-.doctorComment {
+
+.text-container .wordings {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   position: relative;
-  left: 5%;
-  top: 3vw;
-  margin-top: 12px;
-  font-size: 2.2vw;
-  display: inline-flex;
-  vertical-align: text-bottom;
+  font-family: NanumBarunGothic;
+  font-size: 30pt;
+  color: #60afb2;
+  width: 450px;
+  height: 130px;
+  left: 430px;
+  top: 250px;
 }
-
-.trophy__slide__container {
-  height: 40vh;
-  background-color: aqua;
-  margin-top: 10vh;
-  display: flex;
-  align-items: flex-start;
+.wordings .comment {
+  text-align: left;
 }
-.trophy__slide__container .swiper-container {
-  height: 100%;
-
-  margin: auto;
-  align-self: center;
-  transform: translateX(-1%);
+.wordings .start {
+  color: #b2b2b2;
+  position: absolute;
+  left: 10px;
+  top: -20px;
 }
-.trophy__slide__container .swiper-slide {
-  display: flex;
-}
-.trophy__slide__container .swiper-slide img {
-  max-width: 70%;
-  max-height: 70%;
-  transition: 0.3s;
-  margin-left: 0px;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-.trophy__slide__container .swiper-slide-active img {
-  max-width: 100%;
-  max-height: 100%;
-  transition: 0.3s;
-}
-.doctor-background .education,
-.doctor-background .hospitals,
-.doctor-background .career {
-  border: 1px solid;
-  display: grid;
-  grid-column: 1;
-  grid-template-columns: 1fr 3fr;
-}
-
-.doctor-background .education {
+.wordings .end {
+  color: #b2b2b2;
+  position: absolute;
+  top: 90px;
 }
 .doctor-background {
-  display: grid;
-  grid-row: minmax(1fr, auto) minmax(ifr, auto) minmax(3fr, auto);
-  grid-gap: 20px;
+  position: relative;
+  text-align: left;
+  padding: 50px;
+  line-height: 1.5;
+  font-family: NanumBarunGothic;
+  color: #707070;
 }
-.box1 {
-  background-color: orange;
+.doctor-background .col1 {
+  position: absolute;
+  top: 50px;
+
+  /* background-color: orange; */
 }
-.box2 {
-  display: block;
-  background-color: pink;
+.doctor-background .col2 {
+  position: absolute;
+  left: 330px;
+  top: 390px;
 }
-.background .date {
-  margin-left: 1vw;
-}
-.doctor-background h3 {
-  font-size: 2vw;
+/* .docImage {
+  position: fixed;
+  bottom: 0;
+  width: 40%;
+  height: 40%;
+  transform: translateY(20px);
+} */
+.docImage {
+  position: fixed;
+  bottom: 0;
+  transform: translate(-20px, 107vh);
+  height: 80vh;
+  width: 80wh;
 }

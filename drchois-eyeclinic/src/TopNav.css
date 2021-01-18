@@ -5,11 +5,11 @@
 .nav__container {
   height: 58px;
   width: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+  /* background: rgba(255, 255, 255, 0.1); */
+  /* box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2); */
   border-top: 1px solid rgba(255, 255, 255, 0.5);
   border-left: 1px solid rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(5px);
+  /* backdrop-filter: blur(5px); */
   border-radius: 5px;
   align-items: center;
   display: flex;
@@ -36,16 +36,18 @@
   margin-left: 20px;
 }
 .navbar__pagelink {
-  flex: 3;
+  /* flex: 3; */
 
   display: flex;
-  align-items: flex-start;
+  /* align-items: left; */
   justify-content: space-around;
   list-style: none;
   text-decoration: none;
   color: #707070;
   font-weight: 600;
   font-size: 1rem;
+  position: absolute;
+  left: 200px;
 }
 .navbar__pagelink li {
   cursor: pointer;

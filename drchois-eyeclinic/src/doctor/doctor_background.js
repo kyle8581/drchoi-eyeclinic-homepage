@@ -1,95 +1,41 @@
-import React,{useRef} from "react";
-import SwiperCore, {
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-  Mousewheel,
-} from "swiper";
-import TopNav from "../TopNav";
-import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
-import "swiper/swiper.scss";
-import "swiper/components/navigation/navigation.scss";
-import "swiper/components/pagination/pagination.scss";
-import "swiper/components/scrollbar/scrollbar.scss";
+import React from "react";
 
-import AwardSlide from "./AwardSlide";
-import imageAsset from "./doctor_image_asset.json";
 import backGroundAsset from "./doctor_background_asset.json";
 import DoctorBackgroundStructure from "./DoctorBackgroundStructure";
-import './doctor_main.css'
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel]);
-
+import "./doctor_background.css";
 function DoctorSayHi() {
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
   return (
-    <section className="doctor_container">
-      <TopNav/>
+    <section className="doctorBackgroundContainer">
       <div className="content_wrapper">
         <div className="text-container">
           <div className="doctorName">
-          <span className="small__text"><div>대표원장</div></span>
-          <span className="large__text"><div>최승일</div></span>
+          <div className="small__text">원장</div>
+          <div className="large__text">최승일</div>
           </div>
-          <div className="doctorComment">
-            압구정최안과에서는 대표원장이 직접 고객 맞춤형 진료를 봅니다.
+          <div className="trustIn">
+            <div className="trust">TRUST</div>
+            <div className="in">IN</div>
+          </div>
+          <div className="wordings">
+            <div className="comment">
+            <div className="row1">소중한 눈,</div>
+            <div className="row2">누구에게 맡기시겠습니까?</div>
+            </div>
+            <div className="start">"</div>
+            <div className="end">"</div>
           </div>
         </div>
-        <div className="trophy__slide__container">
-          <Swiper
-            // onInit={(swiper) => {
-            //   swiper.params.navigation.prevEl = prevRef.current;
-            //   swiper.params.navigation.nextEl = nextRef.current;
-            //   swiper.navigation.init();
-            //   swiper.navigation.update();
-            // }} //화살표
-            spaceBetween={20}// 캐러셀 사이의 간격
-            slidesPerView={3} // 한 swiper container 안에 보여지는 slide 개수
-            // pagination={{ clickable: true }}
-            scrollbar={{hide:"true", draggable:"true",snapOnRelease:"false"}}
-            touchEventsTarget="wrapper"
-            direction="horizontal"
-            grabCursor="true"
-            loop="true"
-            draggable="true"
-            centeredSlides="true"
-          >
-            {imageAsset.filter((asset,index)=>index<11).map((asset) => (
-              <SwiperSlide key={asset.key}>
-                <AwardSlide id={asset.id} src={asset.src} />
-              </SwiperSlide>
-            ))}
-            <div ref={nextRef} className="next__button">
-              &#62;
-            </div>
-            <div ref={prevRef} className="prev__button">
-              &#60;
-            </div>
-          </Swiper>
-        </div>
+
         <div className="doctor-background">
-        <div className="education">
-          <h3 className="box1">학력</h3>
-          <div className="box2">
-          <DoctorBackgroundStructure boundary={[0,3]}/>
-          </div>
+        <div className="col1">
+          <DoctorBackgroundStructure boundary={[0,backGroundAsset.length-9]}/>
         </div>
-        <div className="hospitals">
-          <h3 className="box1">압구정최안과의 역사</h3>
-          <div className="box2">
-          <DoctorBackgroundStructure boundary={[4,9]}/>
-          </div>
-        </div>
-        <div className="career">
-          <h3 className="box1">경력</h3>
-          <div className="box2">
-          <DoctorBackgroundStructure boundary={[10,backGroundAsset.length-1]}/>
-          </div>
+        <div className="col2">
+          <DoctorBackgroundStructure boundary={[backGroundAsset.length-8,backGroundAsset.length-1]}/>
         </div>
         </div>
       </div>
+      <img className={"docImage"} src="doctor/doctorImg.png" alt="Dr.choi"/>
     </section>
   );
 }

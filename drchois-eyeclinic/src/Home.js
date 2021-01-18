@@ -13,6 +13,7 @@ import Greeting from './Greeting'
 import Interior from './Interior'
 import Department from './Department'
 import TopNav from './TopNav';
+import YouTube from './YouTube';
 
 
 
@@ -61,8 +62,8 @@ function Home() {
     </SwiperSlide>
       
     <SwiperSlide><Department/></SwiperSlide>
-    {/* slide 5 : 유튜브 */}
-    <SwiperSlide><div>slide 5</div></SwiperSlide>
+      
+    <SwiperSlide><YouTube/></SwiperSlide>
     {/* slide 6 : 지도, footer */}
     <SwiperSlide><div>slide 6</div></SwiperSlide>
   </Swiper>

@@ -5,7 +5,7 @@ function DoctorBackgroundStructure({boundary}){
     backGroundAsset.filter((bg,index)=>(index>=boundary[0] & index<=boundary[1])
     ).map((bg)=>
     <div className="background">
-      <span className="date">{bg.date}</span>
+      {/* <span className="date">{bg.date}</span> */}
        <span className="bgContent">{bg.content}</span>
       </div> 
     )

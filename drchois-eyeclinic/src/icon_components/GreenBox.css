@@ -1,0 +1,8 @@
+.green__box {
+  width: 40px;
+  height: 8px;
+  margin-bottom: 50px;
+  background: #63c3c4;
+  position: absolute;
+  transform: translateY(0px);
+}

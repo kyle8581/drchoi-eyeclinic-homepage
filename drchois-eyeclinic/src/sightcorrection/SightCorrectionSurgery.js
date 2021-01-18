@@ -1,9 +1,13 @@
-import React from "react";
+import React,{useState} from "react";
 import StructureStyle1 from "./StructureStyle1";
 import StructureStyle2 from "./StructureStyle2";
 import surgery from "./contents";
 import TopNav from "../TopNav";
-
+import Lasik from "./Lasik";
+import Lasek from "./Lasik";
+import Smile from "./Smile";
+import SideNav from "./SideNavBar";
+import {BrowserRouter as Router} from "react-router-dom";
 function SightCorrectionSurgery() {
   const lensImplantation = surgery.filter(
     (lens) => lens.Name === "Lens Implantation"
@@ -11,11 +15,23 @@ function SightCorrectionSurgery() {
   const mainSurgery = surgery.filter(
     (main) => main.Name !== "Lens Implantation"
   );
+  const [curSlide, setCurslide] = useState(1);
   return (
-    <section className="container">
+    <section className="sightcorrection-container">
       <TopNav/>
-      <h1>Sight Correction Surgery</h1>
-      {mainSurgery.map((surgeries) => (
+      <Router>
+        <SideNav/>
+      <div className="lasik">
+        <Lasik />
+      </div>
+      <div className="lasek">
+        <Lasek/>
+      </div>
+      <div className="smile">
+        <Smile/>
+      </div>
+      </Router>
+      {/* {mainSurgery.map((surgeries) => (
         <div className={surgeries.Name}>
           <StructureStyle1
             surgeryName={surgeries.Name}
@@ -34,7 +50,7 @@ function SightCorrectionSurgery() {
           ICL={lensImplantation.ICL}
           MPL={lensImplantation.MPL}
         />
-      </div>
+      </div> */}
     </section>
   );
 }
