@@ -1,0 +1,19 @@
+.Smile1-container .content-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 90vw;
+  align-content: center;
+  margin: auto;
+  background-color: yellow;
+}
+.Smile1-container .text-wrapper {
+  background-color: orange;
+  display: grid;
+  grid-template-rows: 2fr 1fr 2fr 4fr;
+  grid-gap: 10em;
+  grid-auto-columns: minmax;
+}
+
+.Smile1-container .img-wrapper {
+  background-color: pink;
+}
