@@ -47,7 +47,7 @@ function DoctorAward() {
             loop="true"
             draggable="true"
             centeredSlides="true"
-            autoplay={{delay: 2000}}
+            autoplay={{delay: 6000}}
           >
            {AwardAsset.map((asset)=>(
                       <SwiperSlide

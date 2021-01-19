@@ -50,3 +50,9 @@ code {
     url("./fonts/NanumSquareRegular.ttf") format("truetype");
   font-weight: normal;
 }
+@font-face {
+  font-family: "NanumSquareExtraBold";
+  src: local("NanumSquareExtraBold"),
+    url("./fonts/NanumSquareExtraBold.ttf") format("truetype");
+  font-weight: normal;
+}

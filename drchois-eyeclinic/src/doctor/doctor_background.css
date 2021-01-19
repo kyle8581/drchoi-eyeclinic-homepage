@@ -157,8 +157,18 @@
 } */
 .docImage {
   position: fixed;
-  bottom: 0;
-  transform: translate(-20px, 107vh);
-  height: 80vh;
-  width: 80wh;
+  bottom: -100vh;
+  transform: translateY(50px) translateX(7vw);
+  /* transform: translate(-20px, 107vh); */
+  /* height: 80vh; */
+  width: 40vw;
+}
+
+@media all and (max-width: 1200px) {
+  .docImage {
+    z-index: -12;
+    width: 80vw;
+    opacity: 0.3;
+    left: 10vw;
+  }
 }

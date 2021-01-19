@@ -15,6 +15,7 @@
     "react-dom": "^17.0.1",
     "react-id-swiper": "^4.0.0",
     "react-scripts": "4.0.1",
+    "react-scroll-detect": "^1.2.0",
     "styled-components": "^5.2.1",
     "swiper": "^6.4.5",
     "web-vitals": "^0.2.4"

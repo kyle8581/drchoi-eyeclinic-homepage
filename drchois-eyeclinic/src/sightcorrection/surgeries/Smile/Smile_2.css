@@ -1,0 +1,73 @@
+.Smile2-container{
+    width:90vw;
+    margin:auto;
+    height:90vh;
+    margin-top: 300px;
+    background-color: blue;
+}
+.Smile2-container .content-wrapper{
+    position:relative;
+    padding:50px 0;
+    width:80%;
+    margin:auto;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:yellow;
+}
+.Smile2-container .content-wrapper .first-row{
+    background-color:pink;
+    width:100%;
+    position:relative;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 3px solid #63c3c4;
+    border-top: 3px solid #63c3c4;
+}
+.Smile2-container .first-row .first-element{
+    background-color: purple;
+}
+.Smile2-container .first-row .second-element{
+    background-color: orange;
+    margin-left: 50px;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;  
+    height:50%;
+}
+.Smile2-container .first-row .second-element .title{
+    font-family:NanumSquareExtraBold;
+    font-size:20pt;
+    color: #63c3c4;
+    margin-bottom: 100px;
+}
+.Smile2-container .first-row .second-element ul{
+    list-style-type:none;
+    font-size: 15pt;
+    color:#707070;
+    font-family:NanumSquareRegular;
+    margin-top: -20px;;
+}
+.Smile2-container .first-row .second-element ul li::before{
+    /* 여기다가 쓰세유 빨리 쉬어 */
+content: "\f0da"; 
+font-family: "Font Awesome 5 Free";
+padding: 0 10px 0 0;
+}
+.Smile2-container .first-row .third-element{
+    position:relative;
+    background-color: red;
+    margin-right: 0;
+}
+
+.Smile2-container .second-row{
+    background-color:pink;
+    width:100%;
+    position:relative;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}

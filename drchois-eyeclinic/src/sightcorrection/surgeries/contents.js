@@ -50,15 +50,9 @@ const surgery = [
   {
     Name: "Smile",
     Process_img: [
-      { id: 1, src: "/Smile/smile_process1.png" },
-      { id: 2, src: "/Smile/smile_process2.png" },
-      { id: 3, src: "/Smile/smile_process3.png" },
-    ],
-    Process_txt:
-    [
-      "레이저로 각막 굴절삭제량 커팅",
-      "레이저로 각막 2~4mm 최소절개",
-      "최소 절개창을 통한 각막실질 제거"
+      { id: 1, src: "/Smile/smile_process1.png" , txt: "레이저로 각막 굴절삭제량 커팅",},
+      { id: 2, src: "/Smile/smile_process2.png" , txt: "레이저로 각막 2~4mm 최소절개",},
+      { id: 3, src: "/Smile/smile_process3.png" ,txt: "최소 절개창을 통한 각막실질 제거"},
     ],
     Pluses: [
       "스마일 수술의 장점",

@@ -1,0 +1,108 @@
+#department__content {
+  width: 75vw;
+  height: 65vh;
+  border: 2px solid #969658;
+  position: absolute;
+  right: 0;
+  top: 20vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 20fr 55fr;
+      grid-template-columns: 20fr 55fr;
+  font-family: NanumSquare_acR;
+}
+
+#department__content .department__description {
+  border: 1px solid red;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #555555;
+}
+
+#department__content .department__description .title {
+  font-size: 2.5vw;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border: 1px solid purple;
+  width: 100%;
+}
+
+#department__content .department__description .title p {
+  border: 2px solid skyblue;
+  width: 100%;
+  margin-top: 20px;
+}
+
+#department__content .department__description .body {
+  -webkit-box-flex: 6;
+      -ms-flex: 6;
+          flex: 6;
+  border: 1px solid plum;
+  font-size: 1.2vw;
+  padding-top: 1vw;
+  line-height: 2vw;
+}
+
+#department__content .department__menu {
+  border: 1px solid blue;
+  display: -ms-grid;
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+}
+
+#department__content .department__menu .department__button {
+  position: absolute;
+  cursor: pointer;
+}
+
+#department__content .department__menu img {
+  max-height: 100%;
+  z-index: 0;
+}
+
+#department__content .department__menu .sight__correction__menu {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid greenyellow;
+}
+
+#department__content .department__menu .sight__correction__menu .department__button {
+  bottom: 35vh;
+}
+
+#department__content .department__menu .lens__menu {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 2;
+  grid-row: 2/2;
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid salmon;
+}
+
+#department__content .department__menu .noan__menu {
+  -ms-grid-column: 2;
+  grid-column: 2/2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1/span 2;
+  min-width: 0;
+  min-height: 0;
+  border: 3px solid;
+}
+/*# sourceMappingURL=Department.css.map */

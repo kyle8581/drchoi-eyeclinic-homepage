@@ -3,15 +3,12 @@
   text-align: center;
   color: white;
 }
-/* .tabContainer .true img {
-  width: 40%;
-  height: 200%;
-} */
 .tabContainer .true .title {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-family:NanumSquareExtraBold;
 }
 .tabContainer .false {
   visibility: hidden;

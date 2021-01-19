@@ -36,10 +36,10 @@
 }
 
 .trophy__slide__container {
-  position: absolute;
+  position: fixed;
   /* height: 30vh; */
   display: flex;
-  margin-top: 49vh;
+  bottom: 10vh;
   /* align-items: flex-end; */
   /* position: relative; */
   /* margin-bottom: 20vh; */
@@ -85,6 +85,7 @@
   transition: 0.3s;
   align-self: center;
   /* transform: translateY(10vh); */
-  transform: translateX(-10%);
+  transform: translateX(-10%) translateY(2vh);
+
   z-index: 10;
 }

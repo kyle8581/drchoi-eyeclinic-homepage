@@ -1,19 +1,83 @@
+.Smile1-container {
+  width: 90vw;
+  margin: auto;
+  height: 90vh;
+}
 .Smile1-container .content-wrapper {
+  position:relative;
+  height: 80%;
+  padding: 50px 0;
+  width: 80%;
+  margin: auto;
   display: flex;
   flex-direction: row;
-  width: 90vw;
   align-content: center;
-  margin: auto;
-  background-color: yellow;
+  margin-top:50px;
 }
-.Smile1-container .text-wrapper {
-  background-color: orange;
-  display: grid;
-  grid-template-rows: 2fr 1fr 2fr 4fr;
-  grid-gap: 10em;
-  grid-auto-columns: minmax;
+.Smile1-container .content-wrapper .text-wrapper {
+  position:relative;
+  margin-top: 150px;
+  height: 60%;
+  width:90%;
+  display: flex;
+  flex-direction: column;
 }
 
+.Smile1-container .text-wrapper .row1 {
+  font-size: 50pt;
+  font-family: NanumSquareBold;
+  color: #707070;
+}
+.Smile1-container .text-wrapper .row2 {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+}
+.Smile1-container .text-wrapper .row2 .word {
+  display: flex;
+  flex-direction: row;
+}
+
+.Smile1-container .text-wrapper .row2 .word:not(:first-child) {
+  margin-left: 10px;
+}
+
+.Smile1-container .text-wrapper .row2 .blue {
+  font-size: 20pt;
+  font-family: NanumSquareExtraBold;
+  color: #63c3c4;
+  letter-spacing: 0.03em;
+}
+.Smile1-container .text-wrapper .row2 .gray {
+  font-size: 20pt;
+  font-family: NanumSquareRegular;
+  font-weight: bold;
+  color: #707070;
+  letter-spacing: 0.03em;
+}
+
+.Smile1-container .text-wrapper .row3 {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  font-size: 22pt;
+  font-family: NanumSquareBold;
+  color: #707070;
+}
+.Smile1-container .text-wrapper .row3 .part{
+  width: 120%
+}
+.Smile1-container .text-wrapper .row4 {
+  width:120%;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  font-size: 23pt;
+  font-family: NanumSquareExtraBold;
+  font-weight: bold;
+  color: #63c3c4;
+
+}
 .Smile1-container .img-wrapper {
-  background-color: pink;
+  margin-left:80px;
 }

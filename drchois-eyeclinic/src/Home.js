@@ -10,6 +10,7 @@ import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 import './Home.css';
 import Greeting from './Greeting'
+import DoctorMent from './doctor-ment/DoctorMent'
 import Interior from './Interior'
 import Department from './Department'
 import TopNav from './TopNav';
@@ -54,8 +55,9 @@ function Home() {
     <SwiperSlide className="greeting__slide">
       <Greeting/>
     </SwiperSlide>  
-    {/* 원장님 소개 */}
-    <SwiperSlide><div>slide 2</div></SwiperSlide>
+    <SwiperSlide>
+      <DoctorMent/>
+    </SwiperSlide>
     {/* slide 3 : 병원 소개 */}
     <SwiperSlide>
       <Interior curSlide={curSlide}/>  

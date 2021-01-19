@@ -1,0 +1,8 @@
+.sightcorrection-container {
+  display: block;
+}
+.topnav__force__fix {
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
