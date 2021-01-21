@@ -1,35 +1,58 @@
 import React from 'react'
-import styled from 'styled-components'
-import BackgroundImg from '../backgrounds/doctorment-background.png';
-const BackGround = styled.div`
-    background-image : url(${BackgroundImg});
-    background-repeat: no-repeat;
-    background-size: 100vw auto;
-    /* background-color: #ee0000; */
-    width:100vw;
-    height:100vh;
-    `;
-function DoctorMent(){
-    return(
-        <div >
-            <div className="text__box">
-                <div className="ment__box">
-                    <div className="top">
-                    <div className="quotation start">
+import SwiperCore, {Navigation, Pagination, Scrollbar, A11y, Mousewheel} from 'swiper';
 
-                </div>  
-                    </div>
-                    <div className="bottom"></div>
-                    
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-                    <div className="quotation end">
+// Import Swiper styles
+import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/pagination/pagination.scss';
+import 'swiper/components/scrollbar/scrollbar.scss';
+import DoctorMentSlide1 from './DoctorMentSlide1';
+import DoctorAward from "./doctor_award";
+import DoctorSayHi from "./DoctorMentSlide3";
+import DoctorQna from './DoctorQna'
+// install Swiper components
+SwiperCore.use([Navigation,Pagination, Scrollbar, A11y, Mousewheel]);
 
-                    </div>
-                </div>
-            </div>
-            <BackGround/>
-            
-        </div>
-    );
+
+
+function DoctorMent() {
+  
+  return (
+    <div>
+    <Swiper
+    spaceBetween={50}
+    slidesPerView={1}
+    touchEventsTarget="wrapper"
+    direction="horizontal"
+    autoHeight="false"
+    draggable="true"
+    loop="true"
+    >
+
+    {/* slide 1 : 상패 */}
+    <SwiperSlide>
+        <DoctorMentSlide1/>
+    </SwiperSlide>
+    <SwiperSlide className="doctorAward">
+      <DoctorAward/>
+    </SwiperSlide>  
+    {/* 원장님 경력 */}
+    <SwiperSlide className="doctorBackground" >  
+        <DoctorSayHi />
+    </SwiperSlide>
+    {/* slide 3 : 원장님 인터뷰 */}
+    <SwiperSlide>
+      <DoctorQna/>
+    </SwiperSlide>
+      
+    
+  </Swiper>
+ 
+  </div>
+ 
+  );
 }
+
 export default DoctorMent;

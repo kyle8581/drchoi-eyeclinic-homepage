@@ -1,0 +1,123 @@
+
+.doctorBackgroundContainer .content_wrapper {
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  align-self: center;
+}
+.doctorBackgroundContainer .text-container {
+  width: 100%;
+  height: 20%;
+  position: relative;
+  justify-content: start;
+  /* margin */
+  /* background-color: yellow; */
+}
+.doctorBackgroundContainer .doctorName {
+  position: absolute;
+  /* top: -3vh; */
+  left: 8vw;
+  width: 500px;
+  height: 6vh;
+  top: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  font-family: NanumBarunGothic;
+}
+.doctorBackgroundContainer .small__text {
+  font-size: 30pt;
+  color: #707070;
+}
+.doctorBackgroundContainer .large__text {
+  font-size: 50pt;
+  color: #60afb2;
+  letter-spacing: 0.15em;
+  transform: translateY(10%);
+  margin-left: 10px;
+}
+
+.trustIn {
+  position: absolute;
+  right: 50px;
+  width: 45vw;
+  display: flex;
+  flex-direction: column;
+  color: #eeeeee;
+  z-index: -10;
+  font-family: NanumBarunGothicBold;
+  font-size: 160pt;
+  text-align: right;
+  line-height: 0.9;
+}
+
+.text-container .wordings {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+  font-family: NanumBarunGothic;
+  font-size: 30pt;
+  color: #60afb2;
+  width: 450px;
+  height: 130px;
+  left: 430px;
+  top: 250px;
+}
+.wordings .comment {
+  text-align: left;
+}
+.wordings .start {
+  color: #b2b2b2;
+  position: absolute;
+  left: 10px;
+  top: -20px;
+}
+.wordings .end {
+  color: #b2b2b2;
+  position: absolute;
+  top: 90px;
+}
+.doctor-background {
+  position: relative;
+  text-align: left;
+  padding: 50px;
+  line-height: 1.5;
+  font-family: NanumBarunGothic;
+  color: #707070;
+}
+.doctor-background .col1 {
+  position: absolute;
+  top: 50px;
+
+  /* background-color: orange; */
+}
+.doctor-background .col2 {
+  position: absolute;
+  left: 330px;
+  top: 390px;
+}
+/* .docImage {
+  position: fixed;
+  bottom: 0;
+  width: 40%;
+  height: 40%;
+  transform: translateY(20px);
+} */
+.docImage {
+  position: fixed;
+  bottom: 0;
+  transform: translateY(-100vh) translateX(7vw);
+  /* transform: translate(-20px, 107vh); */
+  /* height: 80vh; */
+  width: 40vw;
+}
+
+@media all and (max-width: 1200px) {
+  .docImage {
+    z-index: -12;
+    width: 80vw;
+    opacity: 0.3;
+    left: 10vw;
+  }
+}
