@@ -20,7 +20,7 @@ function YouTube(){
     const thumbnailImages = YouTubeAsset.map((e)=>{return"https://i.ytimg.com/vi_webp/"+e.key+"/maxresdefault.webp"})
     const prevRef = useRef(null);
     const nextRef = useRef(null);
-    const url = "https://i.ytimg.com/vi_webp/jWWeNquCCCg/maxresdefault.webp";
+    
     console.log(thumbnailImages);
     return(
         <div className="youtube__slide__wrapper">

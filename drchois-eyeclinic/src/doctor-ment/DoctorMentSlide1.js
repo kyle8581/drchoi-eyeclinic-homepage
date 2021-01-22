@@ -1,6 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
-import BackgroundImg from '../backgrounds/doctorment-background.png';
+// import styled from 'styled-components'
+// import BackgroundImg from '../backgrounds/doctorment-background.png';
 import {
     Wrapper,
     TextContainer, 

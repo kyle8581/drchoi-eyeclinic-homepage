@@ -1,4 +1,3 @@
-import react from 'react';
 import {BackGrounText} from './BackGroundText'
 
 import styled from 'styled-components';
