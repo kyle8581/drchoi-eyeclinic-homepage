@@ -1,30 +1,36 @@
-import React from 'react'
 import styled from 'styled-components'
 
 const containerWidth = "21.5rem";
 const font = "NanumBarunGothic";
+export const Wrapper = styled.div`
+    width: 100vw;
+    height:100vh;
+    z-index:-2;
+`;
 export const TextContainer = styled.div`
     position :absolute;
     font-family: ${font};
     display : flex;
     flex-direction: column;
-    border : ${({testBorder}) => (testBorder?'1px solid yellow':'none')};
     @media screen and (max-width:2400px){
-        top : 40vh;
-        left : 6rem;
+        top : 50vh;
+        left : 8rem;
         width:${containerWidth};
         height: calc(${containerWidth}/7 * 2);
-        transform:scale(1.5,1.5) translateX(20%);
+        transform:scale(1.8,1.8) translateX(20%);
 
     }
-    @media screen and (max-width:1400px){
-        top : 40vh;
+    @media screen and (max-width:1800px){
+        transform: scale(1.5,1.5) translateX(20%);
+    }
+    /* @media screen and (max-width:1400px){
+       
         left : 6rem;
         width:${containerWidth};
         height: calc(${containerWidth}/7 * 2);
         transform : none;
 
-    }
+    } */
 `;
 
 export const TopLetter = styled.div`
@@ -32,7 +38,6 @@ export const TopLetter = styled.div`
     display: flex;
     flex-direction: column;
   
-    border : ${({testBorder}) => (testBorder?'1px solid red':'none')};
 
 `;
 export const QuotationMark = styled.div`
@@ -46,7 +51,6 @@ export const QuotationMark = styled.div`
 `;
 export const Row = styled.div`
     height: 2rem;
-    border : ${({testBorder}) => (testBorder?'2px solid green':'none')};
     text-align:${({first}) => (first?'left':'right')};
     font-size: 1.4rem;
     font-family: ${font};
@@ -63,7 +67,6 @@ export const MintLetter = styled.div`
 
 export const BottomLetter = styled.div`
     flex : 2;
-    border : ${({testBorder}) => (testBorder?'1px solid blue':'none')};
     display:flex;
     font-weight:100;
     color : #5c5c5c;
@@ -78,8 +81,53 @@ export const BottomLetter = styled.div`
 `;
 
 export const DoctorImg = styled.img`
-    width: 35rem;
+    width: 40rem;
     position:absolute;
     bottom: 0;
-    right : 3rem;
+    right : 7rem;
+    /* pointer-events:none; */
+
+    @media screen and (max-width:1800px){
+        width: 40rem;
+    }
+    @media screen and (max-height:700px){
+        width: 30rem;
+    }
+`;
+
+export const BackGroundLogo = styled.img`
+    width: 60rem;
+    position : absolute;
+    right: 0;
+    /* transform: translateX(4rem); */
+    z-index:-1;
+    /* pointer-events:none; */
+
+    @media screen and (max-width:1800px){
+        width: 50rem;
+    }
+`;
+
+export const BackGroundTextContrainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    font-size : 16rem;
+    font-family: ${font};
+    text-align: right;
+    font-weight:800;
+    position: absolute;
+    left:0;
+    top: 4rem;
+    z-index:-1;
+    color: #f2f2f2;
+    @media screen and (max-width:1800px){
+        font-size:12rem;
+    }
+    @media screen and (max-width:1400px){
+        display:none;
+    }
+
+`;
+export const BacGroundText = styled.div`
+    
 `;
