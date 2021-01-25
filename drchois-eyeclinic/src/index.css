@@ -30,29 +30,71 @@ code {
   font-family: "NanumBarunGothicBold";
   src: local("NanumBarunGothicBold"),
     url("./fonts/NanumBarunGothicBold.ttf") format("truetype");
-  font-weight: normal;
+  font-weight: bold;
 }
 @font-face {
   font-family: "NanumBarunGothicLight";
   src: local("NanumBarunGothicLight"),
     url("./fonts/NanumBarunGothicLight.ttf") format("truetype");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "NanumBarunGothicExtraBold";
+  src: local("NanumBarunGothicLight"),
+    url("./fonts/NanumBarunGothicLight.ttf") format("truetype");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "NanumBarunGothicExtraBold";
+  src: local("NanumBarunGothicLight"),
+    url("./fonts/NanumBarunGothicLight.ttf") format("truetype");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "NanumSquareB";
+  src: local("NanumSquareB"),
+    url("./fonts/NanumSquareB.ttf") format("truetype");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "NanumSquareR";
+  src: local("NanumSquareR"),
+    url("./fonts/NanumSquareR.ttf") format("truetype");
   font-weight: normal;
 }
 @font-face {
-  font-family: "NanumSquareBold";
-  src: local("NanumSquareBold"),
-    url("./fonts/NanumSquareBold.ttf") format("truetype");
+  font-family: "NanumSquareEB";
+  src: local("NanumSquareEB"),
+    url("./fonts/NanumSquareEB.ttf") format("truetype");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "NanumSquare_acB";
+  src: local("NanumSquare_acB"),
+    url("./fonts/NanumSquare_acB.ttf") format("truetype");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "NanumSquare_acR";
+  src: local("NanumSquare_acR"),
+    url("./fonts/NanumSquare_acR.ttf") format("truetype");
   font-weight: normal;
 }
 @font-face {
-  font-family: "NanumSquareRegular";
-  src: local("NanumSquareRegular"),
-    url("./fonts/NanumSquareRegular.ttf") format("truetype");
+  font-family: "NanumSquare_acL";
+  src: local("NanumSquare_acL"),
+    url("./fonts/NanumSquare_acL.ttf") format("truetype");
   font-weight: normal;
 }
 @font-face {
-  font-family: "NanumSquareExtraBold";
-  src: local("NanumSquareExtraBold"),
-    url("./fonts/NanumSquareExtraBold.ttf") format("truetype");
+  font-family: "NanumSquare_acEB";
+  src: local("NanumSquare_acEB"),
+    url("./fonts/NanumSquare_acEB.ttf") format("truetype");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "NanumSquare_acL";
+  src: local("NanumSquare_acL"),
+    url("./fonts/NanumSquare_acL.ttf") format("truetype");
   font-weight: normal;
 }

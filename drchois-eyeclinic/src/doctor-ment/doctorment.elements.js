@@ -110,6 +110,10 @@ export const DoctorImg = styled.img`
         width: 18rem;
         right: -3rem;
     }
+    @media screen and (max-height: 650px){
+        width: 14rem;
+        transform: translateX(-1rem);
+    }
 `;
 
 export const BackGroundLogo = styled.img`
