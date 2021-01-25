@@ -1,4 +1,10 @@
 
+
+.doctorBackgroundContainer{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
 .doctorBackgroundContainer .content_wrapper {
   position: absolute;
   top: 100px;
@@ -73,33 +79,53 @@
   font-family: NanumBarunGothic;
   color: #707070;
 }
+/* }
 .doctor-background .col1 {
   position: absolute;
   top: 50px;
 
-  /* background-color: orange; */
 }
 .doctor-background .col2 {
   position: absolute;
   left: 330px;
   top: 390px;
-}
-/* .docImage {
-  position: fixed;
-  bottom: 0;
-  width: 40%;
-  height: 40%;
-  transform: translateY(20px);
 } */
-.docImage {
-  position: fixed;
-  bottom: 0;
-  transform: translateY(-100vh) translateX(7vw);
-  /* transform: translate(-20px, 107vh); */
-  /* height: 80vh; */
-  width: 40vw;
+
+
+.text-container .wordings {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+  font-family: NanumBarunGothic;
+  font-size: 30pt;
+  color: #60afb2;
+  width: 450px;
+  height: 130px;
+  left: 430px;
+  top: 250px;
 }
-@media screen and (min-width: 700px){
+.wordings .comment {
+  text-align: left;
+}
+.wordings .start {
+  color: #b2b2b2;
+  position: absolute;
+  left: 10px;
+  top: -20px;
+  font-size: 4rem;
+  transform: translate(-1rem,0);
+}
+.wordings .end {
+  color: #b2b2b2;
+  position: absolute;
+  top: 90px;
+  font-size: 4rem;
+  transform: translate(1rem,0);
+
+}
+
+@media screen and (min-width: 501px){
 
   .trustIn {
     position: absolute;
@@ -114,6 +140,45 @@
     text-align: right;
     line-height: 0.9;
   }
+  .doctor-background {
+    position: relative;
+    text-align: left;
+    padding: 50px;
+    line-height: 1.5;
+    font-family: NanumBarunGothic;
+    color: #707070;
+  }
+  .doctor-background .col1 {
+    position: absolute;
+    top: 50px;
+  
+  }
+  .doctor-background .col2 {
+    position: absolute;
+    left: 330px;
+    top: 390px;
+  }
+  .doctorBackgroundContainer .small__text {
+    font-size: 30pt;
+    color: #707070;
+  }
+  .doctorBackgroundContainer .large__text {
+    font-size: 50pt;
+    color: #60afb2;
+    letter-spacing: 0.15em;
+    transform: translateY(10%);
+    margin-left: 10px;
+  }
+  
+  .docImage {
+    position: fixed;
+    bottom: 0;
+    /* transform: translateY(-100vh) translateX(7vw); */
+    /* transform: translate(-20px, 107vh); */
+    /* height: 80vh; */
+    width: 800px;
+  
+}
 }
 @media all and (max-width: 1200px) {
   .docImage {
@@ -123,11 +188,71 @@
     left: 10vw;
   }
 }
+
 @media screen and (max-width:500px){
   .wordings {
     visibility: collapse;
   }
   .trustIn{
-    font-size: 4rem;
+    display: flex;
+    flex-direction: column;
+    color: #eeeeee;
+    z-index: -10;
+    font-family: NanumBarunGothicBold;
+    font-size: 8.4rem;
+    text-align: right;
+  }
+  .doctor-background {
+    position: relative;
+    text-align: left;
+    line-height: 1.5;
+    font-family: NanumBarunGothic;
+    color: #707070;
+    font-size: 0.5rem;
+    top: 0.5rem;
+    transform: translate(-1.5rem ,-30rem);
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    height: 90vh;
+  }
+  
+  .doctor-background .col2 {
+    width: 30vw;
+  }
+  .docImage {
+    z-index: -5;
+    width: 100vw;
+    opacity: 1;
+    left: 10vw;
+    bottom: 0;
+    position: absolute;
+    transform: translate(0,0);
+
+  }
+  .trust, .in {
+    z-index: -10;
+  }
+  .doctorBackgroundContainer .small__text {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+  .doctorBackgroundContainer .large__text {
+    font-size: 2rem;
+    color: #60afb2;
+    letter-spacing: 0.15em;
+    transform: translateY(10%);
+    margin-left: 10px;
+  }
+  .text-container .doctorName{
+    visibility: collapse;
+    /* position:absolute;
+    top:0;
+    right: 0;
+    width: 300px; */
+    /* display: flex; */
+  }
+  .col1 div:first-child{
+    margin-bottom: 1rem;
   }
 }

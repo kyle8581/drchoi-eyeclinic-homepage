@@ -1,43 +1,5 @@
-/* animation-duration: 0.5s;
-  animation-name: tocenter;
-  animation-play-state: paused; */
-/* } */
-/* @keyframes tocenter {
-  from {
-    width: 70%;
-    height: 70%;
-    transform: scale(1, 1);
-  }
-  to {
-    width: 200%;
-    height: 200%;
-  }
-}
-@keyframes toside {
-  from {
-    width: 150%;
-    height: 150%;
-  }
-  to {
-    width: 70%;
-    height: 70%;
-  }
-} */
 
-/* .doctorBackgroundContainer {
-  display: flex;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background: #fff;
-  flex-direction: column;
-} */
-.doctorBackgroundContainer{
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
 
-}
 .doctorBackgroundContainer .content_wrapper {
   position: absolute;
   top: 100px;
@@ -75,26 +37,6 @@
   transform: translateY(10%);
   margin-left: 10px;
 }
-/* .doctorName .large__text {
-  margin-left: 1px;
-  font-size: 4vw;
-  position: relative;
-  display: inline-flex;
-  vertical-align: text-bottom;
-  transform: translateY(10%);
-  color: #60afb2;
-  letter-spacing: 0.15em;
-   line-height: 1.5;
-} */
-/* .doctorName .small__text {
-  color: #707070;
-  font-size: 2vw;
-  position: relative;
-  top: 0vw;
-  display: inline-flex;
-  vertical-align: text-bottom;
-} */
-
 
 .text-container .wordings {
   display: flex;
@@ -221,22 +163,11 @@
     width: 40vw;
     height: 90vh;
   }
-  .doctor-background .col1 {
   
-    /* background-color: orange; */
-  }
   .doctor-background .col2 {
     width: 30vw;
   }
-  .docImage {
-    z-index: -5;
-    width: 100vw;
-    opacity: 1;
-    left: 10vw;
-    bottom: 0;
-    transform: translate(2rem,0);
-
-  }
+  
   .trust, .in {
     z-index: -10;
   }
