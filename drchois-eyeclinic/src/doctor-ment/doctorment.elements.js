@@ -41,6 +41,9 @@ export const TopLetter = styled.div`
     flex : 3;
     display: flex;
     flex-direction: column;
+    @media screen and (max-width:500px){
+        transform: translateX(-1.5rem) scale(0.9,0.9);
+    }
 `;
 export const QuotationMark = styled.div`
     color : #b2b2b2;
@@ -85,6 +88,7 @@ export const BottomLetter = styled.div`
        font-size:0.7rem;
        position:relative;
        top:-7rem;
+       transform: translateX(-1rem);
     }
 
 `;

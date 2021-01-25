@@ -182,6 +182,7 @@
     height: 60% !important;
     width: 328px !important;
     background-color: transparent !important;
+    margin-bottom: 5px;
     /* transform: translate(-2.5rem, 0); */
   }
   .slide__3 > .content__wrapper > .text__container {

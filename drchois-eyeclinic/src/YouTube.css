@@ -232,8 +232,9 @@
     margin-left: 4vw;
   }
   .text__wrapper .green__box{
-    margin-left: 4vw;
+    margin-left: 0.9rem;
     width: 1.5rem;
     height: 0.25rem;
-  }
+    margin-bottom: 2.5rem;
+}
 }
