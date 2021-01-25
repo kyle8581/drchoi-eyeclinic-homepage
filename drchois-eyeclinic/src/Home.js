@@ -16,7 +16,7 @@ import Department from './Department'
 import TopNav from './TopNav';
 import YouTube from './YouTube';
 import Map from './map/Map';
-
+import FooterReturn from './footer/FooterReturn'
 
 
 // install Swiper components
@@ -71,6 +71,9 @@ function Home() {
     {/* slide 6 : 지도, footer */}
     <SwiperSlide>
       <Map/>
+    </SwiperSlide>
+    <SwiperSlide>
+      <FooterReturn/>
     </SwiperSlide>
   </Swiper>
  

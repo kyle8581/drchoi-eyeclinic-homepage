@@ -13,7 +13,7 @@ const AwardSwiper = styled(Swiper)`
     height: 140px;
     border : 1px soled red;
     position: absolute;
-    bottom: 19vh;
+    bottom: 20vh;
 
 `;
 SwiperCore.use([Autoplay]);

@@ -236,6 +236,7 @@
     width: 1.5rem;
     height: 0.25rem;
     margin-bottom: 40px;
+    transform: translateY(-20px);
 
 }
 }

@@ -1,16 +1,17 @@
 import React , {useState} from 'react'
+import styled from 'styled-components'
 import { ShowUp } from './Deparment.components'
 import './Department.css'
-// import ShowUp from './Deparment.components.js'
 import DepartmentButton from './icon_components/DepartmentButton'
 import GreenBox from './icon_components/GreenBox'
-
+const DepartmentGreenBox = styled(GreenBox)`
+@media screen and (max-width:500px){
+    width: 1rem;
+    height: 0.25rem;
+}
+`;
 function Department(){
-    // const [show, setShow] = useState( 
-    //     [{ id: 0, state: false },
-    //     { id: 1, state: false },
-    //     { id: 2, state: false },
-    // ]);
+  
     const [show1, setShow1] = useState(false);
     const [show2, setShow2] = useState(false);
     const [show3, setShow3] = useState(false);
@@ -30,7 +31,7 @@ function Department(){
         {id:0, comp:["스마일","라식","라섹","ICL"]},
         {id:1, comp:["드림렌즈", "RGP렌즈"]},
         {id:2, comp:["백내장","노안교정"]},
-    ]
+    ];
     // function toggleShow(index) {
     //     console.log(index);
     //     setShow(
@@ -44,7 +45,7 @@ function Department(){
                 <div className="department__description">
 
                     <div className="title" onClick={click1}>
-                        <GreenBox className="gb__department"/>
+                        <DepartmentGreenBox/>
                         <p>진료과목</p>
                     </div>
                     <div className="body1">

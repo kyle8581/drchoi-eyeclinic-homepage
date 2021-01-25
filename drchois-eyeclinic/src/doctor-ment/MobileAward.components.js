@@ -1,9 +1,9 @@
-import React from 'react';
+// import React from 'react';
 import styled from 'styled-components'
-import SwiperCore, {
+// import SwiperCore, {
     
-    Autoplay
-  } from "swiper";
+//     Autoplay
+//   } from "swiper";
 
 
 export const Wrapper = styled.div`
@@ -63,6 +63,6 @@ export const Par = styled.div`
 
 export const Atropy = styled.img`
     width:
-    ${({id, cur}) => (id === cur?"150px; transform: translate(-0.7rem, -1rem);":"120px")};
+    ${({id, cur}) => (id === cur?"150px; transform: translate(-0.8rem, -0.5rem);":"120px; transform:translate(0,0.5rem); ")};
     transition : 0.5s;
 `;
