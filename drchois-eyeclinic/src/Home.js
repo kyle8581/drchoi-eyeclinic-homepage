@@ -15,6 +15,7 @@ import Interior from './Interior'
 import Department from './Department'
 import TopNav from './TopNav';
 import YouTube from './YouTube';
+import Map from './map/Map';
 
 
 
@@ -48,6 +49,7 @@ function Home() {
     touchEventsTarget="wrapper"
     direction="vertical"
     autoHeight="true"
+    // touchRatio={0}
     
 
   >
@@ -67,7 +69,9 @@ function Home() {
       
     <SwiperSlide><YouTube/></SwiperSlide>
     {/* slide 6 : 지도, footer */}
-    <SwiperSlide><div>slide 6</div></SwiperSlide>
+    <SwiperSlide>
+      <Map/>
+    </SwiperSlide>
   </Swiper>
  
   </div>

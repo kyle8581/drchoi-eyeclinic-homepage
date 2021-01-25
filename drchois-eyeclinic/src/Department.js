@@ -1,60 +1,114 @@
-import React from 'react'
+import React , {useState} from 'react'
+import { ShowUp } from './Deparment.components'
 import './Department.css'
+// import ShowUp from './Deparment.components.js'
 import DepartmentButton from './icon_components/DepartmentButton'
 import GreenBox from './icon_components/GreenBox'
+
 function Department(){
+    // const [show, setShow] = useState( 
+    //     [{ id: 0, state: false },
+    //     { id: 1, state: false },
+    //     { id: 2, state: false },
+    // ]);
+    const [show1, setShow1] = useState(false);
+    const [show2, setShow2] = useState(false);
+    const [show3, setShow3] = useState(false);
+    function click1(){
+        setShow1(!show1);
+        console.log(1);
+    };
+    function click2(){
+        console.log(2);
+
+        setShow2(!show2);
+    };
+    function click3(){
+        setShow3(!show3);
+    };
+    const components=[
+        {id:0, comp:["스마일","라식","라섹","ICL"]},
+        {id:1, comp:["드림렌즈", "RGP렌즈"]},
+        {id:2, comp:["백내장","노안교정"]},
+    ]
+    // function toggleShow(index) {
+    //     console.log(index);
+    //     setShow(
+    //         show.map((ele)=>(ele.id === index?{...ele, state: !ele.state}:ele))
+    //     );
+    // }
+    // console.log(show);
     return(
         <div className="department__wrapper">
             <div id="department__content">
                 <div className="department__description">
 
-                    <div className="title">
+                    <div className="title" onClick={click1}>
                         <GreenBox className="gb__department"/>
                         <p>진료과목</p>
                     </div>
-                    <div className="body">
-                        <p>저희 압구정최안과는 </p> 
-                        <span></span>
-                        <p>확실하게 수술하는 병원으로</p>
-                        <span></span>
-                        <p>의료진의 치료와 지시사항을 </p>
-                        <span></span>
-                        <p>잘 따르기만 하면 빠른 시간 내에</p> 
-                        <span></span>
-                         
-                        <p>완쾌가 가능합니다.</p>
+                    <div className="body1">
+                        <div className="body1_wrapper">
+                        <p className="body1_1">"Since 1999"</p>
+                        <p className="body1_2">타협없는 안전지향</p>
+                        </div>
+                    </div>
+                    <div className="body2">
+                        <div className="body2_wrapper">
+                        <p>최신의료시스템을 갖추고 </p> 
+                        <p>있는 본원에서는 정밀진단 후 꼭</p>
+                        <p>필요한 치료, 최적화된 수술만을 </p>
+                        <p>권해드리며 의료진과 충분한 상담</p> 
+                        <p>후 투명한 진료, 안전한 수술,</p>
+                        <p>숙련된 스텝들의 사후관리를</p>
+                        <p>원칙으로 하고 있습니다. </p>
+                        </div>
                     </div>
                 </div>
                 <div className="department__menu">
+                    <div className="department__menu__leftcol">
                     <div className="sight__correction__menu">
-                        <DepartmentButton text="시력교정센터"  className="dp__button"/>
+                        <div className="wrapper1">
                         <img src="department_image/background1.png" alt="bg"/>
+                        <div className="contents">
+                            <DepartmentButton text="시력교정센터" pass={click1}/>
+                            <ShowUp show={show1}>
+                            {components[0].comp.map((a)=><span>{a}</span>)}
+                            </ShowUp>
+                        </div>
+                       
+                        </div>
                     </div>
                     <div className="lens__menu">
-                        <DepartmentButton text="렌즈센터" className="dp__button"/>
-                        <img src="department_image/background2.png" alt="bg"/>
+                        <div className="wrapper2">
+                    <img src="department_image/background2.png" alt="bg"/>
+                        <div className="contents">
+                        <DepartmentButton text="렌즈센터" pass={click2}/>
+                        <ShowUp show={show2}>
+                            {components[1].comp.map((a)=><span>{a}</span>)}
+                            </ShowUp>
+                        </div>
+                        </div>
+                    </div>
                     </div>
                     <div className="noan__menu">
-                        <DepartmentButton text="노안·백내장센터" className="dp__button"/>
-                        <img src="department_image/background3.png" alt="bg"/>
+                        <div className="wrapper3">
+                    <img src="department_image/background3.png" alt="bg"/>
+                    <div className="contents">
+                        <DepartmentButton text="노안·백내장센터" pass={click3}/>
+                        <ShowUp show={show3}>
+                            {components[2].comp.map((a)=><span>{a}</span>)}
+                        </ShowUp>
+                    </div>
+                    </div>
                     </div>
                 </div>
             </div>
-
-            <div id="department__text__bottom">
-                <div id="top">
-                    MEDICAL
-                </div>
-                <div id="bottom">
-                    DEPARTMENTS
-                </div>
+            <div className="rear_ment">
+                <p>MEDICAL</p>
+                <p>DEPARTMENTS</p>
             </div>
-
-            
-
         </div>
-
     )
-
 }
 export default Department;

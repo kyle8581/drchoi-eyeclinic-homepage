@@ -51,7 +51,6 @@
     margin-top: -20px;;
 }
 .Smile2-container .first-row .second-element ul li::before{
-    /* 여기다가 쓰세유 빨리 쉬어 */
 content: "\f0da"; 
 font-family: "Font Awesome 5 Free";
 padding: 0 10px 0 0;

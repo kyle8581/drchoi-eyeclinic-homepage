@@ -22,7 +22,7 @@ export const NavWrapper = styled.div`
 `;
 export const NavIcon = styled(Link)`
   width: 15px;
-  hight: 15px;
+  height: 15px;
   &:hover {
     transition: all 0.2s ease-in-out;
     color: #63c3c4;

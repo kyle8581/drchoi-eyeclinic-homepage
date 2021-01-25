@@ -1,8 +1,8 @@
 import React from 'react'
 import './DepartmentButton.css'
-function DepartmentButton({text}){
+function DepartmentButton({text, pass}){
     return(
-        <div className="department__button"><p>{text}</p></div>
+        <div className="department__button" onClick={pass}><p>{text}</p></div>
     )
 }
 

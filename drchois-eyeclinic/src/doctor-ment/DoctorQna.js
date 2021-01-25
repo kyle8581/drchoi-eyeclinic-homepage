@@ -1,10 +1,11 @@
 import React from 'react';
 import DoctorComments from './DoctorCommentText.json'
-import {Wrapper, Grid, TitleContainer , QnaBackGroundText, QnaGreenBox, QnaContentContianer, DoctorIdentity, DoctorCircleImg, DoctorName, Comment} from './DoctorQna.components'
+import {Border,Wrapper, Grid, TitleContainer , QnaBackGroundText, QnaGreenBox, QnaContentContianer, DoctorIdentity, DoctorCircleImg, DoctorName, Comment} from './DoctorQna.components'
 function DoctorQna(){
     const CommentText = DoctorComments;
     console.log(CommentText[0].text);
     return(
+        <Border>
         <Wrapper>
             <QnaBackGroundText>Trust in</QnaBackGroundText>
             <Grid>
@@ -76,6 +77,7 @@ function DoctorQna(){
                 </QnaContentContianer>
             </Grid>
         </Wrapper>
+        </Border>
     );
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 
 import backGroundAsset from "./doctor_background_asset.json";
 import DoctorBackgroundStructure from "./DoctorBackgroundStructure";
-import "./DoctorMentSlide3.css";
+// import "./DoctorMentSlide3.css";
 function DoctorSayHi() {
   return (
     <section className="doctorBackgroundContainer">

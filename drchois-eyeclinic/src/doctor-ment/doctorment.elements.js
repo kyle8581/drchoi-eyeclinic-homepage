@@ -31,19 +31,21 @@ export const TextContainer = styled.div`
         transform : none;
 
     } */
+    @media screen and (max-width:500px){
+        left:1rem;
+        top:17rem;
+    }
 `;
 
 export const TopLetter = styled.div`
     flex : 3;
     display: flex;
     flex-direction: column;
-  
-
 `;
 export const QuotationMark = styled.div`
     color : #b2b2b2;
     @media screen and (max-width:5300px){
-        font-size:3rem;
+        font-size:2.2rem;
         transform: ${({order})=>(order===0?"translate(-0.3rem,-0.5rem)":"translate(0,-0.5rem)")};
         /* margin-bottom:100%; */
     }
@@ -57,7 +59,10 @@ export const Row = styled.div`
     display: flex;
     color : #747373;
     padding-left: ${({secondrow})=>(secondrow?"3rem":"none")};
-
+    @media screen and (max-width:500px){
+        font-size:1rem;
+        height:1.1rem;
+    }
 `;
 export const MintLetter = styled.div`
     color : #63c3c4;
@@ -76,7 +81,11 @@ export const BottomLetter = styled.div`
         padding-left: 1.5rem;
         align-items:center;
     }
-
+    @media screen and (max-width:500px){
+       font-size:0.7rem;
+       position:relative;
+       top:-7rem;
+    }
 
 `;
 
@@ -93,6 +102,10 @@ export const DoctorImg = styled.img`
     @media screen and (max-height:700px){
         width: 30rem;
     }
+    @media screen and (max-width:500px){
+        width: 18rem;
+        right: -3rem;
+    }
 `;
 
 export const BackGroundLogo = styled.img`
@@ -105,6 +118,11 @@ export const BackGroundLogo = styled.img`
 
     @media screen and (max-width:1800px){
         width: 50rem;
+    }
+    @media screen and (max-width:500px){
+        width:30rem;
+        right:-10rem;
+        top: 5rem;
     }
 `;
 

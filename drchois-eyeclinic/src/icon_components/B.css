@@ -1,0 +1,15 @@
+.B{
+    background-color: #2b56c8;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    font-size: 19px;
+    font-family: NanumSquare_acEB;
+    color: #fff;
+    transform: translateY(2px);
+
+    
+}
+.B > div{
+    transform: translateY(2px);
+}

@@ -26,7 +26,7 @@ function YouTube(){
         <div className="youtube__slide__wrapper">
             <div className="content__wrapper">
                 <div className="yt__wrapper">
-                <Swiper 
+                    <Swiper 
                     thumbs={{ swiper: thumbsSwiper }} 
                     slidesPerView={1}
 
@@ -37,17 +37,10 @@ function YouTube(){
                     className="youtube__view"
                     loop="true"
                     touchEventsTarget="wrapper"
-            
-            
-
-
                     >
                         {youTubeLinks.map((e)=>{return(<SwiperSlide>{e.link}</SwiperSlide>)})}
                 </Swiper>
-
-                
-                <Swiper
-
+                    <Swiper
                     onInit={(swiper) => {
                         swiper.params.navigation.prevEl = prevRef.current;
                         swiper.params.navigation.nextEl = nextRef.current;
@@ -55,44 +48,35 @@ function YouTube(){
                         swiper.navigation.update();
                     }}
                     onSwiper={setThumbsSwiper}
-                    spaceBetween={4}
+                    spaceBetween={window.innerWidth>500?4:0}
                     draggable="true"
                     loop="true"
                     loopedSlides={5}
-                    direction="vertical"
-                    slidesPerView={4}
+                    direction={window.innerWidth>500?"vertical":"horizontal"}
+                    slidesPerView={window.innerWidth>500?4:3}
                     watchSlidesVisibility ="true"
                     watchSlidesProgress ="true"
                     className="youtube__select"
-                    
-                    
                 >
                       {thumbnailImages.map((e)=>{return(<SwiperSlide className="select__slide">
                           <img src={e} alt="thumbnails"/>
                       </SwiperSlide>)})}
-                      <div className="uparrow" ref={nextRef}>
-                    <UpArrow />
-                </div>
-                <div className="downarrow" ref={prevRef}>
-                    <DownArrow />
+                    <div className="uparrow" ref={nextRef}>
+                        <UpArrow />
+                    </div>
+                    <div className="downarrow" ref={prevRef}>
+                        <DownArrow />
+                    </div>
+                </Swiper>  
 
                 </div>
-                </Swiper>
                 
-                        
-                </div>
                 <div className="text__wrapper">
                     <GreenBox/>
                     <div className="large__text">압구정최안과 유튜브</div>
                     <a className="yt__link" href="https://www.youtube.com/channel/UCfhlcQAfLiY_uhpigIIRfFA">유튜브채널 바로가기</a>
                 </div>
             </div>
-            
-      
-
-            
-            
-      
         </div>
     )
 

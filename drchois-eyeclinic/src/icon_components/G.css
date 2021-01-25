@@ -1,0 +1,15 @@
+.G{
+    background-color: #119b2e;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    font-size: 19px;
+    font-family: NanumSquare_acEB;
+    color: #fff;
+    transform: translateY(2px);
+
+    
+}
+.G > div{
+    transform: translateY(2px);
+}

@@ -1,16 +1,14 @@
 .department__button{
-    width: 18vw;
-    height: 5vw;
-    border-radius: 4vw;
-    border: 3px solid white;
-    font-family: NanumSquare_acB;
-    font-size: 2vw;
+    width: 16rem;
+    height: 4.5rem;
+    border-radius: 8rem;
+    border: 0.2rem solid white;
+    font-family: NanumSquareBold;
+    font-size: 1.6rem;
     color: white;
     transform: scale(0.8,0.8);
     position: absolute;
-   
-
-   
+    cursor: pointer;
 }
 .department__button > p{
     margin-top: 1.5vw;

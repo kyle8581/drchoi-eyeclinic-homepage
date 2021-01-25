@@ -1,15 +1,14 @@
 import React from 'react'
 import './Greeting.css'
-import blinkingVideo from './videos/videoplayback.mp4'
+import blinkingVideo from './videos/0_0_video.mp4'
+// import Background from '/firstpage.png'
 function Greeting(){
     return(
-        <div>
+        <div className="slide0__container">
             <video className="blinking__video" autoPlay muted>
                 <source src={blinkingVideo} type='video/mp4'/>
             </video>
-            <div className="center__letter">
-                압구정 최안과
-            </div>
+            <img src='/firstpage.png' alt="bg"/>
         </div>
             
         )

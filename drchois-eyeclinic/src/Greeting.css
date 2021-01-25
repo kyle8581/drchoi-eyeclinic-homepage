@@ -1,12 +1,28 @@
+.slide0__container{
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  overflow: hidden;
+}
+
 .blinking__video {
-  height: 100%;
+  width: 100vw;
   align-items: center;
   display: flex;
   justify-content: center;
   object-fit: cover;
-  min-width: 100%;
-  min-height: 100%;
+  overflow: hidden;
+  z-index: -2;
+  
+  
+  
+  
 }
+.blinking__video img{
+  display: hidden;
+  position: absolute;
+}
+
 .center__letter {
   font-size: 70px;
   color: #fff;
@@ -23,10 +39,7 @@
   animation-duration: 4s;
 }
 @media all and (max-width: 500px) {
-  .blinking__video {
-    min-width: 20%;
-    min-height: 20%;
-  }
+  
 }
 
 @keyframes riseup {
@@ -35,5 +48,25 @@
   }
   to {
     opacity: 1;
+  }
+}
+@media screen and (max-width:5000px){
+  .slideO__container > img{
+    visibility: collapse;
+  }
+}
+@media screen and (max-width:500px){
+  .blinking__video, .blinking__video source{
+    visibility: collapse;
+    height: 0;
+  }
+  
+  .slide0__container > img{
+    /* position: initial; */
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    display: flex;
+    width: 100vw;
   }
 }
