@@ -1,12 +1,13 @@
 import React, {useState, useRef} from 'react';
+import Media from 'react-media';
 import SwiperCore, { Thumbs} from 'swiper';
+import styled from 'styled-components';
 import YouTubeAsset from "./YouTubeAsset.json";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import GreenBox from './icon_components/GreenBox';
 import UpArrow from './icon_components/UpArrow';
-import DownArrow from './icon_components/DonwArrow';
+import DownArrow from './icon_components/DownArrow';
 import "./YouTube.css"
-
 
 SwiperCore.use([Thumbs]);
 const width = 560;
@@ -14,6 +15,15 @@ const height = 315;
 let youTubeLinks = YouTubeAsset.map((a)=>{
     return({"key":a.key,"link":<iframe width={width} height={height} src={a.src} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title={a.key}></iframe>});
 })
+const MobileYoutubeLink = styled.a`
+    cursor: pointer;
+    position: absolute;
+    left: 1rem;
+    top: 5rem;
+    img{
+        width: 8rem;
+    }
+`;
 console.log(youTubeLinks);
 function YouTube(){
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -26,7 +36,7 @@ function YouTube(){
         <div className="youtube__slide__wrapper">
             <div className="content__wrapper">
                 <div className="yt__wrapper">
-                    <Swiper 
+                <Swiper 
                     thumbs={{ swiper: thumbsSwiper }} 
                     slidesPerView={1}
 
@@ -52,7 +62,7 @@ function YouTube(){
                     draggable="true"
                     loop="true"
                     loopedSlides={5}
-                    direction={window.innerWidth>500?"vertical":"horizontal"}
+                    direction={window.innerWidth>1300?"vertical":"horizontal"}
                     slidesPerView={window.innerWidth>500?4:3}
                     watchSlidesVisibility ="true"
                     watchSlidesProgress ="true"
@@ -68,13 +78,19 @@ function YouTube(){
                         <DownArrow />
                     </div>
                 </Swiper>  
-
                 </div>
                 
                 <div className="text__wrapper">
                     <GreenBox/>
                     <div className="large__text">압구정최안과 유튜브</div>
                     <a className="yt__link" href="https://www.youtube.com/channel/UCfhlcQAfLiY_uhpigIIRfFA">유튜브채널 바로가기</a>
+                    <Media queries={{mobile:{ maxWidth: 500 }}}>
+                        {matches=> matches.mobile?(
+                            <MobileYoutubeLink href="https://www.youtube.com/channel/UCfhlcQAfLiY_uhpigIIRfFA">
+                                <img src="/yt_link.png" alt="youtube link"/>
+                            </MobileYoutubeLink>
+                        ):(null)}
+                    </Media>
                 </div>
             </div>
         </div>

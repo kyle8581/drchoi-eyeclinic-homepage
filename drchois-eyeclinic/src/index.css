@@ -11,7 +11,7 @@ body {
 }
 html,
 body {
-  width: auto !important;
+  width: 100vw !important;
   overflow-x: hidden !important;
 }
 

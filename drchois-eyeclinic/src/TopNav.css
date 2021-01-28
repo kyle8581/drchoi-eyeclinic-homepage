@@ -4,7 +4,8 @@
 }
 .nav__container {
   height: 58px;
-  width: 100%;
+  width: 100vw;
+  /* overflow-y: hidden; */
 
   border-radius: 5px;
   align-items: center;
@@ -67,6 +68,7 @@
   flex: 1;
   justify-content: flex-end;
   display: flex;
+  z-index: 20;
 }
 
 @media screen and (max-width: 800px) {
@@ -92,9 +94,7 @@
   }
 } */
 @media screen and (max-width: 500px) {
-  .nav__container {
-    overflow: hidden;
-  }
+  
   .navbar__logo {
     margin: 0;
     position: relative;

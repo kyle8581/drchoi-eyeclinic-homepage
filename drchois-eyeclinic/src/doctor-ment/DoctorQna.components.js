@@ -100,7 +100,7 @@ export const DoctorName = styled.div`
     
     @media screen and (min-width:501px){
         font-size: 0.9rem;
-    margin-top:1rem;
+        margin-top:1rem;
     }
     @media screen and (max-width:500px){
         font-size: 0.2rem;

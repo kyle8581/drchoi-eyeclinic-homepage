@@ -60,7 +60,16 @@ function DoctorSayHi() {
             <div className="end">&#x201D;</div>
           </div>
         </div>
-
+        <div className="tablet_wording">
+          <div className="tablet_wording_content">
+            <span>23년 무사고</span>
+            <span>임상 1만시간 이상, 3만 임상증례를 넘는 시력교정술 경험</span>
+            <span>최첨단 장비와 51가지 정밀검사로 당신의 눈에 최적화된</span>
+            <span>수술만을 집도합니다.</span>
+          </div>
+          <div className="qt_start">&#x201C;</div>
+          <div className="qt_end">&#x201D;</div>
+        </div>
         <div className="doctor-background">
         <div className="col1">
           <DoctorBackgroundStructure boundary={[0,backGroundAsset.length-9]}/>

@@ -12,6 +12,7 @@ import DoctorMentSlide1 from './DoctorMentSlide1';
 import DoctorAward from "./doctor_award";
 import DoctorSayHi from "./DoctorMentSlide3";
 import DoctorQna from './DoctorQna'
+import SigNatureReturn from './Signature/SignatureReturn'
 // install Swiper components
 SwiperCore.use([Navigation,Pagination, Scrollbar, A11y, Mousewheel]);
 
@@ -45,6 +46,9 @@ function DoctorMent() {
     {/* slide 3 : 원장님 인터뷰 */}
     <SwiperSlide>
       <DoctorQna/>
+    </SwiperSlide>
+    <SwiperSlide>
+      <SigNatureReturn/>
     </SwiperSlide>
       
     

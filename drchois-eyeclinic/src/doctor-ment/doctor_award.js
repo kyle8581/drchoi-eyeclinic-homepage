@@ -23,7 +23,7 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel, Autoplay]);
 
 function DoctorAward() {
   return(
-  <Media queries={{ small: { maxWidth: 500 } }}>
+  <Media queries={{ small: { maxWidth: 1300 } }}>
           {matches =>
             matches.small ? (
               <MobileAward/>
@@ -35,12 +35,14 @@ function DoctorAward() {
           <div className="text-container">
             <div className="BigBox1">Trust in 압구정최안과</div>
             <div className="BigBox2">
-                <div className="SmallBox1">
-                    저희 압구정최안과는 확실하게 수술하는 병원으로
-                </div>
-                <div className="SmallBox2">
-                    저희 의료진의 치료와 지시사항을 잘 따르기만 하면 빠른 시간 내에 완쾌가 됩니다.
-                </div>
+                {/* <div className="SmallBox1"> */}
+                <p>임상 1만 시간 이상, 4만 임상증례를 넘는 풍부한 시력교정수술 경험을 토대로 </p>
+                <p>환자의 눈에 가장 적합한 수술만을 집도하며 원칙과 소신을 지킨 진료로</p>
+                <p>믿고 찾아주신 환자들께 ‘결과’로 보여드리겠습니다. </p>
+                {/* </div> */}
+                {/* <div className="SmallBox2">
+               
+                </div> */}
             </div>
           </div>
           <div className="trophy__slide__container">
@@ -70,7 +72,6 @@ function DoctorAward() {
                     }
             </Swiper>
           </div>
-          
         </div>
       </div>
             )

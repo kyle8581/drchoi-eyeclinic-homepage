@@ -3,15 +3,18 @@
     height: 4.5rem;
     border-radius: 8rem;
     border: 0.2rem solid white;
-    font-family: NanumSquareBold;
+    font-family: NanumSquare_acB;
     font-size: 1.6rem;
     color: white;
     transform: scale(0.8,0.8);
     position: absolute;
     cursor: pointer;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 .department__button > p{
-    margin-top: 1.5vw;
+    /* margin-top: 1.5vw; */
 }
 .department__button > p::after{
     content: "+";

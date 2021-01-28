@@ -24,7 +24,6 @@ function DoctorAward() {
     <div className="awardPageContainer">
       <img className="spotlight" src="/doctor/spotlight.png" alt="Dr.Choi"/>
       <div className="content_wrapper">
-      
         <div className="text-container">
           <div className="BigBox1">Trust in 압구정최안과</div>
           <div className="BigBox2">
