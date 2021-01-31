@@ -41,52 +41,63 @@
   /* height: 30vh; */
   display: flex;
   bottom: 10vh;
-  /* align-items: flex-end; */
-  /* position: relative; */
-  /* margin-bottom: 20vh; */
-  /* transform: translateY(50%); */
 }
 .trophy__slide__container .swiper-container {
   /* display: inline-flex; */
   /* position: absolute; */
-  height: 32vh;
+  height: 262px;
   /* margin-top: 20%; */
+  width: auto;
   display: flex;
   align-items: flex-end;
-  /* background-color: orange; */
-  /* position: absolute;
-  top: 0%;
-  left: 0%;
-  transform: translate(0%, 0%); */
-  /* background-color: pink; */
+  width: 1075px;
+  position: absolute;
+  bottom: 0;
+  /* left: ; */
+  left: calc(-1075px / 2);
+  transform: translateX(50vw);
+  /* border: 1px solid; */
+  transform-origin: center;
 }
 .trophy__slide__container .swiper-wrapper {
   align-items: flex-end;
+  width: 1075px;
 }
 .trophy__slide__container .swiper-container .swiper-wrapper .swiper-slide {
-  /* background-color: yellow; */
+  width: 215px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid red; */
+  transform: translateX(-1rem);
 }
 .trophy__slide__container .swiper-slide img {
-  max-width: 25vh;
-  max-height: 25vh;
+  width: 215px !important;
   transition: 0.3s;
 }
-.trophy__slide__container
-  .swiper-container
-  .swiper-wrapper
-  .swiper-slide-active {
-  /* max-width: 28vh;
-  max-height: 28vh; */
-  /* background-color: orange; */
+.trophy__slide__container .swiper-container .swiper-wrapper .swiper-slide-active {
+  /* width: 345px !important; */
+  /* transform: scale(1.4, 1.4); */
 }
-.trophy__slide__container .swiper-slide-active img {
+.trophy__slide__container > .swiper-slide-active {
+  /* transform: translateX(10rem); */
+}
+.trophy__slide__container .swiper-slide-active > img {
   /* 가운데 */
-  max-width: 40vh;
-  max-height: 40vh;
+  /* transform: scale(1.4, 1.4); */
+  /* max-height: 40vh; */
+  transform: scale(1.5, 1.5);
   transition: 0.3s;
   align-self: center;
+  /* margin-left: 3rem; */
   /* transform: translateY(10vh); */
-  transform: translateX(-10%) translateY(2vh);
+  /* transform: translateX(10rem); */
 
   z-index: 10;
+}
+.trophy__slide__container .swiper-slide-next + .swiper-slide + .swiper-slide {
+  visibility: hidden;
+}
+.trophy__slide__container .swiper-slide-next + .swiper-slide + .swiper-slide + .swiper-slide {
+  visibility: hidden;
 }

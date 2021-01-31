@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
 }
+
 .nav__container {
   height: 58px;
   width: 100vw;
@@ -14,9 +15,24 @@
   position: absolute;
   margin: auto;
   z-index: 10;
+
+  /* overflow: hidden; */
+}
+.nav__container.true {
+  overflow: visible;
+  z-index: 20;
+}
+.nav__container.true> .navbar__logo, .nav__container.true>ul{
+  z-index: -1;
+  opacity: 0;
+}
+.nav__container.false {
+  overflow: hidden;
 }
 .hamburger-react {
   right: 20px;
+  z-index: 10;
+  position: absolute;
 }
 .navbar__logo {
   flex: 1;
@@ -25,14 +41,16 @@
   display: flex;
   vertical-align: center;
   align-items: flex-start;
-  
 }
-@media screen and (max-width:500px){
-  .hamburger-react{
-    transform: scale(0.8, 0.8)
+@media screen and (max-width: 500px) {
+  .hamburger-react {
+    transform: scale(0.8, 0.8);
   }
-  .navbar__logo{
-    transform: scale(0.8, 0.8) translate(-25px,0);
+  .navbar__logo {
+    transform: scale(0.8, 0.8) translate(-25px, 0);
+  }
+  .nav__container.nav__container.true > .navbar__logo{
+    opacity: 0;
   }
 }
 .navbar__logo .logo__svg {
@@ -40,7 +58,7 @@
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 24px;
-  transform: translate(0px,3px);
+  transform: translate(0px, 3px);
 }
 .navbar__pagelink {
   /* flex: 3; */
@@ -68,9 +86,11 @@
   flex: 1;
   justify-content: flex-end;
   display: flex;
-  z-index: 20;
+  z-index: 990 !important;
 }
-
+.hamburger__icon > div {
+  z-index: 990;
+}
 @media screen and (max-width: 800px) {
   .navbar__pagelink {
     visibility: collapse;
@@ -94,7 +114,6 @@
   }
 } */
 @media screen and (max-width: 500px) {
-  
   .navbar__logo {
     margin: 0;
     position: relative;

@@ -1,132 +1,110 @@
 #department__content {
-  /* width: 75vw; */
-  width:70rem;
-  /* height: 65vh; */
+  width: 70rem;
   height: 30rem;
-  /* border: 2px solid #969658; */
   position: absolute;
   right: 0;
   top: 20vh;
-  /* display: -ms-grid; */
-  /* display: grid; */
-  /* -ms-grid-columns: 20fr 55fr; */
-  /* grid-template-columns: 20fr 55fr; */
-  display:flex;
+  display: flex;
   flex-direction: row;
   font-family: NanumSquare_acR;
 }
 
 #department__content .department__description {
-  /* border: 1px solid red; */
   text-align: left;
-  /* display: -webkit-box; */
-  /* display: -ms-flexbox; */
   display: flex;
-  width:25rem;
-  /* -webkit-box-orient: vertical; */
-  /* -webkit-box-direction: normal; */
-  /* -ms-flex-direction: column; */
+  width: 25rem;
   flex-direction: column;
   color: #555555;
 }
 
 #department__content .department__description .title {
   font-size: 2.5vw;
-  /* -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1; */
-  /* border: 1px solid purple; */
   width: 100%;
 }
 #department__content .department__description .title p {
-  /* border: 2px solid skyblue; */
   width: 100%;
   margin-top: 20px;
 }
 #department__content .department__description .body1 {
-  /* -webkit-box-flex: 3;
-      -ms-flex: 3;
-          flex: 3; */
-  /* border: 1px solid plum; */
   font-size: 1.5vw;
   padding-top: 3vw;
   line-height: 2vw;
-  
 }
-#department__content .department__description .body1 .body1_wrapper{
-  position:relative;
+#department__content .department__description .body1 .body1_wrapper {
+  position: relative;
   padding-top: 1rem;
 }
-#department__content .department__description .body1 .body1_1{
+#department__content .department__description .body1 .body1_1 {
   font-family: NanumSquare_acEB;
   font-size: 2vw;
   color: #63c3c4;
 }
-#department__content .department__description .body1 .body1_2{
-  color : #707070;
+#department__content .department__description .body1 .body1_2 {
+  color: #707070;
   font-weight: 400;
   transform: translate(0.5rem, 2px);
 }
-#department__content .department__description .body2 {
-  /* -webkit-box-flex: 6;
-      -ms-flex: 6;
-          flex: 6; */
-  /* border: 1px solid plum;  */
-  /* font-size: 1.1rem;
-  line-height: 2vw; */
+
+#department__content .department__description .body2 .body2_wrapper {
+  position: relative;
+  padding-top: 1rem;
+  color: #707070;
+  font-weight: 350;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
-#department__content .department__description .body2 .body2_wrapper{
-position:relative;
-padding-top: 1rem;
-color: #707070;
-font-weight: 350;
-font-size: 1rem;
-}
-#department__content .department__menu{
-  /* border: 1px solid blue; */
-  /* display: -ms-grid; */
+#department__content .department__menu {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  align-items:center;
+  align-items: center;
 }
-.department__menu .department__menu__leftcol{
-  display:flex;
+.department__menu .department__menu__leftcol {
+  display: flex;
   flex-direction: column;
-  transform: translateY(-1rem);
+  width: 50%;
+  height: 100%;
 }
-.department__menu .wrapper1,
-.department__menu .wrapper2,
-.department__menu .wrapper3{
-  height:100%;
+.department__menu .noan__menu {
+  width: 50%;
+  height: 100%;
 }
-#department__content .department__menu .contents{
-  height:100%;
-  /* align-items: center; */
+.department__menu .department__menu__leftcol .lens__menu,
+.department__menu .department__menu__leftcol .sight__correction__menu {
+  height: 100%;
+}
+.department__menu .wrapper1 {
+  background-image: url("./images/background1.png");
+  height: 100%;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+.department__menu .wrapper2 {
+  background-image: url("./images/background2.png");
+  height: 100%;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
+.department__menu .wrapper3 {
+  background-image: url("./images/background3.png");
+  height: 100%;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+#department__content .department__menu .contents {
+  height: 100%;
+  align-items: flex-end;
   justify-content: center;
   display: flex;
-  /* background-color: yellow; */
 }
-#department__content .department__menu .contents .department__button{
-  transform: translateY(-6rem);
-  cursor:pointer;
-}
-#department__content .department__menu img {
-  /* height:100%; */
-  width:100%;
-  z-index: 0;
-  /* overflow:hidden; */
-  min-width:0;
-  min-height:0;
-  /* position: relative; */
+#department__content .department__menu .contents .department__button {
+  transform: translateY(-1rem);
+  cursor: pointer;
 }
 
-
-#department__content .department__menu .sight__correction__menu {
-  transform: translateY(2rem);
-  /* border: 1px solid salmon;   */
-}
-.department__wrapper .rear_ment{
-  position:relative;
+.department__wrapper .rear_ment {
+  position: relative;
   top: 80vh;
   left: 5vw;
   text-align: left;
@@ -134,148 +112,184 @@ font-size: 1rem;
   font-family: NanumBarunGothicBold;
   color: #ebebeb;
 }
-@media screen and (max-width:500px){
-  #department__content{
+@media screen and (max-width: 500px) {
+  #department__content {
     display: flex;
     flex-direction: column;
-    top:5rem;
-    /* background-color: blue; */
-    height:35rem;
-    width:100%;
+    top: 5rem;
+    height: 30rem;
+    width: 100%;
   }
-  #department__content .department__description{
+  #department__content .department__description {
     transform: translateX(1.5rem);
-    height:20rem;
-    width:100%;
+    height: 17.5rem;
+    width: 100%;
   }
-  #department__content .department__description .title{
-    font-size:1.6rem;
+  #department__content .department__description .title {
+    font-size: 1.6rem;
     color: #707070;
     font-family: NanumSquare_acR;
   }
-  #department__content .department__description .body1 .body1_wrapper{
-    margin-left:0.2rem;
+  #department__content .department__description .body1 .body1_wrapper {
+    margin-left: 0.2rem;
   }
-  #department__content .department__description .body1 .body1_wrapper .body1_1{
+  #department__content .department__description .body1 .body1_wrapper .body1_1 {
     font-size: 1.5rem;
     font-weight: 800;
   }
-  #department__content .department__description .body1 .body1_wrapper .body1_2{
-    margin-top:0.8rem;
-    margin-left:0.2rem;
+  #department__content .department__description .body1 .body1_wrapper .body1_2 {
+    margin-top: 0.8rem;
+    margin-left: 0.2rem;
     font-size: 1.1rem;
   }
-  #department__content .department__description .body2{
+  #department__content .department__description .body2 {
     line-height: 1rem;
   }
-  #department__content .department__description .body2 .body2_wrapper{
+  #department__content .department__description .body2 .body2_wrapper {
     margin-top: 0.8rem;
     line-height: 1.2rem;
-    font-size:1rem;
+    font-size: 1rem;
   }
-  #department__content .department__menu{
-    margin-top:10px;
-    height:110%;
-    width:100%;
+  .department__menu {
+    transform: translateY(3vh);
+    height: 216px;
+  }
+  .department__menu .wrapper1 {
     position: absolute;
-    bottom: -10rem;
+    width: 50%;
+    /* left: 10px; */
+    height: 50%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
   }
-  .sight__correction__menu .department__button{
-    width:8rem;
+  .department__menu .wrapper2 {
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
   }
-  .lens__menu .contents .department__button{
+
+  .department__menu .wrapper3 {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  .sight__correction__menu .department__button {
     width: 5rem;
   }
-  .noan__menu .contents .department__button{
-    width: 9rem;
+  .lens__menu .contents .department__button {
+    width: 4rem;
   }
-  #department__content .department__menu .contents .department__button{
-    /* width: 9rem; */
-    height: 2rem;
+  .noan__menu .contents .department__button {
+    width: 6rem;
+  }
+  #department__content .department__menu .contents .department__button {
+    height: 1.6rem;
     border: 2px solid white;
-    font-size: 0.9rem;
-    transform: translateY(-3.5rem);
+    font-size: 0.7rem;
     letter-spacing: 0.001rem;
     border-radius: 2rem;
-
   }
   .department__button > p {
-    transform: translateY(4px);
+    transform: translateY(1px);
   }
-  #department__content .department__menu .department__menu__leftcol{
-    /* position: relative; */
-    transform: translateY(-1.5rem);
+  .department__wrapper .rear_ment {
+    font-size: 2rem;
+    left: 0;
+    top: 85vh;
   }
-  #department__content .department__menu .sight__correction__menu {
-    transform: translateY(2rem);
-    /* border: 1px solid salmon;   */
-  }
-  #department__content .department__menu .lens__menu{
-    transform: translateY(1rem);
-  }
-  /* #department__content .department__menu .department__menu__leftcol .sight__correction__menu .wrapper1 img{
-    height:10rem;
-  } */
-  .department__wrapper .rear_ment{
-    font-size:2rem;
-    left:0;
-    top:85vh;
-  }
-
-  
 }
-@media screen and (max-height:700px){
-  .rear_ment{
+@media screen and (max-height: 700px) {
+  .rear_ment {
     visibility: collapse;
   }
 }
+@media screen and (max-width: 1300px) and (min-width: 1001px) {
+  #department__content {
+    width: 60rem;
+    height: 23rem;
+  }
+  #department__content .department__description {
+    width: 30rem;
+  }
+  #department__content .department__description .title {
+    font-size: 2rem;
+  }
+  #department__content .department__description .body1 .body1_1 {
+    font-size: 1.8rem;
+  }
+  #department__content .department__description .body1 .body1_2 {
+    transform: translateX(0.7rem);
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+  }
+  #department__content .department__description .body2 .body2_wrapper {
+    padding-top: 2.8rem;
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+  }
+  #department__content .department__menu .contents .department__button {
+    height: 4rem;
+    border: 5px solid white;
+  }
+  .department__wrapper .rear_ment {
+    position: relative;
+  }
+}
 
-@media screen and (max-width: 1300px) and (min-width:501px){
-#department__content{
-  width:95%;
-  height:100%;
-}
-#department__content .department__description{
-  width: 48%;
-}
-#department__content .department__description .title{
-  font-size: 2rem;
-}
-#department__content .department__description .body1 .body1_1{
-  font-size: 1.8rem;
-}
-#department__content .department__description .body1 .body1_2{
-  transform: translateX(0.7rem);
-  font-size: 1.3rem;
-  line-height:1.8rem;
-}
-#department__content .department__description .body2 .body2_wrapper{
-  padding-top: 2.8rem;
-  font-size: 1.2rem;
-  line-height: 1.7rem;
-}
+@media screen and (max-width: 1000px) and (min-width: 501px) {
+  #department__content {
+    width: 47.8rem;
+    height: 21rem;
+  }
+  #department__content .department__description {
+    width: 16rem;
+  }
+  #department__content .department__description .title {
+    font-size: 2rem;
+    height: 30rem;
+  }
+  #department__content .department__description .body1 .body1_1 {
+    font-size: 1.6rem;
+  }
+  #department__content .department__description .body1 .body1_2 {
+    transform: translateX(0.6rem);
+    font-size: 1.1rem;
+    line-height: 1.9rem;
+  }
+  #department__content .department__description .body2 .body2_wrapper {
+    padding-top: 2.6rem;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+  }
 
-#department__content .department__menu .department__menu__leftcol{
- height: 50%;
- position:relative;
- top:-13rem;
- width:87%;
+  #department__content .department__menu .contents .department__button {
+    height: 5vh;
+    border: 3px solid white;
+    width: 20vw;
+    font-size: 1rem;
+  }
+  .department__wrapper .rear_ment {
+    position: relative;
+    left: 1rem;
+  }
 }
-/* #department__content .department__menu .sight__correction__menu .contents  */
-#department__content .department__menu .noan__menu{
-  position:relative;
-  top:-12rem;
-  height:50%;
-}
-/* #department__content .department__menu .contents {
-height: 5rem;
-} */
-#department__content .department__menu .contents .department__button{
-  height:4rem;
-  border: 5px solid white;
-}
-.department__wrapper .rear_ment{
-  position:relative;
-  left:1rem;
-}
+@media screen and (max-height: 600px){
+  .department__description > .title{
+    transform: scale(0.8,0.8) translate(-2.5rem, 0);
+  }
+  .department__description > .body1{
+    transform: scale(0.8,0.8) translate(-2.5rem, -1rem);
+  }
+  .department__description > .body2 > .body2_wrapper{
+    font-size: 0.7rem !important;
+    transform: translateY(-1.5rem);
+
+  }
+  .department__menu{
+    transform: translateY(-0.7rem);
+  }
 }

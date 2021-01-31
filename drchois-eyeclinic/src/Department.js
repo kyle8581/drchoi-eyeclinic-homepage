@@ -68,10 +68,10 @@ function Department() {
                     <div className="department__menu__leftcol">
                         <div className="sight__correction__menu">
                             <div className="wrapper1">
-                                <img
+                                {/* <img
                                     src="department_image/background1.png"
                                     alt="bg"
-                                />
+                                /> */}
                                 <div className="contents">
                                     <DepartmentButton
                                         text="시력교정센터"
@@ -89,10 +89,10 @@ function Department() {
                         </div>
                         <div className="lens__menu">
                             <div className="wrapper2">
-                                <img
+                                {/* <img
                                     src="department_image/background2.png"
                                     alt="bg"
-                                />
+                                /> */}
                                 <div className="contents">
                                     <DepartmentButton
                                         text="렌즈센터"
@@ -111,10 +111,10 @@ function Department() {
                     </div>
                     <div className="noan__menu">
                         <div className="wrapper3">
-                            <img
+                            {/* <img
                                 src="department_image/background3.png"
                                 alt="bg"
-                            />
+                            /> */}
                             <div className="contents">
                                 <DepartmentButton
                                     text="노안·백내장센터"

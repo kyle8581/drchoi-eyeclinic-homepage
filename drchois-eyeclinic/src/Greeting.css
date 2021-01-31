@@ -1,4 +1,12 @@
-.slide0__container{
+.mobile__greeting{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.mobile__greeting > img{
+  width: 100vw;
+}
+.slide0__container {
   width: 100vw;
   height: 100vh;
   background-color: black;
@@ -13,12 +21,8 @@
   object-fit: cover;
   overflow: hidden;
   z-index: -2;
-  
-  
-  
-  
 }
-.blinking__video img{
+.blinking__video img {
   display: hidden;
   position: absolute;
 }
@@ -39,7 +43,6 @@
   animation-duration: 4s;
 }
 @media all and (max-width: 500px) {
-  
 }
 
 @keyframes riseup {
@@ -50,18 +53,21 @@
     opacity: 1;
   }
 }
-@media screen and (max-width:5000px){
-  .slideO__container > img{
+@media screen and (max-width: 5000px) {
+  .slideO__container > img {
     visibility: collapse;
   }
 }
-@media screen and (max-width:500px){
-  .blinking__video, .blinking__video source{
+@media screen and (max-width: 500px) {
+  .blinking__video,
+  .blinking__video source {
     visibility: collapse;
     height: 0;
   }
-  
-  .slide0__container > img{
+  .slide0__container {
+    background-color:black;
+  }
+  .slide0__container > img {
     /* position: initial; */
     visibility: visible;
     position: absolute;

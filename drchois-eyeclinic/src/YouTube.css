@@ -5,7 +5,10 @@
     background-color: white;
     /* background: rgba(179, 172, 172, 0.13); */
 }
-
+.mobile__youtube__greenbox{
+    position: absolute;
+    visibility: collapse;
+}
 .youtube__slide__wrapper .content__wrapper {
     /* background: rgba(120, 196, 69, 0.2); */
     position: absolute;
@@ -136,7 +139,7 @@
     background-color: #555555;
 }
 .text__wrapper .yt__link::after {
-    content: '+';
+    content: "+";
     font-size: smaller;
     transform: translateY(-5px);
     position: absolute;
@@ -152,11 +155,13 @@
     right: 8rem;
     /* transform: translateY(30px); */
     position: fixed;
+    cursor: pointer;
     /* z-index: 10; */
 }
 .youtube__slide__wrapper .downarrow {
     right: 8rem;
     position: fixed;
+    cursor: pointer;
     /* z-index: 10; */
     /* transform: translateY(620px); */
 }
@@ -208,11 +213,13 @@
     }
     .youtube__view {
         width: 90vw;
-        height: calc(90vw / 1.7777);
+        height: calc(90vw / 1) !important;
+        /* transform: translateY(-10em); */
     }
     .youtube__view iframe {
         width: 90vw;
         height: calc(90vw / 1.7777);
+        margin: 0;
     }
     .youtube__view .swiper-slide-active {
         width: 100%;
@@ -235,9 +242,11 @@
         visibility: collapse;
         cursor: none;
     }
-    .youtube__select,
     .youtube__view {
-        transform: translate(1rem, 5rem);
+        transform: translate(1rem, 3rem);
+    }
+    .youtube__select {
+        transform: translate(1rem, 9vw);
     }
 
     .text__wrapper .yt__link {
@@ -249,21 +258,25 @@
         font-size: 1.5rem;
         margin-left: 4vw;
     }
-    .text__wrapper .green__box {
-        margin-left: 0.9rem;
+    .text__wrapper > .green__box {
+        visibility: collapse;
+    }
+    .text__wrapper > .mobile__youtube__greenbox{
         width: 1.5rem;
-        height: 0.25rem;
-        margin-bottom: 40px;
-        transform: translateY(-20px);
+        background-color: #63c3c4;
+        height: 0.3rem;
+        visibility: visible;
+        left: 1rem;
+        top: -1rem;
     }
 }
 
 @media screen and (max-width: 1300px) and (min-width: 501px) {
     .youtube__slide__wrapper {
-        width: 80vw;
+        width: 900px;
         position: absolute;
-        top: 10vh;
-        left: 10vw;
+        top: 100px;
+        left: 5rem;
     }
     .youtube__slide__wrapper .content__wrapper {
         position: relative;
@@ -272,34 +285,57 @@
     }
     .yt__wrapper {
         display: flex;
+        position: absolute;
         flex-direction: column;
-        width: 100%;
-        top: 1rem;
-        /* transform: translateX(0.6rem); */
+        width: 900px;
+        top: 3rem;
+        /* border: 1px solid rgb(156, 29, 29); */
+        transform: translateX(-2.8rem);
+    }
+    .youtube__view {
+        width: 800px !important;
     }
     .youtube__select {
         top: 1rem;
-        width: 80vw;
-        height: 20vh;
+        /* width: 85vw; */
+        height: 18vh;
+        /* border: 2px solid blue; */
+        left: -3rem;
     }
-    .uparrow {
+    .yt__wrapper .uparrow {
         position: absolute;
-        left: -4rem;
+        left: -3rem;
         bottom: 2.5rem;
-        width: 5rem;
-        background-color: yellow;
-        transform: rotateZ(-90deg);
+        height: 35.5px;
+        width: 92px;
+        /* width: 15vh; */
+        /* height: 4rem; */
+        background-color: white;
+        transform: rotateZ(-90deg) translate(0rem, 1rem);
+        z-index: 10;
+        cursor: pointer;
     }
-    .downarrow {
+    .yt__wrapper .downarrow {
         position: absolute;
-        left: 53rem;
-        bottom: 0rem;
-        transform: rotateZ(-90deg);
+        left: 51rem;
+        bottom: 0.2rem;
+        width: 92px;
+        background-color: white;
+        transform: rotateZ(-90deg) translate(2.7rem, 1.8rem);
+        cursor: pointer;
+    }
+    .youtube__select {
+        width: 800px;
+        left: 0;
+        /* margin-left: 3rem; */
+    }
+    .youtube__select .swiper-slide {
+        width: 180px !important;
     }
     .youtube__slide__wrapper .youtube__select img {
-        width: 190px;
-        transform: translateX(-1.7rem);
+        width: 170px;
     }
+ 
     .text__wrapper {
         position: relative;
         /* left:10vw; */

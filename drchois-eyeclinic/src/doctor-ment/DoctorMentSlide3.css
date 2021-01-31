@@ -1,6 +1,4 @@
-
-
-.doctorBackgroundContainer{
+.doctorBackgroundContainer {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -21,11 +19,10 @@
 }
 .doctorBackgroundContainer .doctorName {
   position: absolute;
-  /* top: -3vh; */
-  left: 8vw;
+  top: -1.5rem;
+  left: 6vw;
   width: 500px;
-  height: 6vh;
-  top: 40px;
+  /* height: 6vh; */
   display: flex;
   flex-direction: row;
   align-items: flex-end;
@@ -42,34 +39,26 @@
   transform: translateY(10%);
   margin-left: 10px;
 }
-
-
-.text-container .wordings {
+.trustIn {
+  position: absolute;
+  right: 50px;
+  width: 45vw;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  position: relative;
+  color: #eeeeee;
+  z-index: -10;
+  font-family: NanumBarunGothicBold;
+  font-size: 160pt;
+  text-align: right;
+  line-height: 0.9;
+}
+.wording {
+  /* right: 3.5rem; */
+  left: 35vw;
+  position: absolute;
+  visibility: visible;
   font-family: NanumBarunGothic;
-  font-size: 30pt;
-  color: #60afb2;
-  width: 450px;
-  height: 130px;
-  left: 430px;
-  top: 250px;
-}
-.wordings .comment {
-  text-align: left;
-}
-.wordings .start {
-  color: #b2b2b2;
-  position: absolute;
-  left: 10px;
-  top: -20px;
-}
-.wordings .end {
-  color: #b2b2b2;
-  position: absolute;
-  top: 90px;
+  top: 13rem;
 }
 .doctor-background {
   position: relative;
@@ -78,21 +67,20 @@
   line-height: 1.5;
   font-family: NanumBarunGothic;
   color: #707070;
+  top: 5rem;
 }
-/* }
+
 .doctor-background .col1 {
   position: absolute;
   top: 50px;
-
 }
 .doctor-background .col2 {
   position: absolute;
-  left: 330px;
-  top: 390px;
-} */
 
+  top: 440px;
+}
 
-.text-container .wordings {
+.text-container .wording {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -105,163 +93,116 @@
   left: 430px;
   top: 250px;
 }
-.wordings .comment {
+.qt_start,
+.qt_end {
+  font-size: 4rem;
+  color: #b2b2b2;
+  position: absolute;
+}
+.qt_start {
+  transform: translate(-2.5rem, -6.5rem);
+}
+.qt_end {
+  transform: translate(9rem, -1rem);
+}
+.wording_content {
+  display: flex;
   text-align: left;
+  flex-direction: column;
+  color: #5c5c5c;
 }
-.wordings .start {
-  color: #b2b2b2;
-  position: absolute;
-  left: 10px;
-  top: -20px;
-  font-size: 4rem;
-  transform: translate(-1rem,0);
+.wording_content > span {
+  line-height: 1.5rem;
 }
-.wordings .end {
-  color: #b2b2b2;
-  position: absolute;
-  top: 90px;
-  font-size: 4rem;
-  transform: translate(1rem,0);
-
+.docImage {
+  position: fixed;
+  bottom: 0;
+  width: 45vw;
+  /* transform: translateY(-100vh) translateX(7vw); */
+  /* transform: translate(-20px, 107vh); */
+  /* height: 80vh; */
 }
-/* ------------- 데스크탑 -------------*/
-@media screen and (min-width: 501px){
-  
-  .trustIn {
-    position: absolute;
-    right: 50px;
-    width: 45vw;
-    display: flex;
-    flex-direction: column;
-    color: #eeeeee;
-    z-index: -10;
-    font-family: NanumBarunGothicBold;
-    font-size: 160pt;
-    text-align: right;
-    line-height: 0.9;
-  }
-  .doctor-background {
-    position: relative;
-    text-align: left;
-    padding: 50px;
-    line-height: 1.5;
-    font-family: NanumBarunGothic;
-    color: #707070;
-  }
-  .doctor-background .col1 {
-    position: absolute;
-    top: 50px;
-  
-  }
-  .doctor-background .col2 {
-    position: absolute;
-    left: 330px;
-    top: 390px;
-  }
-  .doctorBackgroundContainer .small__text {
-    font-size: 30pt;
-    color: #707070;
-  }
-  .doctorBackgroundContainer .large__text {
-    font-size: 50pt;
-    color: #60afb2;
-    letter-spacing: 0.15em;
-    transform: translateY(10%);
-    margin-left: 10px;
-  }
-  
-  .docImage {
-    position: fixed;
-    bottom: 0;
-    width: 800px;
-    /* transform: translateY(-100vh) translateX(7vw); */
-    /* transform: translate(-20px, 107vh); */
-    /* height: 80vh; */
-  
-}
-}
-@media all and (min-width:1301px){
-  .tablet_wording{
-    visibility: collapse;
+@media all and (max-height: 800px) {
+  .wording {
+    visibility: hidden !important;
   }
 }
 /* --------- 테블릿 ---------- */
-@media all and (max-width: 1300px) and (min-width:501px){
-  .doctorName{
+@media all and (max-width: 1300px) and (min-width: 801px) {
+  .doctorName {
     transform: translateY(-2rem);
   }
-  .doctorName > .small__text{
+  .doctorName > .small__text {
     font-size: 2rem !important;
   }
-  .doctorName > .large__text{
+  .doctorName > .large__text {
     font-size: 3rem !important;
-
   }
   .docImage {
-    z-index: -12;
+    z-index: -5;
     width: 512px;
     position: absolute;
     right: 3rem;
   }
-  .wordings{
-    visibility: collapse;
-  }
-  .doctor-background{
+  .doctor-background {
     display: flex;
     flex-direction: column;
-    transform: translate(2rem, -2rem);
+    top: 6rem;
+    left: 3rem;
     font-size: 0.9rem;
   }
-  .trust{
+  .trust {
     transform: translateX(-2rem);
   }
-  .trustIn{
+  .trustIn {
     font-size: 10rem;
     right: 0;
-    transform: scale(1.1,1) translateX(-1rem);
+    transform: scale(1.1, 1) translateX(-1rem);
   }
-  .col1{
+  .col1 {
     top: 0 !important;
   }
-  .col2{
+  .col2 {
     top: 21.2rem !important;
     left: 3.2rem !important;
   }
-  .tablet_wording{
-    right: 3.5rem;
+  .wording {
+    /* right: 3.5rem; */
+    left: 40rem;
     position: absolute;
     visibility: visible;
     font-family: NanumBarunGothic;
     top: 2rem;
+    width: 450px;
   }
-  .qt_start, .qt_end{
+  .qt_start,
+  .qt_end {
     font-size: 4rem;
     color: #b2b2b2;
     position: absolute;
   }
-  .qt_start{
+  .qt_start {
     transform: translate(-2.5rem, -6.5rem);
   }
-  .qt_end{
+  .qt_end {
     transform: translate(9rem, -1rem);
   }
-  .tablet_wording_content{
+  .wording_content {
     display: flex;
     text-align: left;
     flex-direction: column;
-    color :#5c5c5c;
+    color: #5c5c5c;
   }
-  .tablet_wording_content > span{
+  .wording_content > span {
     line-height: 1.5rem;
   }
-
 }
 
-@media screen and (max-width:500px){
-  .wordings {
+@media screen and (max-width: 800px) {
+  .wording {
     visibility: collapse;
   }
-  .trustIn{
+  .trustIn {
     display: flex;
     flex-direction: column;
     color: #eeeeee;
@@ -269,37 +210,32 @@
     font-family: NanumBarunGothicBold;
     font-size: 8.4rem;
     text-align: right;
+    z-index: -10;
+    right: 0;
+    align-items: flex-end;
   }
   .doctor-background {
-    position: relative;
-    text-align: left;
-    line-height: 1.5;
-    font-family: NanumBarunGothic;
-    color: #707070;
     font-size: 0.5rem;
-    top: 0.5rem;
-    transform: translate(-1.5rem ,-30rem);
+    top: -3rem;
+    /* transform: translate(-1.5rem, -30rem); */
     display: flex;
     flex-direction: column;
     width: 40vw;
     height: 90vh;
   }
-  
   .doctor-background .col2 {
-    width: 30vw;
+    /* width: 30vw; */
+    left: 3.15rem;
+    top: 19.25rem;
   }
   .docImage {
     z-index: -5;
-    width: 100vw;
+    width: 60vh;
     opacity: 1;
-    left: 10vw;
+    left: 20vw;
     bottom: 0;
     position: absolute;
-    transform: translate(0,0);
-
-  }
-  .trust, .in {
-    z-index: -10;
+    transform: translate(0, 0);
   }
   .doctorBackgroundContainer .small__text {
     font-size: 1.5rem;
@@ -312,7 +248,7 @@
     transform: translateY(10%);
     margin-left: 10px;
   }
-  .text-container .doctorName{
+  .text-container .doctorName {
     visibility: collapse;
     /* position:absolute;
     top:0;
@@ -320,7 +256,7 @@
     width: 300px; */
     /* display: flex; */
   }
-  .col1 div:first-child{
+  .col1 div:first-child {
     margin-bottom: 1rem;
   }
 }
