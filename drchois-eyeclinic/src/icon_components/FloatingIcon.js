@@ -34,7 +34,7 @@ function FloatingIcon({ toshow }) {
             <SmallCircle
                 className="kakao"
                 toggled={isIconToggled}
-                href="https://pf.kakao.com/_lxhVxjC"
+                href="http://pf.kakao.com/_xaxbwWK"
             >
                 <ColoredCircle
                     src="/floating-icon/kakao_colored.png"

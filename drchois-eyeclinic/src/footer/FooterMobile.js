@@ -63,7 +63,8 @@ function FooterMobile() {
                     <IconLink href="https://www.facebook.com/eyelovedrchoi/">
                         <img src="/footer-icon/facebook_icon.png" alt="icon" />
                     </IconLink>
-                    <IconLink href="https://pf.kakao.com/_lxhVxjC">
+
+                    <IconLink href="http://pf.kakao.com/_xaxbwWK">
                         <img src="/footer-icon/kakao_icon.png" alt="icon" />
                     </IconLink>
                 </IconContainer>
