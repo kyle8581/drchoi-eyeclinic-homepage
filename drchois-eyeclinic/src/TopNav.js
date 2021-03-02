@@ -103,6 +103,9 @@ function TopNav({ changefloatshow, swiper }) {
                         </a>
                     </div>
                     <div>
+                        <Link to="/test-process">검사과정 체험하기</Link>
+                    </div>
+                    <div>
                         <p
                             onClick={() => {
                                 clickHamberger()

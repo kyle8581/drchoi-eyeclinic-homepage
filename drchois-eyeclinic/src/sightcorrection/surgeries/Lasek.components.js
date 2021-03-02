@@ -25,6 +25,12 @@ export const FirstTextContainer = styled.div`
 
     color: white;
     width: 50vw;
+    h1,
+    h5,
+    h4,
+    h3 {
+        font-family: NanumSquare_acB;
+    }
     h1 {
         font-size: 4vw;
     }

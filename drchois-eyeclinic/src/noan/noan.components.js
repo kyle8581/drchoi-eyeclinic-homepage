@@ -42,6 +42,9 @@ export const GreenBox = styled.div`
 export const Title = styled.div`
     font-size: 30pt;
     font-family: 'NanumSquare_acEB';
+    @media screen and (max-width: 500px) {
+        font-size: 1.7rem;
+    }
 `
 export const Summary = styled.div`
     font-family: 'NanumSquare_acR';
@@ -79,6 +82,9 @@ export const Title2 = styled.div`
     font-size: 25pt;
     color: #707070;
     align-self: flex-start;
+    @media screen and (max-width: 500px) {
+        font-size: 1.7rem;
+    }
 `
 export const SurgeryImgBox = styled.div`
     display: grid;

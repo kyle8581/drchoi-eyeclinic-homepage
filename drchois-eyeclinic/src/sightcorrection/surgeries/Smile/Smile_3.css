@@ -63,8 +63,8 @@
     .Smile3-container .content-wrapper .summary {
         margin-top: 20px;
         font-family: NanumSquare_acB;
-        line-height: 5vw;
-        font-size: 4vw;
+        line-height: 1.4rem;
+        font-size: 1rem;
     }
     .Smile3-container .content-wrapper .detail .detail-element {
         height: 6vw;
