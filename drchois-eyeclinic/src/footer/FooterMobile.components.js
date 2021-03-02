@@ -168,6 +168,10 @@ export const DividedRow = styled.div`
     justify-content: center;
     font-size: 0.4rem;
     margin-bottom: 0.9rem;
+    a {
+        text-decoration: none;
+        color: #888888;
+    }
     .divider {
         width: 1px;
         height: 0.6rem;

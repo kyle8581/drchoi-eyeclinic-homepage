@@ -1,5 +1,5 @@
 // import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 export const BlackBackGround = styled.div`
     width: 100vw;
@@ -12,20 +12,19 @@ export const BlackBackGround = styled.div`
     position: absolute;
 `
 export const SideMenuContainer = styled.div`
-    @media screen and (min-width: 501px){
-        width:${({ clicked }) => (clicked ? '50vw' : '0')};
+    @media screen and (min-width: 501px) {
+        width: ${({ clicked }) => (clicked ? '50vw' : '0')};
         min-height: 700px;
         overflow-y: hidden;
     }
-    @media screen and (max-width: 500px){
-    
+    @media screen and (max-width: 500px) {
         visibility: ${({ clicked }) => (clicked ? 'visible' : 'collapse')};
         /* display: ${({ clicked }) => (clicked ? 'block' : 'none')}; */
-        width:${({ clicked }) => (clicked ? '90vw' : '0')};
+        width: ${({ clicked }) => (clicked ? '90vw' : '0')};
     }
-    height:100vh;
-    top:0;
-    right:0;
+    height: 100vh;
+    top: 0;
+    right: 0;
     display: flex;
     position: absolute;
     flex-direction: column;
@@ -38,29 +37,24 @@ export const SideMenuContainer = styled.div`
     background-color: #fff;
     color: #000;
     /* padding-top: 10rem; */
-    
-    a{
+
+    a {
         color: #fff;
-        font-size:${({ clicked }) => (clicked ? '1.5rem' : '0px')};
+        font-size: ${({ clicked }) => (clicked ? '1.5rem' : '0px')};
         text-align: left;
-        
+
         text-decoration: none;
         font-family: NanumSquare_acB;
         line-height: 4rem;
-        width:${({ clicked }) => (clicked ? '100%' : '0px')};
+        width: ${({ clicked }) => (clicked ? '100%' : '0px')};
         visibility: ${({ clicked }) => (clicked ? 'visible' : 'collapse')};
-        
-        
     }
-    a:hover{
-        color : rgba(30, 30, 30, 0.5);
-        
+    a:hover {
+        color: rgba(30, 30, 30, 0.5);
     }
-    p:hover{
-        color : rgba(30, 30, 30, 0.5);
-        
+    p:hover {
+        color: rgba(30, 30, 30, 0.5);
     }
-
 `
 export const MenuContainer1 = styled.div`
     width: 300px;
@@ -121,10 +115,14 @@ export const MenuContainer2 = styled.div`
         margin-right: 10px;
         transform: translateY(7px);
     }
-    p {
+    p,
+    a {
         font-size: 1rem;
         color: #6d6d6d;
         margin-right: 8px;
+        width: auto;
+        height: 1.2rem;
+        line-height: 1.9rem;
     }
     @media screen and (min-width: 501px) {
         left: 70px;
@@ -162,5 +160,9 @@ export const InfoContainer = styled.div`
     @media screen and (max-width: 500px) {
         left: 50px;
         bottom: 0px;
+    }
+    @media screen and (max-width: 350px) {
+        /* margin-top: 2rem; */
+        transform: translateY(2rem);
     }
 `

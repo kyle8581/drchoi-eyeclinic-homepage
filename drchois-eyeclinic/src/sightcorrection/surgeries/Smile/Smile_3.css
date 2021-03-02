@@ -1,0 +1,90 @@
+.Smile3-container {
+    width: 1000px;
+    margin: auto;
+    margin-top: 100px;
+    position: relative;
+    z-index: -10;
+}
+.Smile3-container img {
+    z-index: -10;
+    width: 100%;
+}
+.Smile3-container .content-wrapper {
+    width: 900px;
+    position: absolute;
+    color: white;
+    margin-top: 40px;
+    margin-left: 200px;
+}
+.Smile3-container .content-wrapper .title {
+    font-family: NanumSquare_acEB;
+    font-size: 20pt;
+}
+.Smile3-container .content-wrapper .pa1 {
+    margin-top: 70px;
+}
+.Smile3-container .content-wrapper .summary {
+    margin-top: 20px;
+    font-family: NanumSquare_acB;
+    line-height: 25px;
+}
+
+.Smile3-container .content-wrapper .detail {
+    margin-top: 20px;
+}
+.Smile3-container .content-wrapper .detail .detail-element {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+}
+.Smile3-container .content-wrapper .detail .detail-element .green_circle_with_check {
+    color: #63c3c4;
+}
+.Smile3-container .content-wrapper .detail .detail-element h4 {
+    margin-left: 5pt;
+    font-family: NanumSquare_acB;
+}
+@media screen and (max-width: 500px) {
+    .Smile3-container {
+        width: 100vw;
+        margin-top: 10vw;
+        display: flex;
+        justify-content: center;
+    }
+    .Smile3-container .content-wrapper {
+        width: 90vw;
+        margin-left: 0;
+        margin-top: 10vw;
+    }
+    .Smile3-container .content-wrapper .pa1 {
+        margin-top: 10vw;
+    }
+    .Smile3-container .content-wrapper .summary {
+        margin-top: 20px;
+        font-family: NanumSquare_acB;
+        line-height: 5vw;
+        font-size: 4vw;
+    }
+    .Smile3-container .content-wrapper .detail .detail-element {
+        height: 6vw;
+    }
+    .Smile3-container .content-wrapper .detail .detail-element .green_circle_with_check {
+        width: 0.8rem;
+        height: 0.8rem;
+        border-radius: 0.8rem;
+    }
+    .Smile3-container .content-wrapper .detail .detail-element h4 {
+        font-size: 3.5vw;
+    }
+}
+@media screen and (max-width: 1000px) and (min-width: 501px) {
+    .Smile3-container {
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+    }
+    .Smile3-container .content-wrapper {
+        width: 60vw;
+        margin-left: 0;
+    }
+}

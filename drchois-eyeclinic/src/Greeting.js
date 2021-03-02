@@ -1,8 +1,9 @@
 import React from 'react'
 import './Greeting.css'
 import Media from 'react-media'
-import TabletGreeting from './TabletGreeting'
+import TabletGreeting from './greeting/TabletGreeting'
 import blinkingVideo from './videos/0_0_video.mp4'
+import MobileGreeting from './greeting/MobileGreeting'
 // import Background from '/firstpage.png'
 function Greeting() {
     return (
@@ -15,9 +16,7 @@ function Greeting() {
             >
                 {(matches) =>
                     matches.small ? (
-                        <div className="mobile__greeting">
-                            <img src="/firstpage.png" alt="bg" />
-                        </div>
+                        <MobileGreeting />
                     ) : matches.medium ? (
                         <TabletGreeting />
                     ) : (

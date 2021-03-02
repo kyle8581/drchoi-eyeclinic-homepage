@@ -102,7 +102,20 @@
   transform: translateY(-1rem);
   cursor: pointer;
 }
-
+#department__content .department__menu .contents .showup {
+  display: flex;
+  flex-direction: row;
+}
+#department__content .department__menu .contents .link {
+  text-decoration: none;
+  color: white;
+  margin-left: 0.5vw;
+  font-size: 20px;
+  font-family: NanumSquare_acR;
+}
+#department__content .department__menu .contents .link :hover {
+  color: #707070;
+}
 .department__wrapper .rear_ment {
   position: relative;
   top: 80vh;
@@ -193,6 +206,12 @@
     letter-spacing: 0.001rem;
     border-radius: 2rem;
   }
+  #department__content .department__menu .contents .link {
+    font-size: 1vw;
+  }
+  #department__content .department__menu .contents .link {
+    font-size: 1vw;
+  }
   .department__button > p {
     transform: translateY(1px);
   }
@@ -277,19 +296,18 @@
     left: 1rem;
   }
 }
-@media screen and (max-height: 600px){
-  .department__description > .title{
-    transform: scale(0.8,0.8) translate(-2.5rem, 0);
+@media screen and (max-height: 600px) {
+  .department__description > .title {
+    transform: scale(0.8, 0.8) translate(-2.5rem, 0);
   }
-  .department__description > .body1{
-    transform: scale(0.8,0.8) translate(-2.5rem, -1rem);
+  .department__description > .body1 {
+    transform: scale(0.8, 0.8) translate(-2.5rem, -1rem);
   }
-  .department__description > .body2 > .body2_wrapper{
+  .department__description > .body2 > .body2_wrapper {
     font-size: 0.7rem !important;
     transform: translateY(-1.5rem);
-
   }
-  .department__menu{
+  .department__menu {
     transform: translateY(-0.7rem);
   }
 }

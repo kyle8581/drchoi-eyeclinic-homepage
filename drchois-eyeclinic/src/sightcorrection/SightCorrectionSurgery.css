@@ -1,8 +1,23 @@
 .sightcorrection-container {
   display: block;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
 }
 .topnav__force__fix {
   position: fixed;
   width: 100%;
   top: 0;
+}
+@media screen and (max-width: 500px) and (min-width: 350px) {
+  .green_circle_with_check,
+  .green_circle_with_number {
+    transform: scale(0.8);
+  }
+}
+@media screen and (max-width: 350px) {
+  .green_circle_with_check,
+  .green_circle_with_number {
+    transform: scale(0.7);
+  }
 }

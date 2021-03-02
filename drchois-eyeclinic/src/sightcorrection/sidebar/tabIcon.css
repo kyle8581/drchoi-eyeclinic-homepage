@@ -8,8 +8,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family:NanumSquareExtraBold;
+  font-family: NanumSquare_acEB;
 }
 .tabContainer .false {
   visibility: hidden;
-}
+width: 0;}

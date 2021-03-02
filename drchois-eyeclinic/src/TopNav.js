@@ -16,7 +16,7 @@ function TopNav({ changefloatshow, swiper }) {
     function clickHamberger() {
         setOpen(!isOpen)
         console.log(isOpen)
-        changefloatshow()
+        // changefloatshow()
     }
     return (
         <div className="nav_side_wrapper">
@@ -33,19 +33,18 @@ function TopNav({ changefloatshow, swiper }) {
                 </div>
 
                 <ul className="navbar__pagelink">
-                    <li
-                        onClick={() => {
-                            swiper.slideTo(1)
-                        }}
-                    >
-                        {/* <Link to="/dr-choi">최승일 대표원장</Link> */}
-                        최승일 대표원장
+                    <li>
+                        <Link to="/dr-choi">최승일 대표원장</Link>
                     </li>
                     <li>
-                        시력교정술
-                        {/* <Link to="/sight-correction">시력교정술</Link> */}
+                        <Link to="/sight-correction">시력교정술</Link>
                     </li>
-                    <li>노안수술</li>
+                    <li>
+                        <Link to="/cataract">노안수술</Link>
+                    </li>
+                    <li>
+                        <Link to="/test-process">정밀검사과정</Link>
+                    </li>
                     <li>후기/이벤트</li>
                 </ul>
                 <div className="hamburger__icon">
@@ -140,21 +139,36 @@ function TopNav({ changefloatshow, swiper }) {
                     <div className="row">
                         <div className="center">백내장센터</div>
                         <div className="divider"></div>
-                        <p>백내장</p>
-                        <p>노안교정</p>
+                        <Link to="./cataract">백내장</Link>
+                        {/* <p>노안교정</p> */}
                     </div>
                     <div className="row">
                         <div className="center">시력교정센터</div>
                         <div className="divider"></div>
-                        <p>스마일</p>
-                        <p>라식</p>
-                        <p>라섹</p>
-                        <p>ICL</p>
+                        <Link
+                            to={{
+                                pathname: `/sight-correction`,
+                                state: { initialPage: 'smile' },
+                            }}
+                        >
+                            스마일
+                        </Link>
+                        {/* <p>라식</p> */}
+                        <Link
+                            to={{
+                                pathname: `/sight-correction`,
+                                state: { initialPage: 'lasek' },
+                            }}
+                        >
+                            라섹
+                        </Link>
+
+                        <Link to="./icl">ICL</Link>
                     </div>
                     <div className="row">
                         <div className="center">렌즈센터</div>
                         <div className="divider"></div>
-                        <p>드림렌즈</p>
+                        <Link to="/dream-lens">드림렌즈</Link>
                         <p>RGP렌즈</p>
                     </div>
                 </MenuContainer2>

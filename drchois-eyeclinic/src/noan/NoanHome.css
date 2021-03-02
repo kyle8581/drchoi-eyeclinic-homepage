@@ -1,0 +1,12 @@
+.noanhome-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.noanhome-container .noan-navigator {
+    position: fixed;
+    top: 0;
+}

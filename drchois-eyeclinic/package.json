@@ -49,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^1.12.0",
     "eslint-plugin-styled-components-a11y": "0.0.28",
     "file-loader": "^6.2.0"
   }

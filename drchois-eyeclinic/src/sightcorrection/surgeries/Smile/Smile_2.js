@@ -1,6 +1,7 @@
 import React from 'react'
 import './Smile_2.css'
 import surgery from '../contents'
+import GreenCircleWithNumber from '../../../icon_components/GreenCircleWithNumber'
 function SmileTwo() {
     const smile = surgery.filter((ele) => ele.Name === 'Smile')[0].Process_img
     return (
@@ -40,7 +41,17 @@ function SmileTwo() {
                                         src={`/surgery${el.src}`}
                                         alt={`SmileProcess${el.id + 1}`}
                                     />
-                                    <div className="summary">{el.txt}</div>
+                                    <div className="summary">
+                                        <div>
+                                            <GreenCircleWithNumber
+                                                classname="green_circle_with_number"
+                                                number={el.id}
+                                            />
+                                        </div>
+                                        <div className="summarytext">
+                                            {el.txt}
+                                        </div>
+                                    </div>
                                 </div>
                             )
                         })}

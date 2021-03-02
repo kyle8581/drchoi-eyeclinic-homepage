@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {
     Wrapper,
     GrayContainer,
@@ -74,7 +75,7 @@ function FooterMobile() {
                         <div className="divider"></div>
                         <div>이용약관</div>
                         <div className="divider"></div>
-                        <div>비급여항목</div>
+                        <Link to="/no-pay">비급여항목</Link>
                     </DividedRow>
                     <div>압구정최안과 서울특별시 강남구 논현로 848 8층</div>
                     <div>대표자: 최승일</div>

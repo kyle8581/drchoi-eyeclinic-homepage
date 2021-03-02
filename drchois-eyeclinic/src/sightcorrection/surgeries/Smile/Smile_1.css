@@ -1,10 +1,9 @@
 .Smile1-container {
   width: 90vw;
   margin: auto;
-  height: 90vh;
 }
 .Smile1-container .content-wrapper {
-  position:relative;
+  position: relative;
   height: 80%;
   padding: 50px 0;
   width: 80%;
@@ -12,24 +11,25 @@
   display: flex;
   flex-direction: row;
   align-content: center;
-  margin-top:50px;
+  margin-top: 50px;
+  z-index: -10;
 }
 .Smile1-container .content-wrapper .text-wrapper {
-  position:relative;
+  position: relative;
   margin-top: 150px;
   height: 60%;
-  width:90%;
+  width: 90%;
   display: flex;
   flex-direction: column;
 }
 
 .Smile1-container .text-wrapper .row1 {
-  font-size: 50pt;
-  font-family: NanumSquareBold;
+  font-size: 5vw;
+  font-family: NanumSquare_acB;
   color: #707070;
 }
 .Smile1-container .text-wrapper .row2 {
-  margin-top: 15px;
+  margin-top: 1vw;
   display: flex;
   flex-direction: row;
 }
@@ -39,45 +39,67 @@
 }
 
 .Smile1-container .text-wrapper .row2 .word:not(:first-child) {
-  margin-left: 10px;
+  margin-left: 0.8vw;
 }
 
 .Smile1-container .text-wrapper .row2 .blue {
-  font-size: 20pt;
-  font-family: NanumSquareExtraBold;
+  font-size: 2vw;
+  font-family: NanumSquare_acEB;
   color: #63c3c4;
   letter-spacing: 0.03em;
 }
 .Smile1-container .text-wrapper .row2 .gray {
-  font-size: 20pt;
-  font-family: NanumSquareRegular;
+  font-size: 2vw;
+  font-family: NanumSquare_acR;
   font-weight: bold;
   color: #707070;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.03rem;
 }
 
 .Smile1-container .text-wrapper .row3 {
-  margin-top: 30px;
+  margin-top: 3vw;
   display: flex;
   flex-direction: column;
-  font-size: 22pt;
+  font-size: 2.2vw;
   font-family: NanumSquareBold;
   color: #707070;
 }
-.Smile1-container .text-wrapper .row3 .part{
-  width: 120%
+.Smile1-container .text-wrapper .row3 .part {
+  width: 120%;
 }
 .Smile1-container .text-wrapper .row4 {
-  width:120%;
+  width: 120%;
   margin-top: 40px;
   display: flex;
   flex-direction: column;
-  font-size: 23pt;
+  font-size: 2.3vw;
   font-family: NanumSquareExtraBold;
   font-weight: bold;
   color: #63c3c4;
-
 }
 .Smile1-container .img-wrapper {
-  margin-left:80px;
+  margin-left: 80px;
+}
+.Smile1-container .img-wrapper img {
+  width: 40vw;
+}
+@media screen and (max-width: 500px) {
+  .Smile1-container .content-wrapper {
+    flex-direction: column;
+  }
+  .Smile1-container .content-wrapper .text-wrapper {
+    margin-top: 0;
+  }
+  .Smile1-container .text-wrapper .row1 {
+    font-size: 11vw;
+  }
+  .Smile1-container .text-wrapper .row2 .blue,
+  .Smile1-container .text-wrapper .row2 .gray,
+  .Smile1-container .text-wrapper .row3,
+  .Smile1-container .text-wrapper .row4 {
+    font-size: 4vw;
+  }
+  .Smile1-container .img-wrapper img {
+    width: 60vw;
+  }
 }

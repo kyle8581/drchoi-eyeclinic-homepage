@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { ShowUp } from './Deparment.components'
+import { Link } from 'react-router-dom'
 import './Department.css'
 import DepartmentButton from './icon_components/DepartmentButton'
 import GreenBox from './icon_components/GreenBox'
@@ -27,9 +28,41 @@ function Department() {
         setShow3(!show3)
     }
     const components = [
-        { id: 0, comp: ['스마일', '라식', '라섹', 'ICL'] },
-        { id: 1, comp: ['드림렌즈', 'RGP렌즈'] },
-        { id: 2, comp: ['백내장', '노안교정'] },
+        {
+            id: 0,
+            comp: [
+                {
+                    title: '스마일',
+                    add: `/sight-correction`,
+                    initialpage: 'smile',
+                },
+                {
+                    title: '라식',
+                    add: `/sight-correction`,
+                    initialpage: 'lasik',
+                },
+                {
+                    title: '라섹',
+                    add: `/sight-correction`,
+                    initialpage: 'lasek',
+                },
+                { title: 'ICL', add: './icl' },
+            ],
+        },
+        {
+            id: 1,
+            comp: [
+                { title: '드림렌즈', add: './dream-lens' },
+                { title: 'RGP렌즈', add: './dream-lens' },
+            ],
+        },
+        {
+            id: 2,
+            comp: [
+                { title: '백내장', add: './cataract' },
+                { title: '노안교정', add: './cataract' },
+            ],
+        },
     ]
     // function toggleShow(index) {
     //     console.log(index);
@@ -79,9 +112,57 @@ function Department() {
                                     />
                                     <ShowUp show={show1}>
                                         <div className="showup">
-                                            {components[0].comp.map((a) => (
-                                                <span>{a}</span>
-                                            ))}
+                                            {/* {components[0].comp.map((a) => (
+                                                <Link
+                                                    key={a.title}
+                                                    className="link"
+                                                    to={{
+                                                        pathname: `/sight-correction`,
+                                                        state: {
+                                                            initialPage:
+                                                                'smile',
+                                                        },
+                                                    }}
+                                                >
+                                                    스마일
+                                                </Link>
+                                            ))} */}
+                                            <Link
+                                                className="link"
+                                                to={{
+                                                    pathname: `/sight-correction`,
+                                                    state: {
+                                                        initialPage: 'smile',
+                                                    },
+                                                }}
+                                            >
+                                                스마일
+                                            </Link>
+                                            <Link
+                                                className="link"
+                                                to={{
+                                                    pathname: `/sight-correction`,
+                                                    state: {
+                                                        initialPage: 'lasik',
+                                                    },
+                                                }}
+                                            >
+                                                라식
+                                            </Link>
+                                            <Link
+                                                className="link"
+                                                to={{
+                                                    pathname: `/sight-correction`,
+                                                    state: {
+                                                        initialPage: 'lasek',
+                                                    },
+                                                }}
+                                            >
+                                                라섹
+                                            </Link>
+                                            <Link to="/icl" className="link">
+                                                ICL
+                                            </Link>
                                         </div>
                                     </ShowUp>
                                 </div>
@@ -101,7 +182,12 @@ function Department() {
                                     <ShowUp show={show2}>
                                         <div className="showup">
                                             {components[1].comp.map((a) => (
-                                                <span>{a}</span>
+                                                <Link
+                                                    to={a.add}
+                                                    className="link"
+                                                >
+                                                    {a.title}
+                                                </Link>
                                             ))}
                                         </div>
                                     </ShowUp>
@@ -123,7 +209,9 @@ function Department() {
                                 <ShowUp show={show3}>
                                     <div className="showup">
                                         {components[2].comp.map((a) => (
-                                            <span>{a}</span>
+                                            <Link to={a.add} className="link">
+                                                {a.title}
+                                            </Link>
                                         ))}
                                     </div>
                                 </ShowUp>

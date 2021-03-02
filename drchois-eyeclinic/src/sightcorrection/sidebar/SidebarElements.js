@@ -7,8 +7,7 @@ export const SidebarContainer = styled.aside`
     position: fixed;
     top: 40%;
     right: 10px;
-    z-index: 10;
-
+    z-index: 5;
     @media screen and (max-width: 960px) {
         transition: 0.8s all ease;
     }
@@ -20,7 +19,7 @@ export const NavWrapper = styled.div`
     color: #747373;
     height: 50px;
 `
-export const NavIcon = styled(Link)`
+export const NavIcon = styled.div`
     width: 15px;
     height: 15px;
     &:hover {
