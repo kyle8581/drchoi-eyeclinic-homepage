@@ -34,7 +34,7 @@ function SmileThr() {
                     )
                 })}
             </div>
-            <img src="smile/ynu_bg_2.png" alt="dr_choi" />
+            <img className="ynu2" src="smile/ynu_bg_2.png" alt="dr_choi" />
         </section>
     )
 }

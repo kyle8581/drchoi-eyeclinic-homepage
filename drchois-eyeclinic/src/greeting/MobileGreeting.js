@@ -31,7 +31,7 @@ function MobileGreeting() {
                         <p>압구정역 3번 출구 CGV 8층 압구정최안과</p>
                     </LocationText>
                 </InfoRow>
-                <MobileGreetingVideo autoPlay muted>
+                <MobileGreetingVideo autoPlay muted playsInline={true}>
                     <source src={MobileGreetingVideoFile} type="video/mp4" />
                 </MobileGreetingVideo>
                 <MentRow>
@@ -48,7 +48,7 @@ function MobileGreeting() {
                         사후관리를 원칙으로 하고 있습니다.
                     </SecondRow>
                 </MentRow>
-                <MobileDepartment />
+                <MobileDepartment style={{ marinTop: '0' }} />
             </Container>
         </Wrapper>
     )

@@ -8,6 +8,7 @@
 .Smile3-container img {
     z-index: -10;
     width: 100%;
+    /* height:; */
 }
 .Smile3-container .content-wrapper {
     width: 900px;
@@ -75,6 +76,12 @@
     }
     .Smile3-container .content-wrapper .detail .detail-element h4 {
         font-size: 3.5vw;
+    }
+    .Smile3-container > .ynu2 {
+        z-index: -10;
+        width: 100vw;
+        height: calc(100vw / 750 * 2226);
+        /* height:; */
     }
 }
 @media screen and (max-width: 1000px) and (min-width: 501px) {

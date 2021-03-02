@@ -55,6 +55,7 @@
     text-decoration: none;
     color: white;
     margin-left: 0.5vw;
+    font-family: NanumSquare_acR;
 }
 @media screen and (max-width: 500px) {
     .department__menu {
@@ -83,6 +84,9 @@
         height: 100%;
         background-size: 100% 100%;
         background-repeat: no-repeat;
+    }
+    .department__menu .contents .link {
+        font-size: 9px;
     }
     .sight__correction__menu .department__button {
         width: 5rem;

@@ -1,8 +1,12 @@
 import styled from 'styled-components'
-
+export const View = styled.div`
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+`
 export const NoanContainer = styled.div`
     width: 80vw;
-    height: 800px;
+    height: auto;
     margin: auto;
     margin-top: 150px;
     display: flex;
@@ -16,6 +20,8 @@ export const IntroductionBox = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
+    height: auto;
+    position: relative;
     /* background-color: yellow; */
     color: #707070;
 `
@@ -50,6 +56,7 @@ export const IntroductionImgBox = styled.img`
     display: flex;
     justify-content: center;
     margin-top: 30px;
+    width: 100%;
 `
 
 export const ImgBox = styled.div`
@@ -64,6 +71,7 @@ export const SurgeryProcess = styled.div`
     flex-direction: column;
     margin-top: 40px;
     align-items: center;
+    height: auto;
 `
 
 export const Title2 = styled.div`
@@ -106,11 +114,11 @@ export const TagBox = styled.div`
     }
     @media screen and (max-width: 500px) {
         .green_circle_with_number {
-            width: 0.8rem;
-            height: 0.8rem;
-            border-radius: 0.8rem;
+            width: 2.5vw;
+            height: 2.5vw;
+            border-radius: 2.5vw;
             p {
-                font-size: 0.7rem;
+                font-size: 2.3vw;
             }
         }
         margin-top: 2vw;
@@ -136,7 +144,7 @@ export const ImgTag2 = styled.div`
     font-family: 'NanumSquare_acR';
     margin-left: 5px;
     @media screen and (max-width: 500px) {
-        font-size: 1vw;
+        font-size: 2.2vw;
         margin-left: 0;
     }
     @media screen and (max-width: 1000px) and (min-width: 501px) {

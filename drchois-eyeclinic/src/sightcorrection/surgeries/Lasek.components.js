@@ -65,12 +65,12 @@ export const FirstTextContainer = styled.div`
         }
         h4 {
             margin-top: -1vw;
-            font-size: 1px;
+            font-size: 7px;
             line-height: 3.5vw;
         }
         h3 {
             margin-top: 3px;
-            font-size: 1px;
+            font-size: 7px;
             line-height: 3.5vw;
         }
     }
@@ -187,11 +187,14 @@ export const SecondSecondImgTagBox = styled.div`
     } */
     @media screen and (max-width: 500px) {
         margin-top: 0.5vw;
-        font-size: 0.3vw;
+        font-size: 2.1vw;
         .green_circle_with_number {
-            width: 0.8rem;
-            height: 0.8rem;
-            border-radius: 0.8rem;
+            width: 2.1vw;
+            height: 2.2vw;
+            border-radius: 2.1vw;
+            p {
+                font-size: 2vw;
+            }
         }
     }
 `

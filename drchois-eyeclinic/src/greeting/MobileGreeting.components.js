@@ -19,6 +19,7 @@ export const InfoRow = styled.div`
     font-family: ${NSBold};
     padding-left: 20px;
     justify-content: baseline;
+    /* border: 1px solid; */
     .phone_number {
         font-size: 1rem;
         color: #043677;
@@ -31,7 +32,10 @@ export const MobileLocationIcon = styled(LocationIcon)`
     transform: translateY(-4px);
 `
 
-export const MobileGreetingVideo = styled.video``
+export const MobileGreetingVideo = styled.video`
+    height: auto;
+    width: 100vw;
+`
 export const LocationText = styled.div`
     display: flex;
     flex-direction: column;
@@ -51,16 +55,27 @@ export const MentRow = styled.div`
     justify-content: center;
     align-items: center;
     width: 100vw;
-    margin-top: 10vw;
+    /* border: 1px solid; */
+    margin-top: 0.5rem;
+    height: auto;
+    transform: scale(0.9);
+
     @media screen and (max-width: 350px) {
-        margin-bottom: 3vw;
-        margin-top: 1vw;
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    @media screen and (max-width: 320px) {
+        height: 0;
+        visibility: collapse;
     }
 `
 export const FirstRow = styled.div`
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
     width: 80vw;
+    height: 2rem;
     font-family: NanumSquare_acEB;
     justify-content: center;
 `
@@ -82,7 +97,7 @@ export const FirstRowSub = styled.div`
     color: #707070;
     font-family: NanumSquare_acEB;
     font-size: 3.5vw;
-    margin-top: 1vw;
+    /* margin-top: 1vw; */
     @media screen and (max-width: 350px) {
         font-size: 1.5vw;
         margin-top: 0.2vw;
@@ -91,15 +106,15 @@ export const FirstRowSub = styled.div`
 export const SecondRow = styled.div`
     color: #707070;
     font-family: NanumSquare_acR;
-    font-size: 2vw;
+    font-size: 0.3rem;
     width: 70vw;
-    margin-top: 2vw;
+    margin-top: 0.3rem;
     text-align: center;
-    margin-bottom: 8vw;
+    margin-bottom: 0;
     @media screen and (max-width: 350px) {
         font-size: 0.1vw;
-        margin-bottom: 3vw;
-        margin-top: 0.5vw;
-        margin-bottom: 1vw;
+        margin-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0;
     }
 `

@@ -22,12 +22,18 @@ export const Container = styled.div`
         flex-direction: column;
         margin-left: 10rem;
     }
-    @media screen and (max-width: 500px) {
-        transform: scale(0.6) translateY(-20rem);
+    @media screen and (max-width: 500px) and (min-width: 341px) {
+        transform: scale(0.6) translateY(-40rem);
         flex-direction: column;
-        height: 1200px;
+        height: 2000px !important;
+        /* border: 1px solid; */
     }
-    /* border: 1px solid; */
+    @media screen and (max-width: 340px) {
+        transform: scale(0.5) translateY(-60rem);
+        flex-direction: column;
+        height: 2000px !important;
+    }
+    /*border:1pxsolid*/
     width: 1200px;
     height: 800px;
     justify-content: space-between;
@@ -62,6 +68,7 @@ export const Grid1 = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: 40px 120px 40px 50px 40px 160px 40px 50px 40px 50px 40px 50px;
     border: 1px solid #9d9c9c;
+    /* height: auto; */
     .green_back {
         background-color: #76afad;
         color: white;
@@ -87,6 +94,10 @@ export const Grid1 = styled.div`
     }
     .content.single {
         padding: 15px;
+    }
+    @media screen and (max-width: 500px) {
+        margin-bottom: 10rem;
+        height: auto;
     }
 `
 export const Grid2 = styled.div`
