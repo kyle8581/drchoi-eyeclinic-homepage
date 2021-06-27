@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import SwiperCore, {
     Navigation,
     Pagination,
@@ -25,6 +25,7 @@ import YouTube from './YouTube'
 import Map from './map/Map'
 import FooterReturn from './footer/FooterReturn'
 import FloatingIcon from './icon_components/FloatingIcon'
+import { SlideContext } from './SlideContext'
 // install Swiper components
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel])
@@ -35,7 +36,11 @@ function Home() {
     }
     let currentActiveSlide = null
     const [swiperInstance, setSwiperInstance] = useState(null)
-    const [curSlide, setCurslide] = useState(1)
+    const { curSlide, setCurslide } = useContext(SlideContext)
+    useEffect(() => {
+        if (swiperInstance !== null) swiperInstance.slideTo(curSlide)
+    }, [swiperInstance, curSlide])
+
     const [toFloatIconShow, changeFloatShow] = useState(true)
 
     return (

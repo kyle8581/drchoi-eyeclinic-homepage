@@ -8,11 +8,15 @@ import NoPay from './no-pay/NoPay'
 import Icl from './icl/Icl'
 import TestProcess from './test-process/TestProcess'
 import DreamLens from './dream-lens/DreamLens'
+import Signup from './signup/Signup'
+// for firebase
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 import { FirebaseAuthProvider } from '@react-firebase/auth'
 import { UserContext } from './UserContext'
+import { SlideContext } from './SlideContext'
+import { SightCorrectionSlideContext } from './SightCorrectionSlideContext'
 const firebaseConfig = {
     apiKey: 'AIzaSyArAzMQJPh9WuSk9eMaBzP38DhuAK2p41I',
     authDomain: 'drchoi-eyeclinic-homepage.firebaseapp.com',
@@ -31,22 +35,34 @@ function App() {
         phone_number: 'none',
         authority: 'default',
     })
+    const [curSlide, setCurslide] = useState(0)
+    const [pageState, setPageState] = useState('lasik')
     return (
         <FirebaseAuthProvider {...firebaseConfig} firebase={firebase}>
             <UserContext.Provider value={{ userInfo, setUserInfo }}>
-                <BrowserRouter>
-                    <Route
-                        path="/sight-correction"
-                        component={SightCorrectionSurgery}
-                    />
-                    <Route path="/cataract" component={NoanHome} />
-                    <Route path="/" exact={true} component={Home} />
-                    <Route path="/dr-choi" component={DoctorHome} />
-                    <Route path="/no-pay" component={NoPay} />
-                    <Route path="/icl" component={Icl} />
-                    <Route path="/test-process" component={TestProcess} />
-                    <Route path="/dream-lens" component={DreamLens} />
-                </BrowserRouter>
+                <SlideContext.Provider value={{ curSlide, setCurslide }}>
+                    <SightCorrectionSlideContext.Provider
+                        value={{ pageState, setPageState }}
+                    >
+                        <BrowserRouter>
+                            <Route
+                                path="/sight-correction"
+                                component={SightCorrectionSurgery}
+                            />
+                            <Route path="/cataract" component={NoanHome} />
+                            <Route path="/" exact={true} component={Home} />
+                            <Route path="/dr-choi" component={DoctorHome} />
+                            <Route path="/no-pay" component={NoPay} />
+                            <Route path="/icl" component={Icl} />
+                            <Route
+                                path="/test-process"
+                                component={TestProcess}
+                            />
+                            <Route path="/dream-lens" component={DreamLens} />
+                            <Route path="/signup" component={Signup}></Route>
+                        </BrowserRouter>
+                    </SightCorrectionSlideContext.Provider>
+                </SlideContext.Provider>
             </UserContext.Provider>
         </FirebaseAuthProvider>
     )

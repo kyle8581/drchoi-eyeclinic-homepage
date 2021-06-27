@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
 import { Element } from 'react-scroll'
 import lasik_sec1_img from './lasik_sec1_img1.png'
-
+import lasik_sec3_img from './lasik_sec3_img1.png'
 export const LasikContainer = styled(Element)`
     /* margin: auto; */
     width: 100vw;
@@ -44,11 +44,17 @@ export const Lasik_sec1_content = styled.div`
         margin-top: 1.4vw;
         font-size: 1.4vw;
         line-height: 1.8vw;
+        margin-bottom: 1.5vw;
     }
     h4 {
-        margin-top: 1.5vw;
         font-size: 1.5vw;
         color: #3c92c7;
+    }
+    @media screen and (max-width: 600px) {
+        h3 {
+            line-height: 2.5vw;
+        }
+        width: 40vw;
     }
 `
 export const Lasik_sec2 = styled.div`
@@ -78,17 +84,24 @@ export const Lasik_sec2_row1_col2 = styled.div`
     /* @media screen and (max-width: 500px) {
         transform: translate(0, 0);
     } */
+    @media screen and (max-width: 711px) {
+        width: 31vw;
+    }
+    @media screen and (max-width: 570px) {
+        width: 40vw;
+        justify-content: center;
+    }
 `
 export const Lasik_sec2_row1_col2_title = styled.div`
     color: #63c3c4;
     font-family: NanumSquare_acEB;
     font-size: 1.5vw;
-    /* @media screen and (max-width: 500px) {
-        font-size: 4.5vw;
+    @media screen and (max-width: 711px) {
+        font-size: 2vw;
     }
-    @media screen and (min-width: 1500px) {
+    /* @media screen and (min-width: 1500px) {
         font-size: 3vw;
-    } */
+    }  */
 `
 export const Lasik_sec2_row1_col2_Ul = styled.ul`
     margin-top: 2vw;
@@ -123,6 +136,12 @@ export const Lasik_sec2_row2_title = styled.div`
     span {
         color: #63c3c4;
     }
+    @media screen and (max-width: 1120px) {
+        font-size: 2.3vw;
+    }
+    @media screen and (max-width: 800px) {
+        font-size: 2.8vw;
+    }
 `
 export const Lasik_sec2_row2_content = styled.div`
     margin-top: 1vw;
@@ -132,18 +151,31 @@ export const Lasik_sec2_row2_content = styled.div`
     span {
         font-weight: bold;
     }
+    @media screen and (max-width: 1120px) {
+        font-size: 1.7vw;
+    }
 `
 export const Lasik_sec2_row2_img = styled.img`
     width: 100%;
-    margin-top: 1vw;
+    margin-top: 1.5vw;
 `
 export const Lasik_sec2_row3 = styled.div`
     h1 {
-        font-size: 2vw;
+        font-size: 2.3vw;
         color: #707070;
         font-family: NanumSquare_acEB;
     }
     margin-top: 5vw;
+    @media screen and (max-width: 1120px) {
+        h1 {
+            font-size: 2.5vw;
+        }
+    }
+    @media screen and (max-width: 800px) {
+        h1 {
+            font-size: 3vw;
+        }
+    }
 `
 export const Lasik_sec2_row3_imgBox = styled.div`
     margin-top: 1rem;
@@ -176,15 +208,35 @@ export const Lasik_sec2_row3_imgTagBox = styled.div`
         height: 0.8rem;
         border-radius: 0.8rem;
     } */
-    @media screen and (max-width: 500px) {
-        margin-top: 0.5vw;
-        font-size: 9px;
+    @media screen and (max-width: 1410px) {
         .green_circle_with_number {
-            width: 2.1vw;
-            height: 2.2vw;
-            border-radius: 2.1vw;
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
             p {
-                font-size: 8px;
+                font-size: 15px;
+            }
+        }
+    }
+    @media screen and (max-width: 1000px) {
+        .green_circle_with_number {
+            width: 12px;
+            height: 12px;
+            border-radius: 12px;
+            p {
+                font-size: 12px;
+            }
+        }
+    }
+    @media screen and (max-width: 700px) {
+        margin-top: 3px;
+        margin-left: 0px;
+        .green_circle_with_number {
+            width: 10px;
+            height: 10px;
+            border-radius: 10px;
+            p {
+                font-size: 10px;
             }
         }
     }
@@ -193,4 +245,151 @@ export const Lasik_sec2_row3_imgTag = styled.div`
     margin-left: 3pt;
     color: #707070;
     font-family: NanumSquare_acR;
+    @media screen and (max-width: 1410px) {
+        font-size: 15px;
+    }
+    @media screen and (max-width: 1000px) {
+        font-size: 12px;
+    }
+    @media screen and (max-width: 700px) {
+        font-size: 10px;
+    }
+`
+export const Lasik_sec2_row4 = styled.div`
+    margin-top: 60px;
+    font-family: NanumSquare_acEB;
+    display: flex;
+    flex-direction: column;
+    p {
+        font-size: 25px;
+        color: #707070;
+    }
+    @media screen and (max-width: 1000px) {
+        width: 80vw;
+    }
+`
+export const Lasik_sec2_row4_contextWrapper = styled.div`
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+`
+export const Lasik_sec2_row4_context = styled.div`
+    width: 100%;
+    font-size: 15px;
+    color: #707070;
+    line-height: 20px;
+    h2 {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    span {
+        color: #63c3c4;
+    }
+    @media screen and (max-width: 900px) {
+        font-size: 13px;
+        h2 {
+            font-size: 18px;
+        }
+    }
+`
+export const Lasik_sec3 = styled.div`
+    background: url(${lasik_sec3_img}) no-repeat;
+    background-size: contain;
+    width: 100vw;
+    height: calc(100vw / 1920 * 1144);
+    margin-top: 30px;
+`
+export const Lasik_sec3_textContainer = styled.div`
+    width: 30vw;
+    margin-left: 60vw;
+    margin-top: 8vw;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    h4 {
+        font-family: NanumSquare_acB;
+        font-size: 2.5vw;
+        line-height: 4vw;
+    }
+    h1 {
+        font-family: NanumSquare_acEB;
+        font-size: 5.5vw;
+    }
+`
+export const Lasik_sec3_circleContainer = styled.div`
+    margin-top: 2vw;
+    width: 30vw;
+    height: 30vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-content: center;
+    justify-content: center;
+`
+export const Circle = styled.div`
+    width: 14vw;
+    height: 14vw;
+    border-radius: 14vw;
+    background-color: #0c5aae;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h3 {
+        font-family: NanumSquare_acEB;
+        font-size: 2vw;
+        margin-bottom: 1vw;
+    }
+    span {
+        font-family: NanumSquare_acR;
+        font-size: 1.4vw;
+        line-height: 1.8vw;
+    }
+`
+export const Lasik_sec4 = styled.div`
+    width: 70vw;
+    font-family: NanumSquare_acEB;
+`
+export const Lasik_sec4_container = styled.div`
+    margin-top: 30px;
+`
+export const Lasik_sec4_title = styled.div`
+    display: flex;
+    flex-direction: row;
+    color: #707070;
+    margin-bottom: 10px;
+    h1 {
+        font-size: 20px;
+    }
+    h2 {
+        font-size: 20px;
+        color: #fc9a59;
+    }
+`
+export const Lasik_sec4_ele = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    .green_circle_with_check {
+        width: 15px;
+        border-radius: 15px;
+        height: 15px;
+        font-size: 15px;
+    }
+    @media screen and (max-width: 500px) {
+        height: 8vw;
+        .green_circle_with_check {
+            width: 1rem;
+            border-radius: 1rem;
+            height: 1rem;
+            font-size: 0.8rem;
+        }
+    }
+    span {
+        margin-left: 10px;
+        font-size: 15px;
+        color: #707070;
+    }
 `

@@ -3,33 +3,33 @@ import styled from 'styled-components'
 import backGroundAsset from './doctor_background_asset.json'
 import DoctorBackgroundStructure from './DoctorBackgroundStructure'
 import './DoctorMentSlide3.css'
-function DoctorSayHi() {
-    const MobildeNameTag = styled.div`
-        @media screen and (min-width: 501px) {
-            visibility: collapse;
-        }
-        position: absolute;
-        bottom: 2.5rem;
-        right: 1rem;
+const MobildeNameTag = styled.div`
+    @media screen and (min-width: 501px) {
+        visibility: collapse;
+    }
+    position: absolute;
+    bottom: 2.5rem;
+    right: 1rem;
 
-        display: flex;
-        flex-direction: row;
-        text-align: bottom;
-        h1 {
-            font-size: 1.5rem;
-            color: #fff;
-            font-family: NanumSquare_ac;
-            letter-spacing: 0.2rem;
-            margin-right: 0.7rem;
-            transform: translateY(1rem);
-        }
-        h2 {
-            font-size: 2.5rem;
-            color: #60afb2;
-            font-family: NanumSquare_acB;
-            letter-spacing: 0.4rem;
-        }
-    `
+    display: flex;
+    flex-direction: row;
+    text-align: bottom;
+    h1 {
+        font-size: 1.5rem;
+        color: #fff;
+        font-family: NanumSquare_ac;
+        letter-spacing: 0.2rem;
+        margin-right: 0.7rem;
+        transform: translateY(1rem);
+    }
+    h2 {
+        font-size: 2.5rem;
+        color: #60afb2;
+        font-family: NanumSquare_acB;
+        letter-spacing: 0.4rem;
+    }
+`
+function DoctorSayHi() {
     return (
         <section className="doctorBackgroundContainer">
             <MobildeNameTag>

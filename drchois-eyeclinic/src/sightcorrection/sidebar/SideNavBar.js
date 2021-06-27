@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import * as GiIcons from 'react-icons/gi'
 import { Link } from 'react-scroll'
+import { SightCorrectionSlideContext } from '../../SightCorrectionSlideContext'
 import {
     SidebarContainer,
     NavIcon,
@@ -8,7 +9,7 @@ import {
     NavLinks,
 } from './SidebarElements'
 import TabIcon from './tabIcon'
-function SideNav({ pageState }) {
+function SideNav() {
     const [hover, setHover] = useState([
         { id: 0, state: false },
         { id: 1, state: false },
@@ -26,6 +27,7 @@ function SideNav({ pageState }) {
             )
         )
     }
+    const { pageState, setPageState } = useContext(SightCorrectionSlideContext)
     return (
         <SidebarContainer>
             {surgeries.map((el, index) => {
@@ -39,7 +41,7 @@ function SideNav({ pageState }) {
                                 // smooth={true}
                                 // duration={1000}
                                 onClick={() => {
-                                    pageState(el.name)
+                                    setPageState(el.name)
                                 }}
                             >
                                 <GiIcons.GiPlainCircle

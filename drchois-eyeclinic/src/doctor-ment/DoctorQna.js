@@ -15,7 +15,7 @@ import {
 } from './DoctorQna.components'
 function DoctorQna() {
     const CommentText = DoctorComments
-    console.log(CommentText[0].text)
+    // console.log(CommentText[0].text)
     return (
         <Border>
             <Wrapper>

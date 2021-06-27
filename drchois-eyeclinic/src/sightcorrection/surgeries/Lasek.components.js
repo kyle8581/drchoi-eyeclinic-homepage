@@ -8,6 +8,7 @@ export const LasekContainer = styled(Element)`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 50px;
     /* margin: auto; */
 `
 export const FirstBox = styled.div`

@@ -24,13 +24,13 @@ function Interior({ curSlide }) {
     // const prevRef = useRef(null)
     // const nextRef = useRef(null)
     let isActive = false
-    console.log(curSlide)
+    // console.log(curSlide)
     if (curSlide === 2) {
         isActive = true
     } else {
         isActive = false
     }
-    console.log(isActive)
+    // console.log(isActive)
 
     return (
         <div className="slide__3">

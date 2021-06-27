@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Squash as Hamburger } from 'hamburger-react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { ReactComponent as NavLogo } from './images/nav__logo.svg'
 import './TopNav.css'
 import firebase from 'firebase/app'
@@ -14,73 +14,147 @@ import {
     InfoContainer,
 } from './SideMenu.components'
 import { UserContext } from './UserContext'
-const Login = (setUserInfo) => {
-    var provider = new firebase.auth.GoogleAuthProvider()
-    console.log(setUserInfo)
-    const ref = firebase.firestore().collection('userinfo')
-    console.log(ref)
-    firebase
-        .auth()
-        .signInWithPopup(provider)
-        .then((result) => {
-            console.log(result.user)
-            console.log()
-            setUserInfo({
-                login: true,
-                email: result.user.email,
-                phone_number: 'default',
-                authority: 'default',
-            })
-        })
-}
-const Logout = () => {
-    firebase.auth().signOut()
-}
-const LoginButton = (isLogined) => {
-    const { userInfo, setUserInfo } = useContext(UserContext)
-    console.log(userInfo)
-    return (
-        <FirebaseAuthConsumer>
-            {(authState) => {
-                if (authState.isSignedIn === true) {
-                    console.log(authState)
-                    return (
-                        <button
-                            onClick={() => {
-                                Logout(setUserInfo)
-                            }}
-                        >
-                            logout
-                        </button>
-                    )
-                } else {
-                    console.log(authState)
+import { SlideContext } from './SlideContext'
+import { SightCorrectionSlideContext } from './SightCorrectionSlideContext'
 
-                    return (
-                        <button
-                            onClick={() => {
-                                Login(setUserInfo)
-                            }}
-                        >
-                            login
-                        </button>
-                    )
-                }
-            }}
-        </FirebaseAuthConsumer>
-    )
-}
 // import { LoginButton } from './firebase'
 function TopNav({ changefloatshow, swiper }) {
     const [isOpen, setOpen] = useState(false)
+    const pathname = window.location.pathname
+    const { pageState, setPageState } = useContext(SightCorrectionSlideContext)
+    const { curSlide, setCurslide } = useContext(SlideContext)
     function clickHamberger() {
         setOpen(!isOpen)
-        console.log(isOpen)
+        // console.log(isOpen)
         // changefloatshow()
     }
     const { userInfo, setUserInfo } = useContext(UserContext)
     console.log(userInfo)
+    const [userList, setUserList] = useState([])
+    const history = useHistory()
+    const ref = firebase.firestore().collection('userinfo')
 
+    // useEffect(() => {
+    //     if (userInfo.login) {
+    //         let found = false
+    //         userList.forEach((u) => {
+    //             console.log('email : ' + u.email)
+    //             if (u.email === userInfo.email) {
+    //                 console.log('matched')
+    //                 setUserInfo({
+    //                     login: true,
+    //                     email: u.email,
+    //                     phone_number: u.phone_number,
+    //                     authority: u.authority,
+    //                 })
+    //                 found = true
+    //             }
+    //         })
+    //         console.log('updated user info')
+    //         console.log(userInfo)
+    //         if (!found) {
+    //             console.log('redirect to 회원가입')
+    //             history.push('/signup')
+    //         }
+    //     }
+    // }, [userList])
+    const checkUserRegistered = () => {
+        console.log('check user ', JSON.stringify(userInfo))
+        if (userInfo.login) {
+            let found = false
+            userList.forEach((u) => {
+                console.log('email : ' + u.email)
+                if (u.email === userInfo.email) {
+                    console.log('matched')
+                    setUserInfo({
+                        login: true,
+                        email: u.email,
+                        phone_number: u.phone_number,
+                        authority: u.authority,
+                    })
+                    found = true
+                }
+            })
+            console.log('updated user info')
+            console.log(userInfo)
+            if (!found && localStorage.getItem('signup') == undefined) {
+                console.log('redirect to 회원가입')
+                history.push('/signup')
+            }
+        }
+    }
+    const getUserList = async (_callback) => {
+        await ref.onSnapshot((querySnapshot) => {
+            const userlist = []
+            querySnapshot.forEach((d) => {
+                userlist.push(d.data())
+                console.log('user it : ', d.data())
+            })
+            setUserList(userlist)
+        })
+        _callback()
+    }
+    const Login = (setUserInfo) => {
+        var provider = new firebase.auth.GoogleAuthProvider()
+        console.log(setUserInfo)
+        console.log(ref)
+        firebase
+            .auth()
+            .signInWithPopup(provider)
+            .then((result) => {
+                // console.log(result.user)
+                // console.log()
+                setUserInfo({
+                    login: true,
+                    email: result.user.email,
+                    phone_number: 'default',
+                    authority: 'default',
+                })
+            })
+
+        console.log(userList)
+    }
+    useEffect(() => {
+        getUserList(checkUserRegistered)
+    }, [userInfo])
+    const Logout = () => {
+        firebase.auth().signOut()
+        setUserInfo({})
+    }
+    const LoginButton = (isLogined) => {
+        const { userInfo, setUserInfo } = useContext(UserContext)
+        return (
+            <FirebaseAuthConsumer>
+                {(authState) => {
+                    if (authState.isSignedIn === true) {
+                        console.log(authState)
+                        return (
+                            <button
+                                onClick={() => {
+                                    Logout(setUserInfo)
+                                }}
+                            >
+                                logout
+                            </button>
+                        )
+                    } else {
+                        console.log(authState)
+
+                        return (
+                            <button
+                                onClick={() => {
+                                    Login(setUserInfo)
+                                }}
+                            >
+                                login
+                            </button>
+                        )
+                    }
+                }}
+            </FirebaseAuthConsumer>
+        )
+    }
+    // getUserList()
     return (
         <div className="nav_side_wrapper">
             <div
@@ -146,7 +220,6 @@ function TopNav({ changefloatshow, swiper }) {
                     clickHamberger()
                 }}
             />
-
             <SideMenuContainer clicked={isOpen}>
                 <MenuContainer1>
                     <h1>압구정최안과 소개</h1>
@@ -154,11 +227,19 @@ function TopNav({ changefloatshow, swiper }) {
                         <p
                             onClick={() => {
                                 clickHamberger()
-                                swiper.slideTo(1)
+                                if (pathname === './')
+                                    // localStorage.setItem('slide', 1)
+                                    setCurslide(1)
+                                else {
+                                    setCurslide(1)
+                                    history.push('./')
+                                    // localStorage.setItem('slide', 1)
+                                }
                             }}
                         >
                             Dr.Choi의 신념과 철학
                         </p>
+                        {/* <div>{JSON.stringify(userList)}</div> */}
                     </div>
                     <div>
                         <a href="https://www.youtube.com/channel/UCfhlcQAfLiY_uhpigIIRfFA">
@@ -169,10 +250,19 @@ function TopNav({ changefloatshow, swiper }) {
                         <Link to="/test-process">검사과정 체험하기</Link>
                     </div>
                     <div>
+                        {/* {JSON.stringify(userInfo)} */}
+
                         <p
                             onClick={() => {
                                 clickHamberger()
-                                swiper.slideTo(2)
+                                if (pathname === '/') {
+                                    console.log('same page')
+                                    swiper.slideTo(2)
+                                } else {
+                                    console.log('different page')
+                                    history.push('./')
+                                    localStorage.setItem('slide', 2)
+                                }
                             }}
                         >
                             압구정최안과 둘러보기
@@ -212,21 +302,37 @@ function TopNav({ changefloatshow, swiper }) {
                         <div className="center">시력교정센터</div>
                         <div className="divider"></div>
                         <Link
+                            onClick={() => {
+                                clickHamberger()
+                                setPageState('lasik')
+                                console.log(pageState)
+                            }}
                             to={{
                                 pathname: `/sight-correction`,
-                                state: { initialPage: 'smile' },
+                                state: { pageState: pageState },
                             }}
                         >
-                            스마일
+                            라식
                         </Link>
-                        {/* <p>라식</p> */}
                         <Link
-                            to={{
-                                pathname: `/sight-correction`,
-                                state: { initialPage: 'lasek' },
+                            onClick={() => {
+                                clickHamberger()
+                                setPageState('lasek')
+                                console.log(pageState)
                             }}
+                            to="/sight-correction"
                         >
                             라섹
+                        </Link>
+                        <Link
+                            onClick={() => {
+                                clickHamberger()
+                                setPageState('smile')
+                                console.log(pageState)
+                            }}
+                            to="/sight-correction"
+                        >
+                            스마일
                         </Link>
 
                         <Link to="./icl">ICL</Link>

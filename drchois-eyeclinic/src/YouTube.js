@@ -37,7 +37,7 @@ const MobileYoutubeLink = styled.a`
         width: 8rem;
     }
 `
-console.log(youTubeLinks)
+// console.log(youTubeLinks)
 function YouTube() {
     const [thumbsSwiper, setThumbsSwiper] = useState(null)
     const thumbnailImages = YouTubeAsset.map((e) => {
@@ -46,7 +46,7 @@ function YouTube() {
     const prevRef = useRef(null)
     const nextRef = useRef(null)
 
-    console.log(thumbnailImages)
+    // console.log(thumbnailImages)
     return (
         <div className="youtube__slide__wrapper">
             <div className="content__wrapper">
