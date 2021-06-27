@@ -1,0 +1,77 @@
+[debug] [2021-06-26T15:26:44.416Z] ----------------------------------------------------------------------
+[debug] [2021-06-26T15:26:44.418Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init
+[debug] [2021-06-26T15:26:44.418Z] CLI Version:   9.2.1
+[debug] [2021-06-26T15:26:44.418Z] Platform:      darwin
+[debug] [2021-06-26T15:26:44.418Z] Node Version:  v12.14.1
+[debug] [2021-06-26T15:26:44.419Z] Time:          Sun Jun 27 2021 00:26:44 GMT+0900 (GMT+09:00)
+[debug] [2021-06-26T15:26:44.419Z] ----------------------------------------------------------------------
+[debug] [2021-06-26T15:26:44.419Z] 
+[debug] [2021-06-26T15:26:44.425Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-06-26T15:26:44.426Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/chaehyeongju/Desktop/drchoi-eyeclinic-homepage
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2021-06-26T15:27:01.843Z] > refreshing access token with scopes: []
+[debug] [2021-06-26T15:27:01.844Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-06-26T15:27:02.114Z] <<< HTTP RESPONSE 200 {"date":"Sat, 26 Jun 2021 15:27:02 GMT","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-06-26T15:27:02.147Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2021-06-26T15:27:03.008Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2021-06-26T15:27:03.008Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project drchoi-eyeclinic-homepage (drchoi-eyeclinic-homepage) 
+[info] 
+=== Firestore Setup
+[debug] [2021-06-26T15:27:04.288Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-06-26T15:27:04.288Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-06-26T15:27:04.543Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Sat, 26 Jun 2021 15:27:04 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-06-26T15:27:04.574Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/drchoi-eyeclinic-homepage/services/firestore.googleapis.com  
+ 
+[debug] [2021-06-26T15:27:05.718Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 26 Jun 2021 15:27:05 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-06-26T15:27:05.719Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/drchoi-eyeclinic-homepage  
+ 
+[debug] [2021-06-26T15:27:06.075Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 26 Jun 2021 15:27:06 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-06-26T15:27:06.075Z] database_type: CLOUD_FIRESTORE
+[debug] [2021-06-26T15:27:06.076Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-06-26T15:27:06.077Z] > authorizing via signed-in user
+[debug] [2021-06-26T15:27:06.077Z] [iam] checking project drchoi-eyeclinic-homepage for permissions ["firebase.projects.get"]
+[debug] [2021-06-26T15:27:06.078Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/drchoi-eyeclinic-homepage:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2021-06-26T15:27:06.849Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 26 Jun 2021 15:27:06 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=576","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2021-06-26T15:35:03.474Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/drchoi-eyeclinic-homepage/releases?pageSize=10&pageToken=  
+ 
+[debug] [2021-06-26T15:35:04.673Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 26 Jun 2021 15:35:04 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-06-26T15:35:04.674Z] Found ruleset: projects/drchoi-eyeclinic-homepage/rulesets/915fdf95-3744-4783-80b7-b8fa3377bc59
+[debug] [2021-06-26T15:35:04.675Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/drchoi-eyeclinic-homepage/rulesets/915fdf95-3744-4783-80b7-b8fa3377bc59  
+ 
+[debug] [2021-06-26T15:35:05.839Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 26 Jun 2021 15:35:05 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-06-26T15:35:06.037Z] Error: EISDIR: illegal operation on a directory, open '/Users/chaehyeongju/Desktop/drchoi-eyeclinic-homepage'
+    at Object.openSync (fs.js:440:3)
+    at Object.writeFileSync (fs.js:1265:35)
+    at Config.writeProjectFile (/usr/local/lib/node_modules/firebase-tools/lib/config.js:156:8)
+    at /usr/local/lib/node_modules/firebase-tools/lib/init/features/firestore/rules.js:50:27
+    at processTicksAndRejections (internal/process/task_queues.js:94:5)
+    at async Object.doSetup [as firestore] (/usr/local/lib/node_modules/firebase-tools/lib/init/features/firestore/index.js:35:5)
+    at async init (/usr/local/lib/node_modules/firebase-tools/lib/init/index.js:19:9)
+[error] 
+[error] Error: An unexpected error has occurred.

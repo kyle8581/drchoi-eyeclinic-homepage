@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, forwardRef } from 'react'
 
-// import Lasik from './Lasik'
+import Lasik from './Lasik'
 import Lasek from './Lasek'
 import SmileHome from './Smile/Smile_home'
 import { Link } from 'react-scroll'
@@ -22,9 +22,9 @@ function SurgeryInOne({ pageState }) {
         smile: scrollToSmile,
     }
     const refs = { lasek: lasekRef, lasik: lasikRef, smile: smileRef }
-    const Lasik = () => {
-        return <div>Lasik not ready</div>
-    }
+    // const Lasik = () => {
+    //     return <div>Lasik not ready</div>
+    // }
     useEffect(() => {
         if (refs[pageState].current) {
             scrollTo[pageState]()
@@ -53,14 +53,13 @@ function SurgeryInOne({ pageState }) {
     })
     return (
         <section className="surgeryInOne-container">
-            {/* <Lasik /> */}
+            <LasikWithRef ref={lasikRef} />
             <LasekWithRef ref={lasekRef} />
             <SmileWithRef
                 id="smile"
                 ref={smileRef}
                 style={{ border: '1px solid red' }}
             />
-            <LasikWithRef ref={lasikRef} />
         </section>
     )
 }

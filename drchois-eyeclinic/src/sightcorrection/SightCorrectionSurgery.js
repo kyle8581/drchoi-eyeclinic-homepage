@@ -4,7 +4,7 @@ import TopNav from '../TopNav'
 import SurgeryInOne from './surgeries/surgeryInOne'
 import './SightCorrectionSurgery.css'
 function SightCorrectionSurgery(props) {
-    var initialpage = 'lasek'
+    var initialpage = 'lasik'
     if (props.location.state) {
         initialpage = props.location.state.initialPage
     }

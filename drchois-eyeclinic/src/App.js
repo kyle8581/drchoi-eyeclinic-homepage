@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import Home from './Home'
 import SightCorrectionSurgery from './sightcorrection/SightCorrectionSurgery'
@@ -8,21 +8,47 @@ import NoPay from './no-pay/NoPay'
 import Icl from './icl/Icl'
 import TestProcess from './test-process/TestProcess'
 import DreamLens from './dream-lens/DreamLens'
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/firestore'
+import { FirebaseAuthProvider } from '@react-firebase/auth'
+import { UserContext } from './UserContext'
+const firebaseConfig = {
+    apiKey: 'AIzaSyArAzMQJPh9WuSk9eMaBzP38DhuAK2p41I',
+    authDomain: 'drchoi-eyeclinic-homepage.firebaseapp.com',
+    projectId: 'drchoi-eyeclinic-homepage',
+    storageBucket: 'drchoi-eyeclinic-homepage.appspot.com',
+    messagingSenderId: '153536395761',
+    appId: '1:153536395761:web:6bda81c9e29e2af7d16c50',
+    measurementId: 'G-R8RJT7N8XS',
+}
+
+firebase.initializeApp(firebaseConfig)
 function App() {
+    const [userInfo, setUserInfo] = useState({
+        login: false,
+        email: 'none',
+        phone_number: 'none',
+        authority: 'default',
+    })
     return (
-        <BrowserRouter>
-            <Route
-                path="/sight-correction"
-                component={SightCorrectionSurgery}
-            />
-            <Route path="/cataract" component={NoanHome} />
-            <Route path="/" exact={true} component={Home} />
-            <Route path="/dr-choi" component={DoctorHome} />
-            <Route path="/no-pay" component={NoPay} />
-            <Route path="/icl" component={Icl} />
-            <Route path="/test-process" component={TestProcess} />
-            <Route path="/dream-lens" component={DreamLens} />
-        </BrowserRouter>
+        <FirebaseAuthProvider {...firebaseConfig} firebase={firebase}>
+            <UserContext.Provider value={{ userInfo, setUserInfo }}>
+                <BrowserRouter>
+                    <Route
+                        path="/sight-correction"
+                        component={SightCorrectionSurgery}
+                    />
+                    <Route path="/cataract" component={NoanHome} />
+                    <Route path="/" exact={true} component={Home} />
+                    <Route path="/dr-choi" component={DoctorHome} />
+                    <Route path="/no-pay" component={NoPay} />
+                    <Route path="/icl" component={Icl} />
+                    <Route path="/test-process" component={TestProcess} />
+                    <Route path="/dream-lens" component={DreamLens} />
+                </BrowserRouter>
+            </UserContext.Provider>
+        </FirebaseAuthProvider>
     )
 }
 

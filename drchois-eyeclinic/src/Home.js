@@ -8,7 +8,8 @@ import SwiperCore, {
 } from 'swiper'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
-
+import firebase from 'firebase/app'
+import 'firebase/auth'
 // Import Swiper styles
 import 'swiper/swiper.scss'
 import 'swiper/components/navigation/navigation.scss'
@@ -24,8 +25,8 @@ import YouTube from './YouTube'
 import Map from './map/Map'
 import FooterReturn from './footer/FooterReturn'
 import FloatingIcon from './icon_components/FloatingIcon'
-
 // install Swiper components
+
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel])
 
 function Home() {
@@ -36,12 +37,7 @@ function Home() {
     const [swiperInstance, setSwiperInstance] = useState(null)
     const [curSlide, setCurslide] = useState(1)
     const [toFloatIconShow, changeFloatShow] = useState(true)
-    // const [slide1Active, setSlide1Active] = useState(false);
-    // const [slide2Active, setSlide2Active] = useState(false);
-    // const [slide3Active, setSlide3Active] = useState(false);
-    // const [slide4Active, setSlide4Active] = useState(false);
-    // const [slide5Active, setSlide5Active] = useState(false);
-    // const [slide6Active, setSlide6Active] = useState(false);
+
     return (
         <div>
             <TopNav

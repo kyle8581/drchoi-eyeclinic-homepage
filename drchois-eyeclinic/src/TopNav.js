@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Squash as Hamburger } from 'hamburger-react'
 import { Link } from 'react-router-dom'
 import { ReactComponent as NavLogo } from './images/nav__logo.svg'
 import './TopNav.css'
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import { FirebaseAuthConsumer } from '@react-firebase/auth'
 import {
     BlackBackGround,
     MenuContainer1,
@@ -10,7 +13,64 @@ import {
     SideMenuContainer,
     InfoContainer,
 } from './SideMenu.components'
+import { UserContext } from './UserContext'
+const Login = (setUserInfo) => {
+    var provider = new firebase.auth.GoogleAuthProvider()
+    console.log(setUserInfo)
+    const ref = firebase.firestore().collection('userinfo')
+    console.log(ref)
+    firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then((result) => {
+            console.log(result.user)
+            console.log()
+            setUserInfo({
+                login: true,
+                email: result.user.email,
+                phone_number: 'default',
+                authority: 'default',
+            })
+        })
+}
+const Logout = () => {
+    firebase.auth().signOut()
+}
+const LoginButton = (isLogined) => {
+    const { userInfo, setUserInfo } = useContext(UserContext)
+    console.log(userInfo)
+    return (
+        <FirebaseAuthConsumer>
+            {(authState) => {
+                if (authState.isSignedIn === true) {
+                    console.log(authState)
+                    return (
+                        <button
+                            onClick={() => {
+                                Logout(setUserInfo)
+                            }}
+                        >
+                            logout
+                        </button>
+                    )
+                } else {
+                    console.log(authState)
 
+                    return (
+                        <button
+                            onClick={() => {
+                                Login(setUserInfo)
+                            }}
+                        >
+                            login
+                        </button>
+                    )
+                }
+            }}
+        </FirebaseAuthConsumer>
+    )
+}
+// import { LoginButton } from './firebase'
 function TopNav({ changefloatshow, swiper }) {
     const [isOpen, setOpen] = useState(false)
     function clickHamberger() {
@@ -18,6 +78,9 @@ function TopNav({ changefloatshow, swiper }) {
         console.log(isOpen)
         // changefloatshow()
     }
+    const { userInfo, setUserInfo } = useContext(UserContext)
+    console.log(userInfo)
+
     return (
         <div className="nav_side_wrapper">
             <div
@@ -176,6 +239,7 @@ function TopNav({ changefloatshow, swiper }) {
                     </div>
                 </MenuContainer2>
                 <InfoContainer>
+                    <LoginButton />
                     <div className="row">
                         서울특별시 강남구 논현로 848, 8층 압구정최안과
                     </div>

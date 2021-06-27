@@ -77,7 +77,7 @@ function FooterMobile() {
                         <div className="divider"></div>
                         <Link to="/no-pay">비급여항목</Link>
                     </DividedRow>
-                    <div>압구정최안과 서울특별시 강남구 논현로 848 8층</div>
+                    <div>압구정최안과의원 서울특별시 강남구 논현로 848 8층</div>
                     <div>대표자: 최승일</div>
                     <div>대표전화: 02 6956 8711</div>
                     <div>사업자등록번호: 446-91-01523</div>
