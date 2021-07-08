@@ -267,12 +267,22 @@ export const Lasik_sec2_row4 = styled.div`
     @media screen and (max-width: 1000px) {
         width: 80vw;
     }
+    @media screen and (max-width: 600px) {
+        width: 90vw;
+    }
 `
 export const Lasik_sec2_row4_contextWrapper = styled.div`
     margin-top: 40px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    @media screen and (max-width: 800px) {
+       display:grid;
+       grid-template-columns: 1fr 1.3fr;
+    }
+    @media screen and (max-width: 600px){
+        margin-top:30px;
+    }
 `
 export const Lasik_sec2_row4_context = styled.div`
     width: 100%;
@@ -291,6 +301,27 @@ export const Lasik_sec2_row4_context = styled.div`
         font-size: 13px;
         h2 {
             font-size: 18px;
+        }
+    }
+    @media screen and (max-width: 800px) {
+        font-size: 11px;
+        h2 {
+            font-size: 16px;
+        }
+    }
+    @media screen and (max-width: 600px) {
+        font-size: 9px;
+        h2 {
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+    }
+    @media screen and (max-width: 560px) {
+        font-size: 7px;
+        line-height:13px;
+        h2 {
+            font-size: 13px;
+            margin-bottom: 15px;
         }
     }
 `

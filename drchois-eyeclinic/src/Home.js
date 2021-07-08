@@ -31,6 +31,7 @@ import { SlideContext } from './SlideContext'
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel])
 
 function Home() {
+    const [allowScroll, setAllowScroll] = useState(true)
     function changeFloatShowOnHamburgerClicked() {
         changeFloatShow(!toFloatIconShow)
     }
@@ -42,9 +43,18 @@ function Home() {
     }, [swiperInstance, curSlide])
 
     const [toFloatIconShow, changeFloatShow] = useState(true)
+    useEffect(()=>{
+        if(!allowScroll){
+            console.log("disabled scroll")
+            setTimeout(function(){ setAllowScroll(true) }, 3000)
+            console.log("allow scroll")
+        }
+    })
 
     return (
-        <div>
+        <div   onScroll={()=>{
+            console.log("scroll!!")
+        }}>
             <TopNav
                 changefloatshow={changeFloatShowOnHamburgerClicked}
                 swiper={swiperInstance}
@@ -66,10 +76,18 @@ function Home() {
                     console.log(currentActiveSlide)
                     setCurslide(swiper.realIndex)
                 }}
-                mousewheel={{ invert: false }}
+                mousewheel={{ invert: false, thresholdTime:"1000" }}
                 touchEventsTarget="wrapper"
                 direction="vertical"
                 autoHeight="true"
+                longSwipes={false}
+                shortSwipes="false"
+                preventInteractionOnTransition="true"
+                onScroll={()=>{
+                    console.log("scroll!!")
+                }}
+                
+                
                 // touchRatio={0}
             >
                 {/* slide 1 : 눈깜빡이는 영상 */}

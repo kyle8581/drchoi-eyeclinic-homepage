@@ -11,9 +11,9 @@ function SightCorrectionSurgery(props) {
     //     initialpage = props.location.state.initialPage
     // }
     // const [curPage, setPage] = useState(initialpage)
-    console.log(props.location)
+    // console.log(props.location)
     const { pageState, setPageState } = useContext(SightCorrectionSlideContext)
-    console.log('scs page state : ' + pageState)
+    // console.log('scs page state : ' + pageState)
     return (
         <>
             <section className="sightcorrection-container">

@@ -83,6 +83,9 @@
   text-decoration: none;
   color: #707070;
 }
+.LanguageSelectContainer{
+  transform: translate(-20px, 0px);
+}
 .hamburger__icon {
   /* flex: 1; */
   justify-content: flex-end;

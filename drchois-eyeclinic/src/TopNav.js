@@ -13,59 +13,46 @@ import {
     SideMenuContainer,
     InfoContainer,
 } from './SideMenu.components'
+import {
+    LanguageSelectContainer,
+    Country
+} from './Language.components'
 import { UserContext } from './UserContext'
 import { SlideContext } from './SlideContext'
 import { SightCorrectionSlideContext } from './SightCorrectionSlideContext'
-
+import translate from './translations'
 // import { LoginButton } from './firebase'
 function TopNav({ changefloatshow, swiper }) {
     const [isOpen, setOpen] = useState(false)
     const pathname = window.location.pathname
     const { pageState, setPageState } = useContext(SightCorrectionSlideContext)
     const { curSlide, setCurslide } = useContext(SlideContext)
+    const [needFetch, setNeedFetch] = useState(false)
+    const [needCheck, setNeedCheck] = useState(false)
+    const Rus = translate[2]
+    const Chi = translate[1]
+    const Eng = translate[0]
     function clickHamberger() {
         setOpen(!isOpen)
         // console.log(isOpen)
         // changefloatshow()
     }
+
     const { userInfo, setUserInfo } = useContext(UserContext)
-    console.log(userInfo)
+    // console.log(userInfo)
     const [userList, setUserList] = useState([])
     const history = useHistory()
     const ref = firebase.firestore().collection('userinfo')
 
-    // useEffect(() => {
-    //     if (userInfo.login) {
-    //         let found = false
-    //         userList.forEach((u) => {
-    //             console.log('email : ' + u.email)
-    //             if (u.email === userInfo.email) {
-    //                 console.log('matched')
-    //                 setUserInfo({
-    //                     login: true,
-    //                     email: u.email,
-    //                     phone_number: u.phone_number,
-    //                     authority: u.authority,
-    //                 })
-    //                 found = true
-    //             }
-    //         })
-    //         console.log('updated user info')
-    //         console.log(userInfo)
-    //         if (!found) {
-    //             console.log('redirect to 회원가입')
-    //             history.push('/signup')
-    //         }
-    //     }
-    // }, [userList])
     const checkUserRegistered = () => {
-        console.log('check user ', JSON.stringify(userInfo))
+        // console.log('check user ', JSON.stringify(userInfo))
+        // console.log("user list : "+userList)
         if (userInfo.login) {
             let found = false
             userList.forEach((u) => {
-                console.log('email : ' + u.email)
+                // console.log('email : ' + u.email)
                 if (u.email === userInfo.email) {
-                    console.log('matched')
+                    // console.log('matched')
                     setUserInfo({
                         login: true,
                         email: u.email,
@@ -75,24 +62,23 @@ function TopNav({ changefloatshow, swiper }) {
                     found = true
                 }
             })
-            console.log('updated user info')
-            console.log(userInfo)
+            // console.log('updated user info')
+            // console.log(userInfo)
             if (!found && localStorage.getItem('signup') == undefined) {
-                console.log('redirect to 회원가입')
+                // console.log('redirect to 회원가입')
                 history.push('/signup')
             }
         }
     }
-    const getUserList = async (_callback) => {
-        await ref.onSnapshot((querySnapshot) => {
+    const getUserList =  () => {
+        ref.onSnapshot((querySnapshot) => {
             const userlist = []
             querySnapshot.forEach((d) => {
                 userlist.push(d.data())
-                console.log('user it : ', d.data())
+                // console.log('user it : ', d.data())
             })
             setUserList(userlist)
         })
-        _callback()
     }
     const Login = (setUserInfo) => {
         var provider = new firebase.auth.GoogleAuthProvider()
@@ -112,14 +98,30 @@ function TopNav({ changefloatshow, swiper }) {
                 })
             })
 
-        console.log(userList)
+        setNeedFetch(true)
     }
     useEffect(() => {
-        getUserList(checkUserRegistered)
-    }, [userInfo])
+        if(needFetch){
+            console.log(userList)
+
+            getUserList()
+            setNeedFetch(false)
+            setNeedCheck(true)
+        }
+    }, [needFetch])
+    useEffect(()=>{
+        if(needCheck&&userList.length!==0&&userInfo.login){
+            console.log("------")
+            console.log(userList)
+            checkUserRegistered()
+            setNeedCheck(false)
+        }
+        
+    },[needCheck, userList, userInfo])
     const Logout = () => {
         firebase.auth().signOut()
-        setUserInfo({})
+        const tmp_usr = { ...userInfo, login: false }
+        setUserInfo(tmp_usr)
     }
     const LoginButton = (isLogined) => {
         const { userInfo, setUserInfo } = useContext(UserContext)
@@ -154,7 +156,7 @@ function TopNav({ changefloatshow, swiper }) {
             </FirebaseAuthConsumer>
         )
     }
-    // getUserList()
+
     return (
         <div className="nav_side_wrapper">
             <div
@@ -182,8 +184,36 @@ function TopNav({ changefloatshow, swiper }) {
                     <li>
                         <Link to="/test-process">정밀검사과정</Link>
                     </li>
-                    <li>후기/이벤트</li>
+                    <li>
+                        <Link to="/events">이벤트</Link>
+                    </li>
+                    <li>
+                        <Link to="/sight-correction-review">후기</Link>
+                    </li>
                 </ul>
+                <LanguageSelectContainer className="LanguageSelectContainer">
+                    <Country to={{pathname:'/'}} className="Kor">
+                        <img src="https://pics.freeicons.io/uploads/icons/png/5481736961536065003-512.png"/>
+                    </Country>
+                    <Country to={{pathname:'/foreign',state: Eng}}>
+                        <img src="https://pics.freeicons.io/uploads/icons/png/13394302041536065017-512.png"/>
+                    </Country>
+                    <Country to={{pathname:'/foreign',state: Rus}}>
+                        <img src="https://pics.freeicons.io/uploads/icons/png/37161591536064993-512.png"/>
+                    </Country>
+                    <Country to={{pathname:'/foreign',state: Chi}}>
+                        <img src="https://pics.freeicons.io/uploads/icons/png/14523702201536064854-512.png"/>
+                    </Country>
+                </LanguageSelectContainer>
+         {/*    <div>
+                    {/* link 다른 언어 페이지 , state 로 pass   */}
+                    {/* {"title":"dfkdjfkdfj", "content1":"fkdfjdk"} */}
+                    {/*  <ReviewBlockWrapper  to={{ pathname: description_link, state: { e: e, next:next, prev:prev} }}> */}
+                    {/*<Link to={{pathname:'/'}} className="Kor">한국</Link>
+                    <Link to={{pathname:'/foreign',state: Eng}}>미국</Link>
+                    <Link to={{pathname:'/foreign',state: Rus}} className="Rus">러시아</Link>
+                    <Link to={{pathname:'/foreign',state: Chi}} className="Chi">중국</Link>
+                </div>*/}
                 <div className="hamburger__icon">
                     <Hamburger
                         style={{ 'z-index': '40' }}
@@ -193,26 +223,6 @@ function TopNav({ changefloatshow, swiper }) {
                         color="#707070"
                     />
                 </div>
-                {/* {(isOpen)=>(isOpen?(
-                        <div>
-                        <BlackBackGround cliked={isOpen}/>
-                        <SideMenuContainer cliked={isOpen}>
-                            <div><Link>Dr.choi의 신념과 철학</Link></div>
-                            <div><Link>시력교정술</Link></div>
-                            <div><Link>노안수술</Link></div>
-                        </SideMenuContainer>
-                        </div>
-                    ):
-                    (null)
-                    )} */}
-                {/* {isOpen &&   <div>
-                        <BlackBackGround cliked={!isOpen}/>
-                        <SideMenuContainer cliked={isOpen}>
-                            <div><Link>Dr.choi의 신념과 철학</Link></div>
-                            <div><Link>시력교정술</Link></div>
-                            <div><Link>노안수술</Link></div>
-                        </SideMenuContainer>
-                        </div>} */}
             </div>
             <BlackBackGround
                 clicked={isOpen}
@@ -250,7 +260,6 @@ function TopNav({ changefloatshow, swiper }) {
                         <Link to="/test-process">검사과정 체험하기</Link>
                     </div>
                     <div>
-                        {/* {JSON.stringify(userInfo)} */}
 
                         <p
                             onClick={() => {

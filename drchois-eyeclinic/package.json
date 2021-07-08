@@ -8,11 +8,16 @@
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
+    "draft-js": "^0.11.7",
+    "draftjs-to-html": "^0.9.1",
+    "firebase": "^8.6.8",
     "hamburger-react": "^2.4.0",
+    "html-to-draftjs": "^1.5.0",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-burger-menu": "^3.0.3",
     "react-dom": "^17.0.1",
+    "react-draft-wysiwyg": "^1.14.7",
     "react-icons": "^4.1.0",
     "react-id-swiper": "^4.0.0",
     "react-media": "^1.10.0",
@@ -21,7 +26,7 @@
     "react-scroll": "^1.8.1",
     "react-scroll-detect": "^1.2.0",
     "styled-components": "^5.2.1",
-    "swiper": "^6.4.5",
+    "swiper": "^6.7.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -49,6 +54,8 @@
     ]
   },
   "devDependencies": {
+    "@react-firebase/auth": "^0.2.10",
+    "@react-firebase/firestore": "^0.5.5",
     "babel-plugin-styled-components": "^1.12.0",
     "eslint-plugin-styled-components-a11y": "0.0.28",
     "file-loader": "^6.2.0"

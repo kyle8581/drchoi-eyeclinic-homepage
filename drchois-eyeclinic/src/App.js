@@ -6,6 +6,7 @@ import DoctorHome from './doctor-ment/DoctorHome'
 import NoanHome from './noan/NoanHome'
 import NoPay from './no-pay/NoPay'
 import Icl from './icl/Icl'
+import Foreign from './Foreign'
 import TestProcess from './test-process/TestProcess'
 import DreamLens from './dream-lens/DreamLens'
 import Signup from './signup/Signup'
@@ -17,6 +18,12 @@ import { FirebaseAuthProvider } from '@react-firebase/auth'
 import { UserContext } from './UserContext'
 import { SlideContext } from './SlideContext'
 import { SightCorrectionSlideContext } from './SightCorrectionSlideContext'
+import ReviewList  from './sightcorrection_review/ReviewList'
+import ReviewCreate  from './sightcorrection_review/ReviewCreate'
+import ReviewDescription from './sightcorrection_review/ReviewDescription'
+import TestLanding from './TestLanding'
+import Event from './event/Event'
+import EventCreate from './event/EventCreate'
 const firebaseConfig = {
     apiKey: 'AIzaSyArAzMQJPh9WuSk9eMaBzP38DhuAK2p41I',
     authDomain: 'drchoi-eyeclinic-homepage.firebaseapp.com',
@@ -28,6 +35,7 @@ const firebaseConfig = {
 }
 
 firebase.initializeApp(firebaseConfig)
+
 function App() {
     const [userInfo, setUserInfo] = useState({
         login: false,
@@ -60,6 +68,13 @@ function App() {
                             />
                             <Route path="/dream-lens" component={DreamLens} />
                             <Route path="/signup" component={Signup}></Route>
+                            <Route path="/sight-correction-review"  exact={true}  component={ReviewList}/>
+                            <Route path="/create-sightcorrection-review" component={ReviewCreate}></Route>
+                            <Route path="/sight-correction-review/description/:slug" component={ReviewDescription}></Route>
+                            <Route path="/foreign" component={Foreign}/>
+                            <Route path="/test-landing" component={TestLanding}/>
+                            <Route path="/events" component={Event}/>
+                            <Route path="/createEvent" component={EventCreate}/>
                         </BrowserRouter>
                     </SightCorrectionSlideContext.Provider>
                 </SlideContext.Provider>
