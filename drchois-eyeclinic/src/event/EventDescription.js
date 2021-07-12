@@ -8,12 +8,11 @@ function EventDescription() {
     const [htmlData, setHtmlData] = useState('')
     const { eventID } = useParams()
     useEffect(() => {
-        console.log(eventID)
+        // console.log(eventID)
         const db = firebase.firestore().collection('events')
         const doc = db.doc(eventID)
         doc.get().then((e) => {
-            // console.log(e.data().content)
-            // console.log(draftToHtml(JSON.parse(e.data().content)))
+            // fetch html data
             setHtmlData(draftToHtml(JSON.parse(e.data().content)))
         })
     }, [])
