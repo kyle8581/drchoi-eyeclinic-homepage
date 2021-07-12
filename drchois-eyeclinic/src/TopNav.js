@@ -346,7 +346,7 @@ function TopNav({ changefloatshow, swiper }) {
                 <InfoContainer>
                     <LoginButton />
                     <div className="row">
-                        서울특별시 강남구 논현로 848, 8층 압구정최안과
+                        서울특별시 강남구 논현로 848, 8층 압구정최안과의원
                     </div>
                     <div className="row">
                         8F, 848, Nonhyeon-ro, Gangnam-gu, Seoul
