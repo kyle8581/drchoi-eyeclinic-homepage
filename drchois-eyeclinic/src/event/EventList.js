@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import firebase from 'firebase/app'
 import { Link } from 'react-router-dom'
+
+function EventBlock({ id, title }) {
+    return (
+        <Link to={'/event-description/' + id}>
+            <div>{title}</div>
+        </Link>
+    )
+}
 function EventList() {
     const [htmlData, setHtmlData] = useState('')
     const [eventIdList, setEventIdList] = useState([])
@@ -23,8 +31,8 @@ function EventList() {
         <div>
             <div>{JSON.stringify(eventIdList)}</div>
             <ul>
-                {eventIdList.map((e) => {
-                    return <li>{e}</li>
+                {eventIdList.map((e, idx) => {
+                    return <EventBlock id={e} title={eventTitleList[idx]} />
                 })}
             </ul>
             <Link to="/createEvent">작성</Link>

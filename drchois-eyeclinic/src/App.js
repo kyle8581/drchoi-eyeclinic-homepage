@@ -92,8 +92,8 @@ function App() {
                             />
                             {/* <Route path="/event-description" component={EventDescription}/> */}
                             <Route
-                                path="/event-description"
-                                component={EventList}
+                                path="/event-description/:eventID"
+                                component={EventDescription}
                             />
                             <Route
                                 path="/event-modify"
