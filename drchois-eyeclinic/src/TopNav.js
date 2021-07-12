@@ -181,7 +181,7 @@ function TopNav({ changefloatshow, swiper }) {
                         <Link to="/test-process">정밀검사과정</Link>
                     </li>
                     <li>
-                        <Link to="/event-description">이벤트</Link>
+                        <Link to="/event-list">이벤트</Link>
                     </li>
                     <li>
                         <Link to="/sight-correction-review">후기</Link>

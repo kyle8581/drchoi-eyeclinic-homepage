@@ -85,7 +85,7 @@ function App() {
                                 component={ReviewDescription}
                             ></Route>
                             <Route path="/foreign" component={Foreign} />
-                            <Route path="/event-list" component={Event} />
+                            <Route path="/event-list" component={EventList} />
                             <Route
                                 path="/createEvent"
                                 component={EditorContainer}
