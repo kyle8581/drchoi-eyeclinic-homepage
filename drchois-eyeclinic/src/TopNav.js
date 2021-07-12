@@ -13,10 +13,7 @@ import {
     SideMenuContainer,
     InfoContainer,
 } from './SideMenu.components'
-import {
-    LanguageSelectContainer,
-    Country
-} from './Language.components'
+import { LanguageSelectContainer, Country } from './Language.components'
 import { UserContext } from './UserContext'
 import { SlideContext } from './SlideContext'
 import { SightCorrectionSlideContext } from './SightCorrectionSlideContext'
@@ -70,7 +67,7 @@ function TopNav({ changefloatshow, swiper }) {
             }
         }
     }
-    const getUserList =  () => {
+    const getUserList = () => {
         ref.onSnapshot((querySnapshot) => {
             const userlist = []
             querySnapshot.forEach((d) => {
@@ -101,7 +98,7 @@ function TopNav({ changefloatshow, swiper }) {
         setNeedFetch(true)
     }
     useEffect(() => {
-        if(needFetch){
+        if (needFetch) {
             console.log(userList)
 
             getUserList()
@@ -109,15 +106,14 @@ function TopNav({ changefloatshow, swiper }) {
             setNeedCheck(true)
         }
     }, [needFetch])
-    useEffect(()=>{
-        if(needCheck&&userList.length!==0&&userInfo.login){
-            console.log("------")
+    useEffect(() => {
+        if (needCheck && userList.length !== 0 && userInfo.login) {
+            console.log('------')
             console.log(userList)
             checkUserRegistered()
             setNeedCheck(false)
         }
-        
-    },[needCheck, userList, userInfo])
+    }, [needCheck, userList, userInfo])
     const Logout = () => {
         firebase.auth().signOut()
         const tmp_usr = { ...userInfo, login: false }
@@ -128,7 +124,7 @@ function TopNav({ changefloatshow, swiper }) {
         return (
             <FirebaseAuthConsumer>
                 {(authState) => {
-                    if (authState.isSignedIn === true) {
+                    if (userInfo.login) {
                         console.log(authState)
                         return (
                             <button
@@ -192,24 +188,24 @@ function TopNav({ changefloatshow, swiper }) {
                     </li>
                 </ul>
                 <LanguageSelectContainer className="LanguageSelectContainer">
-                    <Country to={{pathname:'/'}} className="Kor">
-                        <img src="https://pics.freeicons.io/uploads/icons/png/5481736961536065003-512.png"/>
+                    <Country to={{ pathname: '/' }} className="Kor">
+                        <img src="https://pics.freeicons.io/uploads/icons/png/5481736961536065003-512.png" />
                     </Country>
-                    <Country to={{pathname:'/foreign',state: Eng}}>
-                        <img src="https://pics.freeicons.io/uploads/icons/png/13394302041536065017-512.png"/>
+                    <Country to={{ pathname: '/foreign', state: Eng }}>
+                        <img src="https://pics.freeicons.io/uploads/icons/png/13394302041536065017-512.png" />
                     </Country>
-                    <Country to={{pathname:'/foreign',state: Rus}}>
-                        <img src="https://pics.freeicons.io/uploads/icons/png/37161591536064993-512.png"/>
+                    <Country to={{ pathname: '/foreign', state: Rus }}>
+                        <img src="https://pics.freeicons.io/uploads/icons/png/37161591536064993-512.png" />
                     </Country>
-                    <Country to={{pathname:'/foreign',state: Chi}}>
-                        <img src="https://pics.freeicons.io/uploads/icons/png/14523702201536064854-512.png"/>
+                    <Country to={{ pathname: '/foreign', state: Chi }}>
+                        <img src="https://pics.freeicons.io/uploads/icons/png/14523702201536064854-512.png" />
                     </Country>
                 </LanguageSelectContainer>
-         {/*    <div>
+                {/*    <div>
                     {/* link 다른 언어 페이지 , state 로 pass   */}
-                    {/* {"title":"dfkdjfkdfj", "content1":"fkdfjdk"} */}
-                    {/*  <ReviewBlockWrapper  to={{ pathname: description_link, state: { e: e, next:next, prev:prev} }}> */}
-                    {/*<Link to={{pathname:'/'}} className="Kor">한국</Link>
+                {/* {"title":"dfkdjfkdfj", "content1":"fkdfjdk"} */}
+                {/*  <ReviewBlockWrapper  to={{ pathname: description_link, state: { e: e, next:next, prev:prev} }}> */}
+                {/*<Link to={{pathname:'/'}} className="Kor">한국</Link>
                     <Link to={{pathname:'/foreign',state: Eng}}>미국</Link>
                     <Link to={{pathname:'/foreign',state: Rus}} className="Rus">러시아</Link>
                     <Link to={{pathname:'/foreign',state: Chi}} className="Chi">중국</Link>
@@ -237,19 +233,15 @@ function TopNav({ changefloatshow, swiper }) {
                         <p
                             onClick={() => {
                                 clickHamberger()
-                                if (pathname === './')
-                                    // localStorage.setItem('slide', 1)
-                                    setCurslide(1)
+                                if (pathname === './') setCurslide(1)
                                 else {
                                     setCurslide(1)
                                     history.push('./')
-                                    // localStorage.setItem('slide', 1)
                                 }
                             }}
                         >
                             Dr.Choi의 신념과 철학
                         </p>
-                        {/* <div>{JSON.stringify(userList)}</div> */}
                     </div>
                     <div>
                         <a href="https://www.youtube.com/channel/UCfhlcQAfLiY_uhpigIIRfFA">
@@ -260,7 +252,6 @@ function TopNav({ changefloatshow, swiper }) {
                         <Link to="/test-process">검사과정 체험하기</Link>
                     </div>
                     <div>
-
                         <p
                             onClick={() => {
                                 clickHamberger()
@@ -282,7 +273,6 @@ function TopNav({ changefloatshow, swiper }) {
                             onClick={() => {
                                 clickHamberger()
                                 swiper.slideTo(5)
-                                // swipergoto(3)
                             }}
                         >
                             오시는 길
@@ -305,7 +295,6 @@ function TopNav({ changefloatshow, swiper }) {
                         <div className="center">백내장센터</div>
                         <div className="divider"></div>
                         <Link to="./cataract">백내장</Link>
-                        {/* <p>노안교정</p> */}
                     </div>
                     <div className="row">
                         <div className="center">시력교정센터</div>
@@ -353,6 +342,7 @@ function TopNav({ changefloatshow, swiper }) {
                         <p>RGP렌즈</p>
                     </div>
                 </MenuContainer2>
+                <div>{JSON.stringify(userInfo)}</div>
                 <InfoContainer>
                     <LoginButton />
                     <div className="row">

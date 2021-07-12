@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 export const Wrapper = styled.div`
     width: 100vw;
@@ -7,13 +7,15 @@ export const Wrapper = styled.div`
     z-index: -4;
     position: absolute;
 `
-export const Background = styled.img`
+export const Background = styled.div`
     position: absolute;
-    z-index: -1;
+    z-index: 0;
     width: 100vw;
     height: 100vh;
     left: 0;
     top: 0;
+    background: url('/doctor-ment/tablet_sitting.png') no-repeat center center
+        fixed;
 `
 
 export const Title = styled.div`

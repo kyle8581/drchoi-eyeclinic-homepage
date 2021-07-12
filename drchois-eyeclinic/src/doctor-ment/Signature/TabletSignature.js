@@ -8,7 +8,7 @@ import {
 function TabletSignature() {
     return (
         <Wrapper>
-            <Background src="/doctor-ment/tablet_sitting.png" alt="bg" />
+            <Background />
             <Title>
                 <div className="green">Philosoph of</div>
                 <div className="gray"> 압구정 최안과</div>
