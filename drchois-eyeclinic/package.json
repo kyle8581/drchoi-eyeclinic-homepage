@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@draft-js-plugins/editor": "^4.1.0",
+    "@draft-js-plugins/image": "^4.1.2",
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.8",
@@ -25,6 +27,7 @@
     "react-scripts": "4.0.1",
     "react-scroll": "^1.8.1",
     "react-scroll-detect": "^1.2.0",
+    "reactjs-popup": "^2.0.5",
     "styled-components": "^5.2.1",
     "swiper": "^6.7.1",
     "web-vitals": "^0.2.4"

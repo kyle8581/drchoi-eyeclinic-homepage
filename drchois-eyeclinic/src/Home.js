@@ -26,6 +26,7 @@ import Map from './map/Map'
 import FooterReturn from './footer/FooterReturn'
 import FloatingIcon from './icon_components/FloatingIcon'
 import { SlideContext } from './SlideContext'
+import PopupElement from './popup/PopupElement'
 // install Swiper components
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel])
@@ -60,6 +61,7 @@ function Home() {
                 swiper={swiperInstance}
             />
             <FloatingIcon toshow={toFloatIconShow} />
+            <PopupElement>ddfd</PopupElement>
             <Swiper
                 useRef={swiperInstance}
                 spaceBetween={50}

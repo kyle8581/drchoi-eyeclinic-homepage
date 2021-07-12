@@ -23,7 +23,11 @@ import ReviewCreate  from './sightcorrection_review/ReviewCreate'
 import ReviewDescription from './sightcorrection_review/ReviewDescription'
 import TestLanding from './TestLanding'
 import Event from './event/Event'
-import EventCreate from './event/EventCreate'
+import EditorContainer from './event/EditorContainer'
+import EventDescription from './event/EventDescription'
+import EventList from './event/EventList'
+import EventModify from './event/EventModify'
+
 const firebaseConfig = {
     apiKey: 'AIzaSyArAzMQJPh9WuSk9eMaBzP38DhuAK2p41I',
     authDomain: 'drchoi-eyeclinic-homepage.firebaseapp.com',
@@ -74,7 +78,10 @@ function App() {
                             <Route path="/foreign" component={Foreign}/>
                             <Route path="/test-landing" component={TestLanding}/>
                             <Route path="/events" component={Event}/>
-                            <Route path="/createEvent" component={EventCreate}/>
+                            <Route path="/createEvent" component={EditorContainer}/>
+                            {/* <Route path="/event-description" component={EventDescription}/> */}
+                            <Route path="/event-description" component={EventList}/>
+                            <Route path="/event-modify" component={EventModify}/>
                         </BrowserRouter>
                     </SightCorrectionSlideContext.Provider>
                 </SlideContext.Provider>
