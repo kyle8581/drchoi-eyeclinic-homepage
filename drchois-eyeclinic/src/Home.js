@@ -44,18 +44,22 @@ function Home() {
     }, [swiperInstance, curSlide])
 
     const [toFloatIconShow, changeFloatShow] = useState(true)
-    useEffect(()=>{
-        if(!allowScroll){
-            console.log("disabled scroll")
-            setTimeout(function(){ setAllowScroll(true) }, 3000)
-            console.log("allow scroll")
+    useEffect(() => {
+        if (!allowScroll) {
+            console.log('disabled scroll')
+            setTimeout(function () {
+                setAllowScroll(true)
+            }, 3000)
+            console.log('allow scroll')
         }
     })
 
     return (
-        <div   onScroll={()=>{
-            console.log("scroll!!")
-        }}>
+        <div
+            onScroll={() => {
+                console.log('scroll!!')
+            }}
+        >
             <TopNav
                 changefloatshow={changeFloatShowOnHamburgerClicked}
                 swiper={swiperInstance}
@@ -78,24 +82,23 @@ function Home() {
                     console.log(currentActiveSlide)
                     setCurslide(swiper.realIndex)
                 }}
-                mousewheel={{ invert: false, thresholdTime:"1000" }}
+                mousewheel={{ invert: false, thresholdTime: '1000' }}
                 touchEventsTarget="wrapper"
                 direction="vertical"
                 autoHeight="true"
                 longSwipes={false}
                 shortSwipes="false"
                 preventInteractionOnTransition="true"
-                onScroll={()=>{
-                    console.log("scroll!!")
+                onScroll={() => {
+                    console.log('scroll!!')
                 }}
-                
-                
+
                 // touchRatio={0}
             >
                 {/* slide 1 : 눈깜빡이는 영상 */}
-                <SwiperSlide className="greeting__slide">
+                {/* <SwiperSlide className="greeting__slide">
                     <Greeting />
-                </SwiperSlide>
+                </SwiperSlide> */}
                 <SwiperSlide>
                     <DoctorMent />
                 </SwiperSlide>
