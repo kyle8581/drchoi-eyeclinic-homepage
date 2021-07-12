@@ -4,18 +4,22 @@ export const Wrapper = styled.div`
     width: 100vw;
     height: 100vh;
     background-color: #fff;
-    z-index: -4;
     position: absolute;
 `
-export const Background = styled.div`
+export const Background = styled.img`
     position: absolute;
-    z-index: 0;
-    width: 100vw;
-    height: 100vh;
+
     left: 0;
     top: 0;
-    background: url('/doctor-ment/tablet_sitting.png') no-repeat center center
-        fixed;
+    /* 4/3비율 이상 즉 가로가 더 길 때에는 가로 길이에 사진을 맞추고 */
+    @media (min-aspect-ratio: 4/3) {
+        width: 100vw;
+    }
+    /* 4/3비율 이하 즉 세로가 더 길 때에는 세로 길이에 사진을 맞춘다 */
+
+    @media (max-aspect-ratio: 4/3) {
+        height: 100vh;
+    }
 `
 
 export const Title = styled.div`
