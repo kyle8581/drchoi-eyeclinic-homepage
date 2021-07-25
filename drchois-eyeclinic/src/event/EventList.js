@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import firebase from 'firebase/app'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components/macro'
 
+const Row = styled.div`
+    display: flex;
+    flex-direction: row;
+`
 function EventBlock({ id, title }) {
     return (
-        <Link to={'/event-description/' + id}>
-            <div>{title}</div>
-        </Link>
+        <Row>
+            <Link to={'/event-description/' + id}>
+                <div>{title}</div>
+            </Link>
+            <Link to={'/event-modify/' + id}>수정</Link>
+        </Row>
     )
 }
 function EventList() {

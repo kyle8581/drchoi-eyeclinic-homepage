@@ -1,0 +1,6 @@
+.rdw-editor-main {
+    border: 1px solid #f1f1f1;
+    height: 500px;
+    border-radius: 5px;
+    overflow-y: scroll;
+}

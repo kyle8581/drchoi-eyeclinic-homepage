@@ -3,7 +3,20 @@ import draftToHtml from 'draftjs-to-html'
 import { converFromRaw } from 'draft-js'
 import firebase from 'firebase'
 import { Link, useParams } from 'react-router-dom'
+import styled from 'styled-components/macro'
 
+const Wrapper = styled.div`
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+`
+const Display = styled.pre`
+    width: 800px;
+    border: 1px solid;
+`
 function EventDescription() {
     const [htmlData, setHtmlData] = useState('')
     const { eventID } = useParams()
@@ -18,11 +31,11 @@ function EventDescription() {
     }, [])
     console.log(htmlData)
     return (
-        <div>
-            <div dangerouslySetInnerHTML={{ __html: htmlData }}></div>
-            <Link to="/event-modify">수정</Link>
+        <Wrapper>
+            <Display dangerouslySetInnerHTML={{ __html: htmlData }}></Display>
+            <Link to={'/event-modify/' + eventID}>수정</Link>
             <Link to="/createEvent">작성</Link>
-        </div>
+        </Wrapper>
     )
 }
 

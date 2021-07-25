@@ -96,7 +96,7 @@ function App() {
                                 component={EventDescription}
                             />
                             <Route
-                                path="/event-modify"
+                                path="/event-modify/:eventID"
                                 component={EventModify}
                             />
                         </BrowserRouter>

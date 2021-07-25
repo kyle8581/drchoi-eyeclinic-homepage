@@ -1,12 +1,14 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { EditorState, convertToRaw } from 'draft-js'
 import { Editor } from 'react-draft-wysiwyg'
+// import Editor from 'draft-wysiwyg'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import draftToHtml from 'draftjs-to-html'
 import firebase from 'firebase/app'
 import { getStorage, ref } from 'firebase/storage'
 import './EventCreate.css'
 import { useHistory } from 'react-router-dom'
+import styled from 'styled-components/macro'
 export const getCurrentTime = () => {
     var today = new Date()
     var date =
@@ -37,49 +39,57 @@ export async function uploadImageCallBack(file) {
         return ret1
     })
 }
-
-class EditorContainer extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            editorState: EditorState.createEmpty(),
-        }
+const Container = styled.div`
+    display: flex;
+    flex-direction: row;
+`
+const Output = styled.pre`
+    img,
+    iframe {
+        align-self: center;
     }
-    // editortoHtml: Function =(editorState)=>{
-    //     console.log(editorState)
-    //     draftToHtml(this.convertToRaw(editorState.getCurrentContent()))
-    // }
-    onEditorStateChange = (editorState) => {
-        const contentState = editorState.getCurrentContent()
-        console.log(convertToRaw(contentState))
-        this.setState({
-            editorState,
+    div > img {
+        align-self: center;
+    }
+    .upload_img {
+        align-self: center;
+    }
+`
+function EditorContainer() {
+    const history = useHistory()
+    const [editorState, setEditorState] = useState(EditorState.createEmpty())
+    const [htmlState, setHtmlState] = useState('')
+
+    const onEditorStateChange = (editorState) => {
+        setEditorState(editorState)
+        setHtmlState(draftToHtml(convertToRaw(editorState.getCurrentContent())))
+    }
+
+    var db = firebase.firestore()
+    var ref = db.collection('events')
+    var eventSubmit = (e) => {
+        console.log(editorState.getCurrentContent())
+        console.log(
+            JSON.stringify(convertToRaw(editorState.getCurrentContent()))
+        )
+        ref.add({
+            title: 'event',
+            content: JSON.stringify(
+                convertToRaw(editorState.getCurrentContent())
+            ),
+        }).then(() => {
+            alert('이벤트가 저장됐습니다.')
+            history.push('/event-list')
         })
+        e.preventDefault()
     }
-
-    render() {
-        const { editorState } = this.state
-        var db = firebase.firestore()
-        var ref = db.collection('events')
-        var eventSubmit = (e) => {
-            console.log(editorState.getCurrentContent())
-            console.log(
-                JSON.stringify(convertToRaw(editorState.getCurrentContent()))
-            )
-            ref.add({"title":"event", "content": JSON.stringify(convertToRaw(editorState.getCurrentContent()))}
-               
-            ).then(() => {
-                alert('이벤트가 저장됐습니다.')
-                this.props.history.push('/events')
-            })
-            e.preventDefault()
-        }
-        return (
-            <div className="editor">
-                <p>이벤트 작성</p>
+    return (
+        <div className="editor">
+            <p>이벤트 작성</p>
+            <Container>
                 <Editor
                     editorState={editorState}
-                    onEditorStateChange={this.onEditorStateChange}
+                    onEditorStateChange={onEditorStateChange}
                     toolbar={{
                         inline: { inDropdown: true },
                         list: { inDropdown: true },
@@ -87,16 +97,43 @@ class EditorContainer extends Component {
                         link: { inDropdown: true },
                         history: { inDropdown: true },
                         image: {
+                            className: 'upload_img',
                             uploadCallback: uploadImageCallBack,
                             alt: { present: true, mandatory: false },
+                            alignmentEnable: true,
+                        },
+                        fontFamily: {
+                            options: [
+                                'NanumSquare_acR',
+                                'NanumSquare_acB',
+                                'NanumSquare_acEB',
+                                'Arial',
+                                'Georgia',
+                                'Impact',
+                                'Tahoma',
+                                'Times New Roman',
+                                'Verdana',
+                            ],
                         },
                     }}
                 />
-                <button onClick={eventSubmit}>제출</button>
-                {/* <IntroduceContent dangerouslySetInnerHTML={{__html:this.editorToHtml}}/> */}
-            </div>
-        )
-    }
+                <Output
+                    dangerouslySetInnerHTML={{
+                        __html: htmlState,
+                    }}
+                />
+            </Container>
+
+            <textarea
+                style={{ width: '100%' }}
+                disabled
+                value={draftToHtml(
+                    convertToRaw(editorState.getCurrentContent())
+                )}
+            />
+            <button onClick={eventSubmit}>제출</button>
+        </div>
+    )
 }
 
 export default EditorContainer

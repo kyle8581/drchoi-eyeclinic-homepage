@@ -1,27 +1,49 @@
 import React, { useEffect, useState, useHistory } from 'react'
-import { EditorState, convertToRaw, ContentState, convertFromHTML } from 'draft-js'
+import { EditorState, convertToRaw, ContentState } from 'draft-js'
+import htmlToDraft from 'html-to-draftjs'
 import { Editor } from 'react-draft-wysiwyg'
 import draftToHtml from 'draftjs-to-html'
-
+import { useParams } from 'react-router-dom'
+import styled from 'styled-components/macro'
 import firebase from 'firebase/app'
-
 import { getCurrentTime, uploadImageCallBack } from './EditorContainer'
+
+const Wrapper = styled.div`
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+`
+const Container = styled.div`
+    display: flex;
+    flex-direction: row;
+`
+const Preview = styled.div`
+    width: 50vw;
+    height: 100vh;
+`
 function EventModify() {
+    const { eventID } = useParams()
     const [editorState, setEditorState] = useState(EditorState.createEmpty())
-    const collectionID = '4pI5pmEufCHMzutjnSHy'
 
     useEffect(() => {
+        console.log(eventID)
         const db = firebase.firestore().collection('events')
-        const doc = db.doc(collectionID)
+        const doc = db.doc(eventID)
         doc.get().then((e) => {
             console.log(e.data().content)
             console.log(draftToHtml(JSON.parse(e.data().content)))
-            const {contentBlocks, entityMap} = convertFromHTML(draftToHtml(JSON.parse(e.data().content)))
+            const { contentBlocks, entityMap } = htmlToDraft(
+                draftToHtml(JSON.parse(e.data().content))
+            )
             console.log(contentBlocks)
             console.log(entityMap)
-            const loadContentState = ContentState.createFromBlockArray(contentBlocks, entityMap)
+            const loadContentState = ContentState.createFromBlockArray(
+                contentBlocks,
+                entityMap
+            )
             setEditorState(EditorState.createWithContent(loadContentState))
-
         })
     }, [])
     const onEditorStateChange = (editorState) => {
@@ -30,8 +52,8 @@ function EventModify() {
     const eventSubmit = (e) => {
         const db = firebase.firestore()
         const ref = db.collection('events')
-        const doc = ref.doc(collectionID)
-        
+        const doc = ref.doc(eventID)
+
         doc.update({
             title: 'event',
             content: JSON.stringify(
@@ -44,24 +66,32 @@ function EventModify() {
         e.preventDefault()
     }
     return (
-        <div>
-            <Editor
-                editorState={editorState}
-                onEditorStateChange={onEditorStateChange}
-                toolbar={{
-                    inline: { inDropdown: true },
-                    list: { inDropdown: true },
-                    textAlign: { inDropdown: true },
-                    link: { inDropdown: true },
-                    history: { inDropdown: true },
-                    image: {
-                        uploadCallback: uploadImageCallBack,
-                        alt: { present: true, mandatory: false },
-                    },
-              }}
-            />
-            <button onClick={eventSubmit}>submit</button>
-        </div>
+        <Wrapper>
+            <Container>
+                <Editor
+                    style={{ width: '50vw' }}
+                    editorState={editorState}
+                    onEditorStateChange={onEditorStateChange}
+                    toolbar={{
+                        inline: { inDropdown: true },
+                        list: { inDropdown: true },
+                        textAlign: { inDropdown: true },
+                        link: { inDropdown: true },
+                        history: { inDropdown: true },
+                        image: {
+                            uploadCallback: uploadImageCallBack,
+                            alt: { present: true, mandatory: false },
+                        },
+                    }}
+                />
+            </Container>
+            <button
+                onClick={eventSubmit}
+                style={{ width: '50px', height: '30px' }}
+            >
+                submit
+            </button>
+        </Wrapper>
     )
 }
 
