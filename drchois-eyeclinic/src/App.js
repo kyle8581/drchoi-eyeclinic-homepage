@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
+import ReactGa from 'react-ga'
+
 import Home from './Home'
 import SightCorrectionSurgery from './sightcorrection/SightCorrectionSurgery'
 import DoctorHome from './doctor-ment/DoctorHome'
@@ -26,7 +28,7 @@ import EditorContainer from './event/EditorContainer'
 import EventDescription from './event/EventDescription'
 import EventList from './event/EventList'
 import EventModify from './event/EventModify'
-
+import PopupEdit from './popup/PopupEdit'
 const firebaseConfig = {
     apiKey: 'AIzaSyArAzMQJPh9WuSk9eMaBzP38DhuAK2p41I',
     authDomain: 'drchoi-eyeclinic-homepage.firebaseapp.com',
@@ -48,6 +50,10 @@ function App() {
     })
     const [curSlide, setCurslide] = useState(0)
     const [pageState, setPageState] = useState('lasik')
+    useEffect(()=>{
+        ReactGa.initialize('G-R8RJT7N8XS');
+        ReactGa.pageview("/")
+    })
     return (
         <FirebaseAuthProvider {...firebaseConfig} firebase={firebase}>
             <UserContext.Provider value={{ userInfo, setUserInfo }}>
@@ -98,6 +104,10 @@ function App() {
                             <Route
                                 path="/event-modify/:eventID"
                                 component={EventModify}
+                            />
+                            <Route
+                                path="/popup-edit"
+                                component={PopupEdit}
                             />
                         </BrowserRouter>
                     </SightCorrectionSlideContext.Provider>

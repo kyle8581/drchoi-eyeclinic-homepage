@@ -1,6 +1,6 @@
 import { BackGrounText } from './BackGroundText'
 
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 export const Border = styled.div`
     width: 100vw;
     height: 100vh;
@@ -158,17 +158,21 @@ export const Comment = styled.div`
     vertical-align: middle;
     margin: auto;
     font-weight: 200;
-    line-height: 1.3rem;
+    line-height: 1.4rem;
+    letter-spacing: 0.1rem;
+
     @media screen and (max-width: 1920px) {
         font-size: 1.2rem;
-        line-height: 1.5rem;
+        line-height: 1.8rem;
     }
     @media screen and (max-width: 1550px) {
         font-size: 1rem;
     }
     @media screen and (max-width: 1300px) and (min-width: 501px) {
         font-size: 0.8rem;
-        line-height: 1rem;
+        line-height: 1.3rem;
+        border:1px solid;
+
     }
     @media screen and (max-width: 500px) {
         font-size: 0.5rem;
