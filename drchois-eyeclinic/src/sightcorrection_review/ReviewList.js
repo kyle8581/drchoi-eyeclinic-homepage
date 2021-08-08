@@ -9,6 +9,7 @@ import FastForwardIcon from '@material-ui/icons/FastForward'
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
 import FastRewindIcon from '@material-ui/icons/FastRewind'
 import SearchIcon from '@material-ui/icons/Search'
+import Media from 'react-media'
 import {
     ReviewPageContainer,
     ReviewPageWrapper,
@@ -57,7 +58,7 @@ function ReviewList() {
     const [searchQuery, setSearchQuery] = useState('')
     const [originalList, setOriginalList] = useState([])
     const [initialized, setInitialized] = useState(false)
-    const [search, setSearch] = useState('')
+    const [search,setSearch]=useState('')
     if (!initialized) {
         loadReview(
             setAllList,
@@ -67,15 +68,6 @@ function ReviewList() {
             setOriginalList
         )
         setInitialized(true)
-        console.log('initialize')
-    }
-    const filter = (reviews, query) => {
-        if (!query) {
-            return reviews
-        }
-        return reviews.filter((review) => {
-            const reviewName = ''
-        })
     }
     useEffect(() => {
         // console.log('all list length ' + allList.length)
@@ -117,10 +109,19 @@ function ReviewList() {
                                 <p>
                                     <span>안전한 수술</span>을 약속드립니다.
                                 </p>
-                                <h3>
-                                    23년 경력의 주치의, 1:1 맞춤진료로 만족도
-                                    높은 의료시스템
-                                </h3>
+                                <Media queries={{small:{maxWidth:400}}}>
+                                    {(matches)=>
+                                    matches.small ? (
+                                        <div>
+                                            <h3>23년 경력의 주치의,</h3>
+                                            <h3>1:1 맞춤진료로 만족도 높은 의료시스템</h3>
+                                        </div>
+                                    ):(
+                                        <h3>23년 경력의 주치의, 1:1 맞춤진료로 만족도 높은 의료시스템</h3>
+                                        
+                                    )
+                                    }
+                                </Media>
                             </ReviewPage_sec1_text>
                             <ReviewPage_sec1_img src="surgery/Smile/smileinfo_human.png" />
                         </ReviewPage_sec1>
@@ -138,7 +139,7 @@ function ReviewList() {
                                 }}
                             >
                                 <GreenCircleWithCheck className="green_circle_with_check" />
-                                <p style={{ marginLeft: '1rem' }}>
+                                <p className="sec2_law" style={{ marginLeft: '1rem' }}>
                                     의료법 56조에 의거하여 개인인증 후 열람이
                                     가능합니다.
                                 </p>

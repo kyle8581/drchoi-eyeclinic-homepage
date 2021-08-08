@@ -12,10 +12,17 @@ export const ReviewPage = styled.div`
     margin-top: 50px;
     display: flex;
     justify-content: center;
-    align-items: center;
 `
 export const ReviewPageWrapper = styled.div`
     width:1000px;
+    font-family:NanumSquare_acEB;
+    display:flex;
+    flex-direction: column;
+    @media screen and (max-width: 400px){
+        width:80%;
+        margin-top: 10px;
+        font-family:NanumSquare_acB;
+    }
 `
 export const ReviewPage_sec1 = styled.div`
     /* width: 80%; */
@@ -23,7 +30,8 @@ export const ReviewPage_sec1 = styled.div`
     flex-direction:row;
     align-items:center;
     justify-content: space-between;
-    @media 
+    @media screen and (max-width: 400px){
+    } 
 `
 export const ReviewPage_sec1_text = styled.div`
     /* width: 600px; */
@@ -37,15 +45,27 @@ export const ReviewPage_sec1_text = styled.div`
     h3{
         font-size: 20px;
     }
+    @media screen and (max-width: 400px){
+        width: 100%;
+        line-height: 20px;
+        font-size: 15px;
+        font-family:NanumSquare_acB;
+        h3{
+            font-size: 8px;
+            line-height:15px;
+        }
+    } 
 `
 export const ReviewPage_sec1_img = styled.img`
     width: 250px;
+    @media screen and (max-width: 400px){
+        width: 80px;
+    }
 `
 export const ReviewPage_sec2 = styled.div`
     font-size: 25px;
     color: #707070;
     line-height: 30px;
-    font-family: NanumSquare_acEB;
     span{
         color: #fc8a3f;
     }
@@ -64,6 +84,18 @@ export const ReviewPage_sec2 = styled.div`
             font-size: 20px;
         }
     }
+    @media screen and (max-width:400px){
+        font-size: 20px;
+        /* .sec2_law{
+            font-size:8px;
+        } */
+        .green_circle_with_check{
+            width:8px;
+            p{
+                font-size: 8px;
+            }
+        }
+    }
 `
 export const ListContainer = styled.div`
     margin-top:50px;
@@ -72,12 +104,12 @@ export const ListContainer = styled.div`
     .true{
         border-top: 2px solid #707070;
     }
+    @media screen and (max-width:400px){
+        width: 300px;
+    }
 `
 export const PageNumberIndex = styled.div`
     display: flex;
-
-
-
     flex-direction:row ;
     justify-content: center;
     font-family: ${NanumSquare_acB};
@@ -92,6 +124,9 @@ export const PageNumberIndex = styled.div`
     }
     .true{
         color:#63c3c4
+    }
+    svg{
+        cursor:pointer;
     }
 
 

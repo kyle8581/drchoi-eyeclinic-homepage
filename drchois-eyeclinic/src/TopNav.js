@@ -48,6 +48,8 @@ function TopNav({ changefloatshow, swiper }) {
             let found = false
             userList.forEach((u) => {
                 // console.log('email : ' + u.email)
+                // 유저 리스트에서 회원 정보 찾음
+                // userContext update
                 if (u.email === userInfo.email) {
                     // console.log('matched')
                     setUserInfo({
@@ -61,12 +63,13 @@ function TopNav({ changefloatshow, swiper }) {
             })
             // console.log('updated user info')
             // console.log(userInfo)
-            if (!found && localStorage.getItem('signup') == undefined) {
+            if (!found && localStorage.getItem('signup') === undefined) {
                 // console.log('redirect to 회원가입')
                 history.push('/signup')
             }
         }
     }
+    // 기존에 가입된 회원인지 체크하기위해서 firestore 
     const getUserList = () => {
         ref.onSnapshot((querySnapshot) => {
             const userlist = []
@@ -77,10 +80,14 @@ function TopNav({ changefloatshow, swiper }) {
             setUserList(userlist)
         })
     }
+    // 로그인 실행 버튼
+    // 새로운 창이 뜨면서 구글 로그인 실행
+    // useContext 정보 초기화
     const Login = (setUserInfo) => {
         var provider = new firebase.auth.GoogleAuthProvider()
         console.log(setUserInfo)
         console.log(ref)
+        
         firebase
             .auth()
             .signInWithPopup(provider)
@@ -97,6 +104,28 @@ function TopNav({ changefloatshow, swiper }) {
 
         setNeedFetch(true)
     }
+    // userContext와 firebase.auth 동기화
+    firebase.auth().onAuthStateChanged(function(user){
+        // firebase auth에 로그인이 되어있는데 userContext에 반영 안된 경우
+        if(user){
+            console.log(user.email)
+            if(userInfo.login === false){
+                setUserInfo({
+                    login:true, email:user.email, phone_number:"default",authority:"default"
+                })
+                setNeedFetch(true)
+            }
+        }
+        // firebase auth에서 로그아웃되었는데 useContext에 반영 안된경우
+        else{
+            console.log(user)
+            if(userInfo.login){
+                setUserInfo({
+                    login:false, email:user.email, phone_number:"default",authority:"default"
+                })
+            }
+        }
+    })
     useEffect(() => {
         if (needFetch) {
             console.log(userList)
@@ -110,47 +139,87 @@ function TopNav({ changefloatshow, swiper }) {
         if (needCheck && userList.length !== 0 && userInfo.login) {
             console.log('------')
             console.log(userList)
+            // 기존에 등록된 회원인지 체크
             checkUserRegistered()
             setNeedCheck(false)
         }
     }, [needCheck, userList, userInfo])
     const Logout = () => {
         firebase.auth().signOut()
-        const tmp_usr = { ...userInfo, login: false }
-        setUserInfo(tmp_usr)
+        setUserInfo({
+            login:false, email:"default", phone_number:"default",authority:"default"
+        })
     }
-    const LoginButton = (isLogined) => {
+    // 로그인 정보가 담긴 저장소가 두 군데가 있음
+    // 1. firebase.auth
+    // 2. userContext
+    const LoginButton = () => {
         const { userInfo, setUserInfo } = useContext(UserContext)
-        return (
-            <FirebaseAuthConsumer>
-                {(authState) => {
-                    if (userInfo.login) {
-                        console.log(authState)
-                        return (
-                            <button
-                                onClick={() => {
-                                    Logout(setUserInfo)
-                                }}
-                            >
-                                logout
-                            </button>
-                        )
-                    } else {
-                        console.log(authState)
-
-                        return (
-                            <button
-                                onClick={() => {
-                                    Login(setUserInfo)
-                                }}
-                            >
-                                login
-                            </button>
-                        )
-                    }
+        if(userInfo.login){
+            return(
+                <button
+                onClick={() => {
+                    Logout(setUserInfo)
                 }}
-            </FirebaseAuthConsumer>
-        )
+            >
+                logout
+            </button>
+            )
+        }
+        else{
+            return(
+                <button
+                onClick={() => {
+                    Login(setUserInfo)
+                }}
+            >
+                login
+            </button>
+            )
+        }
+        // return (
+        //     {userInfo.login?( <button
+        //         onClick={() => {
+        //             Logout(setUserInfo)
+        //         }}
+        //     >
+        //         logout
+        //     </button>):( <button
+        //         onClick={() => {
+        //             Login(setUserInfo)
+        //         }}
+        //     >
+        //         login
+        //     </button>)}
+            // <FirebaseAuthConsumer>
+            //     {(authState) => {
+            //         if (authState.isSignedIn) {
+            //             console.log(authState)
+            //             return (
+            //                 <button
+            //                     onClick={() => {
+            //                         Logout(setUserInfo)
+            //                     }}
+            //                 >
+            //                     logout
+            //                 </button>
+            //             )
+            //         } else {
+            //             console.log(authState)
+
+            //             return (
+            //                 <button
+            //                     onClick={() => {
+            //                         Login(setUserInfo)
+            //                     }}
+            //                 >
+            //                     login
+            //                 </button>
+            //             )
+            //         }
+            //     }}
+            // </FirebaseAuthConsumer>
+        // )
     }
 
     return (
@@ -189,16 +258,16 @@ function TopNav({ changefloatshow, swiper }) {
                 </ul>
                 <LanguageSelectContainer className="LanguageSelectContainer">
                     <Country to={{ pathname: '/' }} className="Kor">
-                        <img src="https://pics.freeicons.io/uploads/icons/png/5481736961536065003-512.png" />
+                        <img src="/language_flag/KR_flag.png" alt="lan"/>
                     </Country>
                     <Country to={{ pathname: '/foreign', state: Eng }}>
-                        <img src="https://pics.freeicons.io/uploads/icons/png/13394302041536065017-512.png" />
+                        <img src="/language_flag/EN_flag.png" />
                     </Country>
                     <Country to={{ pathname: '/foreign', state: Rus }}>
-                        <img src="https://pics.freeicons.io/uploads/icons/png/37161591536064993-512.png" />
+                        <img src="/language_flag/RU_flag.png" />
                     </Country>
                     <Country to={{ pathname: '/foreign', state: Chi }}>
-                        <img src="https://pics.freeicons.io/uploads/icons/png/14523702201536064854-512.png" />
+                        <img src="/language_flag/CH_flag.png" />
                     </Country>
                 </LanguageSelectContainer>
                 {/*    <div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
-import ReactGa from 'react-ga'
+// import ReactGa from 'react-ga'
 
 import Home from './Home'
 import SightCorrectionSurgery from './sightcorrection/SightCorrectionSurgery'
@@ -51,10 +51,11 @@ function App() {
     })
     const [curSlide, setCurslide] = useState(0)
     const [pageState, setPageState] = useState('lasik')
-    useEffect(()=>{
-        ReactGa.initialize('G-R8RJT7N8XS');
-        ReactGa.pageview("/")
-    })
+    // module not found error 때문에 잠깐 comment out 했음
+    // useEffect(()=>{
+    //     ReactGa.initialize('G-R8RJT7N8XS');
+    //     ReactGa.pageview("/")
+    // })
     return (
         <FirebaseAuthProvider {...firebaseConfig} firebase={firebase}>
             <UserContext.Provider value={{ userInfo, setUserInfo }}>
@@ -106,10 +107,7 @@ function App() {
                                 path="/event-modify/:eventID"
                                 component={EventEdit}
                             />
-                            <Route
-                                path="/popup-edit"
-                                component={PopupEdit}
-                            />
+                            <Route path="/popup-edit" component={PopupEdit} />
                         </BrowserRouter>
                     </SightCorrectionSlideContext.Provider>
                 </SlideContext.Provider>

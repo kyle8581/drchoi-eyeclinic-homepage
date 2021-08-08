@@ -3,6 +3,9 @@ import React, {useContext} from 'react'
 import firebase from 'firebase/app'
 import {UserContext} from "../UserContext"
 import {Link} from "react-router-dom"
+import Media from 'react-media'
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
+import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined'
 const ReviewBlockWrapper = styled(Link)`
 width: 1100px;
 display: flex;
@@ -11,6 +14,9 @@ text-decoration: none;
 
 /* justify-content: center; */
 align-items: center;
+@media screen and (max-width:400px){
+    width:80%;
+}
 `
 const ReviewBlockContainer = styled.div`
     width: 1000px;
@@ -18,6 +24,10 @@ const ReviewBlockContainer = styled.div`
     text-decoration: none;
     display:grid;
     grid-template-columns: 3fr 1fr 5fr;
+    @media screen and (max-width:400px){
+       width:80%;
+       grid-template-columns: 3fr 5fr;
+}
 `
 const ReviewBlock_col1_wrapper = styled.div`
 display:flex;
@@ -29,28 +39,27 @@ const ReviewBlock_col1 = styled.div`
     width:90%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 0.1fr 1fr;
+    grid-template-rows: 0.2fr 1fr 0.1fr 1fr;
     font-family:NanumSquare_acEB;
     color:#707070;
     .box1{
         grid-column-start: 1;
         grid-column-end:2;
-        grid-row-start:1;
-        grid-row-end:2;
-        background-color: yellow;
+        grid-row-start:2;
+        grid-row-end:3;
     }
     .box2{
         grid-column-start: 2;
         grid-column-end:4;
-        grid-row-start:1;
-        grid-row-end:2;
+        grid-row-start:2;
+        grid-row-end:3;
         padding-left: 0.8rem;
     }
     .box3{
-        grid-column-start: 1;
+        grid-column-start:1;
         grid-column-end:4;
-        grid-row-start:3;
-        grid-row-end:4;
+        grid-row-start:4;
+        grid-row-end:5;
     }
     
 `
@@ -163,7 +172,9 @@ function ReviewBlock({e, idx, allList}){
         <ReviewBlockContainer>
             <ReviewBlock_col1_wrapper>
             <ReviewBlock_col1>
-                <div className="box1"></div>
+                <div className="box1">
+                    <img src="/review/review_guy.png"></img>
+                </div>
                 <div className="box2">
                     <span>{e.name}<br /></span>
                     <span><br /></span>
@@ -193,9 +204,15 @@ function ReviewBlock({e, idx, allList}){
                 </div>
             </ReviewBlock_col1>
             </ReviewBlock_col1_wrapper>
-            <ReviewBlock_col2>
-                <img src="review/gold_medal.png"/>
-            </ReviewBlock_col2>
+            <Media queries={{small:{maxWidth:400}}}>
+                {(matches)=>
+                    matches.small ? (<></>):(
+                        <ReviewBlock_col2>
+                            <img src="review/gold_medal.png"/>
+                        </ReviewBlock_col2>
+                    )
+                }
+            </Media>
             {/* <p style={{color:'#63c3c4',font:'NanumSquare_acEB'}}>목표달성</p> */}
             <ReviewBlock_col3>
                 <div className="col3_wrapper">
@@ -212,7 +229,9 @@ function ReviewBlock({e, idx, allList}){
         </ReviewBlockContainer>
         {/* <div>{userInfo.authority}
         </div> */}
-        {userInfo.authority==="admin"? <button style={{height:"20px"}} onClick={onDelete}>삭제</button>:<></>}
+        {userInfo.authority==="admin"? 
+            <DeleteForeverOutlinedIcon onClick={()=>{onDelete()}}/>
+        :<></>}
        
         </ReviewBlockWrapper>
     )
