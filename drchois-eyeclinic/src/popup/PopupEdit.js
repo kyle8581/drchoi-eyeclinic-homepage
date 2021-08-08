@@ -46,18 +46,7 @@ function PopupEdit() {
             setImage(e.target.files[0])
         }
     }
-    const InputBlock = () => {
-        if (hasLink) {
-            return (
-                <Container style={{marginTop:"0"}}>
-                    <label htmlFor="linkText">연결 링크</label>
-                    <input type="text" id="linkText" value={link} />
-                </Container>
-            )
-        } else {
-            return <></>
-        }
-    }
+    
     const storage = firebase.storage()
     const handleUpload = () => {
         const uploadTask = storage.ref(`popup/${image.name}`).put(image)
@@ -112,7 +101,16 @@ function PopupEdit() {
                     }}
                 />
                 {<div>{hasLink}</div>}
-                <InputBlock />
+                {
+                    hasLink?(
+                        <Container style={{marginTop:"0"}}>
+                                <label htmlFor="linkText">연결 링크</label>
+                                <input type="text" id="linkText" value={link} onChange={(e)=>{
+                                    setLink(e.target.value)
+                                }}/>
+                            </Container>
+                    ):(<></>)
+                }
                 <label htmlFor="endDate">종료 일자</label>
                 <input
                     type="date"

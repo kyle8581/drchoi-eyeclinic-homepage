@@ -171,7 +171,7 @@ export const Comment = styled.div`
     @media screen and (max-width: 1300px) and (min-width: 501px) {
         font-size: 0.8rem;
         line-height: 1.3rem;
-        border:1px solid;
+        /* border:1px solid; */
 
     }
     @media screen and (max-width: 500px) {

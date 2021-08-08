@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import firebase from 'firebase/app'
 import { Link } from 'react-router-dom'
 import ReviewBlock from './ReviewBlock.js'
@@ -8,6 +8,7 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import FastForwardIcon from '@material-ui/icons/FastForward'
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
 import FastRewindIcon from '@material-ui/icons/FastRewind'
+import SearchIcon from '@material-ui/icons/Search'
 import {
     ReviewPageContainer,
     ReviewPageWrapper,
@@ -19,8 +20,9 @@ import {
     ReviewPage_sec2,
     PageNumberIndex,
     FilterContainer,
+    SearchContainer,
 } from './ReviewList.components'
-
+import { UserContext} from '../UserContext'
 const loadReview = (
     setAllList,
     needToFetch,
@@ -29,6 +31,7 @@ const loadReview = (
     setOriginalList
 ) => {
     if (needToFetch) {
+        console.log('fetch')
         collection.onSnapshot((s) => {
             let tmpList = []
             s.forEach((e) => {
@@ -42,6 +45,7 @@ const loadReview = (
     }
 }
 function ReviewList() {
+    const {userInfo } = useContext(UserContext)
     const db = firebase.firestore()
     const collection = db.collection('sightcorrection_comment')
     const [allList, setAllList] = useState([])
@@ -53,6 +57,7 @@ function ReviewList() {
     const [searchQuery, setSearchQuery] = useState('')
     const [originalList, setOriginalList] = useState([])
     const [initialized, setInitialized] = useState(false)
+    const [search, setSearch] = useState('')
     if (!initialized) {
         loadReview(
             setAllList,
@@ -63,6 +68,14 @@ function ReviewList() {
         )
         setInitialized(true)
         console.log('initialize')
+    }
+    const filter = (reviews, query) => {
+        if (!query) {
+            return reviews
+        }
+        return reviews.filter((review) => {
+            const reviewName = ''
+        })
     }
     useEffect(() => {
         // console.log('all list length ' + allList.length)
@@ -131,10 +144,11 @@ function ReviewList() {
                                 </p>
                             </div>
                         </ReviewPage_sec2>
+
                         <FilterContainer>
-                            {/* <div>{surgeryType}</div> */}
                             <label htmlFor="surgeryType"></label>
                             <select
+                                className="select"
                                 name="surgeryType"
                                 onChange={(e) => {
                                     setSurgeryType(e.target.value)
@@ -145,14 +159,23 @@ function ReviewList() {
                                 <option value="라식">라식</option>
                                 <option value="스마일 라식">스마일 라식</option>
                             </select>
-                            <label htmlFor="query">검색</label>
+                            <label className="search" htmlFor="query"></label>
                             <input
+                                className="searchContent"
                                 type="text"
                                 name="query"
+                                placeholder="검색어를 입력하세요..."
                                 onChange={(e) => {
-                                    setSearchQuery(e.target.value)
+                                    setSearch(e.target.value)
                                 }}
                             />
+                            <SearchContainer
+                                onClick={() => {
+                                    setSearchQuery(search)
+                                }}
+                            >
+                                <SearchIcon className="searchIcon"/>
+                            </SearchContainer>
                         </FilterContainer>
                         <ListContainer>
                             {curPageList.map((review, index) => {
@@ -187,20 +210,20 @@ function ReviewList() {
                             )}
                         </ListContainer>
                         <PageNumberIndex>
-                            <FastRewindIcon 
-                               onClick={(e) => {
-                                if (pageIdx === 0) {
-                                    alert('첫번째 페이지입니다.')
-                                } else {
-                                    setPageIdx(0)
-                                }
-                            }}
+                            <FastRewindIcon
+                                onClick={(e) => {
+                                    if (pageIdx === 0) {
+                                        alert('첫번째 페이지입니다.')
+                                    } else {
+                                        setPageIdx(0)
+                                    }
+                                }}
                             />
                             <ArrowLeftIcon
                                 style={{
                                     transform: 'scale(1.6,1.2)',
                                     marginLeft: '1.5rem',
-                                    marginRight:'1rem'
+                                    marginRight: '1rem',
                                 }}
                                 onClick={(e) => {
                                     if (pageIdx === 0) {
@@ -227,8 +250,7 @@ function ReviewList() {
                                 style={{
                                     transform: 'scale(1.6,1.2)',
                                     marginRight: '1.5rem',
-                                    marginLeft : '1rem'
-                    
+                                    marginLeft: '1rem',
                                 }}
                                 onClick={(e) => {
                                     if (pageIdx === pageNumberList.length - 1) {
@@ -248,10 +270,13 @@ function ReviewList() {
                                 }}
                             />
                         </PageNumberIndex>
-                        {JSON.stringify(pageNumberList)}
-                        {/* {allList.length} */}
-                        {/* {JSON.stringify(curPageList)} */}
+                        {userInfo.authority==="admin"?
                         <Link to="/create-sightcorrection-review">글쓰기</Link>
+                        :<></>
+                        }
+                        {/* <WriteButton/>
+                        {oneToFive()} 이게 맞는거임
+                        <oneToFive/> */}
                     </ReviewPageWrapper>
                 </ReviewPage>
             </ReviewPageContainer>
@@ -260,3 +285,20 @@ function ReviewList() {
 }
 
 export default ReviewList
+
+// const WriteButton = ()=>{
+//     if(조건){
+//         return link component
+//     }
+//     else{
+//         return <></>
+//     }
+// }
+// const oneToFive = ()=>{
+//     var ret = []
+//     for(var i=1;i<6;i++){
+//         ret.push(<div>{i}</div>)
+//     }
+//     return ret
+// }
+// ret = [<div>1</div>, ...]

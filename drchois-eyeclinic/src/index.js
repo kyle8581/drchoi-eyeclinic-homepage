@@ -7,7 +7,6 @@ import "./fonts/NanumBarunGothicBold.ttf"
 import "./fonts/NanumBarunGothicLight.ttf"
 import "./fonts/NanumSquareBold.ttf"
 import "./fonts/NanumSquareRegular.ttf"
-
 ReactDOM.render(
   <App />,
 

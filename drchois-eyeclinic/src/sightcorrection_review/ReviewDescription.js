@@ -177,7 +177,7 @@ function ReviewDescription() {
                                         목록
                                     </div>
                                 </ToListButton>
-                                <WriteReviewButton to="/create-sightcorrection-review" onClick={(e)=>{ 
+                                {/* <WriteReviewButton to="/create-sightcorrection-review" onClick={(e)=>{ 
                                     if(userInfo.authority!=="admin"){
                                         e.preventDefault()
                                         alert("권한이 없습니다.")
@@ -186,10 +186,9 @@ function ReviewDescription() {
                                     <div>
                                         글쓰기
                                     </div>
-                                </WriteReviewButton>
+                                </WriteReviewButton> */}
                             </NavButtonContainer>
                         </ButtonBar>
-                        <Link to="/create-sightcorrection-review">글쓰기</Link>
                     </ReviewPageWrapper>
                 </ReviewPage>
             </ReviewPageContainer>

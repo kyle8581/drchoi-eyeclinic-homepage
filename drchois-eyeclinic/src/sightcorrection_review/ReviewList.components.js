@@ -23,6 +23,7 @@ export const ReviewPage_sec1 = styled.div`
     flex-direction:row;
     align-items:center;
     justify-content: space-between;
+    @media 
 `
 export const ReviewPage_sec1_text = styled.div`
     /* width: 600px; */
@@ -65,6 +66,7 @@ export const ReviewPage_sec2 = styled.div`
     }
 `
 export const ListContainer = styled.div`
+    margin-top:50px;
     border-top: 4px solid #63c3c4;
     border-bottom: 4px solid #63c3c4;
     .true{
@@ -97,4 +99,50 @@ export const PageNumberIndex = styled.div`
 export const FilterContainer = styled.div`
     display: flex;
     flex-direction: row;
+    margin-left: 10px;
+    font-family:NanumSquare_acB;
+    .select{
+        -webkit-appearance: none;
+        -moz-appearance:none;
+        appearance:none;
+        width: 100px;
+        font-size:13px;
+        color: #707070;
+        border : 1px solid #707070;
+        text-align:center;
+        padding:.6em 1.4em .5em .8em;
+        font-weight:400;
+        background:url(https://image.flaticon.com/icons/png/16/32/32195.png) no-repeat 90% 60%;
+        cursor:grab;
+    }
+    .select::-ms-expand{
+        display:none;
+    }
+    .select:hover{
+        border: 2px solid #888888;
+    }
+    .search{
+        color: #707070;
+        margin-left: 30px;
+    }
+    .searchContent{
+        color: #707070;
+        width:200px;
+        border : 1px solid #707070;
+    }
+`
+export const SearchContainer = styled.div`
+    width: 80px;
+    background-color: #63c3c4;
+    cursor: grab;
+    display:flex;
+    justify-content:center;
+    /* background:url(https://pics.freeicons.io/uploads/icons/png/3650895391548336152-512.png) no-repeat 30% 40%; */
+    :active{
+
+    }
+    .searchIcon{
+        color: white;
+        align-self: center;
+    }
 `

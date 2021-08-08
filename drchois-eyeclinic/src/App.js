@@ -23,6 +23,7 @@ import { SightCorrectionSlideContext } from './SightCorrectionSlideContext'
 import ReviewList from './sightcorrection_review/ReviewList'
 import ReviewCreate from './sightcorrection_review/ReviewCreate'
 import ReviewDescription from './sightcorrection_review/ReviewDescription'
+import EventEdit from './event/EventEdit'
 import Event from './event/Event'
 import EditorContainer from './event/EditorContainer'
 import EventDescription from './event/EventDescription'
@@ -93,8 +94,8 @@ function App() {
                             <Route path="/foreign" component={Foreign} />
                             <Route path="/event-list" component={EventList} />
                             <Route
-                                path="/createEvent"
-                                component={EditorContainer}
+                                path="/event-create"
+                                component={EventEdit}
                             />
                             {/* <Route path="/event-description" component={EventDescription}/> */}
                             <Route
@@ -103,7 +104,7 @@ function App() {
                             />
                             <Route
                                 path="/event-modify/:eventID"
-                                component={EventModify}
+                                component={EventEdit}
                             />
                             <Route
                                 path="/popup-edit"

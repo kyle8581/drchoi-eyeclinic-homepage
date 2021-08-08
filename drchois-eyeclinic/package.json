@@ -30,6 +30,8 @@
     "react-scroll": "^1.8.1",
     "react-scroll-detect": "^1.2.0",
     "reactjs-popup": "^2.0.5",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.3",
     "styled-components": "^5.2.1",
     "swiper": "^6.7.1",
     "web-vitals": "^0.2.4"
