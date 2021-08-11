@@ -11,11 +11,11 @@ width: 1100px;
 display: flex;
 flex-direction: row;
 text-decoration: none;
-
 /* justify-content: center; */
 align-items: center;
 @media screen and (max-width:400px){
-    width:80%;
+    width:100%;
+    height:80px;
 }
 `
 const ReviewBlockContainer = styled.div`
@@ -25,8 +25,9 @@ const ReviewBlockContainer = styled.div`
     display:grid;
     grid-template-columns: 3fr 1fr 5fr;
     @media screen and (max-width:400px){
-       width:80%;
-       grid-template-columns: 3fr 5fr;
+       width:300px;
+       grid-template-columns: 3fr 2fr;
+       height: 100%;
 }
 `
 const ReviewBlock_col1_wrapper = styled.div`
@@ -34,6 +35,10 @@ display:flex;
 justify-content:center;
 align-items:center;
 border-right: 2px solid #707070;
+@media screen and (max-width:400px){
+    height:80px;
+    border-right: 1px solid #707070;
+}
 `
 const ReviewBlock_col1 = styled.div`
     width:90%;
@@ -54,12 +59,51 @@ const ReviewBlock_col1 = styled.div`
         grid-row-start:2;
         grid-row-end:3;
         padding-left: 0.8rem;
+        .tags{
+                font-family: NanumSquare_acEB;
+                font-size:0.8rem;
+            }
+        .tags_sex{
+            font-family: NanumSquare_acEB;
+            font-size:0.8rem;
+            margin-left:1rem;
+        }
     }
     .box3{
         grid-column-start:1;
         grid-column-end:4;
         grid-row-start:4;
         grid-row-end:5;
+    }
+    @media screen and (max-width:400px){
+        width:100%;
+        height:80px;
+        grid-template-rows: 0.1fr 1fr 0.05fr 0.8fr;
+        .box1{
+            img{
+                width: 50px;
+            }
+        }
+        .box2{
+            
+            .tags, .tags_sex{
+                font-size:8px;
+            }
+            .tags_sex{
+                margin-left:2px;
+            }
+            span{
+                font-size:8px;
+            }
+            
+        }
+        .box3{
+            width:90%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-size:8px;
+        }
     }
     
 `
@@ -96,6 +140,8 @@ const SightScore = styled.div`
             justify-content:center;
         }
         .leftscore{
+            font-family:NanumSquare_acEB;
+            font-size:1.5rem;
             grid-column-start: 2;
         grid-column-end:3;
         grid-row-start:2;
@@ -115,6 +161,8 @@ const SightScore = styled.div`
             justify-content:center;
         }
         .rightscore{
+            font-family:NanumSquare_acEB;
+            font-size:1.5rem;
             grid-column-start: 4;
             grid-column-end:5;
             grid-row-start:2;
@@ -123,6 +171,21 @@ const SightScore = styled.div`
             align-items:center;
             justify-content:center;
         }
+    @media screen and (max-width:400px){
+        font-size:9px;
+        font-family:NanumSquare_acB;
+        border-bottom: 1px solid #acacac;
+        border-top: 1px solid #acacac;
+        height:100%;
+        .leftscore{
+            font-size:8px;
+            font-family:NanumSquare_acB;
+        }
+        .rightscore{
+            font-size:8px;
+            font-family:NanumSquare_acB;
+        }
+    }
 `
 const ReviewBlock_col2=styled.div`
 border-right:2px solid #707070;
@@ -155,11 +218,27 @@ const ReviewBlock_col3 = styled.div`
             font-size:12px;
         }
     }
+    @media screen and (max-width:400px){
+        font-family:NanumSquare_acB;
+        .col3_wrapper{
+            .surgery_type{
+                font-size:10px;
+            }
+            .title{
+                margin-top:1px;
+                font-size: 8px;
+            }
+            .content{
+                margin-top:1px;
+                font-size:7px;
+            }
+        }
+    }
 `
-
 function ReviewBlock({e, idx, allList}){
     const onDelete=()=>{
         console.log(e)
+        console.log(1)
         const db=firebase.firestore()
         db.collection("sightcorrection_comment").doc(e.id).delete()
     }
@@ -178,16 +257,11 @@ function ReviewBlock({e, idx, allList}){
                 <div className="box2">
                     <span>{e.name}<br /></span>
                     <span><br /></span>
-                    <span style={{
-                        "fontFamily":"NanumSquare_acEB","fontSize":"0.8rem"
-                    }}>연령</span>
+                    <span className="tags">연령</span>
                     <span>&nbsp;</span>
-                    <span style={{"fontFamily":"NanumSquare_acB", "fontSize":"0.8rem"}}>{e.age}</span>
-                    <span style={{
-                        "marginLeft":"1rem",
-                        "fontFamily":"NanumSquare_acEB","fontSize":"0.8rem"
-                    }}>성별&nbsp;</span>
-                    <span style={{"fontFamily":"NanumSquare_acB","fontSize":"0.8rem"}}>{e.sex}</span>
+                    <span className="tags">{e.age}</span>
+                    <span className="tags_sex">성별&nbsp;</span>
+                    <span className="tags">{e.sex}</span>
                 </div>
                 <div className="box3">
                     <SightScore>
@@ -197,9 +271,9 @@ function ReviewBlock({e, idx, allList}){
                         <div className="left">
                             <span>좌안</span>
                             </div>
-                        <div className="leftscore" style={{"fontFamily":"NanumSquare_acEB","fontSize":"1.5rem"}}>{e.sightAfter}</div>
+                        <div className="leftscore">{e.leftsight}</div>
                         <div className="right">우안</div>
-                        <div className="rightscore"  style={{"fontFamily":"NanumSquare_acEB","fontSize":"1.5rem"}}>{e.sightAfter}</div>
+                        <div className="rightscore">{e.rightsight}</div>
                     </SightScore>
                 </div>
             </ReviewBlock_col1>
@@ -230,7 +304,8 @@ function ReviewBlock({e, idx, allList}){
         {/* <div>{userInfo.authority}
         </div> */}
         {userInfo.authority==="admin"? 
-            <DeleteForeverOutlinedIcon onClick={()=>{onDelete()}}/>
+            <DeleteForeverOutlinedIcon style={{color:'#707070'}} onClick={()=>{onDelete()}}/>
+            // <button onclick={onDelete()}>삭제</button>
         :<></>}
        
         </ReviewBlockWrapper>

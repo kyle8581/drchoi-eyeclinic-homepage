@@ -8,6 +8,7 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import FastForwardIcon from '@material-ui/icons/FastForward'
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
 import FastRewindIcon from '@material-ui/icons/FastRewind'
+import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import SearchIcon from '@material-ui/icons/Search'
 import Media from 'react-media'
 import {
@@ -177,7 +178,14 @@ function ReviewList() {
                             >
                                 <SearchIcon className="searchIcon"/>
                             </SearchContainer>
+                            {userInfo.authority==="admin"?
+                        <Link className="writeIcon" style={{width:'50px'}} to="/create-sightcorrection-review">
+                            <CreateOutlinedIcon style={{color:'#707070',width:'50px', marginRight:'100px'}}/>
+                        </Link>
+                        :<></>
+                        }
                         </FilterContainer>
+                        
                         <ListContainer>
                             {curPageList.map((review, index) => {
                                 const reviewCount = pageIdx * 5 + index
@@ -194,7 +202,7 @@ function ReviewList() {
                                 } else {
                                     // 제일 처음
                                     return (
-                                        <div className="false">
+                                        <div>
                                             <ReviewBlock
                                                 e={review}
                                                 idx={index}
@@ -271,10 +279,7 @@ function ReviewList() {
                                 }}
                             />
                         </PageNumberIndex>
-                        {userInfo.authority==="admin"?
-                        <Link to="/create-sightcorrection-review">글쓰기</Link>
-                        :<></>
-                        }
+                        
                         {/* <WriteButton/>
                         {oneToFive()} 이게 맞는거임
                         <oneToFive/> */}

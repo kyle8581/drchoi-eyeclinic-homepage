@@ -9,6 +9,8 @@ import FastForwardIcon from '@material-ui/icons/FastForward'
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
 import FastRewindIcon from '@material-ui/icons/FastRewind'
 import { PageNumberIndex } from '../sightcorrection_review/ReviewList.components'
+import useWindowDimensions from '../useWindowDimensions'
+import EventListMobile from './EventListMobile'
 const Wrapper = styled.div`
     display: flex;
     /* align-items: center; */
@@ -92,7 +94,7 @@ const PageNavContainer = styled.div`
     flex-direction : row;
 `
 
-function EventList() {
+function EventListDesktop() {
     const [curPage, setCurPage] = useState(1)
     const [htmlData, setHtmlData] = useState('')
     const [eventInfoList, setEventInfoList] = useState([])
@@ -235,4 +237,13 @@ function EventList() {
     )
 }
 
+function EventList(){
+    const {height, width } = useWindowDimensions()
+    if (width > 800){
+        return <EventListDesktop/>
+    }
+    else{
+        return <EventListMobile/>
+    }
+}
 export default EventList

@@ -84,16 +84,22 @@ export const ReviewPage_sec2 = styled.div`
             font-size: 20px;
         }
     }
+    .writeIcon{
+    }
     @media screen and (max-width:400px){
         font-size: 20px;
-        /* .sec2_law{
-            font-size:8px;
-        } */
-        .green_circle_with_check{
-            width:8px;
-            p{
-                font-size: 8px;
+        line-height: 15px;
+        margin-top:15px;
+        .information{
+            .sec2_law{
+                font-size:12px;
+                margin-left:3px;
             }
+            .green_circle_with_check{
+            p{
+                font-size: 7px;
+            }
+        }
         }
     }
 `
@@ -106,6 +112,11 @@ export const ListContainer = styled.div`
     }
     @media screen and (max-width:400px){
         width: 300px;
+        border-top: 2.5px solid #63c3c4;
+        border-bottom: 2.5px solid #63c3c4;
+    }
+    .true{
+        border-top: 1px solid #707070;
     }
 `
 export const PageNumberIndex = styled.div`

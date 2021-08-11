@@ -24,11 +24,9 @@ import ReviewList from './sightcorrection_review/ReviewList'
 import ReviewCreate from './sightcorrection_review/ReviewCreate'
 import ReviewDescription from './sightcorrection_review/ReviewDescription'
 import EventEdit from './event/EventEdit'
-import Event from './event/Event'
 import EditorContainer from './event/EditorContainer'
 import EventDescription from './event/EventDescription'
 import EventList from './event/EventList'
-import EventModify from './event/EventModify'
 import PopupEdit from './popup/PopupEdit'
 const firebaseConfig = {
     apiKey: 'AIzaSyArAzMQJPh9WuSk9eMaBzP38DhuAK2p41I',
@@ -104,7 +102,7 @@ function App() {
                                 component={EventDescription}
                             />
                             <Route
-                                path="/event-modify/:eventID"
+                                path="/event-edit/:eventID"
                                 component={EventEdit}
                             />
                             <Route path="/popup-edit" component={PopupEdit} />

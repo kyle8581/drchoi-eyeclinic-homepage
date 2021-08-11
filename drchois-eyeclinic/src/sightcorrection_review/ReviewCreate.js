@@ -15,7 +15,6 @@ const Row = styled.div`
     flex-direction: row;
     align-items: center;
 `
-
 const Form = ({ formVal, setFormVal, submitFunction }) => {
     const handleChange = (e) => {
         const _fromVal = { ...formVal, [e.target.name]: e.target.value }

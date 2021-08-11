@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
+import { useHistory } from "react-router-dom";
 import firebase from 'firebase/app'
 import styled from 'styled-components/macro'
 import TopNav from '../TopNav'
 import { Progress, Button, Form, Checkbox } from 'semantic-ui-react'
+import { UserContext } from '../UserContext'
 import 'semantic-ui-css/semantic.min.css'
 
 const Wrapper = styled.div`
@@ -58,7 +60,14 @@ function EventEdit() {
     console.log(eventSlug)
     if (!createOrEdit) {
     }
-
+    const { userInfo, setUserInfo } = useContext(UserContext)
+    let history = useHistory()
+    useEffect(()=>{
+        if(userInfo.authority !== "admin"){
+            alert("권한이 없습니다.")
+            history.goBack()
+        }
+    },[userInfo])
     useEffect(() => {
         if (!createOrEdit) {
             const db = firebase.firestore()

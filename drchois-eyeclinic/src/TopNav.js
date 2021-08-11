@@ -85,8 +85,8 @@ function TopNav({ changefloatshow, swiper }) {
     // useContext 정보 초기화
     const Login = (setUserInfo) => {
         var provider = new firebase.auth.GoogleAuthProvider()
-        console.log(setUserInfo)
-        console.log(ref)
+        // console.log(setUserInfo)
+        // console.log(ref)
         
         firebase
             .auth()
