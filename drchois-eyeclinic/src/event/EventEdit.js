@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from 'react'
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from 'react-router-dom'
 import firebase from 'firebase/app'
 import styled from 'styled-components/macro'
 import TopNav from '../TopNav'
@@ -40,7 +40,7 @@ function EventEdit() {
     const [startDate, setStartDate] = useState(null)
     const [endDate, setEndDate] = useState(null)
     const [link, setLink] = useState('')
-    const [thumbnailUrl, setThumbnailUrl] = useState("")
+    const [thumbnailUrl, setThumbnailUrl] = useState('')
     const [imageUrl, setImageUrl] = useState('')
     const [thumbnailUploadStatus, setThumbnailUploadStatus] = useState(0)
     const [thumbnailUploadStart, setThumbnailUploadStart] = useState(false)
@@ -49,29 +49,32 @@ function EventEdit() {
     const [thumbnailSelected, setThumbnailSelected] = useState(false)
     const [fileSelected, setFileSelected] = useState(false)
     const [viewsCount, setViewsCount] = useState(0)
+    const [createOrEdit, setCreateOrEdit] = useState(true)
     const fileInputRef = useRef()
     const thumbnailInputRef = useRef()
     // if true : current page is event create page; else : current page is modify page
-    const createOrEdit = window.location.href.includes('event-create')
-    var eventSlug = ''
-    if (!createOrEdit) {
-        eventSlug = window.location.href.split('/')[-1]
-    }
-    console.log(eventSlug)
-    if (!createOrEdit) {
-    }
+    
+   
     const { userInfo, setUserInfo } = useContext(UserContext)
     let history = useHistory()
-    useEffect(()=>{
-        if(userInfo.authority !== "admin"){
-            alert("권한이 없습니다.")
+    const {eventSlug} = useParams()
+    useEffect(() => {
+        if (userInfo.authority !== 'admin') {
+            alert('권한이 없습니다.'+JSON.stringify(userInfo))
+            
             history.goBack()
         }
-    },[userInfo])
+    }, [userInfo])
+    useEffect(()=>{
+        setCreateOrEdit(window.location.href.includes('event-create'))
+    },[])
+  
     useEffect(() => {
-        if (!createOrEdit) {
+        if (!createOrEdit && eventSlug !== "" && eventSlug !== undefined) {
+           
+            console.log(eventSlug)
             const db = firebase.firestore()
-            const ref = db.collection('events')
+            const ref = db.collection('event')
             const doc = ref.doc(eventSlug)
             doc.get().then((e) => {
                 setTitle(e.data().title)
@@ -84,14 +87,14 @@ function EventEdit() {
                 setViewsCount(e.data().views_count)
             })
         }
-    }, [])
+    }, [createOrEdit, eventSlug])
     const handleChange = (e) => {
         if (e.target.files[0]) {
             setImage(e.target.files[0])
             setFileSelected(true)
         }
     }
-    const handleThumnnailChange = (e)=>{
+    const handleThumnnailChange = (e) => {
         if (e.target.files[0]) {
             setThumbnail(e.target.files[0])
             setThumbnailSelected(true)
@@ -184,8 +187,11 @@ function EventEdit() {
                             onChange={(e) => {
                                 setTitle(e.target.value)
                             }}
+                            value = {title}
                         />
                     </Form.Field>
+                    {JSON.stringify(createOrEdit)}
+                    {eventSlug}
                     <InputTag>썸네일</InputTag>
                     <Button
                         icon="file"
@@ -222,7 +228,11 @@ function EventEdit() {
                     ) : (
                         <></>
                     )}
-                    <img src={thumbnailUrl} alt="" style={{ marginTop: '30px'}} />
+                    <img
+                        src={thumbnailUrl}
+                        alt=""
+                        style={{ marginTop: '30px' }}
+                    />
                     <InputTag>이벤트 사진</InputTag>
                     <Button
                         icon="file"
@@ -259,7 +269,11 @@ function EventEdit() {
                     ) : (
                         <></>
                     )}
-                    <img src={imageUrl} alt="" style={{ marginTop: '30px', width:"500px" }}  />
+                    <img
+                        src={imageUrl}
+                        alt=""
+                        style={{ marginTop: '30px', width: '500px' }}
+                    />
                     <Form.Field>
                         <Checkbox
                             label="link 여부"

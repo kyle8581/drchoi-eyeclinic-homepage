@@ -17,6 +17,10 @@ const PopupWindow = styled(Popup)`
 
         width: 300px;
         height: 300px;
+        a{
+            text-decoration: none;
+            border: none;
+        }
     }
 `
 const PopupContainer = styled.div`
@@ -118,13 +122,14 @@ function PopupElement() {
     const PopupContent = () => {
         if (hasLink) {
             return (
-                <a href={link}>
+                <div>
                     <img
+                        onClick={()=>{window.location.href=link}}
                         src={imageUrl}
                         alt="popup_image"
-                        style={{ width: '300px', height: '300px' }}
+                        style={{ width: '300px', height: '300px', cursor:"pointer" }}
                     />
-                </a>
+                </div>
             )
         } else {
             return (
@@ -163,6 +168,7 @@ function PopupElement() {
                                 setCookie("popup"+popupId, "N",1)
                                 setOpen(false)
                             }}
+                            style={{cursor:"pointer"}}
                         >
                             {'[닫기]'}
                         </div>

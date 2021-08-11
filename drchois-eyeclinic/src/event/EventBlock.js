@@ -58,7 +58,6 @@ const WrapperDesktop = styled.div`
     :first-child {
         border-right: 1px solid #aeaeae;
     }
-    border: 1px solid;
 `
 const WrapperMobile = styled.div`
     width: 500px;

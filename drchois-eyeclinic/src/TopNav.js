@@ -6,6 +6,7 @@ import './TopNav.css'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import { FirebaseAuthConsumer } from '@react-firebase/auth'
+import styled from 'styled-components'
 import {
     BlackBackGround,
     MenuContainer1,
@@ -63,10 +64,11 @@ function TopNav({ changefloatshow, swiper }) {
             })
             // console.log('updated user info')
             // console.log(userInfo)
-            if (!found && localStorage.getItem('signup') === undefined) {
-                // console.log('redirect to 회원가입')
+            if (!found ) {
+                console.log('redirect to 회원가입')
                 history.push('/signup')
             }
+           
         }
     }
     // 기존에 가입된 회원인지 체크하기위해서 firestore 
@@ -107,8 +109,9 @@ function TopNav({ changefloatshow, swiper }) {
     // userContext와 firebase.auth 동기화
     firebase.auth().onAuthStateChanged(function(user){
         // firebase auth에 로그인이 되어있는데 userContext에 반영 안된 경우
+        console.log("login status change")
         if(user){
-            console.log(user.email)
+            // console.log(user.email)
             if(userInfo.login === false){
                 setUserInfo({
                     login:true, email:user.email, phone_number:"default",authority:"default"
@@ -127,6 +130,7 @@ function TopNav({ changefloatshow, swiper }) {
         }
     })
     useEffect(() => {
+        console.log("")
         if (needFetch) {
             console.log(userList)
 
@@ -157,70 +161,42 @@ function TopNav({ changefloatshow, swiper }) {
         const { userInfo, setUserInfo } = useContext(UserContext)
         if(userInfo.login){
             return(
-                <button
+                <LoginButtonStyled
                 onClick={() => {
                     Logout(setUserInfo)
                 }}
             >
-                logout
-            </button>
+                로그아웃
+            </LoginButtonStyled>
             )
         }
         else{
             return(
-                <button
+                <LoginButtonStyled
                 onClick={() => {
                     Login(setUserInfo)
                 }}
             >
-                login
-            </button>
+                로그인
+            </LoginButtonStyled>
             )
         }
-        // return (
-        //     {userInfo.login?( <button
-        //         onClick={() => {
-        //             Logout(setUserInfo)
-        //         }}
-        //     >
-        //         logout
-        //     </button>):( <button
-        //         onClick={() => {
-        //             Login(setUserInfo)
-        //         }}
-        //     >
-        //         login
-        //     </button>)}
-            // <FirebaseAuthConsumer>
-            //     {(authState) => {
-            //         if (authState.isSignedIn) {
-            //             console.log(authState)
-            //             return (
-            //                 <button
-            //                     onClick={() => {
-            //                         Logout(setUserInfo)
-            //                     }}
-            //                 >
-            //                     logout
-            //                 </button>
-            //             )
-            //         } else {
-            //             console.log(authState)
-
-            //             return (
-            //                 <button
-            //                     onClick={() => {
-            //                         Login(setUserInfo)
-            //                     }}
-            //                 >
-            //                     login
-            //                 </button>
-            //             )
-            //         }
-            //     }}
-            // </FirebaseAuthConsumer>
-        // )
+     
     }
+    const LoginButtonStyled = styled.button`
+        width:100px;
+        height:40px;
+        border-radius: 40px;
+        background-color: #63C3C4;
+        border:none;
+        color:#FFF;
+        font-family: NanumSquare_acR;
+        font-size: 15px;
+        position: absolute;
+        bottom : 170px;
+        left:70px;
+        cursor: pointer;
+    `
 
     return (
         <div className="nav_side_wrapper">
@@ -411,9 +387,11 @@ function TopNav({ changefloatshow, swiper }) {
                         <p>RGP렌즈</p>
                     </div>
                 </MenuContainer2>
+                <LoginButton />
+
                 <div>{JSON.stringify(userInfo)}</div>
+                <div>{userInfo.authority}</div>
                 <InfoContainer>
-                    <LoginButton />
                     <div className="row">
                         서울특별시 강남구 논현로 848, 8층 압구정최안과의원
                     </div>

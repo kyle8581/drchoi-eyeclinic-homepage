@@ -16,6 +16,7 @@ import {
     ConsentBox,
     ConsentTitle,
     CheckRow,
+    PhoneNumberInput,
     Submit,
 } from './Signup.components'
 import GreenCircleWithCheck from '../icon_components/GreenCircleWithCheck'
@@ -29,6 +30,7 @@ function Signup() {
     const [phonenumber, setPhonenumber] = useState('')
     const [agree1, setAgree1] = useState('default')
     const [agree2, setAgree2] = useState('default')
+    const [agree3, setAgree3] = useState('default')
     const [email, setEmail] = useState(userInfo.email)
     fetch('/signup/consent1.txt')
         .then((res) => res.text())
@@ -86,14 +88,6 @@ function Signup() {
                 >
                     <Header>
                         <Column>
-                            <button
-                                onClick={() => {
-                                    history.push('/')
-                                }}
-                            >
-                                home
-                            </button>
-                            {/* <div>{JSON.stringify(userInfo)}</div> */}
                             <Row style={{ marginTop: '70px' }}>
                                 <ExtraTitle>압구정최안과는</ExtraTitle>
                             </Row>
@@ -110,16 +104,7 @@ function Signup() {
                         </Column>
                         <HeaderImg src="/signup/header.png" />
                     </Header>
-                    <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
-                        required
-                        onChange={(e) => {
-                            setPhonenumber(e.target.value)
-                        }}
-                    />
+
                     <Column style={{ marginTop: '70px' }}>
                         <EBTitle>약관동의</EBTitle>
                         <Row style={{ alignItems: 'center' }}>
@@ -200,6 +185,63 @@ function Signup() {
                             동의하지 않습니다.
                         </label>
                     </CheckRow>
+                    <Column style={{ marginTop: '70px' }}>
+                        <Row style={{ alignItems: 'center' }}>
+                            <GreenCircleWithCheck />
+                            <ConsentR1>전화번호</ConsentR1>
+                        </Row>
+                        <PhoneNumberInput
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                            required
+                            onChange={(e) => {
+                                setPhonenumber(e.target.value)
+                            }}
+                        />
+                    </Column>
+                    <Column style={{ marginTop: '70px' }}>
+                        <Row style={{ alignItems: 'center' }}>
+                            <GreenCircleWithCheck />
+                            <ConsentR1>
+                                마케팅에 관한 개인 정보 수집 및 이용, 제공 동의
+                            </ConsentR1>
+                        </Row>
+                        <CheckRow>
+                            <input
+                                type="radio"
+                                id="consent3_agree"
+                                name="consent3"
+                                value="true"
+                                onChange={(e) => {
+                                    setAgree3(e.target.value)
+                                }}
+                                required="true"
+                            />
+                            <label
+                                htmlFor="consent3_agree"
+                                style={{ margin: '0 3rem 0 0.5rem' }}
+                            >
+                                동의합니다.
+                            </label>
+                            <input
+                                type="radio"
+                                id="consent3_disagree"
+                                name="consent3"
+                                value="false"
+                                onChange={(e) => {
+                                    setAgree3(e.target.value)
+                                }}
+                            />
+                            <label
+                                htmlFor="consent2_disagree"
+                                style={{ margin: '0 3rem 0 0.5rem' }}
+                            >
+                                동의하지 않습니다.
+                            </label>
+                        </CheckRow>
+                    </Column>
                     <Row
                         style={{
                             alignItems: 'center',

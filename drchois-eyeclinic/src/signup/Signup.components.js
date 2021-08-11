@@ -18,7 +18,6 @@ export const Header = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: end;
-    border: 1px solid;
 `
 export const HeaderImg = styled.img`
     margin-left: auto;
@@ -57,8 +56,8 @@ export const ConsentTitle = styled(ExtraTitle)`
     font-size: 1rem;
 `
 export const ConsentBox = styled.div`
-    border-bottom: 2px solid #63c3c4;
-    border-top: 2px solid #63c3c4;
+    border-bottom: 3px solid #63c3c4;
+    border-top: 3px solid #63c3c4;
     height: 300px;
     width: 900px;
     overflow-y: scroll;
@@ -74,6 +73,12 @@ export const CheckRow = styled(Row)`
     margin-top: 0.5rem;
     margin-bottom: 2rem;
     margin-left: 0.5rem;
+`
+export const PhoneNumberInput = styled.input`
+    width:300px;
+    height:30px;
+    border:1px solid #CCCCCC;
+    color:#707070;
 `
 export const Submit = styled.button`
     width: 150px;

@@ -102,7 +102,7 @@ function App() {
                                 component={EventDescription}
                             />
                             <Route
-                                path="/event-edit/:eventID"
+                                path="/event-edit/:eventSlug"
                                 component={EventEdit}
                             />
                             <Route path="/popup-edit" component={PopupEdit} />

@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useRef } from 'react'
 import firebase from 'firebase/app'
 import { Link } from 'react-router-dom'
+import Select from 'react-select'
 import ReviewBlock from './ReviewBlock.js'
 import TopNav from '../TopNav.js'
 import GreenCircleWithCheck from '../icon_components/GreenCircleWithCheck.js'
@@ -11,6 +12,8 @@ import FastRewindIcon from '@material-ui/icons/FastRewind'
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 import SearchIcon from '@material-ui/icons/Search'
 import Media from 'react-media'
+import useWindowDimensions from '../useWindowDimensions.js'
+
 import {
     ReviewPageContainer,
     ReviewPageWrapper,
@@ -60,6 +63,12 @@ function ReviewList() {
     const [originalList, setOriginalList] = useState([])
     const [initialized, setInitialized] = useState(false)
     const [search,setSearch]=useState('')
+    const [reviewHeight, setReviewHeight] = useState(0)
+
+    // custom buttom 으로 dropdown 하기 위함
+    const reviewPageRef = useRef()
+
+    const {height, width} = useWindowDimensions()
     if (!initialized) {
         loadReview(
             setAllList,
@@ -97,20 +106,41 @@ function ReviewList() {
         })
         setAllList(tmpAllList)
     }, [searchQuery, surgeryType])
-    console.log('render reveiw list')
+
+    useEffect(()=>{
+        setReviewHeight(reviewPageRef.current.clientHeight)
+    },[reviewPageRef])
+
+    const selectOptions = [
+        {value:'all', label:'전체'},
+        {value:'라식', label : '라식'},
+        {value : '라섹' , label : '라섹'},
+        {value : '스마일 라식', label : '스마일 라식'}
+    ]
+    const scaleFactor = ()=>{
+        if(width > 750){
+            return {}
+        }
+        else{
+            return {
+                transform: "scale("+width/750+")",  transformOrigin: 'top center',
+                marginBottom: (reviewHeight - 1355)+"px"
+            }
+        }
+    }
     return (
         <>
             <ReviewPageContainer>
                 <TopNav />
-                <ReviewPage>
-                    <ReviewPageWrapper>
+                <ReviewPage style={scaleFactor()}>
+                    <ReviewPageWrapper ref={reviewPageRef}>
                         <ReviewPage_sec1>
                             <ReviewPage_sec1_text>
                                 <p>압구정최안과는</p>
                                 <p>
                                     <span>안전한 수술</span>을 약속드립니다.
                                 </p>
-                                <Media queries={{small:{maxWidth:400}}}>
+                                <Media queries={{small:{maxWidth:750}}}>
                                     {(matches)=>
                                     matches.small ? (
                                         <div>
@@ -149,24 +179,24 @@ function ReviewList() {
 
                         <FilterContainer>
                             <label htmlFor="surgeryType"></label>
-                            <select
-                                className="select"
-                                name="surgeryType"
-                                onChange={(e) => {
-                                    setSurgeryType(e.target.value)
+                            <Select
+                                className='select_container'
+                                onChange={(selectedOption) => {
+                                    setSurgeryType(selectedOption.value)
                                 }}
-                            >
-                                <option value="all">모든 수술</option>
-                                <option value="라섹">라섹</option>
-                                <option value="라식">라식</option>
-                                <option value="스마일 라식">스마일 라식</option>
-                            </select>
+                                style={{fontFamily:"NanumSquare_acR"}}
+                                options={selectOptions}
+                                classNamePrefix={true}
+                                placeholder="전체"
+                            />
+                               
+                         
                             <label className="search" htmlFor="query"></label>
                             <input
                                 className="searchContent"
                                 type="text"
                                 name="query"
-                                placeholder="검색어를 입력하세요..."
+                                placeholder="  검색어를 입력하세요..."
                                 onChange={(e) => {
                                     setSearch(e.target.value)
                                 }}
