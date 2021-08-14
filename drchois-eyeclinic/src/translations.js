@@ -53,7 +53,7 @@ const translate=[
     {
         language:"Chi",
         sec1Img:"translate/sec1imgKor.png",
-        // sec1Img:
+        sec1Img:"blabla",
         sec2Text:["압구정최안과는 안과과목의 시력 주치의로서","우수한 진료를 바탕으로 고객님들의 안전을","가장 우선적으로 시력 교정술을 실시하고 있습니다."],
         sec3Ele:[
             {img:"translate/sec3img1.png",
@@ -110,7 +110,7 @@ const translate=[
                 menus:["노안 / 백내장","스마일 / 라식 / 라섹 / ICL","드림렌즈 / RPG렌즈"]
             }
         ]
-    }
+    },
 ];
 
 export default translate
