@@ -101,7 +101,9 @@ function EventListDesktop() {
     const [eventIdList, setEventIdList] = useState([])
     const [eventTitleList, setEventTitleList] = useState([])
     const [pageNumberList, setPageNumberList] = useState([])
-    useEffect(() => {
+
+    const fetchEvents = async ()=>{
+        console.log("fetch function start")
         var tmpEventIdList = []
         var tmpEventTitleList = []
         var tmpEventInfoList = []
@@ -109,12 +111,16 @@ function EventListDesktop() {
         const db = firebase.firestore()
         const collection = db.collection('event')
         collection
-            .orderBy('timestamp_end_date', 'desc')
+        .where('show','==',true)
+        .orderBy('timestamp_end_date','desc')
             .onSnapshot((querySnapShot) => {
+
                 querySnapShot.docs.forEach((d, i) => {
+                    console.log(i)
                     tmpEventInfoList.push(d.data())
                     tmpEventIdList.push(d.id)
                     tmpEventTitleList.push(d.data().end_date)
+                    console.log(d.data())
                     // 첫 event부터 페이지 1이 추가되고 8개마다 1페이지씩 더 추가됨
                     if(i%8===0){tmpPageNumberList.push(Math.trunc(i/8)+1)}
                     
@@ -123,7 +129,14 @@ function EventListDesktop() {
                 setEventIdList(tmpEventIdList)
                 setEventTitleList(tmpEventTitleList)
                 setPageNumberList(tmpPageNumberList)
+                console.log(eventTitleList)
+            },(error)=>{
+                console.log(error)
             })
+    }
+    useEffect(() => {
+        console.log("fetch event start")
+       fetchEvents()
     }, [])
 
     const EventRow = ({ idx }) => {

@@ -1,4 +1,10 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, {
+    useState,
+    useContext,
+    useEffect,
+    useCallback,
+    useMemo,
+} from 'react'
 import { Squash as Hamburger } from 'hamburger-react'
 import { Link, useHistory } from 'react-router-dom'
 import { ReactComponent as NavLogo } from './images/nav__logo.svg'
@@ -6,7 +12,7 @@ import './TopNav.css'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import { FirebaseAuthConsumer } from '@react-firebase/auth'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import {
     BlackBackGround,
     MenuContainer1,
@@ -19,7 +25,25 @@ import { UserContext } from './UserContext'
 import { SlideContext } from './SlideContext'
 import { SightCorrectionSlideContext } from './SightCorrectionSlideContext'
 import translate from './translations'
+import LoginButton from "./login/LoginButton"
 // import { LoginButton } from './firebase'
+const LoginButtonStyled = styled.button`
+        width: 100px;
+        height: 40px;
+        border-radius: 40px;
+        background-color: #63c3c4;
+        border: none;
+        color: #fff;
+        font-family: NanumSquare_acR;
+        font-size: 15px;
+        position: absolute;
+        bottom: 170px;
+        left: 70px;
+        cursor: pointer;
+        
+        `
+
+
 function TopNav({ changefloatshow, swiper }) {
     const [isOpen, setOpen] = useState(false)
     const pathname = window.location.pathname
@@ -32,171 +56,18 @@ function TopNav({ changefloatshow, swiper }) {
     const Eng = translate[0]
     function clickHamberger() {
         setOpen(!isOpen)
-        // console.log(isOpen)
-        // changefloatshow()
+     
     }
-
     const { userInfo, setUserInfo } = useContext(UserContext)
     // console.log(userInfo)
     const [userList, setUserList] = useState([])
     const history = useHistory()
-    const ref = firebase.firestore().collection('userinfo')
 
-    const checkUserRegistered = () => {
-        // console.log('check user ', JSON.stringify(userInfo))
-        // console.log("user list : "+userList)
-        if (userInfo.login) {
-            let found = false
-            userList.forEach((u) => {
-                // console.log('email : ' + u.email)
-                // 유저 리스트에서 회원 정보 찾음
-                // userContext update
-                if (u.email === userInfo.email) {
-                    // console.log('matched')
-                    setUserInfo({
-                        login: true,
-                        email: u.email,
-                        phone_number: u.phone_number,
-                        authority: u.authority,
-                    })
-                    found = true
-                }
-            })
-            // console.log('updated user info')
-            // console.log(userInfo)
-            if (!found ) {
-                console.log('redirect to 회원가입')
-                history.push('/signup')
-            }
-           
-        }
-    }
-    // 기존에 가입된 회원인지 체크하기위해서 firestore 
-    const getUserList = () => {
-        ref.onSnapshot((querySnapshot) => {
-            const userlist = []
-            querySnapshot.forEach((d) => {
-                userlist.push(d.data())
-                // console.log('user it : ', d.data())
-            })
-            setUserList(userlist)
-        })
-    }
-    // 로그인 실행 버튼
-    // 새로운 창이 뜨면서 구글 로그인 실행
-    // useContext 정보 초기화
-    const Login = (setUserInfo) => {
-        var provider = new firebase.auth.GoogleAuthProvider()
-        // console.log(setUserInfo)
-        // console.log(ref)
-        
-        firebase
-            .auth()
-            .signInWithPopup(provider)
-            .then((result) => {
-                // console.log(result.user)
-                // console.log()
-                setUserInfo({
-                    login: true,
-                    email: result.user.email,
-                    phone_number: 'default',
-                    authority: 'default',
-                })
-            })
+    console.log("top nav load")
+    
+   
 
-        setNeedFetch(true)
-    }
-    // userContext와 firebase.auth 동기화
-    firebase.auth().onAuthStateChanged(function(user){
-        // firebase auth에 로그인이 되어있는데 userContext에 반영 안된 경우
-        console.log("login status change")
-        if(user){
-            // console.log(user.email)
-            if(userInfo.login === false){
-                setUserInfo({
-                    login:true, email:user.email, phone_number:"default",authority:"default"
-                })
-                setNeedFetch(true)
-            }
-        }
-        // firebase auth에서 로그아웃되었는데 useContext에 반영 안된경우
-        else{
-            console.log(user)
-            if(userInfo.login){
-                setUserInfo({
-                    login:false, email:user.email, phone_number:"default",authority:"default"
-                })
-            }
-        }
-    })
-    useEffect(() => {
-        console.log("")
-        if (needFetch) {
-            console.log(userList)
-
-            getUserList()
-            setNeedFetch(false)
-            setNeedCheck(true)
-        }
-    }, [needFetch])
-    useEffect(() => {
-        if (needCheck && userList.length !== 0 && userInfo.login) {
-            console.log('------')
-            console.log(userList)
-            // 기존에 등록된 회원인지 체크
-            checkUserRegistered()
-            setNeedCheck(false)
-        }
-    }, [needCheck, userList, userInfo])
-    const Logout = () => {
-        firebase.auth().signOut()
-        setUserInfo({
-            login:false, email:"default", phone_number:"default",authority:"default"
-        })
-    }
-    // 로그인 정보가 담긴 저장소가 두 군데가 있음
-    // 1. firebase.auth
-    // 2. userContext
-    const LoginButton = () => {
-        const { userInfo, setUserInfo } = useContext(UserContext)
-        if(userInfo.login){
-            return(
-                <LoginButtonStyled
-                onClick={() => {
-                    Logout(setUserInfo)
-                }}
-            >
-                로그아웃
-            </LoginButtonStyled>
-            )
-        }
-        else{
-            return(
-                <LoginButtonStyled
-                onClick={() => {
-                    Login(setUserInfo)
-                }}
-            >
-                로그인
-            </LoginButtonStyled>
-            )
-        }
-     
-    }
-    const LoginButtonStyled = styled.button`
-        width:100px;
-        height:40px;
-        border-radius: 40px;
-        background-color: #63C3C4;
-        border:none;
-        color:#FFF;
-        font-family: NanumSquare_acR;
-        font-size: 15px;
-        position: absolute;
-        bottom : 170px;
-        left:70px;
-        cursor: pointer;
-    `
+ 
 
     return (
         <div className="nav_side_wrapper">
@@ -234,7 +105,7 @@ function TopNav({ changefloatshow, swiper }) {
                 </ul>
                 <LanguageSelectContainer className="LanguageSelectContainer">
                     <Country to={{ pathname: '/' }} className="Kor">
-                        <img src="/language_flag/KR_flag.png" alt="lan"/>
+                        <img src="/language_flag/KR_flag.png" alt="lan" />
                     </Country>
                     <Country to={{ pathname: '/foreign', state: Eng }}>
                         <img src="/language_flag/EN_flag.png" />
@@ -387,7 +258,8 @@ function TopNav({ changefloatshow, swiper }) {
                         <p>RGP렌즈</p>
                     </div>
                 </MenuContainer2>
-                <LoginButton />
+                <LoginButton/>
+             
 
                 <div>{JSON.stringify(userInfo)}</div>
                 <div>{userInfo.authority}</div>

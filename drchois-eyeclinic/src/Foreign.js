@@ -30,7 +30,7 @@ function Foreign() {
                 </Country>
             </LanguageSelectContainer>
             <ForeignSec1 src={Lan.sec1Img}/>
-            <ForeignSec2 className={linearGradient.root}>
+            {/* <ForeignSec2 className={linearGradient.root}>
                 <ForeignSec2Text>{Lan.sec2Text.map((line)=>(<p>{line}</p>))}</ForeignSec2Text>
             </ForeignSec2>
             <ForeignSec3>
@@ -80,7 +80,7 @@ function Foreign() {
                         ))
                     )}
                     
-                </ForeignSec4>
+                </ForeignSec4>  */}
             </ForeignWrapper>
         </ForeignContainer>
     )

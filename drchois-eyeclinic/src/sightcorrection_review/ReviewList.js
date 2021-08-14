@@ -37,7 +37,7 @@ const loadReview = (
 ) => {
     if (needToFetch) {
         console.log('fetch')
-        collection.onSnapshot((s) => {
+        collection.where('show','==',true).onSnapshot((s) => {
             let tmpList = []
             s.forEach((e) => {
                 // tmpList.push(e.data())
@@ -45,6 +45,8 @@ const loadReview = (
             })
             setAllList(tmpList)
             setOriginalList(tmpList)
+        },(error)=>{
+            console.log(error)
         })
         setNeedToFetch(false)
     }

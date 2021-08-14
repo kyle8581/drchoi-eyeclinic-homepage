@@ -56,9 +56,10 @@ function Signup() {
             history.push('/')
             return
         }
+        const uid = firebase.auth().currentUser.uid
         const db = firebase.firestore()
-        db.collection('userinfo')
-            .add({
+        db.collection('userinfo').doc(uid)
+            .set({
                 email: email,
                 phone_number: phonenumber,
                 authority: 'default',
