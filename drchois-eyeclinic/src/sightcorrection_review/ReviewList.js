@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from 'react'
+import React, { useState, useEffect, useContext, useRef, Fragment } from 'react'
 import firebase from 'firebase/app'
 import { Link } from 'react-router-dom'
 import Select from 'react-select'
@@ -9,11 +9,11 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import FastForwardIcon from '@material-ui/icons/FastForward'
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
 import FastRewindIcon from '@material-ui/icons/FastRewind'
-import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
+import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined'
 import SearchIcon from '@material-ui/icons/Search'
 import Media from 'react-media'
 import useWindowDimensions from '../useWindowDimensions.js'
-
+import ReviewListMobile from './ReviewListMobile'
 import {
     ReviewPageContainer,
     ReviewPageWrapper,
@@ -27,7 +27,8 @@ import {
     FilterContainer,
     SearchContainer,
 } from './ReviewList.components'
-import { UserContext} from '../UserContext'
+import { UserContext } from '../UserContext'
+//  fetch data from firebase
 const loadReview = (
     setAllList,
     needToFetch,
@@ -36,23 +37,25 @@ const loadReview = (
     setOriginalList
 ) => {
     if (needToFetch) {
-        console.log('fetch')
-        collection.where('show','==',true).onSnapshot((s) => {
-            let tmpList = []
-            s.forEach((e) => {
-                // tmpList.push(e.data())
-                tmpList.push({ ...e.data(), id: e.id })
-            })
-            setAllList(tmpList)
-            setOriginalList(tmpList)
-        },(error)=>{
-            console.log(error)
-        })
+        collection.where('show', '==', true).onSnapshot(
+            (s) => {
+                let tmpList = []
+                s.forEach((e) => {
+                    tmpList.push({ ...e.data(), id: e.id })
+                })
+                setAllList(tmpList)
+                setOriginalList(tmpList)
+            },
+            (error) => {
+                console.log(error)
+            }
+        )
         setNeedToFetch(false)
     }
 }
-function ReviewList() {
-    const {userInfo } = useContext(UserContext)
+
+function ReviewListDesktop() {
+    const { userInfo } = useContext(UserContext)
     const db = firebase.firestore()
     const collection = db.collection('sightcorrection_comment')
     const [allList, setAllList] = useState([])
@@ -64,13 +67,12 @@ function ReviewList() {
     const [searchQuery, setSearchQuery] = useState('')
     const [originalList, setOriginalList] = useState([])
     const [initialized, setInitialized] = useState(false)
-    const [search,setSearch]=useState('')
+    const [search, setSearch] = useState('')
     const [reviewHeight, setReviewHeight] = useState(0)
-
     // custom buttom 으로 dropdown 하기 위함
     const reviewPageRef = useRef()
 
-    const {height, width} = useWindowDimensions()
+    const { height, width } = useWindowDimensions()
     if (!initialized) {
         loadReview(
             setAllList,
@@ -81,8 +83,9 @@ function ReviewList() {
         )
         setInitialized(true)
     }
+
+    // 페이지 전환
     useEffect(() => {
-        // console.log('all list length ' + allList.length)
         var tmppageNumList = []
         for (var i = 0; i < Math.ceil(allList.length / 5); i++) {
             tmppageNumList.push(i)
@@ -91,6 +94,8 @@ function ReviewList() {
         let tmp_curpage = allList.slice(pageIdx * 5, (pageIdx + 1) * 5)
         setCurPageList(tmp_curpage)
     }, [pageIdx, allList])
+
+    //필터링
     useEffect(() => {
         let tmpAllList = []
         originalList.forEach((e) => {
@@ -109,29 +114,29 @@ function ReviewList() {
         setAllList(tmpAllList)
     }, [searchQuery, surgeryType])
 
-    useEffect(()=>{
+    useEffect(() => {
         setReviewHeight(reviewPageRef.current.clientHeight)
-    },[reviewPageRef])
+    }, [reviewPageRef])
 
     const selectOptions = [
-        {value:'all', label:'전체'},
-        {value:'라식', label : '라식'},
-        {value : '라섹' , label : '라섹'},
-        {value : '스마일 라식', label : '스마일 라식'}
+        { value: 'all', label: '전체' },
+        { value: '라식', label: '라식' },
+        { value: '라섹', label: '라섹' },
+        { value: '스마일 라식', label: '스마일 라식' },
     ]
-    const scaleFactor = ()=>{
-        if(width > 750){
+    const scaleFactor = () => {
+        if (width > 750) {
             return {}
-        }
-        else{
+        } else {
             return {
-                transform: "scale("+width/750+")",  transformOrigin: 'top center',
-                marginBottom: (reviewHeight - 1355)+"px"
+                transform: 'scale(' + width / 750 + ')',
+                transformOrigin: 'top center',
+                marginBottom: reviewHeight - 1355 + 'px',
             }
         }
     }
     return (
-        <>
+        <Fragment>
             <ReviewPageContainer>
                 <TopNav />
                 <ReviewPage style={scaleFactor()}>
@@ -142,17 +147,23 @@ function ReviewList() {
                                 <p>
                                     <span>안전한 수술</span>을 약속드립니다.
                                 </p>
-                                <Media queries={{small:{maxWidth:750}}}>
-                                    {(matches)=>
-                                    matches.small ? (
-                                        <div>
-                                            <h3>23년 경력의 주치의,</h3>
-                                            <h3>1:1 맞춤진료로 만족도 높은 의료시스템</h3>
-                                        </div>
-                                    ):(
-                                        <h3>23년 경력의 주치의, 1:1 맞춤진료로 만족도 높은 의료시스템</h3>
-                                        
-                                    )
+                                <Media queries={{ small: { maxWidth: 750 } }}>
+                                    {(matches) =>
+                                        matches.small ? (
+                                            <div>
+                                                <h3>23년 경력의 주치의,</h3>
+                                                <h3>
+                                                    1:1 맞춤진료로 만족도 높은
+                                                    의료시스템
+                                                </h3>
+                                            </div>
+                                        ) : (
+                                            <h3>
+                                                23년 경력의 주치의, 1:1
+                                                맞춤진료로 만족도 높은
+                                                의료시스템
+                                            </h3>
+                                        )
                                     }
                                 </Media>
                             </ReviewPage_sec1_text>
@@ -172,7 +183,10 @@ function ReviewList() {
                                 }}
                             >
                                 <GreenCircleWithCheck className="green_circle_with_check" />
-                                <p className="sec2_law" style={{ marginLeft: '1rem' }}>
+                                <p
+                                    className="sec2_law"
+                                    style={{ marginLeft: '1rem' }}
+                                >
                                     의료법 56조에 의거하여 개인인증 후 열람이
                                     가능합니다.
                                 </p>
@@ -182,17 +196,16 @@ function ReviewList() {
                         <FilterContainer>
                             <label htmlFor="surgeryType"></label>
                             <Select
-                                className='select_container'
+                                className="select_container"
                                 onChange={(selectedOption) => {
                                     setSurgeryType(selectedOption.value)
                                 }}
-                                style={{fontFamily:"NanumSquare_acR"}}
+                                style={{ fontFamily: 'NanumSquare_acR' }}
                                 options={selectOptions}
                                 classNamePrefix={true}
                                 placeholder="전체"
                             />
-                               
-                         
+
                             <label className="search" htmlFor="query"></label>
                             <input
                                 className="searchContent"
@@ -208,16 +221,27 @@ function ReviewList() {
                                     setSearchQuery(search)
                                 }}
                             >
-                                <SearchIcon className="searchIcon"/>
+                                <SearchIcon className="searchIcon" />
                             </SearchContainer>
-                            {userInfo.authority==="admin"?
-                        <Link className="writeIcon" style={{width:'50px'}} to="/create-sightcorrection-review">
-                            <CreateOutlinedIcon style={{color:'#707070',width:'50px', marginRight:'100px'}}/>
-                        </Link>
-                        :<></>
-                        }
+                            {userInfo.authority === 'admin' ? (
+                                <Link
+                                    className="writeIcon"
+                                    style={{ width: '50px' }}
+                                    to="/create-sightcorrection-review"
+                                >
+                                    <CreateOutlinedIcon
+                                        style={{
+                                            color: '#707070',
+                                            width: '50px',
+                                            marginRight: '100px',
+                                        }}
+                                    />
+                                </Link>
+                            ) : (
+                                <Fragment />
+                            )}
                         </FilterContainer>
-                        
+
                         <ListContainer>
                             {curPageList.map((review, index) => {
                                 const reviewCount = pageIdx * 5 + index
@@ -247,7 +271,7 @@ function ReviewList() {
                             {allList.length === 0 ? (
                                 <div>검색 결과가 없습니다.</div>
                             ) : (
-                                <></>
+                                <Fragment />
                             )}
                         </ListContainer>
                         <PageNumberIndex>
@@ -311,17 +335,24 @@ function ReviewList() {
                                 }}
                             />
                         </PageNumberIndex>
-                        
+
                         {/* <WriteButton/>
                         {oneToFive()} 이게 맞는거임
                         <oneToFive/> */}
                     </ReviewPageWrapper>
                 </ReviewPage>
             </ReviewPageContainer>
-        </>
+        </Fragment>
     )
 }
-
+function ReviewList() {
+    const { height, width } = useWindowDimensions()
+    if (width > 800) {
+        return <ReviewListDesktop />
+    } else {
+        return <ReviewListMobile />
+    }
+}
 export default ReviewList
 
 // const WriteButton = ()=>{

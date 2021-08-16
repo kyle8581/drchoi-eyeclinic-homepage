@@ -185,6 +185,10 @@ export const BackGroundTextContrainer = styled.div`
     color: #f2f2f2;
     @media screen and (max-width: 1800px) {
         font-size: 12rem;
+        top: 9rem;
+        div {
+            height: 130px;
+        }
     }
     @media screen and (max-width: 1300px) and (min-width: 501px) {
         font-size: 9rem;
