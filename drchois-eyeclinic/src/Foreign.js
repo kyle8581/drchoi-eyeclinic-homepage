@@ -1,8 +1,29 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
-import {LinearGradient,ForeignContainer,ForeignWrapper,LanguageSelectContainer,ForeignSec1,ForeignSec2,ForeignSec2Text,ForeignSec3,ForeignSec3Ele,ForeignSec3Contents,ForeignSec4,ForeignSec4Ele,ForeignSec4Title,ForeignSec4Information,ForeignSec4Imgcontainer,ForeignSec4Menucontainer,ForeignSec4MenuTitle,ForeignSec4Menus,ForeignSec4MenuEle} from './Foreign.components'
+import {
+    LinearGradient,
+    ForeignContainer,
+    ForeignWrapper,
+    LanguageSelectContainer,
+    ForeignSec1,
+    ForeignSec2,
+    ForeignSec2Text,
+    ForeignSec3,
+    ForeignSec3Ele,
+    ForeignSec3Contents,
+    ForeignSec4,
+    ForeignSec4Ele,
+    ForeignSec4Title,
+    ForeignSec4Information,
+    ForeignSec4Imgcontainer,
+    ForeignSec4Menucontainer,
+    ForeignSec4MenuTitle,
+    ForeignSec4Menus,
+    ForeignSec4MenuEle,
+} from './Foreign.components'
 import translate from './translations'
-import {Country} from './Language.components'
+import { Country } from './Language.components'
+import { ReactComponent as NavLogo } from './images/nav__logo.svg'
 
 function Foreign() {
     const location = useLocation()
@@ -10,27 +31,27 @@ function Foreign() {
     const Rus = translate[2]
     const Chi = translate[1]
     const Eng = translate[0]
-    const linearGradient = LinearGradient();
-
-    return(
+    const linearGradient = LinearGradient()
+    console.log(Lan)
+    return (
         <ForeignContainer>
             <ForeignWrapper>
-            <LanguageSelectContainer>
-                <Country to={{pathname:'/'}} className="Kor">
-                    <img src="https://pics.freeicons.io/uploads/icons/png/5481736961536065003-512.png"/>
-                </Country>
-                <Country to={{pathname:'/foreign',state: Eng}}>
-                    <img src="https://pics.freeicons.io/uploads/icons/png/13394302041536065017-512.png"/>
-                </Country>
-                <Country to={{pathname:'/foreign',state: Rus}}>
-                    <img src="https://pics.freeicons.io/uploads/icons/png/37161591536064993-512.png"/>
-                </Country>
-                <Country to={{pathname:'/foreign',state: Chi}}>
-                    <img src="https://pics.freeicons.io/uploads/icons/png/14523702201536064854-512.png"/>
-                </Country>
-            </LanguageSelectContainer>
-            <ForeignSec1 src={Lan.sec1Img}/>
-            {/* <ForeignSec2 className={linearGradient.root}>
+                <LanguageSelectContainer>
+                    <Country to={{ pathname: '/' }} className="Kor">
+                        <img src="language_flag/KR_flag.png" />
+                    </Country>
+                    <Country to={{ pathname: '/foreign', state: Eng }}>
+                        <img src="language_flag/EN_flag.png" />
+                    </Country>
+                    <Country to={{ pathname: '/foreign', state: Rus }}>
+                        <img src="language_flag/RU_flag.png" />
+                    </Country>
+                    <Country to={{ pathname: '/foreign', state: Chi }}>
+                        <img src="language_flag/CH_flag.png" />
+                    </Country>
+                </LanguageSelectContainer>
+                <ForeignSec1 src={Lan.sec1Img} />
+                {/* <ForeignSec2 className={linearGradient.root}>
                 <ForeignSec2Text>{Lan.sec2Text.map((line)=>(<p>{line}</p>))}</ForeignSec2Text>
             </ForeignSec2>
             <ForeignSec3>
