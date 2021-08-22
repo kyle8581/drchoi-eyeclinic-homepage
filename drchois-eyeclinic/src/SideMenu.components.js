@@ -1,6 +1,13 @@
 // import React from 'react'
 import styled from 'styled-components/macro'
 
+
+export const NavBar = styled.div`
+    display: flex;
+    width: 100vw;
+    flex-direction: row;
+    position: fixed;
+`
 export const BlackBackGround = styled.div`
     width: 100vw;
     height: 100vh;

@@ -1,72 +1,71 @@
 {
-  "name": "choi-eyeclinic",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@draft-js-plugins/editor": "^4.1.0",
-    "@draft-js-plugins/image": "^4.1.2",
-    "@material-ui/core": "^4.11.2",
-    "@material-ui/icons": "^4.11.2",
-    "@testing-library/jest-dom": "^5.11.8",
-    "@testing-library/react": "^11.2.3",
-    "@testing-library/user-event": "^12.6.0",
-    "draft-js": "^0.11.7",
-    "draft-js-editor": "^1.12.4",
-    "draft-wysiwyg": "^0.2.4",
-    "draftjs-to-html": "^0.9.1",
-    "firebase": "^8.6.8",
-    "hamburger-react": "^2.4.0",
-    "html-to-draftjs": "^1.5.0",
-    "node-sass": "^4.14.1",
-    "react": "^17.0.1",
-    "react-burger-menu": "^3.0.3",
-    "react-dom": "^17.0.1",
-    "react-draft-wysiwyg": "^1.14.7",
-    "react-ga": "^3.3.0",
-    "react-icons": "^4.1.0",
-    "react-id-swiper": "^4.0.0",
-    "react-media": "^1.10.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1",
-    "react-scroll": "^1.8.1",
-    "react-scroll-detect": "^1.2.0",
-    "react-select": "^4.3.1",
-    "reactjs-popup": "^2.0.5",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.3",
-    "styled-components": "^5.2.1",
-    "swiper": "^6.7.1",
-    "web-vitals": "^0.2.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@react-firebase/auth": "^0.2.10",
-    "@react-firebase/firestore": "^0.5.5",
-    "babel-plugin-styled-components": "^1.12.0",
-    "eslint-plugin-styled-components-a11y": "0.0.28",
-    "file-loader": "^6.2.0"
-  }
+    "name": "choi-eyeclinic",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@draft-js-plugins/editor": "^4.1.0",
+        "@draft-js-plugins/image": "^4.1.2",
+        "@material-ui/core": "^4.11.2",
+        "@material-ui/icons": "^4.11.2",
+        "@testing-library/jest-dom": "^5.11.8",
+        "@testing-library/react": "^11.2.3",
+        "@testing-library/user-event": "^12.6.0",
+        "draft-js": "^0.11.7",
+        "draft-js-editor": "^1.12.4",
+        "draft-wysiwyg": "^0.2.4",
+        "draftjs-to-html": "^0.9.1",
+        "firebase": "^8.6.8",
+        "hamburger-react": "^2.4.0",
+        "html-to-draftjs": "^1.5.0",
+        "node-sass": "^4.14.1",
+        "react": "^17.0.1",
+        "react-burger-menu": "^3.0.3",
+        "react-dom": "^17.0.1",
+        "react-draft-wysiwyg": "^1.14.7",
+        "react-ga": "^3.3.0",
+        "react-icons": "^4.1.0",
+        "react-id-swiper": "^4.0.0",
+        "react-media": "^1.10.0",
+        "react-router-dom": "^5.2.0",
+        "react-scripts": "4.0.1",
+        "react-scroll": "^1.8.1",
+        "react-select": "^4.3.1",
+        "reactjs-popup": "^2.0.5",
+        "semantic-ui-css": "^2.4.1",
+        "semantic-ui-react": "^2.0.3",
+        "styled-components": "^5.2.1",
+        "swiper": "^6.7.1",
+        "web-vitals": "^0.2.4"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@react-firebase/auth": "^0.2.10",
+        "@react-firebase/firestore": "^0.5.5",
+        "babel-plugin-styled-components": "^1.12.0",
+        "eslint-plugin-styled-components-a11y": "0.0.28",
+        "file-loader": "^6.2.0"
+    }
 }

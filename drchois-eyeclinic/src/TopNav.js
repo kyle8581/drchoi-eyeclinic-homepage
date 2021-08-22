@@ -13,37 +13,63 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import { FirebaseAuthConsumer } from '@react-firebase/auth'
 import styled from 'styled-components/macro'
+import { Menu, Dropdown } from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.min.css'
 import {
     BlackBackGround,
     MenuContainer1,
     MenuContainer2,
     SideMenuContainer,
     InfoContainer,
+    NavBar,
 } from './SideMenu.components'
 import { LanguageSelectContainer, Country } from './Language.components'
 import { UserContext } from './UserContext'
 import { SlideContext } from './SlideContext'
 import { SightCorrectionSlideContext } from './SightCorrectionSlideContext'
 import translate from './translations'
-import LoginButton from "./login/LoginButton"
+import LoginButton from './login/LoginButton'
+import EventReviewDropdown from './menu/EventReviewDropdown'
 // import { LoginButton } from './firebase'
 const LoginButtonStyled = styled.button`
-        width: 100px;
-        height: 40px;
-        border-radius: 40px;
-        background-color: #63c3c4;
-        border: none;
-        color: #fff;
-        font-family: NanumSquare_acR;
-        font-size: 15px;
-        position: absolute;
-        bottom: 170px;
-        left: 70px;
-        cursor: pointer;
-        
-        `
-
-
+    width: 100px;
+    height: 40px;
+    border-radius: 40px;
+    background-color: #63c3c4;
+    border: none;
+    color: #fff;
+    font-family: NanumSquare_acR;
+    font-size: 15px;
+    position: absolute;
+    bottom: 170px;
+    left: 70px;
+    cursor: pointer;
+`
+const NavMenu = styled(Menu)`
+border: none !important;
+background-color: transparent !important;
+box-shadow: none !important;
+    height: 58px;
+    margin-top: 0 !important;
+    margin-left: 20px !important;
+    .navbar_component{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .navbar_component:hover{
+        box-shadow: none !important;
+        border: none !important;
+    }
+    .navbar_component::before{
+        display: none;
+    }
+    .dropdown::before{
+        display: none;
+    }
+    .dropdown.icon{
+        display: none;
+    }
+`
 function TopNav({ changefloatshow, swiper }) {
     const [isOpen, setOpen] = useState(false)
     const pathname = window.location.pathname
@@ -51,90 +77,78 @@ function TopNav({ changefloatshow, swiper }) {
     const { curSlide, setCurslide } = useContext(SlideContext)
     const [needFetch, setNeedFetch] = useState(false)
     const [needCheck, setNeedCheck] = useState(false)
+    // 이벤트/후기 dropdown list menu를 위한 state
+    // showList : true => 드롭다운 메뉴 display
+    // showList : false => 드롭다운 메뉴 hide
+    const [showList, setShowList] = useState(false)
+
     const Rus = translate[2]
     const Chi = translate[1]
     const Eng = translate[0]
     function clickHamberger() {
         setOpen(!isOpen)
-     
     }
     const { userInfo, setUserInfo } = useContext(UserContext)
     // console.log(userInfo)
     const [userList, setUserList] = useState([])
     const history = useHistory()
 
-    console.log("top nav load")
-    
-   
-
- 
+    console.log('top nav load')
 
     return (
-        <div className="nav_side_wrapper">
-            <div
+        <NavBar>
+            {/* <div
                 className={'nav__container ' + isOpen}
                 style={{
                     overflow: (isOpen) => (isOpen ? 'visible' : 'hidden'),
                 }}
-            >
-                <div className="navbar__logo">
-                    <Link to="/">
-                        <NavLogo className="logo__svg" />
-                    </Link>
-                </div>
+            > */}
+            <div className="navbar__logo">
+                <Link to="/">
+                    <NavLogo className="logo__svg" />
+                </Link>
+            </div>
 
-                <ul className="navbar__pagelink">
-                    <li>
-                        <Link to="/dr-choi">최승일 대표원장</Link>
-                    </li>
-                    <li>
-                        <Link to="/sight-correction">시력교정술</Link>
-                    </li>
-                    <li>
-                        <Link to="/cataract">노안수술</Link>
-                    </li>
-                    <li>
-                        <Link to="/test-process">정밀검사과정</Link>
-                    </li>
-                    <li>
-                        <Link to="/event-list">이벤트</Link>
-                    </li>
-                    <li>
-                        <Link to="/sight-correction-review">후기</Link>
-                    </li>
-                </ul>
-                <LanguageSelectContainer className="LanguageSelectContainer">
-                    <Country to={{ pathname: '/' }} className="Kor">
-                        <img src="/language_flag/KR_flag.png" alt="lan" />
-                    </Country>
-                    <Country to={{ pathname: '/foreign', state: Eng }}>
-                        <img src="/language_flag/EN_flag.png" />
-                    </Country>
-                    <Country to={{ pathname: '/foreign', state: Rus }}>
-                        <img src="/language_flag/RU_flag.png" />
-                    </Country>
-                    <Country to={{ pathname: '/foreign', state: Chi }}>
-                        <img src="/language_flag/CH_flag.png" />
-                    </Country>
-                </LanguageSelectContainer>
-                {/*    <div>
-                    {/* link 다른 언어 페이지 , state 로 pass   */}
-                {/* {"title":"dfkdjfkdfj", "content1":"fkdfjdk"} */}
-                {/*  <ReviewBlockWrapper  to={{ pathname: description_link, state: { e: e, next:next, prev:prev} }}> */}
-                {/*<Link to={{pathname:'/'}} className="Kor">한국</Link>
-                    <Link to={{pathname:'/foreign',state: Eng}}>미국</Link>
-                    <Link to={{pathname:'/foreign',state: Rus}} className="Rus">러시아</Link>
-                    <Link to={{pathname:'/foreign',state: Chi}} className="Chi">중국</Link>
-                </div>*/}
-                <div className="hamburger__icon">
-                    <Hamburger
-                        style={{ 'z-index': '40' }}
-                        toggled={isOpen}
-                        toggle={setOpen}
-                        onToggle={clickHamberger}
-                        color="#707070"
+            {/* </div> */}
+            <NavMenu>
+                <NavMenu.Item className="navbar_component">
+                    <Dropdown simple item text="최승일대표원장" onClick={()=>{alert("click")}}>
+                        <Dropdown.Menu/>
+                    </Dropdown>
+                </NavMenu.Item>
+                <NavMenu.Item className="navbar_component">
+                    <Dropdown simple item text="시력교정술">
+                        <Dropdown.Menu>
+                            <Dropdown.Item>라식</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </NavMenu.Item>
+                <NavMenu.Item className="navbar_component">
+                <Dropdown simple item text="노안수술" onClick={()=>{alert("click")}}>
+                        <Dropdown.Menu/>
+                    </Dropdown>
+                </NavMenu.Item>
+                <NavMenu.Item className="navbar_component">
+                <Dropdown simple item text="정밀검사과정" onClick={()=>{alert("click")}}>
+                        <Dropdown.Menu/>
+                    </Dropdown>
+                </NavMenu.Item>
+                <NavMenu.Item className="navbar_component">
+                    <EventReviewDropdown
+                        showList={showList}
+                        setShowList={setShowList}
                     />
-                </div>
+                </NavMenu.Item>
+            </NavMenu>
+
+            <div className="hamburger__icon">
+                <Hamburger
+                    style={{ 'z-index': '40' }}
+                    toggled={isOpen}
+                    toggle={setOpen}
+                    onToggle={clickHamberger}
+                    color="#707070"
+                />
             </div>
             <BlackBackGround
                 clicked={isOpen}
@@ -258,8 +272,7 @@ function TopNav({ changefloatshow, swiper }) {
                         <p>RGP렌즈</p>
                     </div>
                 </MenuContainer2>
-                <LoginButton/>
-             
+                <LoginButton />
 
                 <div>{JSON.stringify(userInfo)}</div>
                 <div>{userInfo.authority}</div>
@@ -273,7 +286,7 @@ function TopNav({ changefloatshow, swiper }) {
                     <div className="phone">02 6956 8711</div>
                 </InfoContainer>
             </SideMenuContainer>
-        </div>
+        </NavBar>
     )
 }
 export default TopNav

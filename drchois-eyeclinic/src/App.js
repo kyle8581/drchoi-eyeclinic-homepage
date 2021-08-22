@@ -28,6 +28,9 @@ import EditorContainer from './event/EditorContainer'
 import EventDescription from './event/EventDescription'
 import EventList from './event/EventList'
 import PopupEdit from './popup/PopupEdit'
+import testpage from './testpage'
+
+
 const firebaseConfig = {
     apiKey: 'AIzaSyArAzMQJPh9WuSk9eMaBzP38DhuAK2p41I',
     authDomain: 'drchoi-eyeclinic-homepage.firebaseapp.com',
@@ -106,6 +109,11 @@ function App() {
                                 component={EventEdit}
                             />
                             <Route path="/popup-edit" component={PopupEdit} />
+                            <Route
+                                path="/test"
+                                component={testpage}
+                            />
+                        
                         </BrowserRouter>
                     </SightCorrectionSlideContext.Provider>
                 </SlideContext.Provider>
