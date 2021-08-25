@@ -14,7 +14,8 @@
     position: absolute;
     width: 90rem;
     height: 45.5rem;
-    right: 1.5rem;
+    left : 50px;
+    /* right: 1.5rem; */
     top: 6rem;
     /* border: 5px solid rgba(209, 209, 22, 0.281); */
     /* background: yellow; */
@@ -154,13 +155,11 @@
 .youtube__slide__wrapper .uparrow {
     right: 8rem;
     /* transform: translateY(30px); */
-    position: fixed;
     cursor: pointer;
     /* z-index: 10; */
 }
 .youtube__slide__wrapper .downarrow {
     right: 8rem;
-    position: fixed;
     cursor: pointer;
     /* z-index: 10; */
     /* transform: translateY(620px); */
@@ -192,10 +191,10 @@
         width: 80%;
     }
     .downarrow {
-        transform: translate(2rem, 35rem);
+        transform: translate(3rem, 40rem);
     }
     .uparrow {
-        transform: translate(1.7rem, -3rem);
+        transform: translate(3rem, -3rem);
     }
     .yt__wrapper {
         margin-top: 1.5rem;

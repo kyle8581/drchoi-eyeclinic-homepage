@@ -19,10 +19,16 @@ const ReviewBlockWrapper = styled(Link)`
         width: 600px;
         height: 160px;
     }
+    @media screen and (max-width: 650px) {
+        width: 500px;
+    }
+    @media screen and (max-width: 500px) {
+        width: 100vw;
+        height: 100px;
+    }
 `
 const ReviewBlockContainer = styled.div`
     width: 1000px;
-    /* height: 180px; */
     text-decoration: none;
     display: grid;
     grid-template-columns: 3fr 1fr 5fr;
@@ -30,6 +36,16 @@ const ReviewBlockContainer = styled.div`
         width: 600px;
         grid-template-columns: 330px 270px;
         height: 160px;
+    }
+    @media screen and (max-width: 650px) {
+        width: 500px;
+        grid-template-columns: 270px 230px;
+        height: 160px;
+    }
+    @media screen and (max-width: 500px) {
+        width: 100vw;
+        grid-template-columns: 1fr 1fr;
+        height: 100px;
     }
 `
 const ReviewBlock_col1_wrapper = styled.div`
@@ -40,6 +56,14 @@ const ReviewBlock_col1_wrapper = styled.div`
     @media screen and (max-width: 750px) {
         height: 160px;
         border-right: 1px solid #707070;
+        width: 330px;
+    }
+    @media screen and (max-width: 650px) {
+        width: 270px;
+    }
+    @media screen and (max-width: 500px) {
+        width: 50vw;
+        height: 100px;
     }
 `
 const ReviewBlock_col1 = styled.div`
@@ -77,7 +101,7 @@ const ReviewBlock_col1 = styled.div`
         grid-row-start: 4;
         grid-row-end: 5;
     }
-    @media screen and (max-width: 750px) {
+    @media screen and (max-width: 750px) and (min-width: 651px){
         width: 300px;
         height: 135px;
         grid-template-rows: 0px 60px 10px 65px;
@@ -107,6 +131,38 @@ const ReviewBlock_col1 = styled.div`
             /* justify-content:center; */
             align-items: center;
             font-size: 8px;
+        }
+    }
+    @media screen and (max-width: 650px) and (min-width: 501px){
+        width: 90%;
+        height: 100%;
+        grid-template-rows: 0.2fr 1fr 0.05fr 1fr;
+        .box1{
+            img{
+                width: 100%;
+            }
+        }
+    }
+    @media screen and (max-width: 500px) {
+        width: 90%;
+        height: 100px;
+        grid-template-rows: 5px 40px 5px 45px;
+        .box1{
+            img{
+                width: 11vw;
+            }
+        }
+        .box2 {
+            padding-left: 0;
+            span {
+                font-size: 3vw;
+            }
+            .blank{
+                display: none;
+            }
+            .tags, .tags_sex{
+                font-size: 2vw;
+            }
         }
     }
 `
@@ -175,7 +231,7 @@ const SightScore = styled.div`
         justify-content: center;
     }
     @media screen and (max-width: 750px) {
-        width: 300px;
+        width: 270px;
         grid-column-start: 1;
         grid-column-end: -1;
         font-size: 12px;
@@ -187,13 +243,34 @@ const SightScore = styled.div`
             height: auto;
         }
         .leftscore {
-            font-size: 20px;
+            font-size: 18px;
             font-family: NanumSquare_acEB;
         }
         .rightscore {
-            font-size: 20px;
+            font-size: 18px;
 
             font-family: NanumSquare_acEB;
+        }
+    }
+    @media screen and (max-width: 650px) and (min-width: 501px){
+        width: 240px;
+        height: 60px;
+    }
+    @media screen and (max-width: 500px) {
+        width: 45vw;
+        .title{
+            font-size: 3vw;
+        }
+        .leftscore, .rightscore{
+            font-size: 3.5vw;
+        }
+    }
+    @media screen and (max-width: 400px){
+        .title{
+            font-size: 3.5vw;
+        }
+        .leftscore, .rightscore{
+            font-size: 4vw;
         }
     }
 `
@@ -244,6 +321,34 @@ const ReviewBlock_col3 = styled.div`
             }
         }
     }
+    @media screen and (max-width: 400px){
+        .col3_wrapper{
+            .surgery_type{
+                font-size: 4vw;
+            }
+            .title{
+                font-size: 3.5vw;
+            }
+            .content{
+                font-size: 3vw;
+                line-height: 3.5vw;
+            }
+        }
+    }
+    @media screen and (max-width: 500px){
+        .col3_wrapper{
+            .surgery_type{
+                font-size: 3.5vw;
+            }
+            .title{
+                font-size: 3vw;
+            }
+            .content{
+                font-size: 2.5vw;
+                line-height: 3vw;
+            }
+        }
+    }
 `
 function ReviewBlock({ e, idx, allList }) {
     const onDelete = () => {
@@ -273,7 +378,7 @@ function ReviewBlock({ e, idx, allList }) {
                                 {e.name}
                                 <br />
                             </span>
-                            <span>
+                            <span className="blank">
                                 <br />
                             </span>
                             <span className="tags">연령</span>
@@ -312,7 +417,7 @@ function ReviewBlock({ e, idx, allList }) {
                 <ReviewBlock_col3>
                     <div className="col3_wrapper">
                         <div className="surgery_type">
-                            <span>수술명&nbsp;</span>
+                            <span>수술명:&nbsp;</span>
                             <span>{e.surgeryType}</span>
                         </div>
                         <div className="title">{e.title}</div>

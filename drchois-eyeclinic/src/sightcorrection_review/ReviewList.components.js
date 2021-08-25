@@ -18,8 +18,8 @@ export const ReviewPageWrapper = styled.div`
     font-family: NanumSquare_acEB;
     display: flex;
     flex-direction: column;
-    @media screen and (max-width: 750px) {
-        width: 600px;
+    @media screen and (max-width: 1020px) {
+        width: 750px;
         margin-top: 10px;
         font-family: NanumSquare_acB;
     }
@@ -29,7 +29,7 @@ export const ReviewPage_sec1 = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    @media screen and (max-width: 750px) {
+    @media screen and (max-width: 1020px) {
         height: 210px;
     }
 `
@@ -45,14 +45,14 @@ export const ReviewPage_sec1_text = styled.div`
     h3 {
         font-size: 20px;
     }
-    @media screen and (max-width: 750px) {
+    @media screen and (max-width: 1020px) {
         width: 100%;
         line-height: 40px;
-        font-size: 15px;
+        font-size: 20px;
         font-family: NanumSquare_acB;
         font-size: 30px;
-        div{
-            margin-top:15px;
+        div {
+            margin-top: 15px;
         }
         h3 {
             line-height: 25px;
@@ -61,7 +61,7 @@ export const ReviewPage_sec1_text = styled.div`
 `
 export const ReviewPage_sec1_img = styled.img`
     width: 250px;
-    @media screen and (max-width: 750px) {
+    @media screen and (max-width: 1020px) {
         height: 210px;
         width: auto;
     }
@@ -90,7 +90,7 @@ export const ReviewPage_sec2 = styled.div`
     }
     .writeIcon {
     }
-    @media screen and (max-width: 750px) {
+    @media screen and (max-width: 1020px) {
         font-size: 30px;
         margin-top: 20px;
         line-height: 30px;
@@ -98,7 +98,6 @@ export const ReviewPage_sec2 = styled.div`
             margin-top: 5px;
             line-height: 20px;
             .sec2_law {
-
                 font-size: 20px;
                 margin-left: 0px;
             }
@@ -114,13 +113,27 @@ export const ListContainer = styled.div`
     margin-top: 50px;
     border-top: 4px solid #63c3c4;
     border-bottom: 4px solid #63c3c4;
+    align-self: center;
     .true {
         border-top: 2px solid #707070;
+    }
+    @media screen and (max-width: 1020px) {
+        width: 800px;
+        border-top: 2.5px solid #63c3c4;
+        border-bottom: 2.5px solid #63c3c4;
     }
     @media screen and (max-width: 750px) {
         width: 600px;
         border-top: 2.5px solid #63c3c4;
         border-bottom: 2.5px solid #63c3c4;
+    }
+    @media screen and (max-width: 650px) {
+        width: 500px;
+        border-top: 2.5px solid #63c3c4;
+        border-bottom: 2.5px solid #63c3c4;
+    }
+    @media screen and (max-width: 650px) {
+        width: 100vw;
     }
 `
 export const PageNumberIndex = styled.div`
@@ -179,7 +192,6 @@ export const FilterContainer = styled.div`
         }
         border-left: 1px solid #707070;
     }
-  
 
     .search {
         color: #707070;
@@ -190,40 +202,53 @@ export const FilterContainer = styled.div`
         width: 342px;
         border: 1px solid #707070;
     }
-    @media screen and (max-width: 750px) {
+    @media screen and (max-width: 1020px) {
         font-size: 15px;
         .select_container {
             width: auto;
-            height:32px;
+            height: 32px;
             border-radius: 0;
-
         }
-        .true__container{
+        .true__container {
             width: 146px;
-            height:30px;
+            height: 30px;
             border: 1px solid #707070;
-
         }
         .true__control {
-            height:30px;
-            width:146px;
-            min-height:30px;
-        :hover {
-            border: none !important;
-        }
-        :focus {
-            border: none;
-        }
-        .true__indicators, .true__indicator{
-            width:30px;
             height: 30px;
-            svg{
-                width:15px;
-                height:15px;
+            width: 146px;
+            min-height: 30px;
+            :hover {
+                border: none !important;
+            }
+            :focus {
+                border: none;
+            }
+            .true__indicators,
+            .true__indicator {
+                width: 30px;
+                height: 30px;
+                svg {
+                    width: 15px;
+                    height: 15px;
+                }
             }
         }
     }
-     
+    @media screen and (max-width: 400px){
+        font-size: 10px;
+        height: 30px;
+        .select_container{
+            width: 100px;
+            height: 32px;
+        }
+        .true__container{
+            height: 26px;
+        }
+        .true__control {
+            width: 90px;
+            height: 26px;
+        }
     }
 `
 export const DonwArrowBox = styled.div`

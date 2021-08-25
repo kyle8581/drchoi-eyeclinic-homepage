@@ -98,6 +98,7 @@
   font-size: 4rem;
   color: #b2b2b2;
   position: absolute;
+  line-height: 4rem !important;
 }
 .qt_start {
   transform: translate(-2.5rem, -6.5rem);

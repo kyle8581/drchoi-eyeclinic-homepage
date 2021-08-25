@@ -33,7 +33,10 @@
   margin-top: 4vh;
   /* font-size: 30px; */
   letter-spacing: 0.05em;
-  line-height: 1.5;
+  line-height: 1.5 !important;
+}
+.BigBox2 > p{
+  line-height: 1rem !important;
 }
 
 .trophy__slide__container {

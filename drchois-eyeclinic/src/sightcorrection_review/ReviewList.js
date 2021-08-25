@@ -347,7 +347,7 @@ function ReviewListDesktop() {
 }
 function ReviewList() {
     const { height, width } = useWindowDimensions()
-    if (width > 800) {
+    if (width > 750) {
         return <ReviewListDesktop />
     } else {
         return <ReviewListMobile />

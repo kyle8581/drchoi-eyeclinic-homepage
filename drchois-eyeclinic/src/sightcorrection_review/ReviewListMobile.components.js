@@ -27,6 +27,22 @@ export const ReviewPageWrapper = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 10px;
+    @media screen and (min-width: 1001px) {
+        width: 1000px;
+    }
+    @media screen and (max-width: 650px) {
+        width: 500px;
+        margin-top: 10px;
+        font-family: NanumSquare_acB;
+    }
+    @media screen and (max-width: 500px) {
+        width: 350px;
+        margin-top: 10px;
+        font-family: NanumSquare_acB;
+    }
+    @media screen and (max-width: 400px){
+        width: 300px;
+    }
 `
 export const ReviewPageSec1 = styled.div`
     height: 210px;
@@ -34,6 +50,9 @@ export const ReviewPageSec1 = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    /* @media screen and (max-width: 400px){
+        width: 
+    } */
 `
 export const ReviewPageSec1Text = styled.div`
     width: 100%;
@@ -51,10 +70,34 @@ export const ReviewPageSec1Text = styled.div`
     div {
         margin-top: 15px;
     }
+    @media screen and (min-width: 1001px){
+        font-size: 20px;
+    }
+    @media screen and (max-width: 500px) {
+        font-size: 12px;
+        line-height: 10px;
+        p {
+            margin: 0 0 0;
+        }
+        h3 {
+            font-size: 12px;
+            line-height: 15px;
+            margin: 0 0 0;
+        }
+        div {
+            margin-top: 7px;
+        }
+    }
 `
 export const ReviewPageSec1Img = styled.img`
     height: 210px;
     width: auto;
+    @media screen and (min-width: 1001px){
+        height: 250px;
+    }
+    @media screen and (max-width: 500px) {
+        height: 130px;
+    }
 `
 export const ReviewPageSec2 = styled.div`
     font-size: 30px;
@@ -85,6 +128,25 @@ export const ReviewPageSec2 = styled.div`
             font-size: 20px;
         }
     }
+    @media screen and (max-width: 500px) {
+        font-size: 22px;
+        .information {
+            margin-top: 8px;
+            margin-bottom: 8px;
+            .green_circle_with_check {
+                width: 12px;
+                height: 12px;
+                border-radius: 12px;
+                p {
+                    font-size: 5px;
+                }
+            }
+            .sec2_law {
+                font-size: 12px;
+                margin-left: 5px;
+            }
+        }
+    }
 `
 export const ListContainer = styled.div`
     margin-top: 50px;
@@ -93,6 +155,9 @@ export const ListContainer = styled.div`
     border-bottom: 2.5px solid #63c3c4;
     .true {
         border-top: 2px solid #707070;
+    }
+    @media screen and (max-width: 500px) {
+        width: 300px;
     }
 `
 export const FilterContainer = styled.div`
@@ -159,6 +224,11 @@ export const FilterContainer = styled.div`
     }
 
     font-size: 15px;
+    /* @media screen and (max-width: 500px) {
+        .select_container {
+            width: 30px;
+        }
+    } */
 `
 
 export const SearchContainer = styled.div`

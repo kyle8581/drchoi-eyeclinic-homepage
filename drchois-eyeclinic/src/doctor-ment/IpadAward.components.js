@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 export const Wrapper = styled.div`
     width: 100vw;
@@ -43,7 +43,7 @@ export const Title = styled.div`
     color : #636363;
     width: 60vw;
     transform-origin: center;
-    font-family:NanumBarunGothic;
+    font-family:NanumSquare_acR;
 
 `;
 export const Par = styled.div`
@@ -51,9 +51,12 @@ export const Par = styled.div`
     margin-bottom: 1rem;
     color : #636363;
     font-size : 1.3rem;
-    line-height: 1.8rem;
+    line-height: 1rem !important;
     transform:translateY(2rem);
-    font-family:NanumBarunGothic;
+    font-family:NanumSquare_acR;
+    p{
+        line-height: 1rem !important;
+    }
 `;
 export const TrophyContainer = styled.div`
     width: 60vw;

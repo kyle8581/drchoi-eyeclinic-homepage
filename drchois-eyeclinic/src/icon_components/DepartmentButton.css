@@ -19,6 +19,16 @@
 .department__button > p::after {
     content: "+";
     position: absolute;
-    transform: translateY(-1vh);
-    font-size: 2vw;
+    font-size: 2rem;
+    transform: translateY(-0.5rem);
+}
+@media screen and (max-width: 1300px) {
+    .department__button > p::after {
+        font-size: 1.5rem;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .department__button > p::after {
+        font-size: 1rem;
+    }
 }

@@ -33,7 +33,7 @@ export const Title = styled.div`
     top: 9rem;
     width: 400px;
     padding-left: 1.5rem;
-    /* transform: translate(36rem, 5rem); */
+    transform: translateX(6rem);
     .green {
         color: #63c3c4;
         font-size: 2rem;
@@ -41,7 +41,6 @@ export const Title = styled.div`
     .gray {
         color: #636363;
         font-size: 1.2rem;
-        transform: translate(0, 0.6rem);
         margin-left: 0.5rem;
     }
 `
@@ -76,6 +75,6 @@ export const Paragraph = styled.div`
     }
     .signature {
         width: 6rem;
-        transform: translate(18.5rem, -4rem);
+        transform: translate(20rem, -4rem);
     }
 `

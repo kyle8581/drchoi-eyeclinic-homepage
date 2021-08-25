@@ -7,6 +7,9 @@ export const NavBar = styled.div`
     width: 100vw;
     flex-direction: row;
     position: fixed;
+    z-index: 1000 !important;
+    .nav
+
 `
 export const BlackBackGround = styled.div`
     width: 100vw;

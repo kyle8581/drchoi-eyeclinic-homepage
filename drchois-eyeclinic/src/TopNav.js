@@ -30,6 +30,7 @@ import { SightCorrectionSlideContext } from './SightCorrectionSlideContext'
 import translate from './translations'
 import LoginButton from './login/LoginButton'
 import EventReviewDropdown from './menu/EventReviewDropdown'
+import { Fragment } from 'react'
 // import { LoginButton } from './firebase'
 const LoginButtonStyled = styled.button`
     width: 100px;
@@ -119,7 +120,7 @@ function TopNav({ changefloatshow, swiper }) {
                 <NavMenu.Item className="navbar_component">
                     <Dropdown simple item text="시력교정술">
                         <Dropdown.Menu>
-                            <Dropdown.Item>라식</Dropdown.Item>
+                            <Dropdown.Item >라식</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </NavMenu.Item>
@@ -129,8 +130,8 @@ function TopNav({ changefloatshow, swiper }) {
                     </Dropdown>
                 </NavMenu.Item>
                 <NavMenu.Item className="navbar_component">
-                <Dropdown simple item text="정밀검사과정" onClick={()=>{alert("click")}}>
-                        <Dropdown.Menu/>
+                <Dropdown simple item text="정밀검사과정"  onClick={()=>{history.push('/test-process')}} >
+                        <Dropdown.Menu />
                     </Dropdown>
                 </NavMenu.Item>
                 <NavMenu.Item className="navbar_component">
@@ -150,12 +151,13 @@ function TopNav({ changefloatshow, swiper }) {
                     color="#707070"
                 />
             </div>
-            <BlackBackGround
+            {isOpen?( <BlackBackGround
                 clicked={isOpen}
                 onClick={() => {
                     clickHamberger()
                 }}
-            />
+            />):(<Fragment/>)}
+           
             <SideMenuContainer clicked={isOpen}>
                 <MenuContainer1>
                     <h1>압구정최안과 소개</h1>
@@ -165,7 +167,7 @@ function TopNav({ changefloatshow, swiper }) {
                                 clickHamberger()
                                 if (pathname === './') setCurslide(1)
                                 else {
-                                    setCurslide(1)
+                                    setCurslide(0)
                                     history.push('./')
                                 }
                             }}

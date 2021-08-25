@@ -1,15 +1,15 @@
-import React, {useContext} from 'react'
+import React, { useContext, Fragment,useEffect,useState,useRef } from 'react'
 import { useLocation, Link } from 'react-router-dom'
+import Media from 'react-media'
 import {
     ReviewPageContainer,
     ReviewPageWrapper,
-    ReviewPage_sec1,
-    ReviewPage_sec1_text,
-    ReviewPage_sec1_img,
+    ReviewPageSec1,
+    ReviewPageSec1Text,
+    ReviewPageSec1Img,
     ReviewPage,
-    ListContainer,
-    ReviewPage_sec2,
-} from './ReviewList.components'
+    ReviewPageSec2,
+} from './ReviewListMobile.components'
 import {
     ReviewContainer,
     InfoGrid,
@@ -31,12 +31,13 @@ import {
     NavButtonContainer,
     ReviewNavigateButton,
     ButtonBar,
-    ToListButton,WriteReviewButton
+    ToListButton,
+    WriteReviewButton,
 } from './ReviewDescription.components'
 import TopNav from '../TopNav.js'
 import GreenCircleWithCheck from '../icon_components/GreenCircleWithCheck.js'
-import { UserContext  } from '../UserContext'
-
+import { UserContext } from '../UserContext'
+import useWindowDimensions from '../useWindowDimensions.js'
 function ReviewDescription() {
     const location = useLocation()
     const curIndex = location.state.idx
@@ -46,9 +47,12 @@ function ReviewDescription() {
     const allList = location.state.allList
     const leftIndex = curIndex - 1
     const rightIndex = curIndex + 1
+    const [reviewHeight, setReviewHeight] = useState(0)
+    const { height, width } = useWindowDimensions()
+    const reviewPageRef = useRef()
     let leftLink = ''
     let rightLink = ''
-    const {userInfo } = useContext(UserContext)
+    const { userInfo } = useContext(UserContext)
     if (left === undefined) {
         leftLink = '/sight-correction-review/description/' + content.id
     } else {
@@ -59,26 +63,55 @@ function ReviewDescription() {
     } else {
         rightLink = '/sight-correction-review/description/' + right.id
     }
+    useEffect(() => {
+        setReviewHeight(reviewPageRef.current.clientHeight)
+    }, [reviewPageRef])
+    const scaleFactor = () => {
+        if (width > 750) {
+            return {}
+        } else {
+            return {
+                transform: 'scale(' + width / 750 + ')',
+                transformOrigin: 'top center',
+                marginBottom: reviewHeight - 1355 + 'px',
+            }
+        }
+    }
     return (
-        <>
+        <Fragment>
             <ReviewPageContainer>
                 <TopNav />
-                <ReviewPage>
-                    <ReviewPageWrapper>
-                        <ReviewPage_sec1>
-                            <ReviewPage_sec1_text>
+                <ReviewPage style={scaleFactor()}>
+                    <ReviewPageWrapper ref={reviewPageRef}>
+                        <ReviewPageSec1>
+                            <ReviewPageSec1Text>
                                 <p>압구정최안과는</p>
                                 <p>
                                     <span>안전한 수술</span>을 약속드립니다.
                                 </p>
-                                <h3>
-                                    23년 경력의 주치의, 1:1 맞춤진료로 만족도
-                                    높은 의료시스템
-                                </h3>
-                            </ReviewPage_sec1_text>
-                            <ReviewPage_sec1_img src="/surgery/Smile/smileinfo_human.png" />
-                        </ReviewPage_sec1>
-                        <ReviewPage_sec2>
+                                <Media queries={{ small: { maxWidth: 750 } }}>
+                                    {(matches) =>
+                                        matches.small ? (
+                                            <div>
+                                                <h3>23년 경력의 주치의,</h3>
+                                                <h3>
+                                                    1:1 맞춤진료로 만족도 높은
+                                                    의료시스템
+                                                </h3>
+                                            </div>
+                                        ) : (
+                                            <h3>
+                                                23년 경력의 주치의, 1:1
+                                                맞춤진료로 만족도 높은
+                                                의료시스템
+                                            </h3>
+                                        )
+                                    }
+                                </Media>
+                            </ReviewPageSec1Text>
+                            <ReviewPageSec1Img src="/surgery/Smile/smileinfo_human.png" />
+                        </ReviewPageSec1>
+                        <ReviewPageSec2>
                             <p>
                                 압구정최안과
                                 <span> 수술후기</span>
@@ -87,17 +120,17 @@ function ReviewDescription() {
                                 className="information"
                                 style={{
                                     alignItems: 'center',
-                                    marginTop: '1rem',
-                                    marginBottom: '0.5rem',
+                                    // marginTop: '1rem',
+                                    // marginBottom: '0.5rem',
                                 }}
                             >
                                 <GreenCircleWithCheck className="green_circle_with_check" />
-                                <p style={{ marginLeft: '1rem' }}>
+                                <p className="sec2_law">
                                     의료법 56조에 의거하여 개인인증 후 열람이
                                     가능합니다.
                                 </p>
                             </div>
-                        </ReviewPage_sec2>
+                        </ReviewPageSec2>
                         <ReviewContainer>
                             <InfoGrid>
                                 <TitleLabel>
@@ -171,11 +204,9 @@ function ReviewDescription() {
                                     <div className="rightArrow">{'>'}</div>
                                 </ReviewNavigateButton>
                             </NavButtonContainer>
-                            <NavButtonContainer style={{"marginLeft":"auto"}}>
+                            <NavButtonContainer style={{ marginLeft: 'auto' }}>
                                 <ToListButton to="/sight-correction-review">
-                                    <div>
-                                        목록
-                                    </div>
+                                    <div>목록</div>
                                 </ToListButton>
                                 {/* <WriteReviewButton to="/create-sightcorrection-review" onClick={(e)=>{ 
                                     if(userInfo.authority!=="admin"){
@@ -192,7 +223,7 @@ function ReviewDescription() {
                     </ReviewPageWrapper>
                 </ReviewPage>
             </ReviewPageContainer>
-        </>
+        </Fragment>
     )
 }
 

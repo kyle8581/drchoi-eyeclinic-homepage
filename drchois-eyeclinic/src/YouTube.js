@@ -1,13 +1,14 @@
 import React, { useState, useRef } from 'react'
 import Media from 'react-media'
 import SwiperCore, { Thumbs } from 'swiper'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import YouTubeAsset from './YouTubeAsset.json'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import GreenBox from './icon_components/GreenBox'
 import UpArrow from './icon_components/UpArrow'
 import DownArrow from './icon_components/DownArrow'
 import './YouTube.css'
+import useWindowDimensions from "./useWindowDimensions"
 
 SwiperCore.use([Thumbs])
 const width = 560
@@ -37,6 +38,10 @@ const MobileYoutubeLink = styled.a`
         width: 8rem;
     }
 `
+const Wrapper = styled.div`
+    display: flex;
+    
+`
 // console.log(youTubeLinks)
 function YouTube() {
     const [thumbsSwiper, setThumbsSwiper] = useState(null)
@@ -45,7 +50,7 @@ function YouTube() {
     })
     const prevRef = useRef(null)
     const nextRef = useRef(null)
-
+    const {width, height} = useWindowDimensions()
     // console.log(thumbnailImages)
     return (
         <div className="youtube__slide__wrapper">
@@ -73,17 +78,17 @@ function YouTube() {
                             // swiper.navigation.update()
                         }}
                         onSwiper={setThumbsSwiper}
-                        spaceBetween={window.innerWidth > 500 ? 4 : 0}
+                        spaceBetween={width > 500 ? 4 : 0}
                         draggable="true"
                         loop="true"
                         loopedSlides={5}
                         direction={
-                            window.innerWidth > 1300 ? 'vertical' : 'horizontal'
+                            width > 1300 ? 'vertical' : 'horizontal'
                         }
                         slidesPerView={
-                            window.innerWidth > 1300
+                            width > 1300
                                 ? 4
-                                : window.innerWidth > 500
+                                : width > 500
                                 ? 5
                                 : 3
                         }
@@ -112,7 +117,6 @@ function YouTube() {
                 </div>
 
                 <div className="text__wrapper">
-                    <GreenBox />
                     <div className="mobile__youtube__greenbox"></div>
 
                     <div className="large__text">압구정최안과 유튜브</div>

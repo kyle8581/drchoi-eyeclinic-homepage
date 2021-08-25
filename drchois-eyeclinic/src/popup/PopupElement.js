@@ -50,7 +50,8 @@ const PopupContainer = styled.div`
         margin-right: 0.5rem;
     }
     #popupClose {
-        margin-left: 100px;
+        margin-left: auto;
+        margin-right: 1rem;
     }
 `
 function getCookie(name) {

@@ -142,7 +142,7 @@ function Map() {
                                 <div>
                                     <BusRow line="blue">
                                         <B />
-                                        <p>간선</p>
+                                        <p>간선</p>
                                         <div className="line__num">
                                             147번, 148번, 240번
                                         </div>

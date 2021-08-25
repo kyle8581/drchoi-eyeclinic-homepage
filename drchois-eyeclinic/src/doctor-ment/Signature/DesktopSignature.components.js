@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import backgroundimage from './desktop_sitting.png'
 export const Wrapper = styled.div`
     width: 100vw;
@@ -36,7 +36,6 @@ export const Title = styled.div`
     .gray {
         color: #636363;
         font-size: 1.6rem;
-        transform: translate(0, 1rem);
         margin-left: 0.5rem;
     }
 `
@@ -71,6 +70,6 @@ export const Paragraph = styled.div`
     }
     .signature {
         width: 6rem;
-        transform: translate(26rem, -4rem);
+        transform: translate(29rem, -4rem);
     }
 `

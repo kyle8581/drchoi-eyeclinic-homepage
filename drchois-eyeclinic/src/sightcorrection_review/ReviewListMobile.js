@@ -151,14 +151,13 @@ function ReviewListMobile() {
                             className="information"
                             style={{
                                 alignItems: 'center',
-                                marginTop: '1rem',
-                                marginBottom: '0.5rem',
+                                // marginBottom: '0.5rem',
                             }}
                         >
                             <GreenCircleWithCheck className="green_circle_with_check" />
                             <p
                                 className="sec2_law"
-                                style={{ marginLeft: '1rem' }}
+                                // style={{ marginLeft: '1rem' }}
                             >
                                 의료법 56조에 의거하여 개인인증 후 열람이
                                 가능합니다.

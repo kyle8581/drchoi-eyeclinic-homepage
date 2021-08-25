@@ -15,6 +15,7 @@
   width: 25rem;
   flex-direction: column;
   color: #555555;
+  line-height: 1rem !important;
 }
 
 #department__content .department__description .title {
@@ -26,9 +27,9 @@
   margin-top: 20px;
 }
 #department__content .department__description .body1 {
-  font-size: 1.5vw;
-  padding-top: 3vw;
-  line-height: 2vw;
+  font-size: 1.5rem;
+  padding-top: 30px;
+  line-height: 2rem;
 }
 #department__content .department__description .body1 .body1_wrapper {
   position: relative;
@@ -36,13 +37,13 @@
 }
 #department__content .department__description .body1 .body1_1 {
   font-family: NanumSquare_acEB;
-  font-size: 2vw;
+  font-size: 2rem;
   color: #63c3c4;
 }
 #department__content .department__description .body1 .body1_2 {
   color: #707070;
   font-weight: 400;
-  transform: translate(0.5rem, 2px);
+  
 }
 
 #department__content .department__description .body2 .body2_wrapper {
@@ -51,7 +52,10 @@
   color: #707070;
   font-weight: 350;
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 1.5rem !important;
+}
+.body2_wrapper > p{
+  line-height: 1rem !important;
 }
 #department__content .department__menu {
   width: 100%;
@@ -124,6 +128,9 @@
   font-size: 4rem;
   font-family: NanumBarunGothicBold;
   color: #ebebeb;
+}
+.rear_ment > p {
+  line-height: 1rem !important;
 }
 @media screen and (max-width: 500px) {
   #department__content {
@@ -252,7 +259,7 @@
   }
   #department__content .department__menu .contents .department__button {
     height: 4rem;
-    border: 5px solid white;
+    border:2px solid white;
   }
   .department__wrapper .rear_ment {
     position: relative;
@@ -287,8 +294,8 @@
 
   #department__content .department__menu .contents .department__button {
     height: 5vh;
-    border: 3px solid white;
-    width: 20vw;
+    border: 2px solid white;
+    width: 10rem;
     font-size: 1rem;
   }
   .department__wrapper .rear_ment {

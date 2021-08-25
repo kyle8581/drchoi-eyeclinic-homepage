@@ -159,8 +159,7 @@ export const Comment = styled.div`
     margin: auto;
     font-weight: 200;
     line-height: 1.4rem;
-    letter-spacing: 0.1rem;
-
+    letter-spacing : 1px;
     @media screen and (max-width: 1920px) {
         font-size: 1.2rem;
         line-height: 1.8rem;
