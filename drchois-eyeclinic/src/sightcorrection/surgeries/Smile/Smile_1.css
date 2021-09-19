@@ -24,12 +24,12 @@
 }
 
 .Smile1-container .text-wrapper .row1 {
-  font-size: 5vw;
-  font-family: NanumSquare_acB;
+  font-size: 2rem;
+  font-family: NanumSquare_acEB;
   color: #707070;
 }
 .Smile1-container .text-wrapper .row2 {
-  margin-top: 1vw;
+  margin-top: 1rem;
   display: flex;
   flex-direction: row;
 }
@@ -37,20 +37,19 @@
   display: flex;
   flex-direction: row;
 }
-
 .Smile1-container .text-wrapper .row2 .word:not(:first-child) {
   margin-left: 0.8vw;
 }
 
 .Smile1-container .text-wrapper .row2 .blue {
-  font-size: 2vw;
+  font-size: 1.2rem;
   font-family: NanumSquare_acEB;
   color: #63c3c4;
   letter-spacing: 0.03em;
 }
 .Smile1-container .text-wrapper .row2 .gray {
-  font-size: 2vw;
   font-family: NanumSquare_acR;
+  font-size: 1.4rem;
   font-weight: bold;
   color: #707070;
   letter-spacing: 0.03rem;
@@ -60,7 +59,7 @@
   margin-top: 3vw;
   display: flex;
   flex-direction: column;
-  font-size: 2.2vw;
+  font-size: 1.5rem;
   font-family: NanumSquareBold;
   color: #707070;
 }
@@ -72,7 +71,7 @@
   margin-top: 40px;
   display: flex;
   flex-direction: column;
-  font-size: 2.3vw;
+  font-size: 1.5rem;
   font-family: NanumSquareExtraBold;
   font-weight: bold;
   color: #63c3c4;

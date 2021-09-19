@@ -6,20 +6,14 @@ import './SightCorrectionSurgery.css'
 import { SightCorrectionSlideContext } from '../SightCorrectionSlideContext'
 
 function SightCorrectionSurgery(props) {
-    // var initialpage = 'lasik'
-    // if (props.location.state) {
-    //     initialpage = props.location.state.initialPage
-    // }
-    // const [curPage, setPage] = useState(initialpage)
-    // console.log(props.location)
+
     const { pageState, setPageState } = useContext(SightCorrectionSlideContext)
     // console.log('scs page state : ' + pageState)
     return (
         <>
             <section className="sightcorrection-container">
                 <TopNav />
-                <SideNav pageState={pageState} />
-                <SurgeryInOne pageState={pageState} />
+                <SurgeryInOne pageState={pageState} style={{marginTop:"64px"}}/>
             </section>
         </>
     )

@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
 }
+.navbar--hidden{
+  top: -50px;
+}
 .nav_side_wrapper{
   width: 100vw;
   height: auto;
@@ -24,6 +27,7 @@
   overflow: visible;
   z-index: 20;
 }
+
 .nav__container.true > .navbar__logo,
 .nav__container.true > ul {
   z-index: -1;

@@ -26,7 +26,7 @@
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  font-family: NanumBarunGothic;
+  font-family: NanumSquare_acR;
 }
 .doctorBackgroundContainer .small__text {
   font-size: 30pt;
@@ -47,7 +47,7 @@
   flex-direction: column;
   color: #eeeeee;
   z-index: -10;
-  font-family: NanumBarunGothicBold;
+  font-family: NanumSquare_acEB;
   font-size: 160pt;
   text-align: right;
   line-height: 0.9;
@@ -57,7 +57,7 @@
   left: 35vw;
   position: absolute;
   visibility: visible;
-  font-family: NanumBarunGothic;
+  font-family: NanumSquare_acR;
   top: 13rem;
 }
 .doctor-background {
@@ -65,7 +65,7 @@
   text-align: left;
   padding: 50px;
   line-height: 1.5;
-  font-family: NanumBarunGothic;
+  font-family: NanumSquare_acR;
   color: #707070;
   top: 5rem;
 }
@@ -85,7 +85,7 @@
   flex-direction: column;
   align-items: flex-end;
   position: relative;
-  font-family: NanumBarunGothic;
+  font-family: NanumSquare_acR;
   font-size: 30pt;
   color: #60afb2;
   width: 450px;
@@ -122,6 +122,10 @@
   /* transform: translateY(-100vh) translateX(7vw); */
   /* transform: translate(-20px, 107vh); */
   /* height: 80vh; */
+}
+/* class 이름이 겹쳐서 green box가 같이 들어감 */
+.doctorName>.large__text:before{
+  display: none;
 }
 @media all and (max-height: 800px) {
   .wording {
@@ -172,7 +176,7 @@
     left: 40rem;
     position: absolute;
     visibility: visible;
-    font-family: NanumBarunGothic;
+    font-family: NanumSquare_acR;
     top: 2rem;
     width: 450px;
   }
@@ -208,7 +212,7 @@
     flex-direction: column;
     color: #eeeeee;
     z-index: -10;
-    font-family: NanumBarunGothicBold;
+    font-family: NanumSquare_acEB;
     font-size: 8.4rem;
     text-align: right;
     z-index: -10;
@@ -216,7 +220,7 @@
     align-items: flex-end;
   }
   .doctor-background {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     top: -3rem;
     /* transform: translate(-1.5rem, -30rem); */
     display: flex;
@@ -259,5 +263,11 @@
   }
   .col1 div:first-child {
     margin-bottom: 1rem;
+  }
+  .col2{
+    margin-top: 2rem;
+  }
+  .col1 > .background, .col2 > .background{
+    line-height: 1rem;
   }
 }

@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  font-family: NanumBarunGothic;
+  font-family: NanumSqure_acR;
 }
 .doctorBackgroundContainer .small__text {
   font-size: 30pt;
@@ -41,7 +41,7 @@
   flex-direction: column;
   align-items: flex-end;
   position: relative;
-  font-family: NanumBarunGothic;
+  font-family: NanumSquare_acR;
   font-size: 30pt;
   color: #60afb2;
   width: 450px;
@@ -88,7 +88,7 @@
     flex-direction: column;
     color: #eeeeee;
     z-index: -10;
-    font-family: NanumBarunGothicBold;
+    font-family: NanumSquare_acR;
     font-size: 160pt;
     text-align: right;
     line-height: 0.9;
@@ -98,7 +98,7 @@
     text-align: left;
     padding: 50px;
     line-height: 1.5;
-    font-family: NanumBarunGothic;
+    font-family: NanumSqure_acR;
     color: #707070;
   }
   .doctor-background .col1 {
@@ -142,7 +142,7 @@
     flex-direction: column;
     color: #eeeeee;
     z-index: -10;
-    font-family: NanumBarunGothicBold;
+    font-family: NanumSquare_acR;
     font-size: 8.4rem;
     text-align: right;
   }
@@ -150,7 +150,7 @@
     position: relative;
     text-align: left;
     line-height: 1.5;
-    font-family: NanumBarunGothic;
+    font-family: NanumSquare_acR;
     color: #707070;
     font-size: 0.5rem;
     top: 3.5rem;

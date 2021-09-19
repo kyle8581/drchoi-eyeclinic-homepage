@@ -2,64 +2,146 @@ import styled from 'styled-components'
 export const View = styled.div`
     width: 100vw;
     height: 100vh;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x:hidden;
 `
 export const NoanContainer = styled.div`
-    width: 80vw;
-    height: auto;
-    margin: auto;
+    width: 1000px;
+    /* height: auto;
+    margin: auto; */
     margin-top: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content:center;
+    @media screen and (max-width: 1000px) {
+        width: 700px;
+    }
     @media screen and (max-width: 500px) {
-        width: 90vw;
+        width: 300px;
     }
 `
 export const IntroductionBox = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    height: auto;
+    /* height: auto; */
     position: relative;
     /* background-color: yellow; */
-    color: #707070;
+    color: #707070; 
 `
-export const GreenBox = styled.div`
-    width: 2rem;
-    height: 0.3rem;
-    transform: translate(-0.2rem, -0.6rem);
-    background-color: #63c3c4;
-    margin-bottom: 1vw;
-    @media screen and (max-width: 1300px) and (min-width: 501px) {
-        height: 0.35rem;
-        transform: translate(0.1rem, -0.3rem);
+export const Sec2 = styled.img`
+    margin-top: 100px;
+    width: 1000px;
+    align-self: center;
+    @media screen and (max-width: 1000px) {
+        width: 700px;
     }
     @media screen and (max-width: 500px) {
-        transform: scale(0.7, 0.7) translate(-0.5rem, -0.5rem);
+        width: 100vw;
     }
 `
+export const Sec3 = styled.img`
+    margin-top: 100px;
+    width: 500px;
+    align-self: center;
+    @media screen and (max-width: 1000px) {
+        width: 400px;
+    }
+    @media screen and (max-width: 500px) {
+        width: 80vw;
+    }
+`
+export const Sec5 = styled.img`
+margin-top: 100px;
+    width: 1000px;
+    align-self: center;
+    @media screen and (max-width: 1000px) {
+        width: 700px;
+    }
+    @media screen and (max-width: 500px) {
+        width: 100vw;
+    }
+    `
+export const Sec6 = styled.img`
+margin-top: 100px;
+    width: 1000px;
+    align-self: center;
+    @media screen and (max-width: 1000px) {
+        width: 700px;
+    }
+    @media screen and (max-width: 500px) {
+        width: 100vw;
+    }
+    `
+export const Sec7 = styled.img`
+margin-top: 100px;
+    width: 1000px;
+    align-self: center;
+    @media screen and (max-width: 1000px) {
+        width: 700px;
+    }
+    @media screen and (max-width: 500px) {
+        width: 100vw;
+    }
+    `
+
 export const Title = styled.div`
-    font-size: 30pt;
+    font-size: 2rem;
+    line-height: 3rem;
     font-family: 'NanumSquare_acEB';
+    p:before {
+        content: '';
+        width: 25px;
+        height: 3px;
+        background-color: #63c3c4;
+        position: absolute;
+        left: 0;
+        top: -3px;
+    }
+    @media screen and (max-width: 1000px) {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        p:before{
+            width: 20px;
+        }
+    }
     @media screen and (max-width: 500px) {
-        font-size: 1.7rem;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        p:before{
+            width: 15px;
+            top: -9px;
+        }
     }
 `
 export const Summary = styled.div`
     font-family: 'NanumSquare_acR';
-    font-size: 14pt;
+    font-size: 1.2rem;
     line-height: 20pt;
     margin-top: 20px;
+    @media screen and (max-width: 1000px) {
+        font-size: 1rem;
+        line-height: 2rem;
+    }
     @media screen and (max-width: 500px) {
-        font-size: 3.3vw;
+        font-size: 0.8rem;
+        line-height: 1.5rem;
     }
 `
 export const IntroductionImgBox = styled.img`
-    display: flex;
-    justify-content: center;
+    align-self: center;
     margin-top: 30px;
-    width: 100%;
+    width: 500px;
+    @media screen and (max-width: 1000px) {
+        width: 400px;
+    }
+    @media screen and (max-width: 500px) {
+        width: 300px;
+    }
 `
 
 export const ImgBox = styled.div`

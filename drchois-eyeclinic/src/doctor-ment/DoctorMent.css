@@ -1,5 +1,5 @@
 .doctorContainer .leftarrow {
-    font-family: NanumBarunGothic;
+    font-family: NanumSqaure_acR;
     color: #707070;
     text-shadow: 2px 2px 3px rgba(10, 10, 10, 0.5);
     position: absolute;
@@ -11,7 +11,7 @@
 }
 
 .doctorContainer .rightarrow {
-    font-family: NanumBarunGothic;
+    font-family: NanumSqaure_acR;
     color: #707070;
     text-shadow: 2px 2px 3px rgba(10, 10, 10, 0.5);
     /* position: absolute; */

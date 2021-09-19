@@ -50,16 +50,26 @@ export const Lasik_sec1_content = styled.div`
         font-size: 1.5vw;
         color: #3c92c7;
     }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 750px) {
         h3 {
             line-height: 2.5vw;
         }
-        width: 40vw;
+        h5{
+            font-size:3vw;
+        }
+        div{
+            font-size: 2vw;
+        }
+        width: 50vw;
+        margin-left: 10vw;
     }
 `
 export const Lasik_sec2 = styled.div`
     margin-top: 4rem;
     width: 70vw;
+    @media screen and (max-width:750px){
+        width:90vw;
+    }
 `
 export const Lasik_sec2_row1 = styled.div`
     height: 23vw;
@@ -87,10 +97,10 @@ export const Lasik_sec2_row1_col2 = styled.div`
     @media screen and (max-width: 711px) {
         width: 31vw;
     }
-    @media screen and (max-width: 570px) {
+    /* @media screen and (max-width: 570px) {
         width: 40vw;
         justify-content: center;
-    }
+    } */
 `
 export const Lasik_sec2_row1_col2_title = styled.div`
     color: #63c3c4;
@@ -113,10 +123,10 @@ export const Lasik_sec2_row1_col2_li = styled.li`
     font-family: NanumSquare_acR;
     line-height: 2.5vw;
     font-size: 1.4vw;
-    /* @media screen and (max-width: 500px) {
-        font-size: 10px;
-        line-height: 12px;
-    } */
+    @media screen and (max-width: 750px) {
+        font-size: 1.5vw;
+        line-height: auto;
+    }
 `
 
 export const Lasik_sec2_row1_col3 = styled.img`
@@ -127,7 +137,7 @@ export const Lasik_sec2_row1_col3 = styled.img`
 `
 
 export const Lasik_sec2_row2 = styled.div`
-    margin-top: 3rem;
+    margin-top: 5rem;
     color: #707070;
 `
 export const Lasik_sec2_row2_title = styled.div`
@@ -139,8 +149,9 @@ export const Lasik_sec2_row2_title = styled.div`
     @media screen and (max-width: 1120px) {
         font-size: 2.3vw;
     }
-    @media screen and (max-width: 800px) {
-        font-size: 2.8vw;
+    @media screen and (max-width: 750px) {
+        font-size: 4vw;
+        margin-bottom: 3vw;
     }
 `
 export const Lasik_sec2_row2_content = styled.div`
@@ -148,11 +159,16 @@ export const Lasik_sec2_row2_content = styled.div`
     font-size: 1.5vw;
     width: 100%;
     color: #707070;
+    font-family: NanumSquare_acR;
     span {
         font-weight: bold;
     }
     @media screen and (max-width: 1120px) {
         font-size: 1.7vw;
+    }
+    @media screen and (max-width:750px){
+        font-size: 2.5vw;
+        margin-bottom: 3vw;
     }
 `
 export const Lasik_sec2_row2_img = styled.img`
@@ -251,8 +267,8 @@ export const Lasik_sec2_row3_imgTag = styled.div`
     @media screen and (max-width: 1000px) {
         font-size: 12px;
     }
-    @media screen and (max-width: 700px) {
-        font-size: 10px;
+    @media screen and (max-width: 750px) {
+        font-size: 2vw;
     }
 `
 export const Lasik_sec2_row4 = styled.div`
@@ -267,8 +283,11 @@ export const Lasik_sec2_row4 = styled.div`
     @media screen and (max-width: 1000px) {
         width: 80vw;
     }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 750px) {
         width: 90vw;
+        p {
+            font-size: 4vw;
+        }
     }
 `
 export const Lasik_sec2_row4_contextWrapper = styled.div`
@@ -277,11 +296,13 @@ export const Lasik_sec2_row4_contextWrapper = styled.div`
     flex-direction: row;
     justify-content: center;
     @media screen and (max-width: 800px) {
-       display:grid;
-       grid-template-columns: 1fr 1.3fr;
+        display: grid;
+        grid-template-columns: 1fr 1.3fr;
     }
-    @media screen and (max-width: 600px){
-        margin-top:30px;
+    @media screen and (max-width: 600px) {
+        margin-top: 10vw;
+        display: flex;
+        flex-direction: column;
     }
 `
 export const Lasik_sec2_row4_context = styled.div`
@@ -303,25 +324,17 @@ export const Lasik_sec2_row4_context = styled.div`
             font-size: 18px;
         }
     }
-    @media screen and (max-width: 800px) {
-        font-size: 11px;
+    
+    @media screen and (max-width: 750px) {
+        font-size: 2.5vw;
+        line-height: 3vw;
+        font-family:NanumSquare_acR;
         h2 {
-            font-size: 16px;
+            font-size: 3.5vw;
+            margin-bottom: 4vw;
         }
-    }
-    @media screen and (max-width: 600px) {
-        font-size: 9px;
-        h2 {
-            font-size: 15px;
-            margin-bottom: 15px;
-        }
-    }
-    @media screen and (max-width: 560px) {
-        font-size: 7px;
-        line-height:13px;
-        h2 {
-            font-size: 13px;
-            margin-bottom: 15px;
+        :first-child{
+            margin-bottom: 3vw;
         }
     }
 `
@@ -382,6 +395,9 @@ export const Circle = styled.div`
 export const Lasik_sec4 = styled.div`
     width: 70vw;
     font-family: NanumSquare_acEB;
+    @media screen and (max-width:750px){
+        width:90vw;
+    }
 `
 export const Lasik_sec4_container = styled.div`
     margin-top: 30px;
@@ -389,6 +405,7 @@ export const Lasik_sec4_container = styled.div`
 export const Lasik_sec4_title = styled.div`
     display: flex;
     flex-direction: row;
+    align-items: center;
     color: #707070;
     margin-bottom: 10px;
     h1 {
@@ -397,6 +414,14 @@ export const Lasik_sec4_title = styled.div`
     h2 {
         font-size: 20px;
         color: #fc9a59;
+    }
+    @media screen and (max-width:750px){
+        h1{
+            font-size: 4vw;
+        }
+        h2{
+            font-size: 4vw;
+        }
     }
 `
 export const Lasik_sec4_ele = styled.div`
@@ -409,18 +434,24 @@ export const Lasik_sec4_ele = styled.div`
         height: 15px;
         font-size: 15px;
     }
-    @media screen and (max-width: 500px) {
-        height: 8vw;
-        .green_circle_with_check {
-            width: 1rem;
-            border-radius: 1rem;
-            height: 1rem;
-            font-size: 0.8rem;
-        }
-    }
     span {
         margin-left: 10px;
         font-size: 15px;
         color: #707070;
+    }
+    @media screen and (max-width: 750px) {
+        height: auto;
+        margin-top: 2.5vw;
+        .green_circle_with_check {
+            width: 2.5vw;
+            border-radius: 2.5vw;
+            height: 2.5vw;
+            font-size: 2.5vw;
+
+        }
+        span{
+            font-size: 2.5vw;
+            margin-left:1vw;
+        }
     }
 `

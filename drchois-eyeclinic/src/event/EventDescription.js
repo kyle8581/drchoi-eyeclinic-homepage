@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import firebase from 'firebase'
-import { Link, useParams } from 'react-router-dom'
 import styled from 'styled-components/macro'
+import { Placeholder } from 'semantic-ui-react'
 import TopNav from '../TopNav'
 import { StatusTagReturn } from './EventBlock'
 import { Header, HeaderText, Row, HeaderImg, HeaderMintText } from './EventList'
@@ -10,8 +10,8 @@ import {
     ReviewNavigateButton,
     ButtonBar,
     ToListButton,
-    WriteReviewButton,
-} from '../sightcorrection_review/ReviewDescription.components'
+} from '../review/ReviewDescription.components'
+import useWindowDimensions from '../useWindowDimensions'
 const Wrapper = styled.div`
     width: 100vw;
     height: 100vh;
@@ -28,6 +28,9 @@ const EventInfoContainer = styled.div`
     border-top: 4px solid #63c3c4;
     border-bottom: 1px solid #aeaeae;
     color: #707070;
+    @media screen and (max-width: 750px) {
+        width: 670px;
+    }
 `
 const EventInfoRow1 = styled.div`
     display: flex;
@@ -46,6 +49,9 @@ const EventInfoRow1 = styled.div`
     }
     .event-title {
         margin-left: 10px;
+    }
+    @media screen and (max-width: 750px) {
+        width: 670px;
     }
 `
 const EventInfoRow2 = styled.div`
@@ -68,6 +74,9 @@ const EventInfoRow2 = styled.div`
         margin-left: auto;
         font-family: NanumSquare_acB;
     }
+    @media screen and (max-width: 750px) {
+        width: 670px;
+    }
 `
 const ContentContainer = styled.div`
     margin-top: 40px;
@@ -78,22 +87,38 @@ const ContentContainer = styled.div`
         width: 1000px;
         /* margin-bottom:60px; */
     }
-
+    .placeholder{
+        width:1000px;
+        height:1000px;
+    }
+    @media screen and (max-width: 750px) {
+        width: 670px;
+        img, .placeholder {
+            width: 670px;
+        }
+        .placeholder{
+            height:670px;
+            width:670px;
+        }
+    }
 `
 const EventToList = styled(ToListButton)`
-    background-color: #CCCCCC;
-    color:#FFF;
-    border : none;
+    background-color: #cccccc;
+    color: #fff;
+    border: none;
 `
 const EventButtonBar = styled(ButtonBar)`
-    border-top:4px solid #CCC;
-    border-bottom:none;
-    padding-top:40px;
+    border-top: 4px solid #ccc;
+    border-bottom: none;
+    padding-top: 40px;
     /* border:none; */
-    width:1000px;
-    align-self:center;
+    width: 1000px;
+    align-self: center;
     /* padding:0; */
-    margin-bottom:60px;
+    margin-bottom: 60px;
+    @media screen and (max-width: 750px) {
+        width: 670px;
+    }
 `
 // 이전 이벤트, 다음 이벤트 id는 firestore에 접속해서 얻기로 했음
 // url 파라미터로 받을 필요없음
@@ -110,7 +135,22 @@ function EventDescription() {
         has_link: 'false',
         views: 0,
     })
-    console.log(curEvent)
+    const [loaded, setLoaded] = useState(false)
+    const { width, height } = useWindowDimensions()
+
+    const scaleFactor = (originHeight) => {
+        if (width > 750) {
+            return {}
+        } else {
+            return {
+                transform: 'scale(' + width / 750 + ')',
+                transformOrigin: 'top left',
+                marginBottom:
+                    -(originHeight - originHeight * (width / 750)) + 'px',
+                marginRight: -(670 - 670 * (width / 750)) + 'px',
+            }
+        }
+    }
     useEffect(() => {
         setCurEvent(window.location.href.split('/').slice(-1)[0])
     })
@@ -119,26 +159,31 @@ function EventDescription() {
             const db = firebase.firestore().collection('event')
             const doc = db.doc(curEvent)
             // console.log(eventID)
-            doc.get().then((e) => {
-                setData(e.data())
+            doc.get()
+                .then((e) => {
+                    setData(e.data())
 
-                console.log(data)
-                // fetch html data
-                // setHtmlData(draftToHtml(JSON.parse(e.data().content)))
-            })
+                    // console.log(data)
+                    // fetch html data
+                    // setHtmlData(draftToHtml(JSON.parse(e.data().content)))
+                })
+                .catch((e) => {
+                    console.log(e)
+                })
         }
     }, [curEvent])
     useEffect(() => {
-        if(curEvent!==""){
-
+        if (curEvent !== '') {
             const db = firebase.firestore().collection('event')
             const doc = db.doc(curEvent)
             if (data.title !== '') {
-                console.log('update view')
+                // console.log('update view')
                 doc.update({ views: data.views + 1 })
+
                 var tmpEventIdList = []
-                db.orderBy('timestamp_end_date', 'desc').onSnapshot(
-                    (querySnapShot) => {
+                db.where('show', '==', true)
+                    .orderBy('timestamp_end_date', 'desc')
+                    .onSnapshot((querySnapShot) => {
                         querySnapShot.docs.forEach((d, i) => {
                             tmpEventIdList.push(d.id)
                             if (d.id === curEvent) {
@@ -147,8 +192,7 @@ function EventDescription() {
                             // 첫 event부터 페이지 1이 추가되고 8개마다 1페이지씩 더 추가됨
                         })
                         setEventIdList(tmpEventIdList)
-                    }
-                )
+                    })
             }
         }
     }, [data])
@@ -160,7 +204,7 @@ function EventDescription() {
     return (
         <Wrapper>
             <TopNav />
-            <Header>
+            <Header style={scaleFactor(215)}>
                 <HeaderText>
                     <Row>
                         <div>압구정최안과는 고객님을 위해</div>
@@ -172,9 +216,8 @@ function EventDescription() {
                 </HeaderText>
                 <HeaderImg src="/event/header_img.png" />
             </Header>
-        
 
-            <EventInfoContainer>
+            <EventInfoContainer style={scaleFactor(106)}>
                 <EventInfoRow1>
                     <StatusTagReturn
                         start={data.start_date}
@@ -193,16 +236,29 @@ function EventDescription() {
                     <div className="views-count">{'조회수 ' + data.views}</div>
                 </EventInfoRow2>
             </EventInfoContainer>
-            <ContentContainer>
+            <ContentContainer style={scaleFactor(673)}>
                 {data.hasLink ? (
                     <a href={data.link}>
-                        <img src={data.image_url} alt="content" />
+                        
+                        <img
+                            src={data.image_url}
+                            alt="content"
+                            style={!loaded ? { display: 'none' } : {}}
+                            onLoad={()=>{setLoaded(true)}}
+                        />
+                        {loaded ? (
+                            <Fragment />
+                        ) : (
+                            <Placeholder fluid>
+                                <Placeholder.Image square/>
+                            </Placeholder>
+                        )}
                     </a>
                 ) : (
                     <img src={data.image_url} alt="content" />
                 )}
             </ContentContainer>
-            <EventButtonBar>
+            <EventButtonBar style={scaleFactor(0)}>
                 <NavButtonContainer>
                     <ReviewNavigateButton
                         onClick={(e) => {
@@ -245,7 +301,6 @@ function EventDescription() {
                                     </div>
                                 </WriteReviewButton> */}
                 </NavButtonContainer>
-               
             </EventButtonBar>
         </Wrapper>
     )

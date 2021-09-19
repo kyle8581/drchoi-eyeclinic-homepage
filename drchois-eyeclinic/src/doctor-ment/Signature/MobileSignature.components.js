@@ -14,12 +14,13 @@ export const Wrapper = styled.div`
 
 export const Title = styled.div`
     font-size: 1.5rem;
-    font-family: NanumSquare_acEB;
+    font-family: NanumSquare_acB;
     display: flex;
     flex-direction: row;
     position: absolute;
     top: 5rem;
     padding-left: 1.5rem;
+    align-items: center;
     .green{
         color: #63c3c4;
     }
@@ -35,14 +36,14 @@ export const Paragraph = styled.div`
     position: absolute;
     width: 70vw;
     left: 1.5rem;
-    top: 13rem;
+    top: 9rem;
     height: 15rem;
     color: #fff;
     span {
         text-align: left;
         font-size: 0.7rem;
         line-height: 1rem;
-        font-family: NanumBarunGothic
+        font-family: NanumSquare_acR
 
     }
     .blank{

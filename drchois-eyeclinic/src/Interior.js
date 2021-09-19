@@ -38,7 +38,6 @@ function Interior({ curSlide }) {
             <div className="background__2"></div>
             <div className="content__wrapper">
                 <div className="text__container">
-                    <div className="point__top"></div>
                     <div className={'large__text ' + isActive}>
                         <div>압구정 최안과 둘러보기</div>
                     </div>
@@ -55,7 +54,9 @@ function Interior({ curSlide }) {
                             // swiper.params.navigation.nextEl = nextRef.current
                             swiper.navigation.init()
                             swiper.navigation.update()
-                        }}
+                            }
+                        }
+                        onmousemove={(e)=>{e.preventPropagation()}}
                         spaceBetween={3}
                         slidesPerView={1}
                         pagination={{ clickable: true }}
@@ -67,7 +68,7 @@ function Interior({ curSlide }) {
                     >
                         {imageAsset.map((asset) => (
                             <SwiperSlide key={asset.key}>
-                                <InteriorSlide id={asset.id} src={asset.src} />
+                                <InteriorSlide id={asset.id} src={asset.src} alt="interior img"/>
                             </SwiperSlide>
                         ))}
                         {/* <div ref={nextRef} className="next__button">

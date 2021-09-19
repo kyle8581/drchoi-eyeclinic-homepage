@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, useContext } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import firebase from 'firebase/app'
+import 'firebase/auth'
+
 import styled from 'styled-components/macro'
 import TopNav from '../TopNav'
 import { Progress, Button, Form, Checkbox } from 'semantic-ui-react'
@@ -53,25 +55,55 @@ function EventEdit() {
     const fileInputRef = useRef()
     const thumbnailInputRef = useRef()
     // if true : current page is event create page; else : current page is modify page
-    
-   
+
     const { userInfo, setUserInfo } = useContext(UserContext)
     let history = useHistory()
-    const {eventSlug} = useParams()
+    const { eventSlug } = useParams()
+
     useEffect(() => {
-        if (userInfo.authority !== 'admin') {
-            alert('권한이 없습니다.'+JSON.stringify(userInfo))
-            
-            history.goBack()
-        }
-    }, [userInfo])
-    useEffect(()=>{
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user && !userInfo.login) {
+                setUserInfo({
+                    login: true,
+                    email: user.email,
+                    phone_number: 'null',
+                    authority: 'null',
+                })
+                const db = firebase.firestore().collection('userinfo')
+
+                // 기존에 등록했던 유저인 경우
+                // firebase에서 데이터 fetch 해서 userInfo 업데이트 해준다
+                db.doc(user.uid)
+                    .get()
+                    .then((doc) => {
+                        // console.log(doc.data())
+                        setUserInfo({
+                            login: true,
+                            email: doc.data().email,
+                            phone_number: doc.data().phone_number,
+                            authority: doc.data().authority,
+                        })
+                        if (doc.data().authority !== 'admin') {
+                            alert('권한이 없습니다.')
+
+                            history.goBack()
+                        }
+                    })
+            } else {
+                if (userInfo.authority !== 'admin') {
+                    alert('권한이 없습니다.')
+
+                    history.goBack()
+                }
+            }
+        })
+    }, [])
+    useEffect(() => {
         setCreateOrEdit(window.location.href.includes('event-create'))
-    },[])
-  
+    }, [])
+
     useEffect(() => {
-        if (!createOrEdit && eventSlug !== "" && eventSlug !== undefined) {
-           
+        if (!createOrEdit && eventSlug !== '' && eventSlug !== undefined) {
             console.log(eventSlug)
             const db = firebase.firestore()
             const ref = db.collection('event')
@@ -171,6 +203,7 @@ function EventEdit() {
             link: link,
             timestamp_end_date: new Date(endDate),
             views: viewsCount,
+            show: true,
         }).then(() => {
             alert('이벤트가 저장됐습니다.')
         })
@@ -179,6 +212,7 @@ function EventEdit() {
         <Wrapper>
             <TopNav />
             <Container>
+                {/* <div>{JSON.stringify(userInfo) }</div> */}
                 <Form>
                     <InputTag>제목</InputTag>
                     <Form.Field>
@@ -187,10 +221,10 @@ function EventEdit() {
                             onChange={(e) => {
                                 setTitle(e.target.value)
                             }}
-                            value = {title}
+                            value={title}
                         />
                     </Form.Field>
-                    {JSON.stringify(createOrEdit)}
+                    {/* {JSON.stringify(createOrEdit)} */}
                     {eventSlug}
                     <InputTag>썸네일</InputTag>
                     <Button

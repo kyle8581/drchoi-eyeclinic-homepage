@@ -3,12 +3,21 @@ import styled from 'styled-components/macro'
 
 
 export const NavBar = styled.div`
+    height:64px;
     display: flex;
     width: 100vw;
     flex-direction: row;
     position: fixed;
     z-index: 1000 !important;
-    .nav
+    display: hidden;
+    .dropdown{
+        font-size: 16px;
+    }
+    background-color: ${({removeBlur})=>(!removeBlur?"rgba(255, 255, 255, 0.05)":"transparent")};
+    backdrop-filter: ${({removeBlur})=>(!removeBlur?"blur(10px)":"none")};
+    @media screen and (max-width: 750px){
+        height:58px;
+    }
 
 `
 export const BlackBackGround = styled.div`
@@ -22,12 +31,12 @@ export const BlackBackGround = styled.div`
     position: absolute;
 `
 export const SideMenuContainer = styled.div`
-    @media screen and (min-width: 501px) {
+    @media screen and (min-width: 701px) {
         width: ${({ clicked }) => (clicked ? '50vw' : '0')};
         min-height: 700px;
         overflow-y: hidden;
     }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 700px) {
         visibility: ${({ clicked }) => (clicked ? 'visible' : 'collapse')};
         /* display: ${({ clicked }) => (clicked ? 'block' : 'none')}; */
         width: ${({ clicked }) => (clicked ? '90vw' : '0')};
@@ -143,19 +152,29 @@ export const MenuContainer2 = styled.div`
         top: 280px;
     }
 `
+export const MenuContainer3= styled(MenuContainer2)`
+@media screen and (min-width: 501px) {
+        left: 70px;
+        top: 450px;
+    }
+    @media screen and (max-width: 500px) {
+        left: 50px;
+        top: 450px;
+    }
+    `
 export const InfoContainer = styled.div`
     position: absolute;
 
     border-top: 2px solid #61b8b9;
-    width: 300px;
+    width: 310px;
     height: 150px;
     display: flex;
     flex-direction: column;
     padding-top: 0.5rem;
     .row {
-        font-size: 0.6rem;
+        font-size: 0.8rem;
         color: #7a7a7a;
-        line-height: 1.5rem;
+        line-height: 1.2rem;
     }
     .phone {
         margin-top: 0.3rem;

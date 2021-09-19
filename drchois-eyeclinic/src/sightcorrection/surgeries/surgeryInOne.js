@@ -52,22 +52,22 @@ function SurgeryInOne({ pageState }) {
             </div>
         )
     })
-    const SmileWithRef = forwardRef((props, ref) => {
-        return (
-            <div ref={ref}>
-                <SmileHome />
-            </div>
-        )
-    })
+    // const SmileWithRef = forwardRef((props, ref) => {
+    //     return (
+    //         <div ref={ref}>
+    //             <SmileHome />
+    //         </div>
+    //     )
+    // })
     return (
-        <section className="surgeryInOne-container">
+        <section className="surgeryInOne-container" style={{marginTop:"64px"}}>
             <LasikWithRef ref={lasikRef} />
             <LasekWithRef ref={lasekRef} />
-            <SmileWithRef
+            {/* <SmileWithRef
                 id="smile"
                 ref={smileRef}
-                style={{ border: '1px solid red' }}
-            />
+                
+            /> */}
         </section>
     )
 }

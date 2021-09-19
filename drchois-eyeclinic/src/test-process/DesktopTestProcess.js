@@ -14,6 +14,12 @@ import 'swiper/components/scrollbar/scrollbar.scss'
 import {
     View,
     Section1,
+    BeforeSurgery,
+    Row,
+    EyeIcon,
+    Fifty,
+    Section1WhitePar,
+    Section1BluePar,
     Wrapper,
     Section2,
     Section3,
@@ -37,7 +43,36 @@ function DesktopTestProcess() {
         <View>
             <TopNav />
             <Wrapper>
-                <Section1 />
+                <Section1>
+                    <Row>
+                        <BeforeSurgery>수술 전</BeforeSurgery>
+                        <EyeIcon src="/test-process/eye.png" />
+                    </Row>
+                    <Row>
+                        <Fifty>50여가지 정밀검사</Fifty>
+                    </Row>
+                    <Row>
+                        <Section1WhitePar>
+                            사람 마다 눈의 건강, 각막 상태 및 모양 등은
+                        </Section1WhitePar>
+                    </Row>
+                    <Row>
+                        <Section1WhitePar>
+                            다르기 때문에 수술 전 정밀검사는 굉장히 중요합니다.
+                        </Section1WhitePar>
+                    </Row>
+                    <Row>
+                        <Section1WhitePar>{'또한, '}</Section1WhitePar>
+                        <Section1BluePar>
+                            검사 결과에 따라 수술 가능 여부와 수술 방법까지
+                        </Section1BluePar>
+                    </Row>
+                    <Row>
+                        <Section1BluePar>
+                            달라지게 되므로 정밀검사는 꼭 받으셔야 합니다!
+                        </Section1BluePar>
+                    </Row>
+                </Section1>
                 <Section2>
                     <div className="title">
                         <div className="gray">압구정최안과에서 </div>

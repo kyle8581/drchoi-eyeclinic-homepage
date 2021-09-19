@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
     width: 100vw;
     height: 100vh;
     // background-color: #fff;
-    font-family: NanumBarunGothic;
+    font-family: NanumSquare_acR;
 `;
 export const Background = styled.img`
     position:absolute;
@@ -43,26 +43,24 @@ export const Title = styled.div`
     color : #636363;
     width: 60vw;
     transform-origin: center;
-    font-family:NanumSquare_acR;
+    font-family:NanumSquare_acB;
 
 `;
 export const Par = styled.div`
     width:63vw;
     margin-bottom: 1rem;
     color : #636363;
-    font-size : 1.3rem;
+    font-size : 1rem;
     line-height: 1rem !important;
     transform:translateY(2rem);
     font-family:NanumSquare_acR;
     p{
-        line-height: 1rem !important;
+        line-height: 1.5rem !important;
     }
 `;
 export const TrophyContainer = styled.div`
     width: 60vw;
-    background-color:pink;
     height: 100px;
-    border: 1px solid red;
 `;
 
 export const Atropy = styled.img`

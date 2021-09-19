@@ -18,7 +18,7 @@ export const classifyEventStatus = (start, end) => {
     var m = ('0' + (newLimit.getMonth() + 1)).slice(-2)
     var d = ('0' + newLimit.getDate()).slice(-2)
     var newLimitString = newLimit.getFullYear() + '-' + m + '-' + d
-    console.log(newLimitString)
+    // console.log(newLimitString)
     if (curDate > end) {
         return 'end'
     } else if (start <= curDate && curDate <= end) {

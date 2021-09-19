@@ -182,6 +182,7 @@ export const AquaTitle = styled.div`
         font-size: 5rem;
         margin-top: 1rem;
         text-shadow: 6px 3px 12px rgba(100, 100, 100, 0.5);
+        line-height: 5rem;
     }
 `
 export const AquaDescription = styled.div`

@@ -26,8 +26,6 @@ export const FirstTextContainer = styled.div`
 
     color: white;
     width: 50vw;
-    h1,
-    h5,
     h4,
     h3 {
         font-family: NanumSquare_acB;
@@ -57,7 +55,7 @@ export const FirstTextContainer = styled.div`
         font-size: 1.6vw;
         line-height: 2vw;
     }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 750px) {
         margin-top: 15vw;
         font-family: NanumSquare_acR;
         width: 58vw;
@@ -88,9 +86,9 @@ export const SecondBox = styled.div`
     height: 70vw;
     z-index: -10;
     margin-top: 20vh;
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 750px) {
         margin-top: 10vh;
-        height: 50vh;
+        height: auto;
     }
 `
 export const SecondFirstRow = styled.div`
@@ -121,8 +119,8 @@ export const Box2Title = styled.div`
     color: #63c3c4;
     font-family: NanumSquare_acEB;
     font-size: 2.5vw;
-    @media screen and (max-width: 500px) {
-        font-size: 4.5vw;
+    @media screen and (max-width: 750px) {
+        font-size: 3vw;
     }
     @media screen and (min-width: 1500px) {
         font-size: 3vw;
@@ -138,9 +136,9 @@ export const Box2li = styled.li`
     font-family: NanumSquare_acR;
     line-height: 20pt;
     font-size: 1.2vw;
-    @media screen and (max-width: 500px) {
-        font-size: 10px;
-        line-height: 12px;
+    @media screen and (max-width: 750px) {
+        font-size: 2vw;
+        line-height: 3vw;
     }
 `
 
@@ -153,13 +151,17 @@ export const SecondFirstRow_image3 = styled.img`
 
 export const SecondSecondRow = styled.div`
     margin-top: 40px;
+    @media screen and (max-width:750px){
+        margin-top: 10vw;
+        margin-bottom:10vw;
+    }
 `
 export const SecondSecondTitle = styled.div`
     color: #707070;
     font-size: 2.5vw;
     font-family: NanumSquare_acEB;
-    @media screen and (max-width: 500px) {
-        font-size: 5vw;
+    @media screen and (max-width: 750px) {
+        font-size: 3vw;
     }
 `
 export const SecondSecondImgBox = styled.div`
@@ -169,7 +171,7 @@ export const SecondSecondImgBox = styled.div`
     width: 90vw;
     font-family: NanumSquare_acR;
     color: #707070;
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 750px) {
         margin-top: 5vw;
     }
 `
@@ -233,8 +235,8 @@ export const FourthTitle1 = styled.div`
     display: flex;
     flex-direction: row;
     margin-bottom: 40px;
-    @media screen and (max-width: 500px) {
-        font-size: 6vw;
+    @media screen and (max-width: 750px) {
+        font-size: 4vw;
         line-height: 2vw;
         margin-bottom: 7vw;
     }
@@ -257,8 +259,8 @@ export const FourthTitle2 = styled.div`
     margin-bottom: 40px;
     color: #707070;
     margin-top: 50px;
-    @media screen and (max-width: 500px) {
-        font-size: 6vw;
+    @media screen and (max-width: 750px) {
+        font-size: 4vw;
         line-height: 2vw;
         margin-bottom: 7vw;
     }
@@ -275,12 +277,12 @@ export const FourthInformation = styled.div`
         height: 1.2vw;
         font-size: 1.1vw;
     }
-    @media screen and (max-width: 500px) {
-        height: 8vw;
+    @media screen and (max-width: 750px) {
+        height: 4vw;
         .green_circle_with_check {
-            width: 1rem;
-            border-radius: 1rem;
-            height: 1rem;
+            width: 2.5vw;
+            border-radius: 2.5vw;
+            height: 2.5vw;
             font-size: 0.8rem;
         }
     }
@@ -291,8 +293,9 @@ export const FourthText = styled.div`
     font-family: NanumSquare_acB;
     font-size: 1.2vw;
     margin-left: 10px;
-    @media screen and (max-width: 500px) {
-        font-size: 3.2vw;
+    @media screen and (max-width: 750px) {
+        font-size: 2.5vw;
+        margin-left:1vw;
     }
 `
 
@@ -320,8 +323,8 @@ export const FifthContainer = styled.div`
 
 export const FifthTitle = styled.div`
     font-size: 2.2vw;
-    @media screen and (max-width: 500px) {
-        font-size: 6vw;
+    @media screen and (max-width: 750px) {
+        font-size: 4vw;
     }
 `
 

@@ -8,7 +8,7 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import FastForwardIcon from '@material-ui/icons/FastForward'
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
 import FastRewindIcon from '@material-ui/icons/FastRewind'
-import { PageNumberIndex } from '../sightcorrection_review/ReviewList.components'
+import { PageNumberIndex } from '../review/ReviewList.components'
 import useWindowDimensions from '../useWindowDimensions'
 import EventListMobile from './EventListMobile'
 const Wrapper = styled.div`
@@ -24,12 +24,13 @@ export const Row = styled.div`
     flex-direction: row;
 `
 const Table = styled.div`
-margin-top:20px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-self: center;
     margin-bottom: 50px;
 `
+// 압구정최안과는 ~이벤트를 준비하고 있습니다 + 서희이미지
 export const Header = styled.div`
     display: flex;
     flex-direction: Row;
@@ -41,27 +42,46 @@ export const Header = styled.div`
     font-family: NanumSquare_acB;
     font-size: 2.5rem;
     color: #707070;
+
     div {
         height: 50px;
+    }
+    @media screen and (max-width: 750px) {
+        width: 670px;
+        font-size: 2rem;
+        padding: 0 5px 0 5px;
+        height: 215px !important;
+        min-height: 215px;
+        align-self: top;
+        div {
+            height: auto;
+        }
     }
 `
 export const HeaderText = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 60px;
+    @media screen and (max-width: 750px) {
+        height: 150px !important;
+    }
 `
 export const HeaderMintText = styled.div`
     color: #63c3c4;
 `
-
+// 서희 이미지
 export const HeaderImg = styled.img`
     margin-left: auto;
     height: 267px;
+
+    @media screen and (max-width: 750px) {
+        height: 215px;
+    }
 `
 const EventRowStyled = styled(Row)`
-:first-child{
-    border-top:4px solid #63C3C4;
-}
+    :first-child {
+        border-top: 4px solid #63c3c4;
+    }
     border-bottom: 1px solid #e4e4e4;
     :last-child {
         border-bottom: 1px solid #aeaeae;
@@ -74,24 +94,24 @@ const EmptyEventBlock = styled.div`
 const EventPageTitleContainer = styled.div`
     display: flex;
     flex-direction: column;
-    min-width:1000px;
-    align-self:center;
+    min-width: 1000px;
+    align-self: center;
 `
 const GreenBox = styled.div`
     width: 40px;
     height: 4px;
-    background-color: #63C3C4;
-    margin-bottom : 10px;
+    background-color: #63c3c4;
+    margin-bottom: 10px;
 `
 const EventPageTitle = styled.div`
-font-family: NanumSquare_acB;
+    font-family: NanumSquare_acB;
     font-size: 2.5rem;
     color: #707070;
 `
 const PageNavContainer = styled.div`
-    align-self:center;
-    display:flex;
-    flex-direction : row;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
 `
 
 function EventListDesktop() {
@@ -102,8 +122,8 @@ function EventListDesktop() {
     const [eventTitleList, setEventTitleList] = useState([])
     const [pageNumberList, setPageNumberList] = useState([])
 
-    const fetchEvents = async ()=>{
-        console.log("fetch function start")
+    const fetchEvents = async () => {
+        console.log('fetch function start')
         var tmpEventIdList = []
         var tmpEventTitleList = []
         var tmpEventInfoList = []
@@ -111,32 +131,35 @@ function EventListDesktop() {
         const db = firebase.firestore()
         const collection = db.collection('event')
         collection
-        .where('show','==',true)
-        .orderBy('timestamp_end_date','desc')
-            .onSnapshot((querySnapShot) => {
-
-                querySnapShot.docs.forEach((d, i) => {
-                    console.log(i)
-                    tmpEventInfoList.push(d.data())
-                    tmpEventIdList.push(d.id)
-                    tmpEventTitleList.push(d.data().end_date)
-                    console.log(d.data())
-                    // 첫 event부터 페이지 1이 추가되고 8개마다 1페이지씩 더 추가됨
-                    if(i%8===0){tmpPageNumberList.push(Math.trunc(i/8)+1)}
-                    
-                })
-                setEventInfoList(tmpEventInfoList)
-                setEventIdList(tmpEventIdList)
-                setEventTitleList(tmpEventTitleList)
-                setPageNumberList(tmpPageNumberList)
-                console.log(eventTitleList)
-            },(error)=>{
-                console.log(error)
-            })
+            .where('show', '==', true)
+            .orderBy('timestamp_end_date', 'desc')
+            .onSnapshot(
+                (querySnapShot) => {
+                    querySnapShot.docs.forEach((d, i) => {
+                        console.log(i)
+                        tmpEventInfoList.push(d.data())
+                        tmpEventIdList.push(d.id)
+                        tmpEventTitleList.push(d.data().end_date)
+                        console.log(d.data())
+                        // 첫 event부터 페이지 1이 추가되고 8개마다 1페이지씩 더 추가됨
+                        if (i % 8 === 0) {
+                            tmpPageNumberList.push(Math.trunc(i / 8) + 1)
+                        }
+                    })
+                    setEventInfoList(tmpEventInfoList)
+                    setEventIdList(tmpEventIdList)
+                    setEventTitleList(tmpEventTitleList)
+                    setPageNumberList(tmpPageNumberList)
+                    console.log(eventTitleList)
+                },
+                (error) => {
+                    console.log(error)
+                }
+            )
     }
     useEffect(() => {
-        console.log("fetch event start")
-       fetchEvents()
+        console.log('fetch event start')
+        fetchEvents()
     }, [])
 
     const EventRow = ({ idx }) => {
@@ -146,9 +169,8 @@ function EventListDesktop() {
                 ret.push(
                     <EventBlock id={eventIdList[i]} data={eventInfoList[i]} />
                 )
-            }
-            else{
-                ret.push(<EmptyEventBlock/>)
+            } else {
+                ret.push(<EmptyEventBlock />)
             }
         }
         return <EventRowStyled>{ret}</EventRowStyled>
@@ -179,84 +201,79 @@ function EventListDesktop() {
                 <HeaderImg src="/event/header_img.png" />
             </Header>
             <EventPageTitleContainer>
-                <GreenBox/>
+                <GreenBox />
                 <EventPageTitle>진행중인 이벤트</EventPageTitle>
             </EventPageTitleContainer>
             {EventTable()}
             <PageNumberIndex>
-                            <FastRewindIcon 
-                               onClick={(e) => {
-                                if (curPage === 1) {
-                                    alert('첫번째 페이지입니다.')
-                                } else {
-                                    setCurPage(1)
-                                }
-                            }}
-                            />
-                            <ArrowLeftIcon
-                                style={{
-                                    transform: 'scale(1.6,1.2)',
-                                    marginLeft: '1.5rem',
-                                    marginRight:'1rem'
-                                }}
-                                onClick={(e) => {
-                                    if (curPage === 1) {
-                                        alert('첫번째 페이지입니다.')
-                                    } else {
-                                        setCurPage(curPage - 1)
-                                    }
-                                }}
-                            />
-                            {pageNumberList.map((x, i) => (
-                                <div
-                                    key={x}
-                                    className={
-                                        'pageIndex' + ' ' + (curPage === i+1)
-                                    }
-                                    onClick={(x) => {
-                                        setCurPage(i+1)
-                                    }}
-                                >
-                                    {i + 1}
-                                </div>
-                            ))}
-                            <ArrowRightIcon
-                                style={{
-                                    transform: 'scale(1.6,1.2)',
-                                    marginRight: '1.5rem',
-                                    marginLeft : '1rem'
-                    
-                                }}
-                                onClick={(e) => {
-                                    if (curPage === pageNumberList.length) {
-                                        alert('마지막 페이지입니다.')
-                                    } else {
-                                        setCurPage(curPage + 1)
-                                    }
-                                }}
-                            />
-                            <FastForwardIcon
-                                onClick={(e) => {
-                                    if (curPage === pageNumberList.length ) {
-                                        alert('마지막 페이지입니다.')
-                                    } else {
-                                        setCurPage(pageNumberList.length )
-                                    }
-                                }}
-                            />
-                        </PageNumberIndex>
-          
+                <FastRewindIcon
+                    onClick={(e) => {
+                        if (curPage === 1) {
+                            alert('첫번째 페이지입니다.')
+                        } else {
+                            setCurPage(1)
+                        }
+                    }}
+                />
+                <ArrowLeftIcon
+                    style={{
+                        transform: 'scale(1.6,1.2)',
+                        marginLeft: '1.5rem',
+                        marginRight: '1rem',
+                    }}
+                    onClick={(e) => {
+                        if (curPage === 1) {
+                            alert('첫번째 페이지입니다.')
+                        } else {
+                            setCurPage(curPage - 1)
+                        }
+                    }}
+                />
+                {pageNumberList.map((x, i) => (
+                    <div
+                        key={x}
+                        className={'pageIndex' + ' ' + (curPage === i + 1)}
+                        onClick={(x) => {
+                            setCurPage(i + 1)
+                        }}
+                    >
+                        {i + 1}
+                    </div>
+                ))}
+                <ArrowRightIcon
+                    style={{
+                        transform: 'scale(1.6,1.2)',
+                        marginRight: '1.5rem',
+                        marginLeft: '1rem',
+                    }}
+                    onClick={(e) => {
+                        if (curPage === pageNumberList.length) {
+                            alert('마지막 페이지입니다.')
+                        } else {
+                            setCurPage(curPage + 1)
+                        }
+                    }}
+                />
+                <FastForwardIcon
+                    onClick={(e) => {
+                        if (curPage === pageNumberList.length) {
+                            alert('마지막 페이지입니다.')
+                        } else {
+                            setCurPage(pageNumberList.length)
+                        }
+                    }}
+                />
+            </PageNumberIndex>
         </Wrapper>
     )
 }
 
-function EventList(){
-    const {height, width } = useWindowDimensions()
-    if (width > 800){
-        return <EventListDesktop/>
-    }
-    else{
-        return <EventListMobile/>
+function EventList() {
+    const { height, width } = useWindowDimensions()
+    if (width > 800) {
+        return <EventListDesktop />
+    } else {
+        return <EventListMobile />
     }
 }
 export default EventList

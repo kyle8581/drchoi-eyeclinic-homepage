@@ -1,27 +1,16 @@
 import styled from 'styled-components/macro'
-
 export const Wrapper = styled.div`
     width: 100vw;
     height: 100vh;
-    background-color: #fff;
-    position: absolute;
-    overflow: hidden;
+    /* position: absolute; */
+    background: url("/doctor-ment/tablet_sitting.webp") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /* overflow: scroll; */
 `
-export const Background = styled.img`
-    position: absolute;
 
-    left: 0;
-    top: 0;
-    /* 4/3비율 이상 즉 가로가 더 길 때에는 가로 길이에 사진을 맞추고 */
-    @media (min-aspect-ratio: 4/3) {
-        width: 100vw;
-    }
-    /* 4/3비율 이하 즉 세로가 더 길 때에는 세로 길이에 사진을 맞춘다 */
-
-    @media (max-aspect-ratio: 4/3) {
-        height: 100vh;
-    }
-`
 
 export const Title = styled.div`
     font-size: 1.5rem;
@@ -34,6 +23,7 @@ export const Title = styled.div`
     width: 400px;
     padding-left: 1.5rem;
     transform: translateX(6rem);
+    align-items: center;
     .green {
         color: #63c3c4;
         font-size: 2rem;
@@ -57,7 +47,7 @@ export const Paragraph = styled.div`
         text-align: left;
         font-size: 0.9rem;
         line-height: 1.3rem;
-        font-family: NanumBarunGothic;
+        font-family: NanumSquare_acR;
     }
     .blank {
         width: 100%;

@@ -1,8 +1,12 @@
 [
-    {"key":"interior-1","id" : 1, "src": "/interior/interior_img1.jpg", "alt": "interoir image"},
-    {"key":"interior-2","id" : 2, "src": "/interior/interior_img2.jpg", "alt": "interoir image"},
-    {"key":"interior-3","id" : 3, "src": "/interior/interior_img3.jpg", "alt": "interoir image"},
-    {"key":"interior-4","id" : 4, "src": "/interior/interior_img4.jpg", "alt": "interoir image"},
-    {"key":"interior-5","id" : 5, "src": "/interior/interior_img5.jpg", "alt": "interoir image"},
-    {"key":"interior-6","id" : 6, "src": "/interior/interior_img6.jpg", "alt": "interoir image"}
+    {"key":"interior-0","id" : 0, "src": "/interior/interior0.webp", "alt": "interoir image"},
+    {"key":"interior-1","id" : 1, "src": "/interior/interior1.webp", "alt": "interoir image"},
+    {"key":"interior-2","id" : 2, "src": "/interior/interior2.webp", "alt": "interoir image"},
+    {"key":"interior-3","id" : 3, "src": "/interior/interior3.webp", "alt": "interoir image"},
+    {"key":"interior-4","id" : 4, "src": "/interior/interior4.webp", "alt": "interoir image"},
+    {"key":"interior-5","id" : 5, "src": "/interior/interior5.webp", "alt": "interoir image"},
+    {"key":"interior-6","id" : 6, "src": "/interior/interior6.webp", "alt": "interoir image"},
+    {"key":"interior-7","id" : 7, "src": "/interior/interior7.webp", "alt": "interoir image"},
+    {"key":"interior-8","id" : 8, "src": "/interior/interior8.webp", "alt": "interoir image"},
+    {"key":"interior-9","id" : 9, "src": "/interior/interior9.webp", "alt": "interoir image"}
 ]

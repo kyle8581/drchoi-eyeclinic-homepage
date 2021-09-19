@@ -5,7 +5,7 @@ function MobileSignature() {
         <Wrapper>
             <img
                 className="bg"
-                src="/doctor-ment/mobile_sitting.png"
+                src="/doctor-ment/mobile_sitting.webp"
                 alt="bg"
             />
             <Title>
@@ -39,7 +39,7 @@ function MobileSignature() {
                 <span>최승일</span>
                 <img
                     className="signature"
-                    src="/doctor-ment/signature.png"
+                    src="/doctor-ment/signature.webp"
                     alt="signature"
                 />
             </Paragraph>

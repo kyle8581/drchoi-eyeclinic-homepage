@@ -1,6 +1,6 @@
 const firebaseConfig = {
     apiKey: 'AIzaSyArAzMQJPh9WuSk9eMaBzP38DhuAK2p41I',
-    authDomain: 'drchoi-eyeclinic-homepage.firebaseapp.com',
+    authDomain: 'auth.mydoctorchoi.com',
     projectId: 'drchoi-eyeclinic-homepage',
     storageBucket: 'drchoi-eyeclinic-homepage.appspot.com',
     messagingSenderId: '153536395761',

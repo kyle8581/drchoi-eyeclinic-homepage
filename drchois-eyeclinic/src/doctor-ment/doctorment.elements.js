@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const containerWidth = '21.5rem'
-const font = 'NanumBarunGothic'
+const font = 'NanumSquare_acR'
 export const Wrapper = styled.div`
     width: 100vw;
     height: 100vh;
@@ -175,9 +175,9 @@ export const BackGroundTextContrainer = styled.div`
     display: flex;
     flex-direction: column;
     font-size: 16rem;
-    font-family: NanumBarunGothicBold;
+    font-family: NanumSquare_acEB;
     text-align: right;
-    font-weight: 1000;
+    font-weight: 800;
     position: absolute;
     left: 0;
     top: 4rem;

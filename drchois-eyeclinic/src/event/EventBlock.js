@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, { useContext, useState, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import firebase from 'firebase/app'
@@ -8,13 +8,15 @@ import { classifyEventStatus } from './ClassifyEventStatus'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined'
 import { UserContext } from '../UserContext'
+import { Placeholder } from 'semantic-ui-react'
+import { Place } from '@material-ui/icons'
 
 const NewTagD = styled.div`
     width: 60px;
     height: 30px;
     border-radius: 30px;
     background-color: #ff7e00;
-    font-family: NanumSquare_acB;
+    font-family: NanumSquare_acR;
     font-size: 1rem;
     line-height: 2.2rem;
     color: white;
@@ -26,7 +28,7 @@ const FinishedD = styled.div`
     height: 30px;
     border-radius: 30px;
     background-color: #939393;
-    font-family: NanumSquare_acB;
+    font-family: NanumSquare_acR;
     font-size: 0.8rem;
     color: white;
     font-size: 1rem;
@@ -40,7 +42,7 @@ const InprocessD = styled.div`
     height: 30px;
     border-radius: 30px;
     background-color: #63c3c4;
-    font-family: NanumSquare_acB;
+    font-family: NanumSquare_acR;
     font-size: 0.8rem;
     color: white;
     font-size: 1rem;
@@ -66,12 +68,11 @@ const WrapperMobile = styled.div`
     grid-template-rows: 250px 50px 50px;
     grid-template-columns: 80px 340px 80px;
     border-bottom: 1px solid #e4e4e4;
-    margin-bottom:98px;
-    :last-child{
-        border-bottom: 3px solid #CDCDCD
+    margin-bottom: 98px;
+    :last-child {
+        border-bottom: 3px solid #cdcdcd;
     }
 `
-
 
 const TagContainerD = styled.div`
     display: flex;
@@ -93,7 +94,8 @@ const ThumbnailContainerD = styled(Link)`
     :hover {
         color: #939393;
     }
-    img {
+    img,
+    .placeholder {
         width: 340px;
         height: 197px !important;
         height: auto;
@@ -176,6 +178,7 @@ const deleteEvent = (id) => {
 }
 function DesktopBlock({ id, data }) {
     const { userInfo, setUserInfo } = useContext(UserContext)
+    const [loaded, setLoaded] = useState(false)
 
     return (
         <FirebaseAuthConsumer>
@@ -187,7 +190,19 @@ function DesktopBlock({ id, data }) {
                     />
                 </TagContainerD>
                 <ThumbnailContainerD to={'/event-description/' + id}>
-                    <img src={data.thumbnail_url} alt="thumbnail" />
+                    <img
+                        src={data.thumbnail_url}
+                        alt="thumbnail"
+                        onLoad={()=>{setLoaded(true)}}
+                        style={!loaded ? { display: 'none' } : {}}
+                    />
+                    {loaded ? (
+                        <Fragment />
+                    ) : (
+                        <Placeholder>
+                            <Placeholder.Image />
+                        </Placeholder>
+                    )}
                 </ThumbnailContainerD>
                 <TitleD>{data.title}</TitleD>
                 <PeriodD>
@@ -195,30 +210,35 @@ function DesktopBlock({ id, data }) {
                         '~' +
                         data.end_date.replaceAll('-', '.')}
                 </PeriodD>
-                {userInfo.authority==="admin"?(
+                {userInfo.authority === 'admin' ? (
                     <ControlBlockD>
-                    <Link to={'/event-edit/' + id}>
-                        <EditOutlinedIcon />
-                    </Link>
-                    <DeleteForeverOutlinedIcon
-                        onClick={() => {
-                            deleteEvent(id)
-                        }}
-                    />
-                </ControlBlockD>
-            ):(<></>)
-                }
-               
+                        <Link to={'/event-edit/' + id}>
+                            <EditOutlinedIcon />
+                        </Link>
+                        <DeleteForeverOutlinedIcon
+                            onClick={() => {
+                                deleteEvent(id)
+                            }}
+                        />
+                    </ControlBlockD>
+                ) : (
+                    <></>
+                )}
             </WrapperDesktop>
         </FirebaseAuthConsumer>
     )
 }
 function MobileBlock({ id, data }) {
     const { userInfo, setUserInfo } = useContext(UserContext)
-
+    const [loaded, setLoaded] = useState(false)
     return (
         <FirebaseAuthConsumer>
-            <WrapperMobile style={{transform:"scale(1.28)", transformOrigin:"top left"}}>
+            <WrapperMobile
+                style={{
+                    transform: 'scale(1.28)',
+                    transformOrigin: 'top left',
+                }}
+            >
                 <TagContainerD>
                     <StatusTagReturn
                         start={data.start_date}
@@ -226,7 +246,19 @@ function MobileBlock({ id, data }) {
                     />
                 </TagContainerD>
                 <ThumbnailContainerD to={'/event-description/' + id}>
-                    <img src={data.thumbnail_url} alt="thumbnail" />
+                <img
+                        src={data.thumbnail_url}
+                        alt="thumbnail"
+                        onLoad={()=>{setLoaded(true)}}
+                        style={!loaded ? { display: 'none' } : {}}
+                    />
+                    {loaded ? (
+                        <Fragment />
+                    ) : (
+                        <Placeholder>
+                            <Placeholder.Image />
+                        </Placeholder>
+                    )}
                 </ThumbnailContainerD>
                 <TitleD>{data.title}</TitleD>
                 <PeriodD>
@@ -234,20 +266,20 @@ function MobileBlock({ id, data }) {
                         '~' +
                         data.end_date.replaceAll('-', '.')}
                 </PeriodD>
-                {userInfo.authority==="admin"?(
+                {userInfo.authority === 'admin' ? (
                     <ControlBlockD>
-                    <Link to={'/event-edit/' + id}>
-                        <EditOutlinedIcon />
-                    </Link>
-                    <DeleteForeverOutlinedIcon
-                        onClick={() => {
-                            deleteEvent(id)
-                        }}
-                    />
-                </ControlBlockD>
-            ):(<></>)
-                }
-               
+                        <Link to={'/event-edit/' + id}>
+                            <EditOutlinedIcon />
+                        </Link>
+                        <DeleteForeverOutlinedIcon
+                            onClick={() => {
+                                deleteEvent(id)
+                            }}
+                        />
+                    </ControlBlockD>
+                ) : (
+                    <></>
+                )}
             </WrapperMobile>
         </FirebaseAuthConsumer>
     )
@@ -255,7 +287,7 @@ function MobileBlock({ id, data }) {
 
 function EventBlock({ data, id }) {
     const { height, width } = useWindowDimensions()
-   
+
     if (width >= 800) {
         return <DesktopBlock data={data} id={id} />
     } else {

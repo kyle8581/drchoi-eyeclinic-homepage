@@ -18,7 +18,45 @@ export const Section1 = styled.div`
     background: url(${background1}) no-repeat;
     background-size: contain;
     width: 100vw;
-    height: calc(100vw / 1927 * 1107);
+    height: calc(100vw / 1919 * 1076);
+    display: flex;
+    flex-direction: column;
+    padding-top: 10%;
+    padding-left: 10%;
+`
+export const Row = styled.div`
+    display: flex;
+    flex-direction: row;
+`
+export const BeforeSurgery = styled.div`
+    font-family: NanumSquare_acR;
+    font-size: 4vw;
+    color: #fff;
+    margin-right: 0.5vw;
+`
+export const Fifty = styled.div`
+    font-family: NanumSquare_acB;
+    color:#6CE2FF;
+    font-size:5vw;
+    margin-top: 2%;
+    margin-bottom: 2%;
+`
+export const EyeIcon = styled.img`
+    width: calc(100vw * 158 / 1910);
+    height: calc(100vw * 86 / 1910);
+`
+export const Section1WhitePar = styled.div`
+    font-family: NanumSquare_acR;
+    font-size: 2vw;
+    color: white;
+    line-height: 4vw;
+`
+export const Section1BluePar = styled.div`
+    font-family: NanumSquare_acR;
+    font-size: 2vw;
+    color: #D2FAFF;
+    line-height: 4vw;
+
 `
 export const Section2 = styled.div`
     /* @media screen and (max-width: 5000px) and (min-width: 2001px) {
@@ -95,6 +133,7 @@ export const Process = styled.div`
     img {
         width: 100%;
     }
+    margin-bottom: 50px;
 `
 
 export const ProcessDescription = styled.div`
@@ -103,19 +142,20 @@ export const ProcessDescription = styled.div`
     background-color: #707070;
     white-space: break-spaces;
     text-align: left;
-    height: 180px;
+    min-height: 180px;
     .title {
         font-family: NanumSquare_acB;
         font-size: 1.5rem;
         margin-bottom: 1rem;
     }
-    .par {
-        font-family: NanumSquaere_acR;
+    .par > div {
+        font-family: NanumSquare_acR;
         font-size: 1.2rem;
         display: flex;
         flex-direction: column;
         line-height: 1.5rem;
     }
+
     @media screen and (max-width: 950px) {
         .title {
             font-size: 1.2rem;
@@ -127,7 +167,7 @@ export const ProcessDescription = styled.div`
 `
 export const SlideButton = styled.div`
     /* content: '<'; */
-    font-family: NanumBarunGothic;
+    font-family: NanumSquare_acR;
     color: white;
     text-shadow: 2px 2px 3px rgba(10, 10, 10, 0.5);
     /* position: absolute; */

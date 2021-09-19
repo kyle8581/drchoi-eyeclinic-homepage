@@ -1,22 +1,17 @@
 import styled from 'styled-components/macro'
-import backgroundimage from './desktop_sitting.png'
+import backgroundimage from './desktop_sitting.webp'
 export const Wrapper = styled.div`
     width: 100vw;
     height: 100vh;
-    background-color: #fff;
-    z-index: -4;
-    position: absolute;
+
+    background: url(${backgroundimage}) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: scroll;
 `
-export const Background = styled.div`
-    position: absolute;
-    z-index: -1;
-    width: 100vw;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    display: table;
-    background: url(${backgroundimage}) no-repeat center scroll;
-`
+
 
 export const Title = styled.div`
     font-size: 2rem;
@@ -28,6 +23,7 @@ export const Title = styled.div`
     top: 9rem;
     width: 600px;
     padding-left: 1.5rem;
+    align-items: center;
     /* transform: translate(36rem, 5rem); */
     .green {
         color: #63c3c4;
@@ -37,6 +33,7 @@ export const Title = styled.div`
         color: #636363;
         font-size: 1.6rem;
         margin-left: 0.5rem;
+        line-height: 100%;
     }
 `
 export const Paragraph = styled.div`
@@ -52,7 +49,7 @@ export const Paragraph = styled.div`
         text-align: left;
         font-size: 1.1rem;
         line-height: 1.8rem;
-        font-family: NanumBarunGothic;
+        font-family: NanumSquare_acR;
     }
     .blank {
         width: 100%;

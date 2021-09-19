@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import backGroundAsset from './doctor_background_asset.json'
 import DoctorBackgroundStructure from './DoctorBackgroundStructure'
 import './DoctorMentSlide3.css'
@@ -20,13 +20,16 @@ const MobildeNameTag = styled.div`
         font-family: NanumSquare_ac;
         letter-spacing: 0.2rem;
         margin-right: 0.7rem;
-        transform: translateY(1rem);
+        /* transform: translateY(1rem); */
+        line-height: 100%;
+
     }
     h2 {
         font-size: 2.5rem;
         color: #60afb2;
         font-family: NanumSquare_acB;
         letter-spacing: 0.4rem;
+        line-height: 100%;
     }
 `
 function DoctorSayHi() {
@@ -80,7 +83,7 @@ function DoctorSayHi() {
             </div>
             <img
                 className="docImage"
-                src="doctor/doctorImg.png"
+                src="doctor/doctorImg.webp"
                 alt="Dr.choi"
             />
         </section>

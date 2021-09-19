@@ -22,6 +22,7 @@ import {
 import GreenCircleWithCheck from '../icon_components/GreenCircleWithCheck'
 import firebase from 'firebase/app'
 import { UserContext } from '../UserContext'
+import useWindowDimensions from '../useWindowDimensions'
 function Signup() {
     const history = useHistory()
     const { userInfo, setUserInfo } = useContext(UserContext)
@@ -32,6 +33,7 @@ function Signup() {
     const [agree2, setAgree2] = useState('default')
     const [agree3, setAgree3] = useState('default')
     const [email, setEmail] = useState(userInfo.email)
+    const {width, height} = useWindowDimensions()
     fetch('/signup/consent1.txt')
         .then((res) => res.text())
         .then((text) => {
@@ -55,6 +57,14 @@ function Signup() {
         if (email === 'none') {
             history.push('/')
             return
+        }
+        if(agree1 !== "true" || agree2 !=="true"){
+            alert("약관에 동의하지 않으면 회원가입이 불가능합니다.")
+            e.preventDefault()
+            return
+        }
+        if(agree3 !== "true"){
+            setPhonenumber("disagree")
         }
         const uid = firebase.auth().currentUser.uid
         const db = firebase.firestore()
@@ -89,7 +99,7 @@ function Signup() {
                 >
                     <Header>
                         <Column>
-                            <Row style={{ marginTop: '70px' }}>
+                            <Row style={width>750?({ marginTop: '70px' }):({marginTop:"5vw"})}>
                                 <ExtraTitle>압구정최안과는</ExtraTitle>
                             </Row>
                             <Row>
@@ -200,6 +210,7 @@ function Signup() {
                             onChange={(e) => {
                                 setPhonenumber(e.target.value)
                             }}
+                            placeholder="010-1234-5678"
                         />
                     </Column>
                     <Column style={{ marginTop: '70px' }}>

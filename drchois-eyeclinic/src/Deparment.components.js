@@ -21,9 +21,7 @@ export const ShowUp = styled.div`
                 color: #707070;
             }
         }
-        /* justify-content: space-between;
-width: 50%; */
-    }
+        }
     @media screen and (min-width: 1001px) {
         .showup {
             transform: ${({ show }) =>

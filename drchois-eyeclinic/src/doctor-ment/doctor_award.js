@@ -20,7 +20,40 @@ import AwardSlide from './AwardSlide'
 import AwardAsset from './doctoraward_image_asset.json'
 import MobileAward from './MobileAward'
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel, Autoplay])
-
+export const TrophyContainer = ()=>{
+    return(
+        <div className="trophy__slide__container">
+        <Swiper
+            spaceBetween={0} // 캐러셀 사이의 간격
+            slidesPerView={5} // 한 swiper container 안에 보여지는 slide 개수
+            centeredSlides="true"
+            width="1075"
+            // onSlideChange={(swiper) => {
+            //     setCurslide(swiper.realIndex)
+            // }}
+            // onSlideChange={(swiper) => {
+            //     console.log(swiper.params)
+            // }}
+            touchEventsTarget="wrapper"
+            direction="horizontal"
+            grabCursor="true"
+            loop="true"
+            draggable="true"
+            autoplay={{ delay: 6000 }}
+            speed={400}
+        >
+            {AwardAsset.map((asset) => (
+                <SwiperSlide key={asset.key}>
+                    <AwardSlide
+                        id={asset.id}
+                        src={asset.src}
+                    />
+                </SwiperSlide>
+            ))}
+        </Swiper>
+    </div>
+    )
+}
 function DoctorAward() {
     return (
         <Media queries={{ small: { maxWidth: 1300 } }}>
@@ -31,7 +64,7 @@ function DoctorAward() {
                     <div className="awardPageContainer">
                         <img
                             className="spotlight"
-                            src="/doctor/spotlight.png"
+                            src="/doctor/spotlight.webp"
                             alt="Dr.Choi"
                         />
                         <div className="content_wrapper">
@@ -59,36 +92,7 @@ function DoctorAward() {
                 </div> */}
                                 </div>
                             </div>
-                            <div className="trophy__slide__container">
-                                <Swiper
-                                    spaceBetween={0} // 캐러셀 사이의 간격
-                                    slidesPerView={5} // 한 swiper container 안에 보여지는 slide 개수
-                                    centeredSlides="true"
-                                    width="1075"
-                                    // onSlideChange={(swiper) => {
-                                    //     setCurslide(swiper.realIndex)
-                                    // }}
-                                    // onSlideChange={(swiper) => {
-                                    //     console.log(swiper.params)
-                                    // }}
-                                    touchEventsTarget="wrapper"
-                                    direction="horizontal"
-                                    grabCursor="true"
-                                    loop="true"
-                                    draggable="true"
-                                    autoplay={{ delay: 6000 }}
-                                    speed={400}
-                                >
-                                    {AwardAsset.map((asset) => (
-                                        <SwiperSlide key={asset.key}>
-                                            <AwardSlide
-                                                id={asset.id}
-                                                src={asset.src}
-                                            />
-                                        </SwiperSlide>
-                                    ))}
-                                </Swiper>
-                            </div>
+                           <TrophyContainer/>
                         </div>
                     </div>
                 )

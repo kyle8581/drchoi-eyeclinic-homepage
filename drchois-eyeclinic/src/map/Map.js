@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import {
     BackGround,
     Wrapper,
@@ -26,20 +26,32 @@ import {
     MobileAddressContent,
     MobileEnlargeButton,
 } from './Map.components'
+import RoomIcon from '@material-ui/icons/Room'
+import GoogleMapReact from 'google-map-react'
 import Airplane from '../icon_components/Airplane'
 import B from '../icon_components/B'
 import G from '../icon_components/G'
 import R from '../icon_components/R'
-
+import styled from 'styled-components/macro'
+import useWindowDimensions from '../useWindowDimensions'
 function Map() {
-    // const [isToggle, setToggle] = useState(false)
-    // function handleHover() {
-    //     setToggle(!isToggle)
-    //     console.log(isToggle)
-    // }
+    const mapConfig = {
+        center: {
+            lat: 37.52452707051213,
+            lng: 127.02885189140747,
+        },
+        zoom: 15,
+    }
+    const Pin = styled(RoomIcon)`
+        color: #63c3c4;
+        width: 30px !important;
+        height: 30px !important;
+        transform: translateY(-100%);
+    `
+    const { width, height } = useWindowDimensions()
     return (
         <BackGround>
-            <Wrapper>
+            <Wrapper className="map_wrapper">
                 <NavBar>
                     <NavBarButton toggled={true}>
                         <div>지도 보기</div>
@@ -65,18 +77,35 @@ function Map() {
                     </PrintButton>
                 </TopBar>
                 <MapAndText>
-                    <MapImage>
-                        <img src="/map/map_image.png" alt="map" />
+                    <MapImage
+                        onMouseMove={(e) => {
+                            e.stopPropagation()
+                        }}
+                    >
+                        <GoogleMapReact
+                            bootstrapURLKeys={{
+                                key: 'AIzaSyArAzMQJPh9WuSk9eMaBzP38DhuAK2p41I',
+                            }}
+                            defaultCenter={mapConfig.center}
+                            defaultZoom={mapConfig.zoom}
+                            mapContainerStyle={MapImage}
+                        >
+                            <Pin
+                                lat={mapConfig.center.lat}
+                                lng={mapConfig.center.lng}
+                            />
+                        </GoogleMapReact>
                     </MapImage>
-                    <MobileEnlargeButton href="http://naver.me/FvnCL3iG">
-                        <div>크게 보기</div>
-                    </MobileEnlargeButton>
-                    <MobileAddressContainer>
-                        <WayTitle>주소</WayTitle>
-                        <MobileAddressContent>
-                            강남구 논현로 848 8층 압구정최안과
-                        </MobileAddressContent>
-                    </MobileAddressContainer>
+                    {width <= 750 ? (
+                        <MobileAddressContainer>
+                            <WayTitle>주소</WayTitle>
+                            <MobileAddressContent>
+                                강남구 논현로 848 8층 압구정최안과
+                            </MobileAddressContent>
+                        </MobileAddressContainer>
+                    ) : (
+                        <Fragment />
+                    )}
                     <WayContainer>
                         <ParkContainer>
                             <WayTitle>주차이용안내</WayTitle>
@@ -123,7 +152,9 @@ function Map() {
                                     </BusRow>
                                 </div>
 
-                                <BusSmallTitle>압구정역 3번 출구</BusSmallTitle>
+                                <BusSmallTitle className="subThree">
+                                    압구정역 3번 출구
+                                </BusSmallTitle>
                                 <div>
                                     <BusRow line="blue">
                                         <B />
@@ -138,7 +169,9 @@ function Map() {
                                         <div className="line__num">6800번</div>
                                     </BusRow>
                                 </div>
-                                <BusSmallTitle>압구정역 4번 출구</BusSmallTitle>
+                                <BusSmallTitle className="subFour">
+                                    압구정역 4번 출구
+                                </BusSmallTitle>
                                 <div>
                                     <BusRow line="blue">
                                         <B />

@@ -8,7 +8,7 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import FastForwardIcon from '@material-ui/icons/FastForward'
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
 import FastRewindIcon from '@material-ui/icons/FastRewind'
-import { PageNumberIndex } from '../sightcorrection_review/ReviewList.components'
+import { PageNumberIndex } from '../review/ReviewList.components'
 import useWindowDimensions from '../useWindowDimensions'
 const Wrapper = styled.div`
     display: flex;
@@ -123,6 +123,7 @@ function EventListMobile() {
         const db = firebase.firestore()
         const collection = db.collection('event')
         collection
+        .where('show', "==", true)
             .orderBy('timestamp_end_date', 'desc')
             .onSnapshot((querySnapShot) => {
                 querySnapShot.docs.forEach((d, i) => {
@@ -150,11 +151,11 @@ function EventListMobile() {
                 break;
             }
             if(i+1===curAmount){
-                tmpEventList.push(<EventBlock idx={eventIdList[i]} data={eventInfoList[i]} key={i}/>)
+                tmpEventList.push(<EventBlock idx={eventIdList[i]} id={eventIdList[i]} data={eventInfoList[i]} key={i}/>)
             }
             else{
 
-                tmpEventList.push(<EventBlock idx={eventIdList[i]} data={eventInfoList[i]} key={i}/>)
+                tmpEventList.push(<EventBlock idx={eventIdList[i]} id={eventIdList[i]} data={eventInfoList[i]} key={i}/>)
             }
         }
         return tmpEventList
@@ -184,7 +185,7 @@ function EventListMobile() {
             }
         }}>
             <TopNav />
-            <Header style={{ transform: 'scale(' + width / 750 + ')' }}>
+            <Header style={{ transform: 'scale(' + width / 750 + ')', marginBottom:-210*(1-width/750),transformOrigin:"top center" }}>
                 <HeaderText>
                     <Row>
                         <div>압구정최안과는 고객님을 위해</div>
@@ -201,8 +202,6 @@ function EventListMobile() {
             >
                 <GreenBox />
                 <EventPageTitle>진행중인 이벤트</EventPageTitle>
-                <div>{curAmount * (450 * (width / 750))}</div>
-            <div>{curAmount*450}</div>
             </EventPageTitleContainer>
             <Table
                 ref={tableRef}
@@ -215,14 +214,7 @@ function EventListMobile() {
             >
                 {EventComponents()}
             </Table>
-            <button
-                onClick={addAmount}
-            >
-                add
-            </button>
-            {curAmount}
-            <div>{curAmount * (450 * (width / 750))}</div>
-            <div>{curAmount*450}</div>
+           
             
         </Wrapper>
     )

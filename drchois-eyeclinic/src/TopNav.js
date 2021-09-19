@@ -4,6 +4,7 @@ import React, {
     useEffect,
     useCallback,
     useMemo,
+    Fragment,
 } from 'react'
 import { Squash as Hamburger } from 'hamburger-react'
 import { Link, useHistory } from 'react-router-dom'
@@ -13,24 +14,31 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import { FirebaseAuthConsumer } from '@react-firebase/auth'
 import styled from 'styled-components/macro'
-import { Menu, Dropdown } from 'semantic-ui-react'
+import { Menu, Dropdown, Button } from 'semantic-ui-react'
+import LanguageIcon from '@material-ui/icons/Language'
 import 'semantic-ui-css/semantic.min.css'
+import classnames from 'classnames'
 import {
     BlackBackGround,
     MenuContainer1,
     MenuContainer2,
+    MenuContainer3,
     SideMenuContainer,
     InfoContainer,
     NavBar,
 } from './SideMenu.components'
-import { LanguageSelectContainer, Country } from './Language.components'
+import {
+    LanguageSelectContainer,
+    Country,
+} from './translation/Language.components'
 import { UserContext } from './UserContext'
 import { SlideContext } from './SlideContext'
 import { SightCorrectionSlideContext } from './SightCorrectionSlideContext'
-import translate from './translations'
+import { NoanSlideContext } from './NoanSlideContext'
+import translate from './translation/translations'
 import LoginButton from './login/LoginButton'
-import EventReviewDropdown from './menu/EventReviewDropdown'
-import { Fragment } from 'react'
+import LanguageSelect from './translation/LanguageSelect'
+import useWindowDimensions from './useWindowDimensions'
 // import { LoginButton } from './firebase'
 const LoginButtonStyled = styled.button`
     width: 100px;
@@ -47,63 +55,109 @@ const LoginButtonStyled = styled.button`
     cursor: pointer;
 `
 const NavMenu = styled(Menu)`
-border: none !important;
-background-color: transparent !important;
-box-shadow: none !important;
+    border: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
     height: 58px;
     margin-top: 0 !important;
     margin-left: 20px !important;
-    .navbar_component{
+    font-family: NanumSquare_acR !important;
+
+    .navbar_component {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
-    .navbar_component:hover{
+    .navbar_component:hover {
         box-shadow: none !important;
         border: none !important;
     }
-    .navbar_component::before{
+    .navbar_component::before {
         display: none;
     }
-    .dropdown::before{
+    .dropdown::before {
         display: none;
     }
-    .dropdown.icon{
+    .dropdown.icon {
         display: none;
     }
 `
-function TopNav({ changefloatshow, swiper }) {
+const LoginRow = styled.div`
+    width: 300px;
+    position: absolute;
+    bottom: 170px;
+    left: 70px;
+    display: flex;
+    flex-direction: row;
+    .language_button {
+        margin-left: auto;
+    }
+    @media screen and (max-height: 710px) {
+        bottom: 50px;
+    }
+    @media screen and (max-width: 450px) {
+        width: 250px;
+        left: 50px;
+    }
+    @media screen and (max-width: 320px) {
+        width: 230px;
+    }
+`
+const LanguageButton = styled(Button)`
+    height: 40px;
+    width: 110px;
+    display: flex !important;
+    flex-direction: row;
+    border-radius: 2rem !important;
+    background-color: #575656 !important;
+    color: #fff !important;
+    justify-content: center;
+    align-items: center;
+    div {
+        margin-left: 0.25rem;
+    }
+    @media screen and (max-height: 710px) {
+        transform: scale(0.8);
+    }
+`
+function TopNav({ changefloatshow, swiper, language, removeBlur }) {
+    // useWindowDimension : width, height state저장
+    const { width, height } = useWindowDimensions()
     const [isOpen, setOpen] = useState(false)
     const pathname = window.location.pathname
     const { pageState, setPageState } = useContext(SightCorrectionSlideContext)
+    const { NoanPageState, setNoanPageState } = useContext(NoanSlideContext)
     const { curSlide, setCurslide } = useContext(SlideContext)
-    const [needFetch, setNeedFetch] = useState(false)
-    const [needCheck, setNeedCheck] = useState(false)
+    const {userInfo, setUserInfo} = useContext(UserContext)
+    const [languageModalOpen, setLanguageModalOpen] = useState(false)
+    const [visible, setVisible] = useState(true)
     // 이벤트/후기 dropdown list menu를 위한 state
     // showList : true => 드롭다운 메뉴 display
     // showList : false => 드롭다운 메뉴 hide
-    const [showList, setShowList] = useState(false)
-
-    const Rus = translate[2]
-    const Chi = translate[1]
-    const Eng = translate[0]
+    const [prevScrollpos, setPrevScrollpos] = useState(window.pageYOffset)
+ 
     function clickHamberger() {
         setOpen(!isOpen)
     }
-    const { userInfo, setUserInfo } = useContext(UserContext)
-    // console.log(userInfo)
-    const [userList, setUserList] = useState([])
     const history = useHistory()
 
-    console.log('top nav load')
+    useEffect(() => {
+        function handleScroll() {
+            const currentScrollpos = window.pageYOffset
+            const visibility = prevScrollpos > currentScrollpos || currentScrollpos < 100
+            setPrevScrollpos(currentScrollpos)
+            setVisible(visibility)
+        }
+        window.addEventListener('scroll', handleScroll)
 
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
     return (
-        <NavBar>
-            {/* <div
-                className={'nav__container ' + isOpen}
-                style={{
-                    overflow: (isOpen) => (isOpen ? 'visible' : 'hidden'),
-                }}
-            > */}
+        <NavBar
+            className={classnames('navbar', { 'navbar--hidden': !visible })}
+            removeBlur={removeBlur}
+        >
             <div className="navbar__logo">
                 <Link to="/">
                     <NavLogo className="logo__svg" />
@@ -111,36 +165,136 @@ function TopNav({ changefloatshow, swiper }) {
             </div>
 
             {/* </div> */}
-            <NavMenu>
-                <NavMenu.Item className="navbar_component">
-                    <Dropdown simple item text="최승일대표원장" onClick={()=>{alert("click")}}>
-                        <Dropdown.Menu/>
-                    </Dropdown>
-                </NavMenu.Item>
-                <NavMenu.Item className="navbar_component">
-                    <Dropdown simple item text="시력교정술">
-                        <Dropdown.Menu>
-                            <Dropdown.Item >라식</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                </NavMenu.Item>
-                <NavMenu.Item className="navbar_component">
-                <Dropdown simple item text="노안수술" onClick={()=>{alert("click")}}>
-                        <Dropdown.Menu/>
-                    </Dropdown>
-                </NavMenu.Item>
-                <NavMenu.Item className="navbar_component">
-                <Dropdown simple item text="정밀검사과정"  onClick={()=>{history.push('/test-process')}} >
-                        <Dropdown.Menu />
-                    </Dropdown>
-                </NavMenu.Item>
-                <NavMenu.Item className="navbar_component">
-                    <EventReviewDropdown
-                        showList={showList}
-                        setShowList={setShowList}
-                    />
-                </NavMenu.Item>
-            </NavMenu>
+            {width > 780 ? (
+                <NavMenu>
+                    <NavMenu.Item className="navbar_component">
+                        <Dropdown
+                            simple
+                            item
+                            text="최승일대표원장"
+                            onClick={() => {
+                                if (pathname === '/') setCurslide(1)
+                                else {
+                                    setCurslide(0)
+                                    history.push('/')
+                                }
+                            }}
+                        >
+                            <Dropdown.Menu />
+                        </Dropdown>
+                    </NavMenu.Item>
+                    <NavMenu.Item className="navbar_component">
+                        <Dropdown simple item text="시력교정술">
+                            <Dropdown.Menu>
+                                <Dropdown.Item
+                                    onClick={() => {
+                                        setPageState('lasik')
+                                        history.push({
+                                            pathname: '/sight-correction',
+                                            state: { pageState: pageState },
+                                        })
+                                    }}
+                                >
+                                    라식
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                    onClick={() => {
+                                        setPageState('lasek')
+                                        history.push({
+                                            pathname: '/sight-correction',
+                                            state: { pageState: pageState },
+                                        })
+                                    }}
+                                >
+                                    라섹
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                    onClick={() => {
+                                        history.push({
+                                            pathname: '/icl',
+                                        })
+                                    }}
+                                >
+                                    ICL
+                                </Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </NavMenu.Item>
+                    <NavMenu.Item className="navbar_component">
+                        <Dropdown simple item text="노안수술">
+                            <Dropdown.Menu>
+                                <Dropdown.Item
+                                    onClick={() => {
+                                        setNoanPageState('cataract')
+                                        history.push({
+                                            pathname: '/cataract',
+                                            state: { pageState: pageState },
+                                        })
+                                    }}
+                                >
+                                    백내장
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                    onClick={() => {
+                                        setNoanPageState('presbyopia')
+                                        history.push({
+                                            pathname: '/cataract',
+                                            state: { pageState: pageState },
+                                        })
+                                    }}
+                                >
+                                    노안수술
+                                </Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </NavMenu.Item>
+
+                    <NavMenu.Item className="navbar_component">
+                        <Dropdown
+                            simple
+                            item
+                            text="정밀검사과정"
+                            onClick={() => {
+                                history.push('/test-process')
+                            }}
+                        >
+                            <Dropdown.Menu />
+                        </Dropdown>
+                    </NavMenu.Item>
+                    <NavMenu.Item className="navbar_component">
+                        <Dropdown simple item text="후기/이벤트">
+                            <Dropdown.Menu>
+                                <Dropdown.Item
+                                    className="dropdown_item"
+                                    onClick={() => {
+                                        history.push('/review/presbyopia')
+                                    }}
+                                >
+                                    {'백내장 수술후기'}
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                    className="dropdown_item"
+                                    onClick={() => {
+                                        history.push('/review/sight-correction')
+                                    }}
+                                >
+                                    {'시력교정 수술후기'}
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                    className="dropdown_item"
+                                    onClick={() => {
+                                        history.push('/event-list')
+                                    }}
+                                >
+                                    {'진행중인 이벤트'}
+                                </Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </NavMenu.Item>
+                </NavMenu>
+            ) : (
+                <Fragment />
+            )}
 
             <div className="hamburger__icon">
                 <Hamburger
@@ -151,32 +305,42 @@ function TopNav({ changefloatshow, swiper }) {
                     color="#707070"
                 />
             </div>
-            {isOpen?( <BlackBackGround
-                clicked={isOpen}
-                onClick={() => {
-                    clickHamberger()
-                }}
-            />):(<Fragment/>)}
-           
+            {isOpen ? (
+                <BlackBackGround
+                    clicked={isOpen}
+                    onClick={() => {
+                        clickHamberger()
+                    }}
+                />
+            ) : (
+                <Fragment />
+            )}
+
             <SideMenuContainer clicked={isOpen}>
-                <MenuContainer1>
+                <MenuContainer1
+                    style={
+                        height < 790
+                            ? {
+                                  transform: 'scale(0.8)',
+                                  transformOrigin: 'top left',
+                              }
+                            : {}
+                    }
+                >
                     <h1>압구정최안과 소개</h1>
                     <div>
                         <p
                             onClick={() => {
                                 clickHamberger()
-                                if (pathname === './') setCurslide(1)
-                                else {
-                                    setCurslide(0)
-                                    history.push('./')
-                                }
+                                setCurslide(0)
+                                if (pathname != '/') history.push('/')
                             }}
                         >
                             Dr.Choi의 신념과 철학
                         </p>
                     </div>
                     <div>
-                        <a href="https://www.youtube.com/channel/UCfhlcQAfLiY_uhpigIIRfFA">
+                        <a href="https://www.youtube.com/channel/UCXIsvIjcR8uICOeUnpY4Hcg">
                             닥터최의 eye튜브
                         </a>
                     </div>
@@ -187,14 +351,8 @@ function TopNav({ changefloatshow, swiper }) {
                         <p
                             onClick={() => {
                                 clickHamberger()
-                                if (pathname === '/') {
-                                    console.log('same page')
-                                    swiper.slideTo(2)
-                                } else {
-                                    console.log('different page')
-                                    history.push('./')
-                                    localStorage.setItem('slide', 2)
-                                }
+                                setCurslide(1)
+                                if (pathname != '/') history.push('/')
                             }}
                         >
                             압구정최안과 둘러보기
@@ -204,7 +362,8 @@ function TopNav({ changefloatshow, swiper }) {
                         <p
                             onClick={() => {
                                 clickHamberger()
-                                swiper.slideTo(5)
+                                setCurslide(3)
+                                if (pathname != '/') history.push('/')
                             }}
                         >
                             오시는 길
@@ -214,19 +373,54 @@ function TopNav({ changefloatshow, swiper }) {
                         <p
                             onClick={() => {
                                 clickHamberger()
-                                swiper.slideTo(6)
+                                setCurslide(4)
+                                if (pathname != '/') history.push('/')
                             }}
                         >
                             진료시간
                         </p>
                     </div>
                 </MenuContainer1>
-                <MenuContainer2>
+                <MenuContainer2
+                    style={
+                        height < 790
+                            ? {
+                                  transform: 'scale(0.8) translateY(-40px)',
+                                  transformOrigin: 'top left',
+                              }
+                            : {}
+                    }
+                >
                     <h1>진료과목</h1>
                     <div className="row">
                         <div className="center">백내장센터</div>
                         <div className="divider"></div>
-                        <Link to="./cataract">백내장</Link>
+                        <Link
+                            onClick={() => {
+                                clickHamberger()
+                                setNoanPageState('cataract')
+                                history.push({
+                                    pathname: '/cataract',
+                                    state: { pageState: pageState },
+                                })
+                            }}
+                            to="/cataract"
+                        >
+                            백내장
+                        </Link>
+                        <Link
+                            onClick={() => {
+                                clickHamberger()
+                                setNoanPageState('presbyopia')
+                                history.push({
+                                    pathname: '/cataract',
+                                    state: { pageState: pageState },
+                                })
+                            }}
+                            to="/cataract"
+                        >
+                            노안
+                        </Link>
                     </div>
                     <div className="row">
                         <div className="center">시력교정센터</div>
@@ -235,7 +429,6 @@ function TopNav({ changefloatshow, swiper }) {
                             onClick={() => {
                                 clickHamberger()
                                 setPageState('lasik')
-                                console.log(pageState)
                             }}
                             to={{
                                 pathname: `/sight-correction`,
@@ -248,46 +441,95 @@ function TopNav({ changefloatshow, swiper }) {
                             onClick={() => {
                                 clickHamberger()
                                 setPageState('lasek')
-                                console.log(pageState)
                             }}
                             to="/sight-correction"
                         >
                             라섹
                         </Link>
-                        <Link
-                            onClick={() => {
-                                clickHamberger()
-                                setPageState('smile')
-                                console.log(pageState)
-                            }}
-                            to="/sight-correction"
-                        >
-                            스마일
-                        </Link>
 
-                        <Link to="./icl">ICL</Link>
+                        <Link to="/icl">ICL</Link>
                     </div>
                     <div className="row">
                         <div className="center">렌즈센터</div>
                         <div className="divider"></div>
                         <Link to="/dream-lens">드림렌즈</Link>
-                        <p>RGP렌즈</p>
+                        <Link to="/rgp">RGP렌즈</Link>
                     </div>
                 </MenuContainer2>
-                <LoginButton />
+                <MenuContainer3
+                    style={
+                        height < 790
+                            ? {
+                                  transform: 'scale(0.8) translateY(-70px)',
+                                  transformOrigin: 'top left',
+                              }
+                            : {}
+                    }
+                >
+                    <h1>{'이벤트/후기'}</h1>
+                    <div className="row">
+                        <div className="center">수술후기</div>
+                        <div className="divider"></div>
+                        <Link
+                            onClick={() => {
+                                clickHamberger()
+                            }}
+                            to="/review/presbyopia"
+                        >
+                            백내장
+                        </Link>
+                        <Link
+                            onClick={() => {
+                                clickHamberger()
+                            }}
+                            to="/review/sight-correction"
+                        >
+                            시력교정
+                        </Link>
+                    </div>
+                    <div className="row">
+                        <Link className="center" to="/event-list">
+                            {'진행중인 이벤트'}
+                        </Link>
+                    </div>
+                </MenuContainer3>
+                <LoginRow>
+                    <LoginButton />
+                    <LanguageButton
+                        className="language_button"
+                        onClick={() => {
+                            setLanguageModalOpen(true)
+                        }}
+                    >
+                        <LanguageIcon />
 
-                <div>{JSON.stringify(userInfo)}</div>
-                <div>{userInfo.authority}</div>
-                <InfoContainer>
-                    <div className="row">
-                        서울특별시 강남구 논현로 848, 8층 압구정최안과의원
-                    </div>
-                    <div className="row">
-                        8F, 848, Nonhyeon-ro, Gangnam-gu, Seoul
-                    </div>
-                    <div className="phone">02 6956 8711</div>
-                </InfoContainer>
+                        <div>
+                            {language === undefined ? 'Korean' : language}
+                        </div>
+                    </LanguageButton>
+                </LoginRow>
+                <LanguageSelect
+                    open={languageModalOpen}
+                    setOpen={setLanguageModalOpen}
+                />
+
+                {/* <div>{JSON.stringify(userInfo)}</div> */}
+                {/* <div>{userInfo.authority}</div> */}
+                {height > 710 ? (
+                    <InfoContainer>
+                        <div className="row">
+                            서울특별시 강남구 논현로 848, 8층 압구정최안과의원
+                        </div>
+                        <div className="row">
+                            8F, 848, Nonhyeon-ro, Gangnam-gu, Seoul
+                        </div>
+                        <div className="phone">02 6956 8711</div>
+                    </InfoContainer>
+                ) : (
+                    <Fragment />
+                )}
             </SideMenuContainer>
+            {/* </div> */}
         </NavBar>
     )
 }

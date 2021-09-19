@@ -30,7 +30,7 @@ function FooterMobile() {
                             <div className="day spacing">평 일</div>
                             <div className="weekdays_column">
                                 <div className="time">오전 10시 ~ 오후 6시</div>
-                                <div className="time">
+                                <div className="time2">
                                     (점심시간 오후1시 ~ 2시)
                                 </div>
                             </div>
@@ -55,7 +55,7 @@ function FooterMobile() {
                     <IconLink href="https://blog.naver.com/polarbearsaver">
                         <img src="/footer-icon/blog_icon.png" alt="icon" />
                     </IconLink>
-                    <IconLink href="https://www.youtube.com/channel/UCfhlcQAfLiY_uhpigIIRfFA">
+                    <IconLink href="https://www.youtube.com/channel/UCXIsvIjcR8uICOeUnpY4Hcg">
                         <img src="/footer-icon/yt_icon.png" alt="icon" />
                     </IconLink>
                     <IconLink href="https://www.instagram.com/dr.choi_eyeclinic/">

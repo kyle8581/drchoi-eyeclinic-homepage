@@ -1,7 +1,4 @@
-export const NanumBarunGothic = 'NanumBarunGothic'
-export const NanumBarunGothicBold = 'NanumBarunGothicBold'
-export const NanumBarunGothicLight = 'NanumBarunGothicLight'
-export const NanumBarunGothicExtraBold = 'NanumBarunGothicExtraBold'
+
 export const NanumSquareB = 'NanumSquareB'
 export const NanumSquareR = 'NanumSquareR'
 export const NanumSquareEB = 'NanumSquareEB'

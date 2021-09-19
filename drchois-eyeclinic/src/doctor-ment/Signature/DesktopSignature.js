@@ -1,14 +1,13 @@
 import React from 'react'
 import {
     Wrapper,
-    Background,
     Paragraph,
     Title,
 } from './DesktopSignature.components'
 function DesktopSignature() {
     return (
         <Wrapper>
-            <Background />
+            {/* <Background /> */}
             <Title>
                 <div className="green">Philosoph of</div>
                 <div className="gray"> 압구정 최안과</div>
@@ -48,7 +47,7 @@ function DesktopSignature() {
                 <div className="name">압구정최안과 대표원장 최승일</div>
                 <img
                     className="signature"
-                    src="/doctor-ment/signature.png"
+                    src="/doctor-ment/signature.webp"
                     alt="signature"
                 />
             </Paragraph>

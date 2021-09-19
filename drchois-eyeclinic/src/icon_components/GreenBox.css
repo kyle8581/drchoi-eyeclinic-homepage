@@ -3,7 +3,7 @@
   height: 8px;
   margin-bottom: 50px;
   background: #63c3c4;
-  position: absolute;
+  /* position: absolute; */
   transform: translateY(0px);
 }
 @media screen and (max-width:500px){

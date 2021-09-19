@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
     width: 100vw;
     height: 100vh;
     background-color: #fff;
-    font-family: NanumBarunGothic;
+    font-family: NanumSquare_acR;
 `;
 export const Shelf = styled.img`
     z-index: 1;
@@ -45,6 +45,7 @@ export const TextContainer = styled.div`
     transform: translate(24vw, 24vh);
     align-items:center;
 
+
 `; 
 export const Title = styled.div`
     font-size: 1.4rem;
@@ -53,16 +54,18 @@ export const Title = styled.div`
     color : #636363;
     width: 60vw;
     transform-origin: center;
+    font-family: NanumSquare_acB;
 `;
 export const Par = styled.div`
     color : #636363;
     font-size : 0.8rem;
     line-height: 1.1rem;
+    font-family: NanumSquare_acR;
 
 `;
 
 export const Atropy = styled.img`
     width:
-    ${({id, cur}) => (id === cur?"150px; transform: translate(-0.8rem, -0.5rem);":"120px; transform:translate(0,0.5rem); ")};
+    ${({id, cur}) => (id === cur+1?"150px; transform: translate(-0.8rem, -0.5rem);":"120px; transform:translate(0,0.5rem); ")};
     transition : 0.5s;
 `;

@@ -36,6 +36,7 @@ import {
     Lasik_sec4_ele,
     Lasik_sec4_title,
 } from './Lasik.components'
+import { Fragment } from 'react'
 function Lasik() {
     const sec4_content = [
         {
@@ -79,27 +80,29 @@ function Lasik() {
     return (
         <LasikContainer name="lasik">
             <LasikWrapper>
-                <Lasik_sec1>
-                    <Lasik_sec1_content>
-                        <h1>원데이 비쥬라식</h1>
-                        <h5>
-                            <span>One Day </span>
-                            Visu Lasik
-                        </h5>
-                        <h3>
-                            <div>
-                                정교한 레이저를 이용하여 각막절편을 만들고,
-                            </div>
-                            <div>
-                                각막절편을 열어 각막의 실질부위에 레이저를
-                            </div>
-                            <div>조사하여 굴절이상을 교정하는 수술입니다.</div>
-                        </h3>
-                        <h4>압구정최안과는 펨토세컨레이저를</h4>
-                        <h4>이용하여 빠르고 정확한 수술이</h4>
-                        <h4>가능합니다.</h4>
-                    </Lasik_sec1_content>
-                </Lasik_sec1>
+                    <Lasik_sec1>
+                        <Lasik_sec1_content>
+                            <h1>원데이 비쥬라식</h1>
+                            <h5>
+                                <span>One Day </span>
+                                Visu Lasik
+                            </h5>
+                            <h3>
+                                <div>
+                                    정교한 레이저를 이용하여 각막절편을 만들고,
+                                </div>
+                                <div>
+                                    각막절편을 열어 각막의 실질부위에 레이저를
+                                </div>
+                                <div>
+                                    조사하여 굴절이상을 교정하는 수술입니다.
+                                </div>
+                            </h3>
+                            <h4>압구정최안과는 펨토세컨레이저를</h4>
+                            <h4>이용하여 빠르고 정확한 수술이</h4>
+                            <h4>가능합니다.</h4>
+                        </Lasik_sec1_content>
+                    </Lasik_sec1>
                 <Lasik_sec2>
                     <Lasik_sec2_row1>
                         <Lasik_sec2_row1_col1 src="surgery/Lasik/lasik_sec2_img1.png" />
@@ -245,6 +248,9 @@ function Lasik() {
                         </Lasik_sec2_row4_contextWrapper>
                     </Lasik_sec2_row4>
                 </Lasik_sec2>
+                {true ? (
+                    <Fragment />
+                ) : (
                 <Lasik_sec3>
                     <Lasik_sec3_textContainer>
                         <h4>2019년형 펨토세컨 레이저</h4>
@@ -263,7 +269,7 @@ function Lasik() {
                             ))}
                         </Lasik_sec3_circleContainer>
                     </Lasik_sec3_textContainer>
-                </Lasik_sec3>
+                </Lasik_sec3>)}
                 <Lasik_sec4>
                     {sec4_content.map((ele, index) => (
                         <Lasik_sec4_container>

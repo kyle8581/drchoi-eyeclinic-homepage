@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 20vh;
-  font-family: NanumBarunGothic;
+  font-family: NanumSquare_acR;
   color: #636363;
 }
 .text-container .BigBox1 {
@@ -36,7 +36,8 @@
   line-height: 1.5 !important;
 }
 .BigBox2 > p{
-  line-height: 1rem !important;
+  font-family: NanumSquare_acR;
+  line-height: 1.5rem !important;
 }
 
 .trophy__slide__container {
@@ -44,17 +45,19 @@
   /* height: 30vh; */
   display: flex;
   bottom: 10vh;
+  width: auto;
+  height: auto;
 }
 .trophy__slide__container .swiper-container {
   /* display: inline-flex; */
-  /* position: absolute; */
+  position: absolute;
   height: 262px;
   /* margin-top: 20%; */
   width: auto;
   display: flex;
   align-items: flex-end;
   width: 1075px;
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   /* left: ; */
   left: calc(-1075px / 2);

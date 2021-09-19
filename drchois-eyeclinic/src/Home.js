@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, lazy, Suspense } from 'react'
 import SwiperCore, {
     Navigation,
     Pagination,
@@ -6,9 +6,8 @@ import SwiperCore, {
     A11y,
     Mousewheel,
 } from 'swiper'
-
+import { Placeholder } from 'semantic-ui-react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import firebase from 'firebase/app'
 import 'firebase/auth'
 // Import Swiper styles
 import 'swiper/swiper.scss'
@@ -16,16 +15,32 @@ import 'swiper/components/navigation/navigation.scss'
 import 'swiper/components/pagination/pagination.scss'
 import 'swiper/components/scrollbar/scrollbar.scss'
 import './Home.css'
-import DoctorMent from './doctor-ment/DoctorMent'
-import Interior from './Interior'
-import Department from './Department'
+import { SlideContext } from './SlideContext'
 import TopNav from './TopNav'
-import YouTube from './YouTube'
+import FloatingIcon from './icon_components/FloatingIcon'
+// import Interior from './Interior'
+import DoctorMent from './doctor-ment/DoctorMent'
+// import Department from './Department'
+// import PopupElement from './popup/PopupElement'
 import Map from './map/Map'
 import FooterReturn from './footer/FooterReturn'
-import FloatingIcon from './icon_components/FloatingIcon'
-import { SlideContext } from './SlideContext'
-import PopupElement from './popup/PopupElement'
+// code splititng
+// const DoctorMent = lazy(() => import('./doctor-ment/DoctorMent'))
+const Interior = lazy(() => import('./Interior'))
+const Department = lazy(() => import('./Department'))
+
+// const Map = lazy(() => {
+//     import('./map/Map')
+// })
+// const FooterReturn = lazy(() => {
+//     import('./footer/FooterReturn')
+// })
+// const FloatingIcon = lazy(() => {
+//     import('./icon_components/FloatingIcon')
+// })
+// const PopupElement = lazy(() => (
+//     import('./popup/PopupElement')
+// ))
 // install Swiper components
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel])
@@ -62,9 +77,12 @@ function Home() {
             <TopNav
                 changefloatshow={changeFloatShowOnHamburgerClicked}
                 swiper={swiperInstance}
+                removeBlur={true}
             />
+
             <FloatingIcon toshow={toFloatIconShow} />
-            <PopupElement>ddfd</PopupElement>
+
+            {/* <PopupElement>ddfd</PopupElement> */}
             <Swiper
                 useRef={swiperInstance}
                 spaceBetween={50}
@@ -78,23 +96,20 @@ function Home() {
                 }}
                 onSlideChange={(swiper) => {
                     currentActiveSlide = swiper.realIndex
-                    console.log(currentActiveSlide)
+
                     setCurslide(swiper.realIndex)
                 }}
                 mousewheel={{ invert: false, thresholdTime: '1000' }}
                 touchEventsTarget="wrapper"
+                setAllowScroll={false}
                 direction="vertical"
                 autoHeight="true"
                 longSwipes={false}
                 shortSwipes="false"
                 preventInteractionOnTransition="true"
-                onScroll={() => {
-                    console.log('scroll!!')
-                }}
-
+                // allowTouchMove={true}
                 // touchRatio={0}
             >
-                {/* slide 1 : 눈깜빡이는 영상 */}
                 {/* <SwiperSlide className="greeting__slide">
                     <Greeting />
                 </SwiperSlide> */}
@@ -103,16 +118,36 @@ function Home() {
                 </SwiperSlide>
                 {/* slide 3 : 병원 소개 */}
                 <SwiperSlide>
-                    <Interior curSlide={curSlide} />
+                    <Suspense
+                        fallback={
+                            <Placeholder
+                                style={{ width: '100vw', height: '100vh' }}
+                            >
+                                <Placeholder.Image />
+                            </Placeholder>
+                        }
+                    >
+                        <Interior curSlide={curSlide} />
+                    </Suspense>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <Department />
+                <Suspense
+                        fallback={
+                            <Placeholder
+                                style={{ width: '100vw', height: '100vh' }}
+                            >
+                                <Placeholder.Image />
+                            </Placeholder>
+                        }
+                    >
+                        <Department/>
+                    </Suspense>
                 </SwiperSlide>
 
-                <SwiperSlide>
+                {/* <SwiperSlide>
                     <YouTube />
-                </SwiperSlide>
+                </SwiperSlide> */}
                 {/* slide 6 : 지도, footer */}
                 <SwiperSlide>
                     <Map />

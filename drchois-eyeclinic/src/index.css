@@ -20,70 +20,33 @@ code {
         monospace;
 }
 
-@font-face {
-    font-family: 'NanumBarunGothic';
-    src: local('NanumBarunGothic'),
-        url('./fonts/NanumBarunGothic.ttf') format('truetype');
-    font-weight: normal;
-}
-@font-face {
-    font-family: 'NanumBarunGothicBold';
-    src: local('NanumBarunGothicBold'),
-        url('./fonts/NanumBarunGothicBold.ttf') format('truetype');
-    font-weight: bold;
-}
-@font-face {
-    font-family: 'NanumBarunGothicLight';
-    src: local('NanumBarunGothicLight'),
-        url('./fonts/NanumBarunGothicLight.ttf') format('truetype');
-    font-weight: 300;
-}
-@font-face {
-    font-family: 'NanumBarunGothicExtraBold';
-    src: local('NanumGothicExtraBold'),
-        url('./fonts/NanumGothicExtraBold.ttf') format('truetype');
-    font-weight: 900;
-}
 
-@font-face {
-    font-family: 'NanumSquareB';
-    src: local('NanumSquareB'),
-        url('./fonts/NanumSquareB.ttf') format('truetype');
-    font-weight: bold;
-}
-@font-face {
-    font-family: 'NanumSquareR';
-    src: local('NanumSquareR'),
-        url('./fonts/NanumSquareR.ttf') format('truetype');
-    font-weight: normal;
-}
-@font-face {
-    font-family: 'NanumSquareEB';
-    src: local('NanumSquareEB'),
-        url('./fonts/NanumSquareEB.ttf') format('truetype');
-    font-weight: 900;
-}
+
 @font-face {
     font-family: 'NanumSquare_acB';
     src: local('NanumSquare_acB'),
         url('./fonts/NanumSquare_acB.ttf') format('truetype');
     font-weight: bold;
+    font-display: swap;
 }
 @font-face {
     font-family: 'NanumSquare_acR';
     src: local('NanumSquare_acR'),
         url('./fonts/NanumSquare_acR.ttf') format('truetype');
     font-weight: normal;
+    font-display: swap;
 }
 @font-face {
     font-family: 'NanumSquare_acL';
     src: local('NanumSquare_acL'),
         url('./fonts/NanumSquare_acL.ttf') format('truetype');
     font-weight: normal;
+    font-display: swap;
 }
 @font-face {
     font-family: 'NanumSquare_acEB';
     src: local('NanumSquare_acEB'),
         url('./fonts/NanumSquare_acEB.ttf') format('truetype');
     font-weight: 900;
+    font-display: swap;
 }

@@ -1,13 +1,11 @@
 [
-    {"key":"doctorAward-1","id" : 1, "src": "/doctor/ace01.png", "alt": "Dr.Choi Awards"},
-    {"key":"doctorAward-2","id" : 2, "src": "/doctor/ace02.png", "alt": "Dr.Choi Awards"},
-    {"key":"doctorAward-3","id" : 3, "src": "/doctor/ace03.png", "alt": "Dr.Choi Awards"},
-    {"key":"doctorAward-4","id" : 4, "src": "/doctor/ace04.png", "alt": "Dr.Choi Awards"},
-    {"key":"doctorAward-5","id" : 5, "src": "/doctor/ace05.png", "alt": "Dr.Choi Awards"},
-    {"key":"doctorAward-6","id" : 6, "src": "/doctor/ace06.png", "alt": "Dr.Choi Awards"},
-    {"key":"doctorAward-7","id" : 7, "src": "/doctor/ace07.png", "alt": "Dr.Choi Awards"},
-    {"key":"doctorAward-8","id" : 8, "src": "/doctor/ace08.png", "alt": "Dr.Choi Awards"},
-    {"key":"doctorAward-9","id" : 9, "src": "/doctor/ace09.png", "alt": "Dr.Choi Awards"},
-    {"key":"doctorAward-10","id" : 10, "src": "/doctor/ace10.png", "alt": "Dr.Choi Awards"},
-    {"key":"doctorAward-11","id" : 11, "src": "/doctor/ace11.png", "alt": "Dr.Choi Awards"}
+    {"key":"doctorAward-2","id" : 2, "src": "/doctor/ace02.webp", "alt": "Dr.Choi Awards"},
+    {"key":"doctorAward-3","id" : 3, "src": "/doctor/ace03.webp", "alt": "Dr.Choi Awards"},
+    {"key":"doctorAward-4","id" : 4, "src": "/doctor/ace04.webp", "alt": "Dr.Choi Awards"},
+    {"key":"doctorAward-5","id" : 5, "src": "/doctor/ace05.webp", "alt": "Dr.Choi Awards"},
+    {"key":"doctorAward-6","id" : 6, "src": "/doctor/ace06.webp", "alt": "Dr.Choi Awards"},
+    {"key":"doctorAward-7","id" : 7, "src": "/doctor/ace07.webp", "alt": "Dr.Choi Awards"},
+    {"key":"doctorAward-8","id" : 8, "src": "/doctor/ace08.webp", "alt": "Dr.Choi Awards"},
+    {"key":"doctorAward-9","id" : 9, "src": "/doctor/ace09.webp", "alt": "Dr.Choi Awards"},
+    {"key":"doctorAward-10","id" : 10, "src": "/doctor/ace10.webp", "alt": "Dr.Choi Awards"}
 ]

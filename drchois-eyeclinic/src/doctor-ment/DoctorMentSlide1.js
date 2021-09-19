@@ -35,12 +35,12 @@ function DoctorMentSlide1() {
                     의사가 추천하는 무사고 23년차 안과전문의
                 </BottomLetter>
             </TextContainer>
-            <DoctorImg src="doctor/slide1_0_background_image.png" />
+            <DoctorImg src="doctor/slide1_0_background_image.webp" alt="bg"/>
             <TabletDoctorImg
-                src="doctor-ment/tablet_slide1_doctor.png"
+                src="doctor-ment/tablet_slide1_doctor.webp"
                 alt="bg"
             />
-            <BackGroundLogo src="doctor/slide1_0_background_logo.png" />
+            <BackGroundLogo src="doctor/slide1_0_background_logo.webp" />
             <BackGroundTextContrainer>
                 <div>TRUST</div>
                 <div>IN</div>

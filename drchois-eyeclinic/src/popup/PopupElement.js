@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { Button } from 'react-scroll'
+import React, { useState, useEffect, memo, Fragment } from 'react'
 import Popup from 'reactjs-popup'
 import styled from 'styled-components/macro'
 import firebase from 'firebase/app'
-
+import { Placeholder } from 'semantic-ui-react'
+import ControlBar from './ControlBar'
 const PopupWindow = styled(Popup)`
     &-overlay {
         z-index: 2;
@@ -17,7 +17,7 @@ const PopupWindow = styled(Popup)`
 
         width: 300px;
         height: 300px;
-        a{
+        a {
             text-decoration: none;
             border: none;
         }
@@ -68,13 +68,11 @@ function getCookie(name) {
     return
 }
 function setCookie(name, value, expiredays) {
-    var date = new Date();
-    date.setDate(date.getDate() + expiredays);
-    document.cookie = escape(name) + "=" + escape(value) + "; expires=" + date.toUTCString();
+    var date = new Date()
+    date.setDate(date.getDate() + expiredays)
+    document.cookie =
+        escape(name) + '=' + escape(value) + '; expires=' + date.toUTCString()
 }
-
-
-
 
 function PopupElement() {
     var MyDate = new Date()
@@ -93,20 +91,23 @@ function PopupElement() {
     const [endDate, setEndDate] = useState(null)
     const [link, setLink] = useState('')
     const [imageUrl, setImageUrl] = useState('')
-    const [doNotOpenForDay, setDoNotOpenForDay] = useState(false)
     const [popupId, setPopupId] = useState(null)
+    const [loaded, setLoaded] = useState(false)
     useEffect(() => {
-        const db = firebase.firestore()
-        const ref = db.collection('popup')
-        const doc = ref.doc('popup_config')
-        doc.get().then((e) => {
-            setImageUrl(e.data().background_img)
-            setHasLink(e.data().hasLink)
-            setLink(e.data().link)
-            setPopupId(e.data().id)
-            setEndDate(e.data().end_date)
-        })
-    }, [])
+        if (imageUrl === '') {
+            console.log('image load')
+            const db = firebase.firestore()
+            const ref = db.collection('popup')
+            const doc = ref.doc('popup_config')
+            doc.get().then((e) => {
+                setImageUrl(e.data().background_img)
+                setHasLink(e.data().hasLink)
+                setLink(e.data().link)
+                setPopupId(e.data().id)
+                setEndDate(e.data().end_date)
+            })
+        }
+    }, [imageUrl])
     useEffect(() => {
         console.log(endDate)
         console.log(date)
@@ -120,28 +121,65 @@ function PopupElement() {
             console.log('popup close')
         }
     }, [endDate])
-    const PopupContent = () => {
+    const compareLink =()=>{return true;}
+
+    const PopupContent = memo(function PopupContent() {
+        console.log("popup render")
         if (hasLink) {
             return (
-                <div>
-                    <img
-                        onClick={()=>{window.location.href=link}}
-                        src={imageUrl}
-                        alt="popup_image"
-                        style={{ width: '300px', height: '300px', cursor:"pointer" }}
-                    />
-                </div>
+                <Fragment>
+                    {loaded ? (
+                        <Fragment />
+                    ) : (
+                        <Placeholder
+                            style={{ width: '300px', height: '300px' }}
+                        >
+                            <Placeholder.Image square />
+                        </Placeholder>
+                    )}
+                    <div style={loaded ? {} : { display: 'none' }}>
+                        <img
+                            onClick={() => {
+                                window.location.href = link
+                            }}
+                            src={imageUrl}
+                            alt="popup_image"
+                            style={{
+                                width: '300px',
+                                height: '300px',
+                                cursor: 'pointer',
+                            }}
+                            onLoad={() => {
+                                setLoaded(true)
+                            }}
+                        />
+                    </div>
+                </Fragment>
             )
         } else {
             return (
-                <img
-                    src={imageUrl}
-                    alt="popup_image"
-                    style={{ width: '300px', height: '300px' }}
-                />
+                <Fragment>
+                    {loaded ? (
+                        <Fragment />
+                    ) : (
+                        <Placeholder
+                            style={{ width: '300px', height: '300px' }}
+                        >
+                            <Placeholder.Image square />
+                        </Placeholder>
+                    )}
+                    <div style={loaded ? {} : { display: 'none' }}>
+                        <img
+                            src={imageUrl}
+                            alt="popup_image"
+                            style={{ width: '300px', height: '300px' }}
+                        />
+                    </div>
+                </Fragment>
             )
         }
-    }
+    }, compareLink)
+    
     if (open) {
         return (
             <PopupWindow
@@ -152,28 +190,7 @@ function PopupElement() {
             >
                 <PopupContainer>
                     <PopupContent />
-                    <div className="control_bar" style={{ zIndex: '2' }}>
-                        <input
-                            type="checkbox"
-                            id="doNotShow"
-                            checked={doNotOpenForDay}
-                            onChange={() => {
-                                setDoNotOpenForDay(!doNotOpenForDay)
-                            }}
-                        />
-                        <label htmlFor="doNotShow">1일동안 보이지 않기</label>
-
-                        <div
-                            id="popupClose"
-                            onClick={() => {
-                                setCookie("popup"+popupId, "N",1)
-                                setOpen(false)
-                            }}
-                            style={{cursor:"pointer"}}
-                        >
-                            {'[닫기]'}
-                        </div>
-                    </div>
+                    <ControlBar setCookie={setCookie} popupId={popupId} setOpen={setOpen}/>
                 </PopupContainer>
             </PopupWindow>
         )
@@ -182,4 +199,4 @@ function PopupElement() {
     }
 }
 
-export default PopupElement
+export const MemoPopupElement = memo(PopupElement)

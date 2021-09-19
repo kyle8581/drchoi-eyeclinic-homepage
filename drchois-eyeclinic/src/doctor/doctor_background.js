@@ -35,7 +35,7 @@ function DoctorSayHi() {
         </div>
         </div>
       </div>
-      <img className={"docImage"} src="doctor/doctorImg.png" alt="Dr.choi"/>
+      <img className={"docImage"} src="doctor/doctorImg.webp" alt="Dr.choi"/>
     </section>
   );
 }

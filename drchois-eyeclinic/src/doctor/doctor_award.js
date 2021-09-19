@@ -24,7 +24,7 @@ function DoctorAward() {
         <div className="awardPageContainer">
             <img
                 className="spotlight"
-                src="/doctor/spotlight.png"
+                src="/doctor/spotlight.webp"
                 alt="Dr.Choi"
             />
             <div className="content_wrapper">
@@ -53,10 +53,6 @@ function DoctorAward() {
                         draggable="true"
                         centeredSlides="true"
                         autoplay={{ delay: 6000 }}
-                        onSlideChange={(swiper) => {
-                            console.log('$$$$$$$$$$$$')
-                            console.log(swiper.params)
-                        }}
                     >
                         {AwardAsset.map((asset) => (
                             <SwiperSlide key={asset.key}>

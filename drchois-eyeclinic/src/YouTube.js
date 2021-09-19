@@ -40,7 +40,7 @@ const MobileYoutubeLink = styled.a`
 `
 const Wrapper = styled.div`
     display: flex;
-    
+
 `
 // console.log(youTubeLinks)
 function YouTube() {
@@ -70,7 +70,7 @@ function YouTube() {
                             return <SwiperSlide>{e.link}</SwiperSlide>
                         })}
                     </Swiper>
-                    <Swiper
+                    {/* <Swiper
                         onInit={(swiper) => {
                             // swiper.params.navigation.prevEl = prevRef.current
                             // swiper.params.navigation.nextEl = nextRef.current
@@ -107,13 +107,13 @@ function YouTube() {
                                 </SwiperSlide>
                             )
                         })}
-                    </Swiper>
-                    <div className="uparrow" ref={nextRef}>
+                    </Swiper> */}
+                    {/* <div className="uparrow" ref={nextRef}>
                         <UpArrow />
                     </div>
                     <div className="downarrow" ref={prevRef}>
                         <DownArrow />
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="text__wrapper">
