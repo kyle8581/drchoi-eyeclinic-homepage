@@ -2,7 +2,7 @@ import React, { useContext, useState, Fragment, useEffect, useRef } from 'react'
 import firebase from 'firebase/app'
 import { Link, useParams } from 'react-router-dom'
 import ReviewBlock from './ReviewBlock.js'
-import { Placeholder, Segment } from 'semantic-ui-react'
+import { Placeholder, Segment, Message } from 'semantic-ui-react'
 
 import Select from 'react-select'
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined'
@@ -66,8 +66,8 @@ function ReviewListMobile({ reviewType, collectionId }) {
                 .onSnapshot((s) => {
                     s.forEach((d) => {
                         console.log(d.data().title)
-                        console.log('index: ' + reviews.length)
-                        console.log('what:' + s.docs[reviews.length])
+                        // console.log('index: ' + reviews.length)
+                        // console.log('what:' + s.docs[reviews.length])
                         reviews.push({
                             ...d.data(),
                             id: d.id,
@@ -79,6 +79,11 @@ function ReviewListMobile({ reviewType, collectionId }) {
                     })
                     setLatestDoc(s.docs[s.docs.length - 1])
                 })
+        } else {
+            if (initializing) {
+                setInintializing(false)
+            }
+            console.log('user not logined')
         }
     }
     const handleScroll = (scrollTop, offsetHeight, scrollHeight) => {
@@ -90,12 +95,16 @@ function ReviewListMobile({ reviewType, collectionId }) {
         }
     }
     useEffect(() => {
-        if(userInfo.login){
-            firebaseAnalytics.logEvent(`mobile review ${reviewType} page visited login`)
+        if (userInfo.login) {
+            firebaseAnalytics.logEvent(
+                `mobile review ${reviewType} page visited login`
+            )
+        } else {
+            firebaseAnalytics.logEvent(
+                `mobile review ${reviewType} page visited not login`
+            )
         }
-        else{
-            firebaseAnalytics.logEvent(`mobile review ${reviewType} page visited not login`)
-        }
+        console.log('review load')
         // alert('reviewType changed')
         setSurgeryType('all')
         setSearch('')
@@ -105,8 +114,9 @@ function ReviewListMobile({ reviewType, collectionId }) {
         setLatestDoc(null)
         setAmount(0)
         setInintializing(true)
-    }, [reviewType])
+    }, [reviewType, userInfo.login])
     useEffect(() => {
+        console.log('check if needs initializing')
         if (initializing) {
             getNextReviews(null)
             getTotalAmount()
@@ -255,66 +265,74 @@ function ReviewListMobile({ reviewType, collectionId }) {
                             <Fragment />
                         )}
                     </FilterContainer>
-                    <ListContainer className="container">
-                        {showList.map((review, index) => {
-                            if (index !== 0) {
-                                return (
-                                    <div className="true" key={index}>
-                                        <ReviewBlock
-                                            e={review}
-                                            idx={index}
-                                            allList={showList}
-                                            reviewType={reviewType}
-                                            collectionId={collectionId}
-                                        />
-                                    </div>
-                                )
-                            } else {
-                                // 제일 처음
-                                return (
-                                    <div key={index}>
-                                        <ReviewBlock
-                                            e={review}
-                                            idx={index}
-                                            allList={showList}
-                                            reviewType={reviewType}
-                                            collectionId={collectionId}
-                                        />
-                                    </div>
-                                )
-                            }
-                        })}
-                        {showList.length === 0 ? (
-                            <Fragment>
-                                <Segment>
-                                    <Placeholder>
-                                        <Placeholder.Header image>
-                                            <Placeholder.Line />
-                                            <Placeholder.Line />
-                                        </Placeholder.Header>
-                                    </Placeholder>
-                                </Segment>
-                                <Segment>
-                                    <Placeholder>
-                                        <Placeholder.Header image>
-                                            <Placeholder.Line />
-                                            <Placeholder.Line />
-                                        </Placeholder.Header>
-                                    </Placeholder>
-                                </Segment>
-                                <Segment>
-                                    <Placeholder>
-                                        <Placeholder.Header image>
-                                            <Placeholder.Line />
-                                            <Placeholder.Line />
-                                        </Placeholder.Header>
-                                    </Placeholder>
-                                </Segment>
-                            </Fragment>
-                        ) : (
-                            <Fragment />
-                        )}
-                    </ListContainer>
+                    {userInfo.login ? (
+                        <ListContainer className="container">
+                            {showList.map((review, index) => {
+                                if (index !== 0) {
+                                    return (
+                                        <div className="true" key={index}>
+                                            <ReviewBlock
+                                                e={review}
+                                                idx={index}
+                                                allList={showList}
+                                                reviewType={reviewType}
+                                                collectionId={collectionId}
+                                            />
+                                        </div>
+                                    )
+                                } else {
+                                    // 제일 처음
+                                    return (
+                                        <div key={index}>
+                                            <ReviewBlock
+                                                e={review}
+                                                idx={index}
+                                                allList={showList}
+                                                reviewType={reviewType}
+                                                collectionId={collectionId}
+                                            />
+                                        </div>
+                                    )
+                                }
+                            })}
+                            {showList.length === 0 ? (
+                                <Fragment>
+                                    <Segment>
+                                        <Placeholder>
+                                            <Placeholder.Header image>
+                                                <Placeholder.Line />
+                                                <Placeholder.Line />
+                                            </Placeholder.Header>
+                                        </Placeholder>
+                                    </Segment>
+                                    <Segment>
+                                        <Placeholder>
+                                            <Placeholder.Header image>
+                                                <Placeholder.Line />
+                                                <Placeholder.Line />
+                                            </Placeholder.Header>
+                                        </Placeholder>
+                                    </Segment>
+                                    <Segment>
+                                        <Placeholder>
+                                            <Placeholder.Header image>
+                                                <Placeholder.Line />
+                                                <Placeholder.Line />
+                                            </Placeholder.Header>
+                                        </Placeholder>
+                                    </Segment>
+                                </Fragment>
+                            ) : (
+                                <Fragment />
+                            )}
+                        </ListContainer>
+                    ) : (
+                        <Message negative style={{ fontSize: '0.5rem', marginTop:"1rem" }}>
+                            <Message.Content>
+                                로그인 후 열람가능합니다.
+                            </Message.Content>
+                        </Message>
+                    )}
                 </ReviewPageWrapper>
             </ReviewPage>
         </ReviewPageContainer>

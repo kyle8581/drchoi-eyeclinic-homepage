@@ -14,7 +14,7 @@ import SearchIcon from '@material-ui/icons/Search'
 import Media from 'react-media'
 import useWindowDimensions from '../useWindowDimensions.js'
 import ReviewListMobile from './ReviewListMobile'
-import { Placeholder, Segment } from 'semantic-ui-react'
+import { Placeholder, Segment, Message } from 'semantic-ui-react'
 import { firebaseAnalytics } from '../firebase.js'
 import {
     ReviewPageContainer,
@@ -82,11 +82,14 @@ function ReviewListDesktop({ reviewType, collectionId }) {
 
     // 다른 수술후기로 넘어갔을때 state초기화 해줘야지 다른 수술후기들이 display됨
     useEffect(() => {
-        if(userInfo.login){
-            firebaseAnalytics.logEvent(`desktop review ${reviewType} page visited login`)
-        }
-        else{
-            firebaseAnalytics.logEvent(`desktop review ${reviewType} page visited not login`)
+        if (userInfo.login) {
+            firebaseAnalytics.logEvent(
+                `desktop review ${reviewType} page visited login`
+            )
+        } else {
+            firebaseAnalytics.logEvent(
+                `desktop review ${reviewType} page visited not login`
+            )
         }
         setAllList([])
         setPageIdx(0)
@@ -232,6 +235,7 @@ function ReviewListDesktop({ reviewType, collectionId }) {
                                     의료법 56조에 의거하여 개인인증 후 열람이
                                     가능합니다.
                                 </p>
+                               
                             </div>
                         </ReviewPage_sec2>
 
@@ -276,68 +280,81 @@ function ReviewListDesktop({ reviewType, collectionId }) {
                                 <Fragment />
                             )}
                         </FilterContainer>
-
-                        <ListContainer>
-                            {curPageList.map((review, index) => {
-                                const reviewCount = pageIdx * 5 + index
-                                if (index !== 0) {
-                                    return (
-                                        <div className="true" key={index}>
-                                            <ReviewBlock
-                                                e={review}
-                                                idx={index}
-                                                allList={allList}
-                                                reviewType={reviewType}
-                                                collectionId={collectionId}
-                                            />
-                                        </div>
-                                    )
-                                } else {
-                                    // 제일 처음
-                                    return (
-                                        <div key={index}>
-                                            <ReviewBlock
-                                                e={review}
-                                                idx={index}
-                                                allList={allList}
-                                                reviewType={reviewType}
-                                                collectionId={collectionId}
-                                            />
-                                        </div>
-                                    )
-                                }
-                            })}
-                            {allList.length === 0 ? (
-                                <Fragment>
-                                    <Segment>
-                                        <Placeholder>
-                                            <Placeholder.Header image>
-                                                <Placeholder.Line />
-                                                <Placeholder.Line />
-                                            </Placeholder.Header>
-                                        </Placeholder>
-                                    </Segment>
-                                    <Segment>
-                                        <Placeholder>
-                                            <Placeholder.Header image>
-                                                <Placeholder.Line />
-                                                <Placeholder.Line />
-                                            </Placeholder.Header>
-                                        </Placeholder>
-                                    </Segment>
-                                    <Segment>
-                                        <Placeholder>
-                                            <Placeholder.Header image>
-                                                <Placeholder.Line />
-                                                <Placeholder.Line />
-                                            </Placeholder.Header>
-                                        </Placeholder>
-                                    </Segment>
-                                </Fragment>
-                            ) : (
-                                <Fragment />
-                            )}
-                        </ListContainer>
+                        {userInfo.login ? (
+                            <ListContainer>
+                                {curPageList.map((review, index) => {
+                                    const reviewCount = pageIdx * 5 + index
+                                    if (index !== 0) {
+                                        return (
+                                            <div className="true" key={index}>
+                                                <ReviewBlock
+                                                    e={review}
+                                                    idx={index}
+                                                    allList={allList}
+                                                    reviewType={reviewType}
+                                                    collectionId={collectionId}
+                                                />
+                                            </div>
+                                        )
+                                    } else {
+                                        // 제일 처음
+                                        return (
+                                            <div key={index}>
+                                                <ReviewBlock
+                                                    e={review}
+                                                    idx={index}
+                                                    allList={allList}
+                                                    reviewType={reviewType}
+                                                    collectionId={collectionId}
+                                                />
+                                            </div>
+                                        )
+                                    }
+                                })}
+                                {allList.length === 0 ? (
+                                    <Fragment>
+                                        <Segment>
+                                            <Placeholder>
+                                                <Placeholder.Header image>
+                                                    <Placeholder.Line />
+                                                    <Placeholder.Line />
+                                                </Placeholder.Header>
+                                            </Placeholder>
+                                        </Segment>
+                                        <Segment>
+                                            <Placeholder>
+                                                <Placeholder.Header image>
+                                                    <Placeholder.Line />
+                                                    <Placeholder.Line />
+                                                </Placeholder.Header>
+                                            </Placeholder>
+                                        </Segment>
+                                        <Segment>
+                                            <Placeholder>
+                                                <Placeholder.Header image>
+                                                    <Placeholder.Line />
+                                                    <Placeholder.Line />
+                                                </Placeholder.Header>
+                                            </Placeholder>
+                                        </Segment>
+                                    </Fragment>
+                                ) : (
+                                    <Fragment />
+                                )}
+                            </ListContainer>
+                        ) : (
+                            <Message
+                                negative
+                                style={{
+                                    fontSize: '1rem',
+                                    fontFamily: 'NanumSquare_acR',
+                                }}
+                            >
+                                <Message.Content>
+                                    로그인 후 열람가능합니다.
+                                </Message.Content>
+                            </Message>
+                        )}
                         <PageNumberIndex>
                             <FastRewindIcon
                                 onClick={(e) => {
@@ -411,7 +428,7 @@ function ReviewListDesktop({ reviewType, collectionId }) {
 }
 function ReviewList() {
     const { reviewType } = useParams()
-    
+
     const { height, width } = useWindowDimensions()
     if (width > 750) {
         if (reviewType === 'sight-correction') {
