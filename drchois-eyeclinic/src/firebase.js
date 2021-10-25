@@ -1,6 +1,8 @@
-const firebaseConfig = {
+import firebase from "firebase"
+import "firebase/analytics"
+export const firebaseConfig = {
     apiKey: 'AIzaSyArAzMQJPh9WuSk9eMaBzP38DhuAK2p41I',
-    authDomain: 'auth.mydoctorchoi.com',
+    authDomain: 'drchoi-eyeclinic-homepage.firebaseapp.com',
     projectId: 'drchoi-eyeclinic-homepage',
     storageBucket: 'drchoi-eyeclinic-homepage.appspot.com',
     messagingSenderId: '153536395761',
@@ -8,4 +10,6 @@ const firebaseConfig = {
     measurementId: 'G-R8RJT7N8XS',
 }
 
-export default firebaseConfig
+firebase.initializeApp(firebaseConfig)
+
+export const firebaseAnalytics = firebase.analytics()

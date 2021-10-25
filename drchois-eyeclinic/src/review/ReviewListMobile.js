@@ -22,6 +22,7 @@ import {
     SearchContainer,
 } from './ReviewListMobile.components'
 import { UserContext } from '../UserContext'
+import { firebaseAnalytics } from '../firebase.js'
 
 function ReviewListMobile({ reviewType, collectionId }) {
     const container = document.querySelector('.container')
@@ -89,6 +90,12 @@ function ReviewListMobile({ reviewType, collectionId }) {
         }
     }
     useEffect(() => {
+        if(userInfo.login){
+            firebaseAnalytics.logEvent(`mobile review ${reviewType} page visited login`)
+        }
+        else{
+            firebaseAnalytics.logEvent(`mobile review ${reviewType} page visited not login`)
+        }
         // alert('reviewType changed')
         setSurgeryType('all')
         setSearch('')

@@ -11,6 +11,7 @@ import {
     ButtonBar,
     ToListButton,
 } from '../review/ReviewDescription.components'
+import { firebaseAnalytics } from '../firebase'
 import useWindowDimensions from '../useWindowDimensions'
 const Wrapper = styled.div`
     width: 100vw;
@@ -179,6 +180,7 @@ function EventDescription() {
             if (data.title !== '') {
                 // console.log('update view')
                 doc.update({ views: data.views + 1 })
+                firebaseAnalytics.logEvent(`event ${data.title} visited`)
 
                 var tmpEventIdList = []
                 db.where('show', '==', true)

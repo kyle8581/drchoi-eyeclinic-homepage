@@ -78,14 +78,8 @@ function PopupElement() {
     var MyDate = new Date()
     var date
 
-    MyDate.setDate(MyDate.getDate() + 20)
-
     date =
-        ('0' + MyDate.getDate()).slice(-2) +
-        '/' +
-        ('0' + (MyDate.getMonth() + 1)).slice(-2) +
-        '/' +
-        MyDate.getFullYear()
+        MyDate.getFullYear()+"-"+('0' + (MyDate.getMonth() + 1)).slice(-2)+ "-" +('0' + MyDate.getDate()).slice(-2)
     const [open, setOpen] = useState(false)
     const [hasLink, setHasLink] = useState(false)
     const [endDate, setEndDate] = useState(null)
@@ -110,7 +104,7 @@ function PopupElement() {
     }, [imageUrl])
     useEffect(() => {
         console.log(endDate)
-        console.log(date)
+        console.log("curdate" + date)
         var popupCookie = getCookie('popup' + popupId)
         console.log(popupCookie)
 

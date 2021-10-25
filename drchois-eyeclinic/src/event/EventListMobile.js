@@ -9,6 +9,7 @@ import FastForwardIcon from '@material-ui/icons/FastForward'
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
 import FastRewindIcon from '@material-ui/icons/FastRewind'
 import { PageNumberIndex } from '../review/ReviewList.components'
+import { firebaseAnalytics } from '../firebase'
 import useWindowDimensions from '../useWindowDimensions'
 const Wrapper = styled.div`
     display: flex;
@@ -113,6 +114,8 @@ function EventListMobile() {
     
 
     useEffect(() => {
+        firebaseAnalytics.logEvent("mobile event page visited")
+
         setTableHeight(tableRef.current.clientHeight)
     },[])
     useEffect(() => {

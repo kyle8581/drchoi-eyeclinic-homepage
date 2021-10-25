@@ -16,6 +16,7 @@ import Signup from './signup/Signup'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
+import { firebaseAnalytics, firebaseConfig } from './firebase'
 import { FirebaseAuthProvider } from '@react-firebase/auth'
 import { UserContext } from './UserContext'
 import { SlideContext } from './SlideContext'
@@ -35,21 +36,17 @@ import testpage from './testpage'
 import { MemoPopupElement } from './popup/PopupElement'
 import Rgp from './rgp/Rgp'
 
-const firebaseConfig = {
-    apiKey: 'AIzaSyArAzMQJPh9WuSk9eMaBzP38DhuAK2p41I',
-    authDomain: 'drchoi-eyeclinic-homepage.firebaseapp.com',
-    projectId: 'drchoi-eyeclinic-homepage',
-    storageBucket: 'drchoi-eyeclinic-homepage.appspot.com',
-    messagingSenderId: '153536395761',
-    appId: '1:153536395761:web:6bda81c9e29e2af7d16c50',
-    measurementId: 'G-R8RJT7N8XS',
-}
 
-firebase.initializeApp(firebaseConfig)
+
+// firebase.initializeApp(firebaseConfig)
 // const PopupElement = lazy(() => (
 //     import('./popup/PopupElement')
 // ))
 function App() {
+    
+    useEffect(()=>{
+        firebaseAnalytics.logEvent("homepage visited")
+    })
     const [userInfo, setUserInfo] = useState({
         login: false,
         email: 'none',

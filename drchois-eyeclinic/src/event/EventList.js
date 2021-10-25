@@ -11,6 +11,9 @@ import FastRewindIcon from '@material-ui/icons/FastRewind'
 import { PageNumberIndex } from '../review/ReviewList.components'
 import useWindowDimensions from '../useWindowDimensions'
 import EventListMobile from './EventListMobile'
+import { Button } from 'semantic-ui-react'
+import { firebaseAnalytics } from '../firebase'
+
 const Wrapper = styled.div`
     display: flex;
     /* align-items: center; */
@@ -158,6 +161,7 @@ function EventListDesktop() {
             )
     }
     useEffect(() => {
+        firebaseAnalytics.logEvent('desktop event page visited')
         console.log('fetch event start')
         fetchEvents()
     }, [])
@@ -202,7 +206,12 @@ function EventListDesktop() {
             </Header>
             <EventPageTitleContainer>
                 <GreenBox />
-                <EventPageTitle>진행중인 이벤트</EventPageTitle>
+                <Row>
+                    <EventPageTitle>진행중인 이벤트</EventPageTitle>
+                    <Link style={{ marginLeft: 'auto' }} to="/event-create/">
+                        <Button >글쓰기</Button>
+                    </Link>
+                </Row>
             </EventPageTitleContainer>
             {EventTable()}
             <PageNumberIndex>

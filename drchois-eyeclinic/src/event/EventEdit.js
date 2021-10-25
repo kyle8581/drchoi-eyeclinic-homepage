@@ -116,7 +116,7 @@ function EventEdit() {
                 setLink(e.data().link)
                 setStartDate(e.data().start_date)
                 setEndDate(e.data().end_date)
-                setViewsCount(e.data().views_count)
+                setViewsCount(e.data().views)
             })
         }
     }, [createOrEdit, eventSlug])
@@ -192,8 +192,7 @@ function EventEdit() {
     const handleSubmit = () => {
         const db = firebase.firestore()
         const ref = db.collection('event')
-
-        ref.add({
+        const newEventData = {
             title: title,
             thumbnail_url: thumbnailUrl,
             image_url: imageUrl,
@@ -204,9 +203,21 @@ function EventEdit() {
             timestamp_end_date: new Date(endDate),
             views: viewsCount,
             show: true,
-        }).then(() => {
-            alert('이벤트가 저장됐습니다.')
-        })
+        }
+        if(createOrEdit){
+            // 새로운 이벤트 생성하는 경우
+            console.log(newEventData)
+            ref.add(newEventData).then(() => {
+                alert('이벤트가 저장됐습니다.')
+            })
+        }
+        else{
+            // 기존의 이벤트 수정하는 경우
+            ref.doc(eventSlug).update(newEventData).then(()=>{
+                alert("이벤트가 수정됐습니다.")
+            })
+
+        }
     }
     return (
         <Wrapper>

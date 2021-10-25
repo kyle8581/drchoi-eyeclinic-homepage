@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import TopNav from '../TopNav'
 import { useHistory } from 'react-router-dom'
 import {
@@ -23,6 +23,7 @@ import GreenCircleWithCheck from '../icon_components/GreenCircleWithCheck'
 import firebase from 'firebase/app'
 import { UserContext } from '../UserContext'
 import useWindowDimensions from '../useWindowDimensions'
+import {firebaseAnalytics} from "../firebase"
 function Signup() {
     const history = useHistory()
     const { userInfo, setUserInfo } = useContext(UserContext)
@@ -34,6 +35,10 @@ function Signup() {
     const [agree3, setAgree3] = useState('default')
     const [email, setEmail] = useState(userInfo.email)
     const {width, height} = useWindowDimensions()
+
+    useEffect(()=>{
+        firebaseAnalytics.logEvent("redirected to signup page")
+    })
     fetch('/signup/consent1.txt')
         .then((res) => res.text())
         .then((text) => {

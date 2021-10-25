@@ -15,7 +15,7 @@ import Media from 'react-media'
 import useWindowDimensions from '../useWindowDimensions.js'
 import ReviewListMobile from './ReviewListMobile'
 import { Placeholder, Segment } from 'semantic-ui-react'
-
+import { firebaseAnalytics } from '../firebase.js'
 import {
     ReviewPageContainer,
     ReviewPageWrapper,
@@ -82,6 +82,12 @@ function ReviewListDesktop({ reviewType, collectionId }) {
 
     // 다른 수술후기로 넘어갔을때 state초기화 해줘야지 다른 수술후기들이 display됨
     useEffect(() => {
+        if(userInfo.login){
+            firebaseAnalytics.logEvent(`desktop review ${reviewType} page visited login`)
+        }
+        else{
+            firebaseAnalytics.logEvent(`desktop review ${reviewType} page visited not login`)
+        }
         setAllList([])
         setPageIdx(0)
         setCurPageList([])
@@ -405,7 +411,7 @@ function ReviewListDesktop({ reviewType, collectionId }) {
 }
 function ReviewList() {
     const { reviewType } = useParams()
-
+    
     const { height, width } = useWindowDimensions()
     if (width > 750) {
         if (reviewType === 'sight-correction') {
