@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext, Fragment } from 'react'
 import firebase from 'firebase/app'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
@@ -13,6 +13,7 @@ import useWindowDimensions from '../useWindowDimensions'
 import EventListMobile from './EventListMobile'
 import { Button } from 'semantic-ui-react'
 import { firebaseAnalytics } from '../firebase'
+import { UserContext } from '../UserContext'
 
 const Wrapper = styled.div`
     display: flex;
@@ -125,6 +126,8 @@ function EventListDesktop() {
     const [eventTitleList, setEventTitleList] = useState([])
     const [pageNumberList, setPageNumberList] = useState([])
 
+    const { userInfo } = useContext(UserContext)
+
     const fetchEvents = async () => {
         console.log('fetch function start')
         var tmpEventIdList = []
@@ -208,9 +211,12 @@ function EventListDesktop() {
                 <GreenBox />
                 <Row>
                     <EventPageTitle>진행중인 이벤트</EventPageTitle>
+                    {userInfo.authority==="admin"?(
+
                     <Link style={{ marginLeft: 'auto' }} to="/event-create/">
                         <Button >글쓰기</Button>
                     </Link>
+                    ):(<Fragment/>)}
                 </Row>
             </EventPageTitleContainer>
             {EventTable()}
