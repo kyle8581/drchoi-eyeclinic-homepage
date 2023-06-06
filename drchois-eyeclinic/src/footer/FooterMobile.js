@@ -37,11 +37,11 @@ function FooterMobile() {
                         </p>
                         <p>
                             <div className="day">금요일</div>
-                            <div className="time">야간진료 오후 8시까지</div>
+                            <div className="time">야간진료 오후 7시까지</div>
                         </p>
                         <p>
                             <div className="day">토요일</div>
-                            <div className="time">오전 10시 ~ 오후 4시</div>
+                            <div className="time">오전 10시 ~ 오후 2시</div>
                         </p>
                         <p>
                             <div className="day spacing">휴 무</div>

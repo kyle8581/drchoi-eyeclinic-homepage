@@ -357,8 +357,15 @@ const ReviewBlock_col3 = styled.div`
 `
 function ReviewBlock({ e, idx, allList, collectionId, reviewType }) {
     const onDelete = () => {
-        const db = firebase.firestore()
-        db.collection(collectionId).doc(e.id).delete()
+        if(window.confirm("후기를 삭제하시겠습니까?")){
+            // 이벤트 삭제 confirm
+            const db = firebase.firestore()
+            db.collection(collectionId).doc(e.id).delete()
+        }
+        else{
+            // 이벤트 삭제 취소
+            return
+        }
     }
     const description_link = '/review-description/' + reviewType + '/' + e.id
     const { userInfo } = useContext(UserContext)
